@@ -59,7 +59,7 @@ CREATE TABLE  `dhuoj`.`contest` (
 
 DROP TABLE IF EXISTS `dhuoj`.`solution`;
 CREATE TABLE  `dhuoj`.`solution` (
-  `solution_id` int(11) NOT NULL default '0',
+  `solution_id` int(11) NOT NULL auto_increment,
   `problem_id` int(11) NOT NULL default '0',
   `user_id` varchar(20) NOT NULL default '',
   `runtime` int(11) NOT NULL default '0',
@@ -67,7 +67,7 @@ CREATE TABLE  `dhuoj`.`solution` (
   `submit_date` datetime NOT NULL default '0000-00-00 00:00:00',
   `result` smallint(6) NOT NULL default '0',
   `language` tinyint(4) NOT NULL default '0',
-  `contest_id` int(11) default NULL,
+  `contest_id` int(11) NOT NULL default '0',
   `valid` tinyint(4) NOT NULL default '1',
   `code_length` int(11) NOT NULL default '0',
   PRIMARY KEY  (`solution_id`),

@@ -16,6 +16,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 /**
  *
@@ -29,6 +31,7 @@ public class Solution implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "solution_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer solutionId;
     @Basic(optional = false)
     @Column(name = "problem_id")
