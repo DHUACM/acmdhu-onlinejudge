@@ -1,0 +1,2113 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="true">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">1</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>10</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFCLivUSj1Tt+zx9RQxQQMtvSwQMDAhQY8kElsegLbpCr92E38UbKQaf1Zg==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe><![CDATA[1)登陆及提交说明
+请不要擅自操作键盘和鼠标，根据现场工作的人员的指示操作。
+
+
+2)试题描述说明
+试题主要是描述了一个问题，并请你用程序来解决这个问题。一般来说，你所编写的程序应该能够接受题目中所描述的数据，按照题目的描述处理这些数据，并且严格按照输出描述(The Output)中所述的格式输出结果。程序将提交到服务器进行打分。打分详情可见‘3)打分说明’部分。
+试题主要分为六部分: 
+1.标题
+包括试题的主标题，以及副标题Time Limit部分，Time Limit表示所提交的答题程序所能运行的最长时间，如果超过这个时间，程序无论输出是否正确，都将被裁判端判为Time Limit Exceed。
+比如Time Limit是10 sec(10秒)。如果提交的答题程序运行时间超过10秒，则会被判为Time Limit Exceed，无论答题程序输出是否正确，也就是说在10秒内答题程序输出的结果正确或错误都不会得到任何提示。
+
+2.Descripiton
+题目描述，作为题目的主要部分，对问题进行详细的说明。
+
+3.The Input
+输入描述部分，这部分描述了输入数据及其格式和范围。输入答题程序的数据将严格按照这部分的描述。
+
+4.The Output
+输出描述，这部分描述了答题程序所应该输出的数据及其格式。答题程序必须按照这部分的描述来输出，否则很有可能无法通过裁判端的测试。
+
+5.Sample Input
+输入样例，以实例来说明输入数据的格式。请注意这里的数据只是作为实例，并不代表实际测试答题程序的数据是这些。因此能正确处理Sample中的数据并不代表程序一定能通过。不过，Sample数据一定是实际测试数据的子集，因此不能正确处理Sample就一定无法在裁判端通过。所以没有通过Sample的程序最好不要贸然提交。
+
+6.Sample Output
+对应输入样例的输出数据，用来说明答题程序所应输出的格式。答题程序的输出应该严格按照这部分所示输出。比如：
+在Sample Output中有两个整数独占一行，并且以空格分隔，如下：
+2 3
+那么如下的输出都是错误的：
+a=2 b=3
+或
+2       3
+或
+3 2
+必须严格按照Sample Output中所示的格式输出才有可能通过裁判端打分。
+
+3)打分说明
+打分结果	评判标准
+Compile Error	编译错
+Time Limited Exceeded	程序运行超过时间限制
+Run Time Error	程序运行错误
+Wrong Answer	输出结果中关键数据错误
+Presentation Error	格式错
+Accepted	输出结果完全正确
+
+
+4)程序编写说明
+1.C/C++
+首先，必须注意程序的main函数需要定义成int型，然后必须return 0。
+其次，如果输入描述(The Output)中没有明确规定输入结束标志或说以EOF结束，那么可以使用如下格式来读入：
+
+while(cin>>a)或while(scanf("%d",&a)==1)
+
+注：这里while(scanf("%d",&a)==1)中的1是输入数据的数量，如果有两个则是：
+while(scanf("%d %d",&a,&b)==2)
+
+以输入两数求和为例，可以使用以下程序来输入和处理：
+//code start
+#include<iostream.h>
+int main(){
+	int a,b;
+	while(cin>>a>>b){
+		cout<<a+b<<endl;
+	}
+	return 0;
+}
+
+2.Pascal
+Pascal采用Free Pascal编译器。
+以两数求和为例，代码为：
+Program p1000(Input, Output); 
+
+Var 
+
+    a, b: Integer; 
+
+Begin
+
+    while not eof(Readln(a, b)) do
+ 
+    begin 
+
+    Writeln(a + b); 
+    
+    end;
+
+End.
+]]></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Palsquare</Title>
+            <Author>SUN QI</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Palindromes are numbers that read the same forwards as backwards. The number 12321 is a typical palindrome. 
+
+Given a number N(1 ~ 300)base 10. If N*N is a Palindrome, print “Yes”. If N*N is not a Palindrome, print “No”.
+</Description>
+                <InputSpec xml:space="preserve">Multiple cases.
+Each case:A single line with a number N(1 ~ 300). 
+</InputSpec>
+                <OutputSpec xml:space="preserve">Each case:”Yes” or “No” in one line.</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">10
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">101
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">299
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">288
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">111
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">121
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">202
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">212
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">264
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">1
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">2
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">3
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="a">#include&lt;iostream&gt;
+using namespace std;
+int main(){
+	int table[301];
+	int i;
+	for(i = 1; i &lt; 301; i ++)
+		table[i] = 0;
+	table[1] = 1;
+	table[2] = 1;
+	table[3] = 1;
+	table[11] = 1;
+	table[22] = 1;
+	table[26] = 1;
+	table[101] = 1;
+	table[111] = 1;
+	table[121] = 1;
+	table[202] = 1;
+	table[212] = 1;
+	table[264] = 1;
+	while(cin&gt;&gt;i)
+		if(table[i] == 1)
+			cout&lt;&lt;"Yes"&lt;&lt;endl;
+		else
+			cout&lt;&lt;"No"&lt;&lt;endl;
+	return 0;
+}</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Stamp</Title>
+            <Author>p0</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Background&lt;p&gt;
+Everybody hates Raymond. He’s the largest stamp collector on planet earth and because of that he always makes fun of all the others at the stamp collector parties. Fortunately everybody loves Lucy, and she has a plan. She secretly asks her friends whether they could lend her some stamps, so that she can embarrass Raymond by showing an even larger collection than his.&lt;p&gt;
+Problem&lt;p&gt;
+Raymond is so sure about his superiority that he always tells how many stamps he’ll show. And since Lucy knows how many she owns, she knows how many more she needs. She also knows how many friends would lend her some stamps and how many each would lend. But she’d like to borrow from as few friends as possible and if she needs too many then she’d rather not do it at all. Can you tell her the minimum number of friends she needs to borrow from?</Description>
+                <InputSpec xml:space="preserve">The first line contains the number of scenarios. Each scenario describes one collectors party and its firstline tells you how many stamps (from 1 to 1000000) Lucy needs to borrow and how many friends (from 1to 1000) offer her some stamps. In a second line you’ll get the number of stamps (from 1 to 10000) each of her friends is offering.</InputSpec>
+                <OutputSpec xml:space="preserve">Print a single line with the minimum number of friends Lucy needs toborrow stamps from. If it’s impossible even if she borrows everything from everybody, write impossible.Terminate the output for the scenario with a blank line.</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="num">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom">
+</Seperator>
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">100 6
+13 17 42 9 23 57
+</TestInput>
+                    <TestOutput xml:space="preserve">3
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">99 6
+13 17 42 9 23 57
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">1000 3
+314 159 265
+</TestInput>
+                    <TestOutput xml:space="preserve">impossible
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">1 1
+1
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">1 901
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">4 1
+2
+</TestInput>
+                    <TestOutput xml:space="preserve">impossible
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">4 901
+3 3 1 1 2 4 1 1 3 1 4 1 3 4 2 4 2 3 4 1 2 1 2 2 2 4 3 3 1 1 3 3 3 4 4 4 3 4 1 1 1 4 1 3 3 2 2 4 4 1 4 1 1 1 2 2 1 1 4 1 1 3 3 3 2 2 3 4 2 3 4 2 2 4 4 4 1 1 3 4 2 3 4 2 3 2 4 3 2 3 3 2 1 2 4 2 3 2 1 4 4 4 1 1 3 4 4 3 1 3 2 2 1 2 3 3 3 2 2 4 1 4 1 1 1 4 3 4 2 3 3 1 3 4 2 1 3 1 4 3 3 1 4 3 2 3 2 4 4 3 3 4 2 3 1 3 3 3 2 4 1 4 4 3 3 1 4 2 2 3 4 4 3 4 3 1 2 4 4 1 2 3 1 3 1 1 1 3 3 2 2 3 2 2 2 4 2 1 1 3 3 1 3 1 4 1 1 1 4 1 1 1 3 1 3 3 1 4 2 3 1 3 2 2 4 3 2 2 3 2 4 1 2 2 1 1 2 2 1 1 2 2 1 4 2 4 2 3 3 3 1 3 2 2 1 1 4 2 2 2 3 2 2 1 3 3 1 1 4 2 1 1 3 2 4 4 1 1 2 3 4 3 1 1 4 1 1 4 2 3 1 1 4 3 1 2 1 1 2 4 2 3 4 4 4 3 4 4 3 1 2 2 3 2 2 3 3 3 2 4 1 2 4 4 4 4 1 4 1 3 3 2 1 2 2 4 4 1 3 3 1 4 4 4 1 2 2 3 4 3 3 4 4 2 3 4 2 3 3 2 1 2 3 1 3 4 4 3 4 2 1 1 1 4 4 2 1 1 4 4 3 2 3 2 4 1 1 1 4 4 2 4 1 4 1 3 4 4 1 3 2 1 3 2 1 2 3 1 2 3 1 4 4 3 2 3 4 2 3 3 1 4 2 1 4 2 4 3 2 4 1 3 1 4 4 1 1 3 1 3 1 1 2 4 4 3 3 3 1 1 1 1 1 2 2 4 4 1 2 1 4 2 3 4 1 2 4 2 4 1 4 4 1 1 4 4 4 2 2 4 2 2 4 2 4 1 1 3 1 2 3 1 4 1 4 4 2 4 1 2 4 4 1 4 1 4 4 4 1 1 3 3 3 2 4 2 3 1 4 3 2 2 3 1 2 3 1 3 2 1 4 1 1 1 4 1 4 3 4 1 4 2 3 2 3 2 3 1 2 2 4 4 3 2 4 4 4 4 2 1 1 2 1 1 2 1 1 1 3 4 1 2 1 3 3 3 1 1 4 2 2 3 1 4 4 1 3 4 4 1 4 4 2 1 4 3 1 4 3 3 3 4 1 3 2 3 2 2 4 1 4 1 3 4 1 2 4 3 1 4 3 1 3 4 1 3 2 1 2 1 3 1 4 3 3 1 2 4 3 1 4 2 1 2 1 1 4 1 4 4 4 2 4 2 2 4 4 3 4 2 3 3 2 2 1 4 3 2 4 1 2 3 2 3 1 2 3 4 2 2 3 1 4 3 3 1 2 2 3 2 3 2 4 4 3 4 4 1 2 3 1 3 1 2 1 1 4 4 4 1 1 3 2 4 1 4 4 2 1 3 3 4 4 2 3 2 2 2 3 3 4 3 1 1 1 2 1 4 1 1 4 1 3 1 1 3 4 4 4 1 2 3 4 1 4 2 3 1 4 1 3 3 3 4 3 3 1 4 2 1 4 2 1 2 2 1 4 2 1 3 2 2 1 1 3 1 2 1 1 1 1 4 4 3 3 2 2 3 1 3 3 4 4 3 1 2 4 4 3 4 3 4 1 3 4 3 3 1 3 4 2 3 3 1 2 1 2 3 3 3 1 1 2 1 3 3 2 2 2 4 1 4 3 2 3 2 4 1 2 3 4 3 1 2 3 2 2 1 4 4 3 1 4 4 1 3 2 2 4 4 1 1 3 3 2 1 4 1 2 1 3 1 4 4 3 2 1 4 2 1 4 4 1 3 4 1 1 1 2 1 4
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">13 6
+2 11 9 13 11 4
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">110689 921
+443 281 405 409 64 217 456 586 194 90 149 338 794 39 604 521 41 160 596 345 287 275 55 107 415 623 138 660 67 482 632 61 314 236 470 377 4 477 163 197 566 311 86 111 702 690 632 294 49 779 190 688 253 244 346 220 418 484 431 484 517 263 545 30 498 566 406 502 242 120 250 359 783 336 22 236 225 653 529 625 631 719 512 436 514 58 655 132 93 285 615 609 99 711 638 149 476 595 650 269 267 451 180 601 338 201 36 114 405 116 739 587 386 2 222 100 411 428 231 503 713 397 663 363 308 52 511 335 199 712 604 465 363 335 617 700 535 652 366 139 767 304 725 705 657 499 4 268 126 234 322 390 630 537 753 137 588 463 24 786 375 627 2 737 513 618 188 247 21 553 737 340 408 661 244 265 359 247 84 485 480 757 74 661 493 378 350 281 41 373 618 415 551 620 703 263 789 90 509 10 195 445 701 154 657 144 770 568 742 53 604 421 362 229 633 54 607 182 686 647 554 56 261 304 227 163 118 215 604 626 576 350 622 476 504 31 171 473 598 112 526 401 84 439 629 717 44 787 450 282 633 204 337 445 59 115 159 177 329 763 354 457 312 176 484 15 206 655 488 355 318 565 307 402 555 487 670 598 474 319 79 658 74 767 303 133 81 461 309 762 775 662 418 287 389 453 653 146 659 692 52 177 8 358 130 562 45 799 712 70 317 342 727 391 661 581 75 741 242 735 254 216 148 223 54 537 676 259 234 534 502 286 710 62 195 391 623 591 389 86 660 258 428 139 200 288 719 626 580 512 560 34 280 707 256 685 795 483 143 229 217 197 514 478 258 260 69 432 51 9 518 710 618 497 400 17 336 319 194 467 382 753 500 661 660 308 546 654 790 240 82 558 788 147 236 245 759 656 677 9 216 746 270 34 794 670 402 681 540 596 347 121 548 399 334 759 706 79 165 247 670 598 5 658 297 592 102 255 799 330 263 214 627 532 599 620 753 201 52 492 348 399 165 447 797 498 406 254 128 570 500 797 367 56 206 215 199 308 469 197 189 731 763 368 463 561 539 767 313 591 459 660 189 175 307 185 672 264 790 351 385 41 347 303 97 553 518 647 412 186 396 152 117 358 519 131 470 258 97 783 48 107 642 588 281 500 324 504 763 313 54 347 353 753 650 1 505 367 648 468 552 243 619 220 152 690 702 621 147 351 155 546 457 349 333 290 48 656 793 363 520 399 709 72 351 110 425 407 28 272 74 580 66 244 351 569 133 253 741 631 155 96 376 611 444 708 452 43 115 797 405 634 395 314 258 297 775 682 703 3 505 328 134 570 123 484 690 256 288 630 86 442 725 14 605 720 273 256 763 388 252 367 573 198 232 30 46 207 711 748 209 767 627 342 88 750 377 777 557 665 607 194 658 83 207 462 3 480 270 765 419 73 331 191 623 115 573 668 321 35 168 529 2 794 70 89 743 798 66 51 662 224 245 72 306 451 85 660 482 354 624 100 779 507 643 601 621 415 468 493 449 635 221 2 181 642 443 475 639 60 526 53 283 770 476 140 772 560 800 454 466 175 553 444 233 395 596 405 361 615 97 362 2 669 363 182 510 5 656 701 64 733 753 698 702 428 38 674 539 389 679 204 115 431 647 348 378 442 304 738 257 401 299 258 269 662 791 331 218 198 231 634 131 535 83 384 514 472 609 252 60 487 456 527 118 654 426 495 648 729 784 456 681 283 265 150 496 255 480 265 452 262 98 582 796 181 518 61 652 326 664 264 13 671 790 482 525 415 176 724 695 159 379 576 793 643 277 488 97 756 753 100 569 402 234 116 134 751 176 786 276 39 601 288 710 142 321 786 108 496 709 2 207 287 129 551 481 405 591 129 360 543 228 480 496 461 595 630 411 322 167 687 713 767 526 174 460 47 159 567 94 419 120 652 257 249 755 289 653 545 417 565 287 644 244 334 305 391 163 267 712 329 505 176 647 583 349 306 181 59 424 274 29 544 478 637 344 432 125 196 176 541 312 14 385 108 347 241 498 510 59 761 390 564 137 237 346 37 94 526 448 70 351 476 165 380 313 508 11 437 255
+</TestInput>
+                    <TestOutput xml:space="preserve">153
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="ss">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main () {
+  int SC;
+  cin &gt;&gt; SC;
+  for( int S=1; S&lt;=SC; S++ ){
+    //cout &lt;&lt; "Scenario #" &lt;&lt; S &lt;&lt; ":" &lt;&lt; endl;
+    
+    //--- Read testcase data.
+    int need, f;
+    cin &gt;&gt; need &gt;&gt; f;
+    int s[1000];
+    for( int i=0; i&lt;f; i++ )
+      cin &gt;&gt; s[i];
+    
+    //--- Sort and count.
+    sort( s, s+f, greater&lt;int&gt;() );
+    int a = 0;
+    while( need &gt; 0  &amp;&amp;  a &lt; f )
+      need -= s[a++];
+    
+    //--- Answer.
+    if( need &lt;= 0 )
+      cout &lt;&lt; a;
+    else
+      cout &lt;&lt; "impossible";
+    cout &lt;&lt; endl &lt;&lt; endl;
+  }
+}</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Count</Title>
+            <Author>Acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">In C/C++, ‘\’ follows one character can generate other single character that can’t be input by keyboard. For example ‘\t’ represents Tab and ‘\n’ represents Enter. Also the ‘\\’ represents the ‘\’. Your task is to write a program to count the length of a string with some characters mentioned above (they count as 1 character).&lt;p&gt;
+For example, when input string is ‘abc\t’, the length of this string is 4 (not 5). Since ‘\t’ is counted as 1 character.&lt;p&gt;
+Another example, ‘ab\td’ is also counted as 4 characters. (‘\t’ is counted as 1 character and ‘d’ is counted as another character.)&lt;p&gt;
+Also to make this problem simple, we assume that any character follows ‘\’ is valid. When ‘\’ is the last character of the string, it will count as 1 character (see the 4th case in sample).&lt;p&gt;
+</Description>
+                <InputSpec xml:space="preserve">Input will be multiple test cases. Each test case is in one line and consists of a string. The length of the string will be less than 100.</InputSpec>
+                <OutputSpec xml:space="preserve">For each input case, please output a number represent the actual length of the string in a line.</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">abc\t
+</TestInput>
+                    <TestOutput xml:space="preserve">4
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">abcd
+</TestInput>
+                    <TestOutput xml:space="preserve">4
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">ab\td
+</TestInput>
+                    <TestOutput xml:space="preserve">4
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">\
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">aaaaaaaaaaaaaaaa
+</TestInput>
+                    <TestOutput xml:space="preserve">16
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">\\\\\
+</TestInput>
+                    <TestOutput xml:space="preserve">3
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\a\b\c\d\t\e\f\g\aaaaaaaa
+</TestInput>
+                    <TestOutput xml:space="preserve">16
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\\\\\\\\\
+</TestInput>
+                    <TestOutput xml:space="preserve">6
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">aaaaaaaaaaaaaaaaaaaaaaaaaaaaa\a\
+</TestInput>
+                    <TestOutput xml:space="preserve">31
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\a\
+</TestInput>
+                    <TestOutput xml:space="preserve">3
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\\\\b
+</TestInput>
+                    <TestOutput xml:space="preserve">4
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">abcd\
+</TestInput>
+                    <TestOutput xml:space="preserve">5
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">aaaaaaaaaaaaaaaaaa\
+</TestInput>
+                    <TestOutput xml:space="preserve">19
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\'\[\1242134\0000
+</TestInput>
+                    <TestOutput xml:space="preserve">13
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="bb">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int count(char *str)
+{
+    char *p=str;
+    int res=0;
+    while(*p)
+    {
+        if(*p!='\\')
+        	res++;
+    	else
+ 		{
+ 		    res++;
+ 		    p++;
+ 		    if(!*p)
+ 		    	break;
+     	}  		   	
+        p++;
+    }
+    return res;    
+}    
+int main(){
+    char str[200];
+    while(cin&gt;&gt;str){
+        cout&lt;&lt;count(str)&lt;&lt;endl;
+    }    
+    return 0;
+}    </Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Previous</Title>
+            <Author>Acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">In C/C++, ‘\’ follows one character can generate other single character that can’t be input by keyboard. For example ‘\t’ represents Tab and ‘\n’ represents Enter. Also the ‘\\’ represents the ‘\’. Your task is to write a program to get previous character of a given character, and the kind of character mentioned above is counted as one character.&lt;p&gt;
+For example: input ‘ab\t\b’ and a number ‘6’ which represent the index in the original string (start from 1), your program should output ‘\t’. Index 6 in the original string is ‘b’ and ‘\b’ is represent one character, the previous character is ‘\t’. Also if input index is 5, the result is also ‘\t’ because index 5 is in ‘\b’.&lt;p&gt;
+To make this problem simple, we assume that any character follows ‘\’ is valid. When ‘\’ is the last character of the string, it will count as 1 character. And input index won’t be in the first character of the string.&lt;p&gt;</Description>
+                <InputSpec xml:space="preserve">Input will be multiple test cases. Each test case is in one line and consists of a string (no space in it) and a number which represent the index in the original string. The length of the string will be less than 100.</InputSpec>
+                <OutputSpec xml:space="preserve">For each input case, please output the previous character.</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">ab\t\b 6
+</TestInput>
+                    <TestOutput xml:space="preserve">\t
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">ab\t\b 5
+</TestInput>
+                    <TestOutput xml:space="preserve">\t
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">abc\ 4
+</TestInput>
+                    <TestOutput xml:space="preserve">c
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">abc 3
+</TestInput>
+                    <TestOutput xml:space="preserve">b
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\ 3
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\a\b 4
+</TestInput>
+                    <TestOutput xml:space="preserve">\a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">a\b 3
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\a\b 4
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">ab 2
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\ 3
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">ab\ca 5
+</TestInput>
+                    <TestOutput xml:space="preserve">\c
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">a\\ca 5
+</TestInput>
+                    <TestOutput xml:space="preserve">c
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">ab\c\a 5
+</TestInput>
+                    <TestOutput xml:space="preserve">\c
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">ab\c\a 6
+</TestInput>
+                    <TestOutput xml:space="preserve">\c
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\a 3
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\\ab 6
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\ab 5
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\ab 6
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">\\\\a\ 6
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\a\b 5
+</TestInput>
+                    <TestOutput xml:space="preserve">a
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">\\\\\\\\\\\a 11
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">\\\\\\\\\\\ 11
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">\\\\\\\\\\ 10
+</TestInput>
+                    <TestOutput xml:space="preserve">\\
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="bb">#include&lt;iostream&gt;
+using namespace std;
+char str[100];
+int index;
+int getprv()
+{
+    if(str[index-1]!='\\')
+    {
+        if(index-2&lt;0||str[index-2]!='\\')
+        	return index-1;
+    	else
+    	{
+    	    int p=index-3,num=1;
+    	    while(p&gt;=0&amp;&amp;str[p]=='\\')
+    	    	p--,num++;
+	    	if(num&amp;1)
+	    		return index-2;
+ 			else
+ 				return index-1;
+    	}    
+    }
+    else
+    {
+        int p=index-2,num=1;
+        while(p&gt;=0&amp;&amp;str[p]=='\\')
+        	p--,num++;
+    	if(num&amp;1)
+    	{
+    		index--;
+    		int i2=index+1;
+    		//cout&lt;&lt;index&lt;&lt;endl;
+      		if(i2-3&lt;0) return i2-2;
+    		p=i2-3,num=0;
+    		while(p&gt;=0&amp;&amp;str[p]=='\\')
+    		num++,p--;
+    		//cout&lt;&lt;"num"&lt;&lt;num&lt;&lt;endl;
+    		if(num&amp;1) return i2-3;
+    		return i2-2;
+  		}  		
+		else
+		{
+		    return index-2;
+		}    
+    }        
+}    
+void solv(){
+    index--;
+    int prv=getprv();
+    //cout&lt;&lt;"index"&lt;&lt;index&lt;&lt;endl;
+    while(prv!=index)
+    {
+        //cout&lt;&lt;"p"&lt;&lt;prv&lt;&lt;endl;
+        cout&lt;&lt;str[prv];
+        prv++;
+    }    
+    cout&lt;&lt;endl;
+}    
+int main(){
+    
+    while(cin&gt;&gt;str&gt;&gt;index)
+    {
+        solv();
+    }
+    return 0;
+}        
+</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>decode</Title>
+            <Author>Acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">There is a way to encrypt. &lt;p&gt;
+the string is (A1,A2,A3,A4,....,An)&lt;p&gt;
+If the length of string is even, &lt;p&gt;
+	the result is A2,A1,A4,A3,....An,An-1&lt;p&gt;
+If the length of string is odd,&lt;p&gt;
+	the result is A2,A1,A4,A3,....An-1,An-2,An&lt;p&gt;
+&lt;p&gt;
+Then you will get one string. The string includes serveral parentheses. First, you should confirm wether parentheses are balance. If not, please report error and terminate your program. If they are balance, please use the above way to encrypt the string in the parentheses until there are no parentheses.&lt;p&gt;
+&lt;p&gt;
+For example&lt;p&gt;
+
+ABC(ab(abde))-&gt;ABC(abbaed)-&gt;ABCbaabde&lt;p&gt;</Description>
+                <InputSpec xml:space="preserve">The input consists of several cases. Each case contains one string.
+</InputSpec>
+                <OutputSpec xml:space="preserve">For each case, print the result. If the parentheses are not balance, print the "Input is Error!"</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">((()))abc(dde)(Dfdf(dfdas(fdas)fdsa)fas)
+</TestInput>
+                    <TestOutput xml:space="preserve">abcddefDfddfdasdfsafdsfasa
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">ab((cda)(abadc(cded)))
+</TestInput>
+                    <TestOutput xml:space="preserve">abcdbadadadcec
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">(((
+</TestInput>
+                    <TestOutput xml:space="preserve">Input is Error!
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">))((
+</TestInput>
+                    <TestOutput xml:space="preserve">Input is Error!
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">((fasd)(fasd)))(
+</TestInput>
+                    <TestOutput xml:space="preserve">Input is Error!
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">(abcd)()()()(abcd(abcd))
+</TestInput>
+                    <TestOutput xml:space="preserve">badcbadcabcd
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">ABC(ab(abde))
+</TestInput>
+                    <TestOutput xml:space="preserve">ABCbaabde
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="cc">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+#define maxn 100
+char st[maxn];
+
+void exchange(char *st)
+{
+	int i;
+	for(i=0;i&lt;(strlen(st)/2)*2;i=i+2)
+	{
+		char temp;
+		temp=st[i];
+		st[i]=st[i+1];
+		st[i+1]=temp;
+	}    
+}
+
+bool decode(char *st)
+{
+	int i,p=0;
+	
+	char res[maxn];
+	int res_len=0;
+
+	int leftp[maxn],leftp_len=0;
+	
+	for(i=0;i&lt;strlen(st);i++)
+	{
+		if (st[i]==')')
+		{
+			p--;
+			if (p&lt;0) return false;
+			
+			char temp[maxn];
+			int j,k;
+			
+			for(k=0,j=leftp[leftp_len-1];j&lt;res_len;j++,k++)
+				temp[k]=res[j];
+			temp[k]='\0';
+			exchange(temp);
+				
+			for(k=0,j=leftp[leftp_len-1];k&lt;strlen(temp);j++,k++)
+				res[j]=temp[k];
+
+			leftp_len--;
+		}
+		else
+		{
+			if (st[i]=='(')
+			{
+				p++;
+				leftp[leftp_len++]=res_len;
+			}
+			else
+			{
+				res[res_len++]=st[i];
+			}    
+		}
+	}
+	if (p!=0)   return false;
+	
+	res[res_len]='\0';
+	strcpy(st,res);
+	
+	return true;
+}   
+ 
+int main()
+{
+	while(cin&gt;&gt;st)
+	{
+		if (decode(st)==true)
+			cout&lt;&lt;st&lt;&lt;endl;
+		else
+			cout&lt;&lt;"Input is Error!"&lt;&lt;endl;
+	}
+	return 0;
+}    </Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Min Distance</Title>
+            <Author>SUN QI</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Nacy is a lovely girl and lives in a strange forest with her farther. One day his father fall sick, so Mary want to bring him to see the docter. The docter lives in anthor house in the forest. Mary need to get to the doctor’s house as soon as possible.&lt;BR&gt;
+Use ‘0’ and ‘1’ to discrip the map of the strange forest as following:&lt;BR&gt;
+0 0 0 0 0 0 0 0 0&lt;BR&gt;
+0 1 0 n 1 1 1 1 1&lt;BR&gt;
+1 1 1 0 0 1 1 d 1&lt;BR&gt;
+1 0 1 1 0 1 0 1 0&lt;BR&gt;
+0 1 1 1 0 0 0 1 1&lt;BR&gt;
+‘0’ is the area where Nacy can pass through. ‘1’ is the area where Nacy can’t pass through. ‘n’ is Nacy’s house, and ‘d’ is doctor’s house. The forest’s map changes in every evening, but the place where some people stay in doesn’t change , the place of Nacy’s house and the place of the doctor’s house doesn’t change. And Nacy know the rule of the changing: the forest changes between several maps in order. Suppose the number of the map is 3, the situation as following:&lt;BR&gt;
+In the first day, the fouth day, ……, the map is:&lt;BR&gt;
+0 0 0 0 0 0 0 0 0&lt;BR&gt;
+0 1 0 n 1 1 1 1 1&lt;BR&gt;
+1 1 1 0 0 1 0 d 1&lt;BR&gt;
+1 0 1 1 0 1 0 1 0&lt;BR&gt;
+0 1 1 1 0 0 0 1 1&lt;BR&gt;
+In the second day, the fifth day, ……, the map is:&lt;BR&gt;
+1 1 1 1 1 1 1 1 1&lt;BR&gt;
+0 1 0 n 1 1 1 1 1&lt;BR&gt;
+1 1 1 0 0 1 1 d 1&lt;BR&gt;
+1 0 1 1 0 1 0 1 0&lt;BR&gt;
+0 1 1 1 0 0 0 1 1&lt;BR&gt;
+In the third day, the sixth day, ……, the map is:&lt;BR&gt;
+1 1 1 1 1 1 1 1 1&lt;BR&gt;
+0 1 0 n 1 1 1 1 1&lt;BR&gt;
+1 1 1 0 0 0 1 d 1&lt;BR&gt;
+1 0 1 1 0 1 0 1 0&lt;BR&gt;
+0 1 1 1 0 0 0 1 1&lt;BR&gt;
+Nacy leaves her house in first day morning. She can only go one step per day and choose one of the four directions to move(up, down, left, right).&lt;BR&gt;
+Nacy need your help to find the best way which cost minnum days. We only want to know the number of  minnum days.&lt;BR&gt;
+&lt;BR&gt;
+Hint&lt;BR&gt;
+Nacy can choose to stay in some area.
+
+</Description>
+                <InputSpec xml:space="preserve">Multiple cases. &lt;BR&gt;
+Each case:&lt;BR&gt;
+first line has one number: n(0 &amp;lt; r &amp;lt; 5), is the number of the maps.(when n = 0, it’s end.)&lt;BR&gt;
+second line has two number: r(0 &amp;lt; r &amp;lt; 11) and c(0 &amp;lt; r &amp;lt; 11), r is the rows of the forest map and c is cul of it.&lt;BR&gt;
+next r line is the first map.&lt;BR&gt;
+black line.&lt;BR&gt;
+next r line is the second map.&lt;BR&gt;
+black line.&lt;BR&gt;
+……&lt;BR&gt;
+black line&lt;BR&gt;
+next r line is the nth map.
+</InputSpec>
+                <OutputSpec xml:space="preserve">Each case:
+One line, if Nacy can get to the doctor’s house, output the number of min days she cost. If Nacy can’t get there, output “She is sad.”.
+</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">3
+5 9
+0 0 0 0 0 0 0 0 0
+0 1 0 n 1 1 1 1 1
+1 1 1 0 0 1 0 d 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+
+1 1 1 1 1 1 1 1 1
+0 1 0 n 1 1 1 1 1
+1 1 1 0 0 1 1 d 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+
+1 1 1 1 1 1 1 1 1
+0 1 0 n 1 1 1 1 1
+1 1 1 0 0 0 1 d 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+</TestInput>
+                    <TestOutput xml:space="preserve">5
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">3
+10 9
+0 0 0 0 0 0 0 0 0
+0 1 0 1 n 1 1 1 1
+1 1 1 0 0 1 d 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 1 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+
+0 0 0 0 0 0 0 0 0
+0 1 0 1 n 1 1 1 1
+1 1 1 0 0 1 d 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 1 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+
+0 0 0 0 0 0 0 0 0
+0 1 0 1 n 1 1 1 1
+1 1 1 0 0 0 d 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 1 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+0 1 1 1 0 0 0 1 1
+1 0 1 1 0 1 0 1 0
+</TestInput>
+                    <TestOutput xml:space="preserve">4
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">4
+10 10
+0 0 0 0 0 0 0 0 0 1
+0 1 0 1 1 1 1 1 1 1
+1 n 1 0 0 1 d 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 1 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 0 0 1 1 1
+1 0 0 1 0 1 0 1 0 1
+0 1 0 0 0 0 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+
+0 0 0 0 0 0 0 0 0 1
+0 1 0 1 1 1 1 1 1 1
+1 n 1 0 0 1 d 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 0 1 1 0 1 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 0 0 1 1 1
+1 0 0 1 0 1 0 1 0 1
+0 1 0 0 0 0 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+
+0 0 0 0 0 0 0 0 0 1
+0 1 0 1 1 1 1 1 1 1
+1 n 1 0 0 1 d 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 1 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 0 0 1 1 1
+1 0 0 1 0 1 0 1 0 1
+0 1 0 0 0 0 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+
+0 0 0 0 0 0 0 0 0 1
+0 1 0 1 1 1 1 1 1 1
+1 n 1 0 0 1 d 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 1 1 1 0 1 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+0 0 1 1 0 0 0 1 1 1
+1 0 0 1 0 1 0 1 0 1
+0 1 0 0 0 0 0 1 1 1
+1 0 1 1 0 1 0 1 0 1
+</TestInput>
+                    <TestOutput xml:space="preserve">17
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">2
+10 10
+n 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 1 0 0
+0 0 0 0 0 0 0 1 0 d
+
+n 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 1 0 0
+0 0 0 0 0 0 0 1 0 d
+</TestInput>
+                    <TestOutput xml:space="preserve">18
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">1
+2 2
+n d
+0 0
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">1
+3 3
+n 1 1
+1 1 1
+1 1 d
+</TestInput>
+                    <TestOutput xml:space="preserve">She is sad.
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">1
+10 10
+n 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 1 1
+0 0 0 0 0 0 0 0 1 d
+</TestInput>
+                    <TestOutput xml:space="preserve">She is sad.
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="a">#include&lt;iostream&gt;
+using namespace std;
+int main(){
+int n, c, r, tn, tc, tr;
+char table[5][11][11];
+int d_row, d_cul;
+int cost[11][11];
+int cf, time;
+while(cin&gt;&gt;n &amp;&amp; n != 0){
+cin&gt;&gt;r&gt;&gt;c;
+for(tn = 0; tn &lt;n ; tn ++)
+	for(tr = 0; tr &lt; r; tr ++)
+		for(tc = 0; tc &lt; c; tc ++)
+		{	cin&gt;&gt;table[tn][tr][tc];
+}
+
+
+for(tr = 0; tr &lt; r; tr ++ )
+	for(tc = 0; tc &lt; c; tc ++)
+	{	
+cost[tr][tc] = -1;
+		if(table[0][tr][tc] == 'n')
+			cost[tr][tc] = 0;
+		else if(table[0][tr][tc] == 'd')
+			d_row = tr, d_cul = tc;
+}
+cf = 0;
+ time = 0;
+
+while(cf == 0){
+
+	cf = 1;
+	for(tr = 0; tr &lt; r; tr ++)
+		for(tc = 0; tc &lt; c; tc ++)
+		{
+			if(cost[tr][tc] &gt; -1 &amp;&amp; cost[tr][tc] &lt; time + 1)
+			{
+				if(tr - 1 &gt;= 0 &amp;&amp; table[time % n][tr - 1][tc] != '1' &amp;&amp; cost[tr - 1][tc] == -1)
+					cf = 0, cost[tr - 1][tc] = time + 1;
+				if(tr + 1 &lt; r &amp;&amp; table[time %n][tr + 1][tc] != '1' &amp;&amp; cost[tr + 1][tc] == -1)
+					cf = 0, cost[tr  + 1][tc] = time + 1;
+				if(tc - 1 &gt;= 0 &amp;&amp; table[time % n][tr][tc - 1] != '1' &amp;&amp; cost[tr][tc - 1] == -1)
+					cf = 0, cost[tr][tc - 1] = time + 1;
+				if(tc + 1 &lt; c &amp;&amp; table[time % n][tr][tc + 1] != '1' &amp;&amp; cost[tr][tc + 1] == -1)
+					cf = 0, cost[tr][tc + 1] = time + 1;
+			}
+		}
+	if(cost[d_row][d_cul] != -1 )
+		break;
+time ++;
+
+
+}
+if(cf == 0)
+	cout&lt;&lt;cost[d_row][d_cul]&lt;&lt;endl;
+else
+	cout&lt;&lt;"She is sad."&lt;&lt;endl;
+	
+	}
+return 0;
+}</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>OptimalGroupMovement</Title>
+            <Author>acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">There is a horizontal row of N squares, each of which either contains a counter or is empty. A set of counters in this row is called a group if it meets all of the following requirements:&lt;p&gt;
+
+1)	They form a contiguous part of the row. &lt;p&gt;
+2)	The square immediately to the left of the leftmost counter in the set is empty, or the leftmost counter in the set is in the leftmost square of the row. &lt;p&gt;
+3)	The square immediately to the right of the rightmost counter in the set is empty, or the rightmost counter in the set is in the rightmost square of the row. &lt;p&gt;
+
+In one move, we can take any group and simultaneously move all of its counters one square to the right (only if the rightmost counter in the group is not in the rightmost square of the row), or one square to the left (if the leftmost counter in the group is not in the leftmost square of the row). The cost of such a move is C^2, where C is the number of counters in the group.&lt;p&gt;
+</Description>
+                <InputSpec xml:space="preserve">You will be given multiple string line that represents the initial rows from left to right. Each character of string represents the content of a single square and is either uppercase 'X' (counter) or '.' (empty). </InputSpec>
+                <OutputSpec xml:space="preserve">Your goal is to have all the counters in the rows form exactly one group. Output the minimum possible total costs required to achieve this.&lt;p&gt;
+Constraints&lt;p&gt;
+- Every line will contain between 1 and 50 characters, inclusive. &lt;p&gt;
+- Each character of lines will be '.' or 'X'. &lt;p&gt;
+- At least one character of a line will be 'X'.&lt;p&gt;
+</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">.XXX.XXXX.
+</TestInput>
+                    <TestOutput xml:space="preserve">9
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">X
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">XXXXX...X..X.X
+</TestInput>
+                    <TestOutput xml:space="preserve">14
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">.X.X.X..X.X.X.......XX..X.X..X
+</TestInput>
+                    <TestOutput xml:space="preserve">70
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">.X
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">X.
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">XX
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">X.X
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="dd">#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;deque&gt;
+#include &lt;stack&gt;
+#include &lt;bitset&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;numeric&gt;
+#include &lt;utility&gt;
+#include &lt;sstream&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+ 
+using namespace std;
+ 
+class OptimalGroupMovement {
+public:
+  int minimumCost(string);
+};
+ 
+int OptimalGroupMovement::minimumCost(string board) {
+  vector&lt;int&gt; ir;
+  ir.clear();
+  vector&lt;int&gt; len;
+  int i=0;
+  int blen=board.size();
+  while(board[i] == '.')
+    i++;
+  while(1)
+  {
+    int tmplen=0;
+    while(i&lt;blen &amp;&amp; board[i]=='X')
+    {
+      i++;
+      tmplen++;
+    }
+      
+    len.push_back(tmplen);
+    if(i==blen)
+    break;
+    tmplen=0;
+    while(i&lt;blen &amp;&amp; board[i]=='.')
+    {
+      tmplen++;
+      i++;
+    }
+    ir.push_back(tmplen);
+    if(i==blen)
+    break;
+  }
+  int j;
+  int tol=0;
+  int mintol=1000000000;
+  for(i=0;i&lt;len.size();i++)
+  {
+    tol=0;
+    int moved=0;
+    for(j=i-1;j&gt;=0;j--)
+    {
+      tol+=(len[j]*len[j]*(moved+ir[j]));
+      moved+=ir[j];
+    }
+    
+    moved=0;
+    for(j=i+1;j&lt;len.size();j++)
+    {
+      tol+=(len[j]*len[j]*(moved+ir[j-1]));
+      moved+=ir[j-1];
+    }
+    
+    if(tol&lt;mintol)
+    mintol=tol;
+    
+  }
+  return mintol;
+  
+}
+
+int main()
+{
+	string in;
+
+	while(cin&gt;&gt;in)
+	{
+		OptimalGroupMovement ogm;
+		cout&lt;&lt;ogm.minimumCost(in)&lt;&lt;endl;
+	}
+}</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>square</Title>
+            <Author>acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">One square can be divided into several smaller squares. You are given one number N. Please judge whether N squares can compose a new square. All the area of the squares is integer.
+</Description>
+                <InputSpec xml:space="preserve">The input consists of several cases. Each case contains one positive number n. (n&amp;lt;100000)
+</InputSpec>
+                <OutputSpec xml:space="preserve">If N squares can compose a new square, print "Yes". If not, print "No".</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">1
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">10000
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">5
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88889
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88888
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88887
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88886
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88885
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88884
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88883
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">88881
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99990
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99991
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99992
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99993
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99994
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">99995
+</TestInput>
+                    <TestOutput xml:space="preserve">Yes
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">2
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">3
+</TestInput>
+                    <TestOutput xml:space="preserve">No
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="aa">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int check[100000]={0},n;
+	check[2]=1;
+	check[3]=1;
+	check[5]=1;
+	check[6]=1;
+	while(cin&gt;&gt;n)
+	{
+		if (check[n]==1)
+			cout&lt;&lt;"No"&lt;&lt;endl;
+		else 
+			cout&lt;&lt;"Yes"&lt;&lt;endl;
+	}
+	return 0;
+}
+</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Group</Title>
+            <Author>Acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">There is a shop in your city, in which matches of different integer thicknesses from 1 to N, inclusive, are sold. All matches in the shop have the same length. The (i-1)th element of cost is the cost of one match with thickness i.&lt;p&gt;
+
+You wish to buy some matches and use them to construct a 2xM rectangle. For example, if M=5, then the rectangle will look as follows (characters '|' and '-' correspond to matches):&lt;p&gt;
+&lt;p&gt;
+ _ _ _ _ _&lt;p&gt;
+| | | | | |&lt;p&gt;
+ _ _ _ _ _&lt;p&gt;
+| | | | | |&lt;p&gt;
+ _ _ _ _ _&lt;p&gt;
+</Description>
+                <InputSpec xml:space="preserve">There several test cases. In each case, you will read three lines. The integers in the first line represent the values of cost, which is separated by a space.&lt;p&gt;
+After that, you are given two lines of integers, top and bottom, each containing exactly M elements. Top and bottom contain the required thicknesses of the squares in the top and bottom rows of the rectangle, respectively, from left to right. The thickness of a square is the sum of the thicknesses of its four sides. </InputSpec>
+                <OutputSpec xml:space="preserve"> Output the minimum total cost of matches needed to construct the required rectangle or -1 if it's not possible.&lt;p&gt;
+
+- Cost will contain between 1 and 12 elements, inclusive. &lt;p&gt;
+- Each element of cost will be between 1 and 100000, inclusive. &lt;p&gt;
+- Elements of cost will be in strictly ascending order. &lt;p&gt;
+- Top will contain between 1 and 50 elements, inclusive. &lt;p&gt;
+- Bottom will contain the same number of elements as top. &lt;p&gt;
+- Each element of top and bottom will be between 4 and 48, inclusive.&lt;p&gt;
+</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">1
+5
+5
+</TestInput>
+                    <TestOutput xml:space="preserve">-1
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">1 5 9
+7 10
+8 9
+</TestInput>
+                    <TestOutput xml:space="preserve">56
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">1 3 4 7 9
+13 14 13 11 9 7 11 8 8 10
+18 14 17 10 8 4 8 13 14 13
+</TestInput>
+                    <TestOutput xml:space="preserve">194
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">7941 14737 23818 24635 56939 64715 66473 94052 95172
+19 24 14 22 25 16 21 11 16 19 24 20 19 11 13 18 21 18 26 22 22 18 20 20 15 11 19 25
+10 19 22 25 27 9 22 23 19 17 21 24 20 20 18 7 21 15 21 25 24 21 18 17 17 21 19 18
+</TestInput>
+                    <TestOutput xml:space="preserve">5048607
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">13663 18973 19514 24992 30471 36027 62979 63961 69836 70564 78700 81924
+24 28 29 31 31 28 20 24 21 31 28 19 19 28 27 38 23 29 23 18 16 21 27 26 27 33 35 22 25 23 26 31 30 22 27 33 26 12 21 21 43
+25 23 22 31 26 40 24 28 22 18 26 14 16 42 29 31 24 31 24 10 29 34 17 18 17 22 24 21 35 34 24 25 22 22 22 21 18 19 33 26 33
+</TestInput>
+                    <TestOutput xml:space="preserve">7821010
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">64919 79764
+7 7 7
+6 4 6
+</TestInput>
+                    <TestOutput xml:space="preserve">1237228
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">39585
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+</TestInput>
+                    <TestOutput xml:space="preserve">9975420
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">1 2 3 4 5 6 7 8 9 10 11 12
+48
+15
+</TestInput>
+                    <TestOutput xml:space="preserve">51
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="dd">using namespace std;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;cstdio&gt;
+#include &lt;string&gt;
+#include &lt;cstdlib&gt;
+#include &lt;fstream&gt;
+#include &lt;cassert&gt;
+#define FORC( V, it ) for( __typeof( (V).begin() ) it = (V).begin(); it != (V).end(); ++it ) 
+const int MAXL = 1000; 
+const int INF = 987654321; 
+const double EPS = 1e-9; 
+char buff[MAXL+1]; 
+
+
+vector&lt; int &gt; cost, top, bottom; 
+
+int dp[51][12][12]; 
+
+int rek( int work, int a, int b ) 
+{ 
+    if ( work == ( int )top.size() ) return 0; 
+
+    int &amp;ref = dp[work][a][b]; 
+    if ( ref != -1 ) return ref; 
+     
+    ref = INF; 
+    for( int i = 0; i &lt; ( int )cost.size(); ++i ) 
+        for( int j = 0; j &lt; ( int )cost.size(); ++j ) { 
+            int na = top[work] - ( a + 1 ) - ( i + 1 ) - ( j + 1 ) - 1; 
+            if ( na &lt; 0 || na &gt;= ( int )cost.size() ) continue; 
+             
+            for( int k = 0; k &lt; ( int )cost.size(); ++k )  { 
+                int nb = bottom[work] - ( b + 1 ) - ( j + 1 ) - ( k + 1 ) - 1; 
+                if ( nb &lt; 0 || nb &gt;= ( int )cost.size() ) continue; 
+
+                ref = min( ref, rek( work + 1, na, nb ) + cost[na] + cost[nb] + cost[i] + cost[j] + cost[k] ); 
+            } 
+        } 
+    return ref; 
+} 
+
+class ConstructionFromMatches { 
+public: 
+    int minimumCost( vector &lt;int&gt; Cost, vector &lt;int&gt; Top, vector &lt;int&gt; Bottom ) { 
+        cost = Cost;                            
+        top = Top; 
+        bottom = Bottom; 
+
+        memset( dp, -1, sizeof ( dp ) );  
+        int sol = INF; 
+        for( int i = 0; i &lt; ( int )cost.size(); ++i ) 
+            for( int j = 0; j &lt; ( int )cost.size(); ++j ) 
+                sol = min( sol, rek( 0, i, j ) + cost[i] + cost[j] ); 
+        if ( sol &gt;= INF ) return -1; 
+        return sol; 
+    } 
+}; 
+
+
+
+int main()
+{
+	//ifstream fin("1.in");
+	//#define cin fin
+	char s[1000];
+	vector&lt;int&gt; cost, top, bottom;
+	while(cin.getline(s,1000))
+	{
+		cost.clear();
+		top.clear();
+		bottom.clear();
+
+		char *p=strtok(s," ");
+		while(p)
+		{
+			int t=atoi(p);
+			cost.push_back(t);
+			p=strtok(NULL," ");			
+		}	
+
+
+		cin.getline(s,1000);
+		p=strtok(s," ");
+		while(p)
+		{
+			int t=atoi(p);
+			top.push_back(t);
+			p=strtok(NULL," ");			
+		}
+		
+		cin.getline(s,1000);
+		p=strtok(s,"  ");
+		while(p)
+		{
+			int t=atoi(p);
+			bottom.push_back(t);
+			p=strtok(NULL," ");			
+		}
+		
+		ConstructionFromMatches cfm;
+		cout&lt;&lt;cfm.minimumCost(cost, top, bottom)&lt;&lt;endl;
+	}
+}</Solution>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Chain</Title>
+            <Author>Acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Byteland had not always been a democratic country. There were also black pages in its book of history. One lovely day general Bytel - commander of the junta which had power over Byteland --decided to finish the long-lasting time of war and released imprisoned activists of the opposition. However, he had no intention to let the leader Bytesar free. He decided to chain him to the wall with the bytish chain. It consists of joined rings and the bar fixed to the wall. Although the rings are not joined with the bar, it is hard to take them off. &lt;p&gt;
+'General, why have you chained me to the prison walls and did not let rejoice at freedom!' cried Bytesar. &lt;p&gt;
+'But Bytesar, you are not chained at all, and I am certain you are able to take off the rings from the bar by yourself.' perfidiously answered general Bytel, and he added 'But deal with that before a clock strikes the cyber hour and do not make a noise at night, otherwise I will be forced to call Civil Cyber Police.' &lt;p&gt;
+Help Bytesar! Number the following rings of the chain with integers 1,2,...,n. We may put on and take off these rings according to the following rules: &lt;p&gt;
+.only one ring can be put on or taken off from the bar in one move, &lt;p&gt;
+.the ring number 1 can be always put on or taken off from the bar, &lt;p&gt;
+.if the rings with the numbers 1,...,k-1 (for 1&lt;= k &lt; n) are taken off from the bar and the ring number k is put on, we can put on or take off the ring number k+1. &lt;p&gt;
+Write a program which: &lt;p&gt;
+.reads from std input the description of the bytish chain, &lt;p&gt;
+.computes minimal number of moves necessary to take off all rings of the bytish chain from the bar, &lt;p&gt;
+.writes the result to std output. &lt;p&gt;
+</Description>
+                <InputSpec xml:space="preserve">In the first line of the input there is written one integer n, 1 &lt;= n &lt;= 1000. In the second line there are written n integers o1,o2,...,on (each of them is either 0 or 1) separated by single spaces. If oi=1, then the i-1th ring is put on the bar, and if oi=0, then the i-1th ring is taken off the bar.</InputSpec>
+                <OutputSpec xml:space="preserve">The output should contain exactly one integer equal to the minimal number of moves necessary to take off all the rings of the bytish chain from the bar.</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">3
+1 1 1
+</TestInput>
+                    <TestOutput xml:space="preserve">5
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">4
+1 0 1 0
+</TestInput>
+                    <TestOutput xml:space="preserve">6
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">10
+1 1 1 1 1 1 1 1 1 1
+</TestInput>
+                    <TestOutput xml:space="preserve">682
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">10
+0 0 0 0 0 0 0 0 0 0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">20
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+</TestInput>
+                    <TestOutput xml:space="preserve">419430
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">30
+1 1 1 0 0 1 0 1 1 0 0 0 0 1 1 1 1 0 0 0 1 1 1 0 0 0 1 0 0 1
+</TestInput>
+                    <TestOutput xml:space="preserve">945733317
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">30
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+</TestInput>
+                    <TestOutput xml:space="preserve">715827882
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">30
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+</TestInput>
+                    <TestOutput xml:space="preserve">1073741822
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">30
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+</TestInput>
+                    <TestOutput xml:space="preserve">1073741823
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="special">
+                    <TestInput xml:space="preserve">30
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+</TestInput>
+                    <TestOutput xml:space="preserve">1
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="aa">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;stdio.h&gt;
+#include &lt;cmath&gt;
+#include &lt;stdlib.h&gt;
+#define MAX_NUM 330
+#define BASE 3
+using namespace std;
+int base=pow(10.0,BASE);
+class BIGNUM{
+   public :
+      BIGNUM(){
+         int i;
+         for(i=0;i&lt;MAX_NUM;i++) num[i]=0;
+         len=1;
+         sign=1;
+      }
+      int cmp(BIGNUM b)  //大数　比较　a.cmp(b) 若 a&gt;b return 1 ; a=b return 0 ; a&lt;b return -1 ;
+      {
+         int i;
+         if( sign!=b.sign ) return sign-b.sign;
+         i=len&gt;b.len ? len-1 : b.len-1;
+         while( i&gt;0 &amp;&amp; num[i]==b.num[i] ) i-- ;
+         if( num[i] &gt; b.num[i] ){
+            if( sign ) return 1;
+            else return -1;
+         }
+         else if( num[i] &lt; b.num[i] ){
+            if( sign ) return -1;
+            else return 1;
+         }
+         else return 0;
+      }
+      int operator&gt;(BIGNUM b){
+         int t=(*this).cmp(b);
+         if( t==1 ) return 1;
+         else return 0;
+      }
+      int operator==(BIGNUM b){
+          int t=(*this).cmp(b);
+         if( t==0 ) return 1;
+         else return 0;
+      }
+      int operator&lt;(BIGNUM b){
+         int t=(*this).cmp(b);
+         if( t==-1 ) return 1;
+         else return 0;
+      }
+      BIGNUM abs()  //绝对值
+      {
+         BIGNUM t;
+         t=*this;
+         t.sign=1;
+         return t;
+      }
+      BIGNUM operator+(BIGNUM b)  // 大数　加法
+      {
+         BIGNUM t;
+         int i,cao=0;  // cao 进位
+         if (sign!=b.sign){
+            if( sign ) return (*this)-b.abs();
+            else return b-(*this).abs();
+         }
+         for(i=0;i&lt;len || i&lt;b.len;i++){
+            t.num[i]=num[i]+b.num[i]+cao;
+            cao=t.num[i]/base;
+            t.num[i]=t.num[i]%base;
+         }
+         if(cao==0)  t.len=i ;
+         else { t.len=i+1 ; t.num[i]=cao ; }
+         t.sign=sign;
+         return t;
+      }
+      BIGNUM operator/(int b){
+		  BIGNUM t;
+		  int i,cao=0,length=0,first=1,s=1;
+		  if(b==0) {printf("error\n");t.len=0;return t;}
+		  if(b&lt;0){b*=-1 ;s=0; }
+		  for(i=len-1;i&gt;=0;i--){
+			  t.num[i]=(cao*base+num[i])/b;
+			  cao=(cao*base+num[i])%b;
+			  if(t.num[i]==0&amp;&amp;first) length++;
+			  else first=0;
+		  }
+		  t.len=len-length;
+		  if(t.len==0) {t.len++;t.sign=1;}
+		  t.sign=!(s^sign);
+		  return t;
+      }
+	int operator%(int b){
+		  BIGNUM t;
+		  int i,cao=0;
+		  if(b==0) {printf("error\n");t.len=0;return cao;}
+		  for(i=len-1;i&gt;=0;i--){
+			  t.num[i]=(cao*base+num[i])/b;
+			  cao=(cao*base+num[i])%b;
+		  }
+		  if(sign==0) cao*=-1;
+		  return cao;
+      }
+	  BIGNUM operator*(int b)  // 大数 数乘  格式：大数*整数
+      {
+         BIGNUM t;
+         int i,s=1,cao=0;  // cao 进位
+         if(b==0) return t;
+         if(b&lt;0) { b*=-1 ; s=0 ; }
+         for(i=0;i&lt;len;i++){
+            t.num[i]=num[i]*b+cao;
+            cao=t.num[i]/base;
+            t.num[i]=t.num[i]%base;
+         }
+         if(cao==0)  t.len=i ;
+         else { t.len=i+1 ; t.num[i]=cao ; }
+         t.sign=!(s^sign);
+         return t;
+      }
+      BIGNUM operator*(BIGNUM b){
+         BIGNUM t,n;
+         int i,j;
+         if( *this==t || b==t ) return t;
+         for(i=0;i&lt;b.len;i++){
+            n.fromString("1");
+            n=( (*this)*b.num[i]) ;
+            for(j=0;j&lt;i;j++)
+               n=n*base;
+            t=t+n;
+         }
+         if( sign==b.sign ) t.sign=1;
+         else t.sign=0;
+         return t;
+      }
+      BIGNUM operator-(BIGNUM b){
+         BIGNUM t;
+         int i,cao=0,s;
+         s=(*this).cmp(b);
+         if( sign==1 &amp;&amp; b.sign==1 &amp;&amp; s==1 ) ;
+         else if ( s==0 ) return t;
+         else if( sign==b.sign ){
+            if( sign ) { t=b-(*this) ; t.sign=0 ; return t ; }
+            else if( s==1 ) return b.abs()-(*this).abs() ;
+            else { t=(*this).abs()-b.abs() ; t.sign=0 ; return t ; }
+         }
+         else{
+            if( sign ) return (*this)+b.abs() ;           // (+)-(-) = (+)+(+)
+            else { t=(*this).abs()+b ; t.sign=0 ; return t ; }    // (-)-(+) = -( (+)+(+) )
+         }
+// a-b a&gt;b&gt;0
+         for(i=0;i&lt;len;i++ ){
+            t.num[i]=num[i]-cao-b.num[i];
+            if(t.num[i]&lt;0) { t.num[i]+=base ; cao=1; }
+            else cao=0;
+         }
+         while( i&gt;0 &amp;&amp; t.num[i]==0 ) i--;
+         t.len=i+1;
+         return t;
+      }
+      void toString() // 输出
+      {
+         int i;
+         if(!sign) printf("-");
+         printf("%d",num[len-1]);
+         for(i=len-2;i&gt;=0;i--) printf("%03d",num[i]);     //如果修改了 BASE 要改动此处
+      }
+      void fromString(char s[]) // 通过字符串输入
+      {
+         int i,j;
+         for(i=0;i&lt;MAX_NUM;i++) num[i]=0;
+         if( s[0]=='-' ) { sign=0 ; s++ ; }
+         else if( s[0]=='+' ) { sign=1 ; s++ ; }
+         for(i=strlen(s)-BASE,j=0;;i-=BASE,j++){
+            if(i&lt;=0)
+            {
+               num[j]=atoi(s);
+               len=j+1;
+               return;
+            }
+            num[j]=atoi(&amp;s[i]);
+            s[i]='\0';
+         }
+      }
+   protected :
+      int num[MAX_NUM]; // 每位 999
+      int len; // 位数
+      int sign; // 符号  1－正　0－负
+};
+
+
+
+
+class chain
+{
+public:
+	char chains[1001];
+	BIGNUM sTo00[1001];
+	BIGNUM sTo01[1001];
+	BIGNUM o1To00[1001];
+	BIGNUM o0To01[1001];
+	BIGNUM one;
+	int lenght;
+	int last_one;
+public:
+	void input(int len);
+	void slv();
+	void output();
+};
+
+void chain::input(int len)
+{
+	int i;
+	lenght=len;
+	last_one=0;
+	for(i=1;i&lt;=len;i++)
+	{
+		cin&gt;&gt;chains[i];
+		if(chains[i]=='1')
+			last_one=i;
+	}
+	o1To00[1].fromString("1");
+	o0To01[1].fromString("1");
+	one.fromString("1");
+}
+
+void chain::slv()
+{
+	int i;
+	for(i=1;i&lt;=last_one;i++)
+	{
+		if(i!=1)
+		{
+			o0To01[i]=o1To00[i]=o0To01[i-1]+o0To01[i-1]+one;
+		}
+		if(chains[i]=='0')
+		{
+			if(i==1)
+			{
+				sTo00[1].fromString("0");
+				sTo01[1].fromString("1");
+			}
+			else
+			{
+				sTo01[i]=sTo01[i-1]+one+o1To00[i-1];
+				sTo00[i]=sTo00[i-1];
+			}
+		}
+		else
+		{
+			if(i==1)
+			{
+				sTo00[1].fromString("1");
+				sTo01[1].fromString("0");
+			}
+			else
+			{
+				sTo00[i]=sTo01[i-1]+one+o1To00[i-1];
+				sTo01[i]=sTo00[i-1];
+			}
+		}
+	}
+}
+
+void chain::output()
+{
+	if(last_one==0)
+		cout&lt;&lt;0;
+	else
+		sTo00[last_one].toString();
+	cout&lt;&lt;endl;
+}
+chain ch;
+int main()
+{
+    int len;
+	
+	
+	while(cin&gt;&gt;len)
+	{	
+		ch.input(len);
+		ch.slv();		
+		ch.output();
+	}
+   return 0;
+}
+</Solution>
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

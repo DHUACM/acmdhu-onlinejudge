@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Environment>
+    <IsChecked>false</IsChecked>
+    <Paper>./</Paper>
+    <PaperName>paper.xml</PaperName>
+    <Image />
+    <SearchPath>
+        <Spath>C:\Program Files\Borland\Delphi6\Bin</Spath>
+        <Spath>D:\Program Files\Borland\Delphi6\Bin</Spath>
+        <Spath>C:\Borland\Delphi6\Bin</Spath>
+        <Spath>D:\Borland\Delphi6\Bin</Spath>
+        <Spath>C:\Program Files\Borland\Delphi5\Bin</Spath>
+        <Spath>D:\Program Files\Borland\Delphi5\Bin</Spath>
+        <Spath>C:\Borland\Delphi5\Bin</Spath>
+        <Spath>D:\Borland\Delphi5\Bin</Spath>
+        <Spath>C:\Program Files\MinGW\bin</Spath>
+        <Spath>D:\Program Files\MinGW\bin</Spath>
+        <Spath>C:\MinGW\bin</Spath>
+        <Spath>D:\MinGW\bin</Spath>
+        <Spath>C:\Program Files\j2sdk1.4.1_02\bin</Spath>
+        <Spath>D:\Program Files\j2sdk1.4.1_02\bin</Spath>
+        <Spath>C:\j2sdk1.4.1_02\bin</Spath>
+        <Spath>D:\j2sdk1.4.1_02\bin</Spath>
+        <Spath>C:\j2sdk1.4.1_01\bin</Spath>
+        <Spath>D:\j2sdk1.4.1_01\bin</Spath>
+    </SearchPath>
+    <SourceCodeTemp />
+    <History>./history/</History>
+    <JavaProblemNotice />
+    <Compiler>
+        <Language>Cpp</Language>
+        <Version>2.0</Version>
+        <Path>/usr/bin/</Path>
+        <ErrorType>1</ErrorType>
+        <Cmd>g++</Cmd>
+        <Usage xml:space="preserve">
+		<Path /><Cmd /> <Source /><SName /> -o <Target /><TName />
+	</Usage>
+        <FormerSuffix>.cpp</FormerSuffix>
+        <LatterSuffix />
+        <Command xml:space="preserve">
+		<Target /><TName />
+	</Command>
+    </Compiler>
+    <Compiler>
+        <Language>Pascal</Language>
+        <Version>6.0</Version>
+        <Path>/usr/bin/</Path>
+        <ErrorType>0</ErrorType>
+        <Cmd>fpc</Cmd>
+        <Usage xml:space="preserve">
+		<Path /><Cmd />  <Source /><SName /> -FE<Target />
+	</Usage>
+        <FormerSuffix>.pas</FormerSuffix>
+        <LatterSuffix />
+        <Command xml:space="preserve">
+		<Target /><TName />
+	</Command>
+    </Compiler>
+    <Compiler>
+        <Language>Java</Language>
+        <Version>1.4</Version>
+        <Path>/usr/bin/</Path>
+        <ErrorType>1</ErrorType>
+        <Cmd>javac</Cmd>
+        <Usage xml:space="preserve">
+		<Path /><Cmd /> -d <Target /> <Source /><SName />
+	</Usage>
+        <FormerSuffix>.java</FormerSuffix>
+        <LatterSuffix>.class</LatterSuffix>
+        <Command xml:space="preserve">
+		<Path />java -cp <Target /> <TName />
+	</Command>
+    </Compiler>
+    <Compiler>
+        <Language>C</Language>
+        <Version>2.0</Version>
+        <Path>/usr/bin/</Path>
+        <ErrorType>1</ErrorType>
+        <Cmd>gcc</Cmd>
+        <Usage xml:space="preserve">
+		<Path /><Cmd /> <Source /><SName /> -o <Target /><TName />
+	</Usage>
+        <FormerSuffix>.c</FormerSuffix>
+        <LatterSuffix />
+        <Command xml:space="preserve">
+		<Target /><TName />
+	</Command>
+    </Compiler>
+    <Run>
+        <Source>./code/src/</Source>
+        <Target>./code/exe/</Target>
+    </Run>
+</Environment>
+
