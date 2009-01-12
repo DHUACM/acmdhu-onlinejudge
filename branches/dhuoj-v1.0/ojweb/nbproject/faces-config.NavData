@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="layout/classic.jsp" x="150" y="300" zoom="true"/>
+        <Node id="tiles/header.jsp" x="400" y="300" zoom="true"/>
+        <Node id="tiles/problemlist.jsp" x="650" y="150" zoom="true"/>
+        <Node id="welcomeJSF.jsp" x="400" y="150" zoom="true"/>
+        <Node id="tiles/footer.jsp" x="150" y="150" zoom="true"/>
+        <Node id="forwardToJSF.jsp" x="150" y="450" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
