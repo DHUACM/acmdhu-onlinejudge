@@ -19,7 +19,7 @@ import javax.persistence.EntityNotFoundException;
  *
  * @author yhu
  */
-public class UsersDBAO {
+public class UsersDBAO implements java.io.Serializable {
 
     public UsersDBAO() {
         emf = Persistence.createEntityManagerFactory("dhuojPU");
