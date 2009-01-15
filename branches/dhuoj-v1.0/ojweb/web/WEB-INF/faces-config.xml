@@ -6,9 +6,49 @@
     xmlns="http://java.sun.com/xml/ns/javaee" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+    
+    <navigation-rule>
+        <from-view-id>/problemlist.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{ProblemListBean.viewProblem}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/viewproblem.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{LoginBean.login_action}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-action>#{UserBean.logout}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
     <managed-bean>
         <managed-bean-name>ProblemListBean</managed-bean-name>
         <managed-bean-class>cn.edu.dhu.acm.web.backing.ProblemListBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ViewProblemBean</managed-bean-name>
+        <managed-bean-class>cn.edu.dhu.acm.web.backing.ViewProblemBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>UserBean</managed-bean-name>
+        <managed-bean-class>cn.edu.dhu.acm.web.backing.UserBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>LoginBean</managed-bean-name>
+        <managed-bean-class>cn.edu.dhu.acm.web.backing.LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>

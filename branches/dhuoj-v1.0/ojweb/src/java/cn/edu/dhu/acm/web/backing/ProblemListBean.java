@@ -5,13 +5,12 @@ package cn.edu.dhu.acm.web.backing;
  * @author yhu
  */
 
-import java.util.List;
-
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import cn.edu.dhu.acm.persistence.entity.Problem;
 import cn.edu.dhu.acm.persistence.dbao.ProblemDBAO;
+import cn.edu.dhu.acm.web.util.Util;
 
 public class ProblemListBean implements java.io.Serializable {
 
@@ -45,20 +44,14 @@ public class ProblemListBean implements java.io.Serializable {
      * @return outcome
      */
     public String viewProblem() {
-        /*
-        this.cd = (CD) cdModel.getRowData();
-        this.cd = (CD) store.getCDById(cd.getId());
+        Problem problem = (Problem) problems.getRowData();
+        int cid = 0;
+        int pid = problem.getProblemId();
 
-        if ((cd.getCategory() != null) || !"".equals(cd.getCategory())) {
-            this.subCategoryList.setRendered(true);
-
-            this.subCategories = getSubcategoriesList(cd.getCategory());
-        } else {
-            this.subCategoryList.setRendered(false);
-        }
-
-        this.editMode = true;
-        */
+        ViewProblemBean vpb = (ViewProblemBean) Util.getBean("ViewProblemBean");
+        vpb.setContestID(cid);
+        vpb.setProblemID(pid);
+        
         return "success";
     }
 }

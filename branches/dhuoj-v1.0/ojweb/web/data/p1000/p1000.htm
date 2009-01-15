@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<center>
+<h1><font color=#0000ff>A+B Problem</font></h1>
+Time limit: 1000 ms<br>
+</center>
+<br>
+<h2><font color=#0000ff>Problem</font></h2>
+Calculate a+b<br>
+<h2><font color=#0000ff>Input Specification</font></h2>
+Two integer a,b (0&lt;=a,b&lt;=10)<br>
+<h2><font color=#0000ff>Output Specification</font></h2>
+Output a+b<br>
+<h2><font color=#0000ff>Sample Input</font></h2>
+<pre>1 2
+10 10
+</pre><br>
+<h2><font color=#0000ff>Sample Output</font></h2>
+<pre>3
+20
+</pre><br>
+<h2><font color=#0000ff>Hint</font></h2>
+Q: Where are the input and the output?
+
+<br>
+<br>A: Your program shall always <font color=red>read input from stdin (Standard Input) and write output to stdout (Standard Output)</font>. For example, you can use 'scanf' in C or 'cin' in C++ to read from stdin, and use 'printf' in C or 'cout' in C++ to write to stdout.
+<br>
+<br>You <font color=red>shall not output any extra data</font> to standard output other than that required by the problem, otherwise you will get a "Wrong Answer".
+<br>
+<br>User programs are not allowed to open and read from/write to files. You will get a "Runtime Error" or a "Wrong Answer"if you try to do so. 
+<br>
+<br>Here is a sample solution to problem 1000 using C++/G++:
+<br><pre>#include &lt;iostream><br><br>using namespace std;<br><br>int main()<br>{<br>    int a,b;<br>    cin >> a >> b;<br>    cout << a+b << endl;<br>    return 0;<br>}</pre>It's important that the return type of main() must be int when you use G++/GCC,or you may get compile error.
+
+<br>
+<br>Here is a sample solution to problem 1000 using C/GCC:
+<br><pre>#include &lt;stdio.h><br><br>int main()<br>{<br>    int a,b;<br>    scanf("%d %d",&a, &b);<br>    printf("%d\n",a+b);<br>    return 0;<br>}</pre>Here is a sample solution to problem 1000 using Pascal:
+
+<br><pre>program p1000(Input,Output);<br><br>var<br>  a,b:Integer;<br>begin<br>   Readln(a,b);<br>   Writeln(a+b);<br>end.</pre>Here is a sample solution to problem 1000 using Java:
+<br>
+<br>Now java compiler is jdk 1.5, next is program for 1000
+<br><pre>import java.io.*;<br>import java.util.*;<br>public class Main<br>{<br>            public static void main(String args[]) throws Exception<br>            {<br>                    Scanner cin=new Scanner(System.in);<br>                    int a=cin.nextInt(),b=cin.nextInt();<br>                    System.out.println(a+b);<br>            }<br>}</pre>Old program for jdk 1.4
+
+<br><pre>import java.io.*;<br>import java.util.*;<br><br>public class Main<br>{<br>    public static void main (String args[]) throws Exception<br>    {<br>        BufferedReader stdin = <br>            new BufferedReader(<br>                new InputStreamReader(System.in));<br><br>        String line = stdin.readLine();<br>        StringTokenizer st = new StringTokenizer(line);<br>        int a = Integer.parseInt(st.nextToken());<br>        int b = Integer.parseInt(st.nextToken());<br>        System.out.println(a+b);<br>    }<br>}</pre>Here is a sample solution to problem 1000 using Fortran:
+
+<br><pre>	PROGRAM P1000<br>		IMPLICIT NONE<br>		INTEGER :: A, B<br>		READ(*,*) A, B<br>		WRITE(*, "(I0)") A + B<br>	END PROGRAM P1000</pre>
+</body>
+</html>
