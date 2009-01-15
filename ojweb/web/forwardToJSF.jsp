@@ -5,4 +5,4 @@
     See <welcome-file-list> in web.xml file.
 --%>
 
-<jsp:forward page="welcomeJSF.faces"/>
+<jsp:forward page="index.faces"/>

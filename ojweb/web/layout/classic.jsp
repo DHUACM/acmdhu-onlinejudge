@@ -16,6 +16,9 @@
             <td height="118"><t:insertAttribute name="head"/></td>
         </tr>
         <tr>
+            <td height="28"><t:insertAttribute name="navigation"/></td>
+        </tr>
+        <tr>
             <td><t:insertAttribute name="body"/></td>
         </tr>
         <tr>

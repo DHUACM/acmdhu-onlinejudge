@@ -9,7 +9,8 @@
   <definition name="dhuoj.main" template="/layout/classic.jsp">
     <put-attribute name="title" value="DHU Online Judge" />
     <put-attribute name="head" value="/tiles/header.jsp" />
-    <put-attribute name="body" value="/tiles/home_body.jsp" />
+    <put-attribute name="navigation" value="/tiles/navigation.jsp" />
+    <put-attribute name="body" value="/tiles/index.jsp" />
     <put-attribute name="foot" value="/tiles/footer.jsp" />
   </definition>
 
@@ -21,6 +22,11 @@
   <definition name="dhuoj.viewproblem" extends="dhuoj.main">
     <put-attribute name="title" value="View Problem" />
     <put-attribute name="body" value="/tiles/viewproblem.jsp" />
+  </definition>
+
+  <definition name="dhuoj.login" extends="dhuoj.main">
+    <put-attribute name="title" value="Login" />
+    <put-attribute name="body" value="/tiles/login.jsp" />
   </definition>
 
 </tiles-definitions>
