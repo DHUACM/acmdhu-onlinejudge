@@ -7,7 +7,7 @@ package cn.edu.dhu.acm.persistence.dbao;
 
 import cn.edu.dhu.acm.persistence.dbao.exceptions.NonexistentEntityException;
 import cn.edu.dhu.acm.persistence.dbao.exceptions.PreexistingEntityException;
-import cn.edu.dhu.acm.persistence.entity.Users;
+import cn.edu.dhu.acm.persistence.entity.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,9 +19,9 @@ import javax.persistence.EntityNotFoundException;
  *
  * @author yhu
  */
-public class UsersDBAO implements java.io.Serializable {
+public class UserDBAO implements java.io.Serializable {
 
-    public UsersDBAO() {
+    public UserDBAO() {
         emf = Persistence.createEntityManagerFactory("dhuojPU");
     }
     private EntityManagerFactory emf = null;
@@ -30,7 +30,7 @@ public class UsersDBAO implements java.io.Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Users users) throws PreexistingEntityException, Exception {
+    public void create(User users) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,7 +49,7 @@ public class UsersDBAO implements java.io.Serializable {
         }
     }
 
-    public void edit(Users users) throws NonexistentEntityException, Exception {
+    public void edit(User users) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -77,9 +77,9 @@ public class UsersDBAO implements java.io.Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Users users;
+            User users;
             try {
-                users = em.getReference(Users.class, id);
+                users = em.getReference(User.class, id);
                 users.getUserId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The users with id " + id + " no longer exists.", enfe);
@@ -93,15 +93,15 @@ public class UsersDBAO implements java.io.Serializable {
         }
     }
 
-    public List<Users> findUsersEntities() {
+    public List<User> findUsersEntities() {
         return findUsersEntities(true, -1, -1);
     }
 
-    public List<Users> findUsersEntities(int maxResults, int firstResult) {
+    public List<User> findUsersEntities(int maxResults, int firstResult) {
         return findUsersEntities(false, maxResults, firstResult);
     }
 
-    private List<Users> findUsersEntities(boolean all, int maxResults, int firstResult) {
+    private List<User> findUsersEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("select object(o) from Users as o");
@@ -115,10 +115,22 @@ public class UsersDBAO implements java.io.Serializable {
         }
     }
 
-    public Users findUsers(String id) {
+    public User findByUserIdAndPassword(String userid, String password) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Users.class, id);
+            Query q = em.createNamedQuery("User.findByUserIdAndPassword");
+            q.setParameter("userId", userid);
+            q.setParameter("password", password);
+            return (User)q.getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    public User findUsers(String id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(User.class, id);
         } finally {
             em.close();
         }
