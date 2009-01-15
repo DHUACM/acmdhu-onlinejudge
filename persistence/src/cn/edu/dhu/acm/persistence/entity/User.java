@@ -19,12 +19,26 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author yhu
+ * @author Administrator
  */
 @Entity
 @Table(name = "users")
-@NamedQueries({@NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"), @NamedQuery(name = "Users.findByUserId", query = "SELECT u FROM Users u WHERE u.userId = :userId"), @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"), @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"), @NamedQuery(name = "Users.findByNick", query = "SELECT u FROM Users u WHERE u.nick = :nick"), @NamedQuery(name = "Users.findBySchool", query = "SELECT u FROM Users u WHERE u.school = :school"), @NamedQuery(name = "Users.findBySubmit", query = "SELECT u FROM Users u WHERE u.submit = :submit"), @NamedQuery(name = "Users.findBySolved", query = "SELECT u FROM Users u WHERE u.solved = :solved"), @NamedQuery(name = "Users.findByDefunct", query = "SELECT u FROM Users u WHERE u.defunct = :defunct"), @NamedQuery(name = "Users.findByIp", query = "SELECT u FROM Users u WHERE u.ip = :ip"), @NamedQuery(name = "Users.findByAccesstime", query = "SELECT u FROM Users u WHERE u.accesstime = :accesstime"), @NamedQuery(name = "Users.findByLanguage", query = "SELECT u FROM Users u WHERE u.language = :language"), @NamedQuery(name = "Users.findByRegTime", query = "SELECT u FROM Users u WHERE u.regTime = :regTime"), @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")})
-public class Users implements Serializable {
+@NamedQueries({@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+               @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
+               @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+               @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+               @NamedQuery(name = "User.findByNick", query = "SELECT u FROM User u WHERE u.nick = :nick"),
+               @NamedQuery(name = "User.findBySchool", query = "SELECT u FROM User u WHERE u.school = :school"),
+               @NamedQuery(name = "User.findBySubmit", query = "SELECT u FROM User u WHERE u.submit = :submit"),
+               @NamedQuery(name = "User.findBySolved", query = "SELECT u FROM User u WHERE u.solved = :solved"),
+               @NamedQuery(name = "User.findByDefunct", query = "SELECT u FROM User u WHERE u.defunct = :defunct"),
+               @NamedQuery(name = "User.findByIp", query = "SELECT u FROM User u WHERE u.ip = :ip"),
+               @NamedQuery(name = "User.findByAccesstime", query = "SELECT u FROM User u WHERE u.accesstime = :accesstime"),
+               @NamedQuery(name = "User.findByLanguage", query = "SELECT u FROM User u WHERE u.language = :language"),
+               @NamedQuery(name = "User.findByRegTime", query = "SELECT u FROM User u WHERE u.regTime = :regTime"),
+               @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role"),
+               @NamedQuery(name = "User.findByUserIdAndPassword", query = "SELECT u FROM User u WHERE u.userId = :userId and u.password = :password")})
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -64,14 +78,14 @@ public class Users implements Serializable {
     @Column(name = "role")
     private int role;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String userId) {
+    public User(String userId) {
         this.userId = userId;
     }
 
-    public Users(String userId, String password, String nick, String school, short defunct, String ip, int language, int role) {
+    public User(String userId, String password, String nick, String school, short defunct, String ip, int language, int role) {
         this.userId = userId;
         this.password = password;
         this.nick = nick;
@@ -196,10 +210,10 @@ public class Users implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        Users other = (Users) object;
+        User other = (User) object;
         if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
@@ -208,7 +222,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "cn.edu.dhu.acm.persistence.entity.Users[userId=" + userId + "]";
+        return "cn.edu.dhu.acm.persistence.entity.User[userId=" + userId + "]";
     }
 
 }
