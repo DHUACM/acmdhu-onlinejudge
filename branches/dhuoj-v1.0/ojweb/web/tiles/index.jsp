@@ -11,5 +11,8 @@
 <f:subview id="login">
     <h:form>
         <h1>Welcome to DHU Online Judge!</h1>
+        <h:outputLink value="submit.faces" >
+            <h:outputText value="submit" />
+        </h:outputLink>
     </h:form>
 </f:subview>

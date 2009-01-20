@@ -29,4 +29,14 @@
     <put-attribute name="body" value="/tiles/login.jsp" />
   </definition>
 
+  <definition name="dhuoj.register" extends="dhuoj.main">
+    <put-attribute name="title" value="Register" />
+    <put-attribute name="body" value="/tiles/register.jsp" />
+  </definition>
+
+  <definition name="dhuoj.submit" extends="dhuoj.main">
+    <put-attribute name="title" value="Submit Problem" />
+    <put-attribute name="body" value="/tiles/submit.jsp" />
+  </definition>
+
 </tiles-definitions>

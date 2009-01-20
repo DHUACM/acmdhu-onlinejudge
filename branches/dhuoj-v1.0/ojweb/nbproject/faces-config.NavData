@@ -2,20 +2,26 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="tiles/header.jsp" x="400" y="300" zoom="true"/>
+        <Node id="index.jsp" x="1150" y="300" zoom="true"/>
         <Node id="problemlist.jsp" x="650" y="300" zoom="true"/>
+        <Node id="tiles/header.jsp" x="400" y="300" zoom="true"/>
         <Node id="tiles/viewproblem.jsp" x="900" y="150" zoom="true"/>
+        <Node id="tiles/index.jsp" x="1400" y="150" zoom="true"/>
         <Node id="tiles/problemlist.jsp" x="650" y="150" zoom="true"/>
         <Node id="viewproblem.jsp" x="400" y="450" zoom="true"/>
-        <Node id="welcomeJSF.jsp" x="400" y="150" zoom="true"/>
         <Node id="data/p1000/p1000.htm" x="650" y="450" zoom="true"/>
+        <Node id="welcomeJSF.jsp" x="400" y="150" zoom="true"/>
+        <Node id="submit.jsp" x="650" y="600" zoom="true"/>
+        <Node id="register.jsp" x="900" y="450" zoom="true"/>
         <Node id="layout/classic.jsp" x="150" y="300" zoom="true"/>
         <Node id="tiles/navigation.jsp" x="1150" y="150" zoom="true"/>
         <Node id="data/p1001/p1001.htm" x="400" y="600" zoom="true"/>
         <Node id="tiles/login.jsp" x="900" y="300" zoom="true"/>
+        <Node id="tiles/register.jsp" x="150" y="750" zoom="true"/>
         <Node id="login.jsp" x="150" y="600" zoom="true"/>
         <Node id="tiles/footer.jsp" x="150" y="150" zoom="true"/>
         <Node id="forwardToJSF.jsp" x="150" y="450" zoom="true"/>
+        <Node id="tiles/submit.jsp" x="400" y="750" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

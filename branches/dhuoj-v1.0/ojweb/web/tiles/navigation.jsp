@@ -44,7 +44,7 @@
             <h:outputText value="Login"></h:outputText>
         </h:outputLink>
         <f:verbatim>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</f:verbatim>
-        <h:outputLink value="regiser.faces" styleClass="hor-menu">
+        <h:outputLink value="register.faces" styleClass="hor-menu">
             <h:outputText value="Register"></h:outputText>
         </h:outputLink>
     </h:panelGroup>
