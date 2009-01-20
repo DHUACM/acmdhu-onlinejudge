@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <f:subview id="login">
+    <div align="center">
     <h:form>
         <h:panelGrid columns="1">
             <h:panelGroup>
@@ -24,4 +25,5 @@
             </h:panelGroup>
         </h:panelGrid>
     </h:form>
+    </div>
 </f:subview>

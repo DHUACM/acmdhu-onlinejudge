@@ -7,6 +7,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
     
+    <lifecycle>
+        <phase-listener>cn.edu.dhu.acm.web.authorization.UserLoginAuthorization</phase-listener>
+    </lifecycle>
+
     <navigation-rule>
         <from-view-id>/problemlist.jsp</from-view-id>
         <navigation-case>
@@ -30,6 +34,24 @@
             <to-view-id>/index.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/register.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{RegisterBean.submit_action}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!-- this is a test, delete it later. -->
+    <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{SubmitBean.submit_action}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/submit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 
     <managed-bean>
         <managed-bean-name>ProblemListBean</managed-bean-name>
@@ -49,6 +71,16 @@
     <managed-bean>
         <managed-bean-name>LoginBean</managed-bean-name>
         <managed-bean-class>cn.edu.dhu.acm.web.backing.LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>RegisterBean</managed-bean-name>
+        <managed-bean-class>cn.edu.dhu.acm.web.backing.RegisterBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>SubmitBean</managed-bean-name>
+        <managed-bean-class>cn.edu.dhu.acm.web.backing.SubmitBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>
