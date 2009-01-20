@@ -47,12 +47,11 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    @Basic(optional = false)
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
     @Column(name = "nick")
     private String nick;
-    @Basic(optional = false)
     @Column(name = "school")
     private String school;
     @Column(name = "submit")
@@ -62,15 +61,13 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "defunct")
     private short defunct;
-    @Basic(optional = false)
     @Column(name = "ip")
     private String ip;
     @Column(name = "accesstime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date accesstime;
-    @Basic(optional = false)
     @Column(name = "language")
-    private int language;
+    private Integer language;
     @Column(name = "reg_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date regTime;
@@ -85,15 +82,15 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(String userId, String password, String nick, String school, short defunct, String ip, int language, int role) {
+    public User(String userId, String password, String email, String nick, String school) {
         this.userId = userId;
         this.password = password;
+        this.email = email;
         this.nick = nick;
         this.school = school;
-        this.defunct = defunct;
-        this.ip = ip;
-        this.language = language;
-        this.role = role;
+        this.submit = 0;
+        this.solved = 0;
+        this.regTime = new Date();
     }
 
     public String getUserId() {
@@ -176,11 +173,11 @@ public class User implements Serializable {
         this.accesstime = accesstime;
     }
 
-    public int getLanguage() {
+    public Integer getLanguage() {
         return language;
     }
 
-    public void setLanguage(int language) {
+    public void setLanguage(Integer language) {
         this.language = language;
     }
 
