@@ -14,5 +14,9 @@
         <h:outputLink value="submit.faces" >
             <h:outputText value="submit" />
         </h:outputLink>
+        <br>
+        <h:outputLink value="status.faces" >
+            <h:outputText value="status" />
+        </h:outputLink>
     </h:form>
 </f:subview>
