@@ -39,4 +39,9 @@
     <put-attribute name="body" value="/tiles/submit.jsp" />
   </definition>
 
+  <definition name="dhuoj.status" extends="dhuoj.main">
+    <put-attribute name="title" value="Problem Status" />
+    <put-attribute name="body" value="/tiles/status.jsp" />
+  </definition>
+
 </tiles-definitions>
