@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2009 10:16:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.ProblemBean" table="problem">
+    <id name="problemId" type="int">
+      <column name="problem_id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="source" type="string">
+      <column length="100" name="source"/>
+    </property>
+    <property name="title" type="string">
+      <column length="200" name="title" not-null="true"/>
+    </property>
+    <property name="problemPath" type="string">
+      <column name="problem_path"/>
+    </property>
+    <property name="inputPath" type="string">
+      <column name="input_path"/>
+    </property>
+    <property name="outputPath" type="string">
+      <column name="output_path"/>
+    </property>
+    <property name="stdcodePath" type="string">
+      <column name="stdcode_path"/>
+    </property>
+    <property name="createDate" type="timestamp">
+      <column length="19" name="create_date"/>
+    </property>
+    <property name="timeLimit" type="int">
+      <column name="time_limit" not-null="true"/>
+    </property>
+    <property name="caseTimeLimit" type="int">
+      <column name="case_time_limit" not-null="true"/>
+    </property>
+    <property name="memoryLimit" type="int">
+      <column name="memory_limit" not-null="true"/>
+    </property>
+    <property name="defunct" type="byte">
+      <column name="defunct" not-null="true"/>
+    </property>
+    <property name="accepted" type="java.lang.Integer">
+      <column name="accepted"/>
+    </property>
+    <property name="submit" type="java.lang.Integer">
+      <column name="submit"/>
+    </property>
+    <property name="difficulty" type="byte">
+      <column name="difficulty" not-null="true"/>
+    </property>
+    <property name="special" type="boolean">
+      <column name="special" not-null="true"/>
+    </property>
+    <property name="category" type="int">
+      <column name="category" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
