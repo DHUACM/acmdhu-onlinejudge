@@ -30,19 +30,7 @@ public class ProblemBean  implements java.io.Serializable {
 
     public ProblemBean() {
     }
-
-	
-    public ProblemBean(int problemId, String title, int timeLimit, int caseTimeLimit, int memoryLimit, byte defunct, byte difficulty, boolean special, int category) {
-        this.problemId = problemId;
-        this.title = title;
-        this.timeLimit = timeLimit;
-        this.caseTimeLimit = caseTimeLimit;
-        this.memoryLimit = memoryLimit;
-        this.defunct = defunct;
-        this.difficulty = difficulty;
-        this.special = special;
-        this.category = category;
-    }
+    
     public ProblemBean(int problemId, String source, String title, String problemPath, String inputPath, String outputPath, String stdcodePath, Date createDate, int timeLimit, int caseTimeLimit, int memoryLimit, byte defunct, Integer accepted, Integer submit, byte difficulty, boolean special, int category) {
        this.problemId = problemId;
        this.source = source;
