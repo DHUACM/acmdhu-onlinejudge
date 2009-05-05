@@ -1,5 +1,5 @@
 package cn.edu.dhu.acm.oj.persistence.beans;
-// Generated May 4, 2009 10:16:51 PM by Hibernate Tools 3.2.1.GA
+// Generated May 5, 2009 11:15:53 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -10,38 +10,33 @@ import java.util.Date;
 public class ContestBean  implements java.io.Serializable {
 
 
-     private int contestId;
+     private Integer contestId;
      private String title;
      private Date startTime;
      private Date endTime;
      private byte defunct;
      private String description;
      private byte private_;
+     private int status;
 
     public ContestBean() {
     }
 
-	
-    public ContestBean(int contestId, byte defunct, byte private_) {
-        this.contestId = contestId;
-        this.defunct = defunct;
-        this.private_ = private_;
-    }
-    public ContestBean(int contestId, String title, Date startTime, Date endTime, byte defunct, String description, byte private_) {
-       this.contestId = contestId;
+    public ContestBean(String title, Date startTime, Date endTime, 
+            String description, byte private_, int status) {
        this.title = title;
        this.startTime = startTime;
        this.endTime = endTime;
-       this.defunct = defunct;
        this.description = description;
        this.private_ = private_;
+       this.status = status;
     }
    
-    public int getContestId() {
+    public Integer getContestId() {
         return this.contestId;
     }
     
-    public void setContestId(int contestId) {
+    public void setContestId(Integer contestId) {
         this.contestId = contestId;
     }
     public String getTitle() {
@@ -85,6 +80,13 @@ public class ContestBean  implements java.io.Serializable {
     
     public void setPrivate_(byte private_) {
         this.private_ = private_;
+    }
+    public int getStatus() {
+        return this.status;
+    }
+    
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 

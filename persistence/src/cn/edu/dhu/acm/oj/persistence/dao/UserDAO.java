@@ -14,23 +14,15 @@ import cn.edu.dhu.acm.oj.persistence.beans.UserBean;
 
 public class UserDAO extends BaseHibernateDAO {
 	private static final Log log = LogFactory.getLog(UserDAO.class);
-	// property constants
-    public static final String USERBEAN = "cn.edu.dhu.acm.oj.persistence.beans.UserBean";
-	public static final String PASSWORD = "password";
-	public static final String EMAIL = "email";
-	public static final String NICK = "nick";
-	public static final String SCHOOL = "school";
-	public static final String SUBMIT = "submit";
-	public static final String SOLVED = "solved";
-	public static final String DEFUNCT = "defunct";
-	public static final String IP = "ip";
-	public static final String LANGUAGE = "language";
-	public static final String ROLE = "role";
+    public static final String USER_BEAN = "cn.edu.dhu.acm.oj.persistence.beans.UserBean";
 
-	public void save(UserBean ubean) {
+	public void addUser(UserBean ubean) {
 		log.debug("saving UserBean instance");
 		try {
-			getSession().save(ubean);
+            Session session = getSession();
+            Transaction tx = session.beginTransaction();
+            session.save(ubean);
+            tx.commit();
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -38,14 +30,13 @@ public class UserDAO extends BaseHibernateDAO {
 		}
 	}
 
-    public void persist(UserBean ubean) {
+    public void editUser(UserBean ubean) {
 		log.debug("persisting UserBean instance");
 		try {
 			Session session = getSession();
             Transaction tx = session.beginTransaction();
             session.persist(ubean);
             tx.commit();
-			//getSession().persist(ubean);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -53,33 +44,26 @@ public class UserDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(UserBean ubean) {
+    /*
+	public void deleteUser(UserBean ubean) {
 		log.debug("deleting UserBean instance");
 		try {
+            Session session = getSession();
+            Transaction tx = session.beginTransaction();
             getSession().delete(ubean);
+            tx.commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
 			throw re;
 		}
 	}
-
-    public UserBean merge(UserBean ubean) {
-		log.debug("merging UserBean instance");
-		try {
-			UserBean result = (UserBean) getSession().merge(ubean);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
+     * */
 
 	public UserBean findUser(String uid) {
 		log.debug("getting UserBean instance with uid: " + uid);
 		try {
-			UserBean ubean = (UserBean) getSession().get(USERBEAN, uid);
+			UserBean ubean = (UserBean) getSession().get(USER_BEAN, uid);
 			return ubean;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -87,14 +71,15 @@ public class UserDAO extends BaseHibernateDAO {
 		}
 	}
 
-    public static UserBean chkLogin(UserBean ubean){
+    public UserBean chkLogin(UserBean ubean){
+        log.debug("check user login " + ubean.getUserId());
         try{
             Session session=HibernateSessionFactory.getSession();
             session.beginTransaction();
             String hqlStr=new String("from UserBean where userId='"+ubean.getUserId()+
                         "' and password='"+ubean.getPassword()+"'");
-            List list =(List)session.createQuery(hqlStr).list();
-            UserBean bean = (UserBean)list.get(0);
+            List<UserBean> list = session.createQuery(hqlStr).list();
+            UserBean bean = list.get(0);
             session.getTransaction().commit();
             return bean;
 
@@ -104,24 +89,28 @@ public class UserDAO extends BaseHibernateDAO {
         }
     }
 
-    public List findUsersInRange(int size, int start){
-        if(start < 0) start = 0;
-        Session session=getSession();
-        session.beginTransaction();
-        Query query=session.createQuery("from UserBean order by solved desc");
-        query.setFirstResult(size * start);
-        query.setMaxResults(size);
-        List rs=query.list();
-        session.getTransaction().commit();
-        return rs;
+    public List<UserBean> findUsersInRange(int first, int max){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            Query query=session.createQuery("from UserBean order by solved desc");
+            query.setFirstResult(first);
+            query.setMaxResults(max);
+            List<UserBean> rs=query.list();
+            tx.commit();
+            return rs;
+        } catch(Exception e) {
+            log.error("find users in range failed", e);
+            return null;
+        }
     }
 
     public static void main(String args[]) {
         UserDAO udao = new UserDAO();
 
         // find user by uid
-        UserBean ubean = udao.findUser("admin");
-        System.out.println(ubean.getUserId());
+        //UserBean ubean = udao.findUser("admin");
+        //System.out.println(ubean.getUserId());
 
         // find user in range
         //List list = udao.findUsersInRange(10, 0);
@@ -130,14 +119,12 @@ public class UserDAO extends BaseHibernateDAO {
         //System.out.println(list.size());
 
         // add new user
-        //UserBean ubean = new UserBean("gjzhu", "gjzhu", "gjzhu@dhu.com",
+        //UserBean ubean = new UserBean("test1", "gjzhu", "gjzhu@dhu.com",
         //        "lao zhu", "dhu", "127.0.0.1", java.util.Calendar.getInstance().getTime(),
         //        java.util.Calendar.getInstance().getTime(), 0);
-        //udao.save(ubean);
+        //udao.addUser(ubean);
 
         // update user
-        ubean.setEmail("admin@qq.com");
-        udao.persist(ubean);
     }
 
     /*

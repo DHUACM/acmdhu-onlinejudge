@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated May 4, 2009 10:16:54 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated May 5, 2009 11:15:55 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
   <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.ContestBean" table="contest">
-    <id name="contestId" type="int">
+    <id name="contestId" type="java.lang.Integer">
       <column name="contest_id"/>
-      <generator class="assigned"/>
+      <generator class="identity"/>
     </id>
     <property name="title" type="string">
       <column name="title"/>
@@ -24,6 +24,9 @@
     </property>
     <property name="private_" type="byte">
       <column name="private" not-null="true"/>
+    </property>
+    <property name="status" type="int">
+      <column name="status" not-null="true"/>
     </property>
   </class>
 </hibernate-mapping>
