@@ -34,11 +34,5 @@
     <property name="valid" type="byte">
       <column name="valid" not-null="true"/>
     </property>
-    <property name="compileInfo" type="string">
-      <column length="65535" name="compile_info"/>
-    </property>
-    <property name="sourceCode" type="string">
-      <column length="65535" name="source_code"/>
-    </property>
   </class>
 </hibernate-mapping>
