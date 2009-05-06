@@ -8,14 +8,13 @@ package cn.edu.dhu.acm.oj.persistence.beans;
  */
 public class ContestProblemBean  implements java.io.Serializable {
 
-
-     private int id;
-     private int contestId;
-     private int problemId;
-     private String title;
-     private int accepted;
-     private int submit;
-     private int sequence;
+    private int id;
+    private int contestId;
+    private int problemId;
+    private String title;
+    private int accepted;
+    private int submit;
+    private int sequence;
 
     public ContestProblemBean() {
     }
@@ -79,9 +78,6 @@ public class ContestProblemBean  implements java.io.Serializable {
     public void setSequence(int sequence) {
         this.sequence = sequence;
     }
-
-
-
 
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 5, 2009 10:46:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.CompileinfoBean" table="compileinfo">
+    <id name="solutionId" type="int">
+      <column name="solution_id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="error" type="string">
+      <column length="65535" name="error"/>
+    </property>
+  </class>
+</hibernate-mapping>

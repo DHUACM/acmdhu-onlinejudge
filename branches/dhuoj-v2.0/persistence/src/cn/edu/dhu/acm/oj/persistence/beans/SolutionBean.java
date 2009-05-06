@@ -9,25 +9,22 @@ import java.util.Date;
  */
 public class SolutionBean  implements java.io.Serializable {
 
-
-     private Integer solutionId;
-     private int problemId;
-     private String userId;
-     private int runtime;
-     private int memory;
-     private Date submitDate;
-     private short result;
-     private byte language;
-     private int contestId;
-     private byte valid;
-     private String compileInfo;
-     private String sourceCode;
+    private Integer solutionId;
+    private int problemId;
+    private String userId;
+    private int runtime;
+    private int memory;
+    private Date submitDate;
+    private short result;
+    private byte language;
+    private int contestId;
+    private byte valid = 1;
 
     public SolutionBean() {
     }
 
 	
-    public SolutionBean(int problemId, String userId, int runtime, int memory, Date submitDate, short result, byte language, int contestId, byte valid) {
+    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language) {
         this.problemId = problemId;
         this.userId = userId;
         this.runtime = runtime;
@@ -36,20 +33,6 @@ public class SolutionBean  implements java.io.Serializable {
         this.result = result;
         this.language = language;
         this.contestId = contestId;
-        this.valid = valid;
-    }
-    public SolutionBean(int problemId, String userId, int runtime, int memory, Date submitDate, short result, byte language, int contestId, byte valid, String compileInfo, String sourceCode) {
-       this.problemId = problemId;
-       this.userId = userId;
-       this.runtime = runtime;
-       this.memory = memory;
-       this.submitDate = submitDate;
-       this.result = result;
-       this.language = language;
-       this.contestId = contestId;
-       this.valid = valid;
-       this.compileInfo = compileInfo;
-       this.sourceCode = sourceCode;
     }
    
     public Integer getSolutionId() {
@@ -115,6 +98,7 @@ public class SolutionBean  implements java.io.Serializable {
     public void setContestId(int contestId) {
         this.contestId = contestId;
     }
+    
     public byte getValid() {
         return this.valid;
     }
@@ -122,23 +106,6 @@ public class SolutionBean  implements java.io.Serializable {
     public void setValid(byte valid) {
         this.valid = valid;
     }
-    public String getCompileInfo() {
-        return this.compileInfo;
-    }
-    
-    public void setCompileInfo(String compileInfo) {
-        this.compileInfo = compileInfo;
-    }
-    public String getSourceCode() {
-        return this.sourceCode;
-    }
-    
-    public void setSourceCode(String sourceCode) {
-        this.sourceCode = sourceCode;
-    }
-
-
-
 
 }
 

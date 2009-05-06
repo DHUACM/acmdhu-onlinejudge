@@ -71,13 +71,13 @@ public class UserDAO extends BaseHibernateDAO {
 		}
 	}
 
-    public UserBean chkLogin(UserBean ubean){
-        log.debug("check user login " + ubean.getUserId());
+    public UserBean chkLogin(String username, String password){
+        log.debug("check user login " + username + ":" + password);
         try{
             Session session=HibernateSessionFactory.getSession();
             session.beginTransaction();
-            String hqlStr=new String("from UserBean where userId='"+ubean.getUserId()+
-                        "' and password='"+ubean.getPassword()+"'");
+            String hqlStr=new String("from UserBean where userId='" + username +
+                        "' and password='" + password + "'");
             List<UserBean> list = session.createQuery(hqlStr).list();
             UserBean bean = list.get(0);
             session.getTransaction().commit();
