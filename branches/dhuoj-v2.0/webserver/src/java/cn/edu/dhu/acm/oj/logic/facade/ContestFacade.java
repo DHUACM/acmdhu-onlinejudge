@@ -27,11 +27,12 @@ public class ContestFacade {
         SolutionDAO sdao = new SolutionDAO();
         return sdao.findSolution(solutionId);
     }
-
+/*
     public static void main(String[] args) {
         // public SubmitCodeForm(String uid, int pid, int cid, byte lang, String src)
         SubmitCodeForm scf = new SubmitCodeForm("hyj", 1003, 1, (byte)1, "hello.test");
         int sid = ContestFacade.submitCode(scf);
         System.out.println("sid = " + sid);
     }
+ * */
 }
