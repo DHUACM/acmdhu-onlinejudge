@@ -8,6 +8,7 @@ package cn.edu.dhu.acm.oj.webservice;
 import cn.edu.dhu.acm.oj.common.form.SubmitCodeForm;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
 import cn.edu.dhu.acm.oj.logic.facade.ContestFacade;
+import cn.edu.dhu.acm.oj.exception.*;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -24,8 +25,16 @@ public class ContestService {
      */
     @WebMethod(operationName = "submitCode")
     public Integer submitCode(@WebParam(name = "submitForm")
-    SubmitCodeForm submitForm) {
-        return ContestFacade.submitCode(submitForm);
+    SubmitCodeForm submitForm) throws ContestNotStartException, ContestClosedException, UserLoginFailException {
+        try {
+            return ContestFacade.submitCode(submitForm);
+        } catch(ContestNotStartException cnse) {
+            throw cnse;
+        } catch(ContestClosedException cce) {
+            throw cce;
+        } catch(UserLoginFailException ulfe) {
+            throw ulfe;
+        }
     }
 
     /**
