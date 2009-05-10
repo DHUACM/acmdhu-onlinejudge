@@ -9,6 +9,10 @@
         <load-on-startup>1</load-on-startup>
         </servlet>
     <servlet>
+        <servlet-name>contestrank</servlet-name>
+        <servlet-class>cn.edu.dhu.acm.oj.web.servlet.ContestRank</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ContestService</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -16,6 +20,10 @@
     <servlet-mapping>
         <servlet-name>UserAccountService</servlet-name>
         <url-pattern>/UserAccountService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contestrank</servlet-name>
+        <url-pattern>/contestrank</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContestService</servlet-name>

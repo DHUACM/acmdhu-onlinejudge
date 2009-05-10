@@ -3,6 +3,7 @@ package cn.edu.dhu.acm.oj.common.form;
 public class SubmitCodeForm implements java.io.Serializable{
 
     private String userID = null;
+    private String password = null;
     private String source = null;
     private byte language = 0;
     private int contestID = 0;
@@ -33,6 +34,14 @@ public class SubmitCodeForm implements java.io.Serializable{
 
     public void setLanguage(byte language) {
         this.language = language;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getProblemID() {
