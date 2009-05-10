@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dhuoj</property>
+    <property name="hibernate.connection.url">jdbc:mysql://acm.dhu.edu.cn:3306/dhuoj?useUnicode=true&amp;characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Problem.hbm.xml"/>

@@ -47,7 +47,10 @@ public class SolutionDAO extends BaseHibernateDAO {
     public SolutionBean findSolution(int sid) {
 		log.debug("getting SolutionBean instance with id: " + sid);
 		try {
-			SolutionBean sbean = (SolutionBean) getSession().get(SOLUTION_BEAN, sid);
+            Session session = getSession();
+            session.flush();
+			SolutionBean sbean = (SolutionBean) session.get(SOLUTION_BEAN, sid);
+            session.close();
 			return sbean;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -59,11 +62,13 @@ public class SolutionDAO extends BaseHibernateDAO {
         try {
             Session session=getSession();
             Transaction tx = session.beginTransaction();
+            session.flush();
             Query query=session.createQuery("from SolutionBean order by solutionId desc");
             query.setFirstResult(first);
             query.setMaxResults(max);
             List<SolutionBean> rs=query.list();
             tx.commit();
+            session.close();
             return rs;
         } catch(Exception e) {
             log.error("find solutions in range failed", e);
@@ -71,23 +76,29 @@ public class SolutionDAO extends BaseHibernateDAO {
         }
     }
 
+    public List<SolutionBean> findContestSolutionsInRange(int cid, int first, int max){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            session.flush();
+            Query query=session.createQuery("from SolutionBean where contestId= " + cid + " order by solutionId asc");
+            query.setFirstResult(first);
+            query.setMaxResults(max);
+            List<SolutionBean> rs=query.list();
+            tx.commit();
+            session.close();
+            return rs;
+        } catch(Exception e) {
+            log.error("find contest solutions in range failed", e);
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         SolutionDAO sdao = new SolutionDAO();
-        cn.edu.dhu.acm.oj.persistence.dao.SourceCodeDAO scdao = new cn.edu.dhu.acm.oj.persistence.dao.SourceCodeDAO();
-
-        // add new solution
-        SolutionBean s = new SolutionBean();
-        s.setProblemId(1010);
-        s.setUserId("yhu");
-        s.setSubmitDate(java.util.Calendar.getInstance().getTime());
-        sdao.addSolution(s);
-
-        cn.edu.dhu.acm.oj.persistence.beans.SourceCodeBean sc
-                = new cn.edu.dhu.acm.oj.persistence.beans.SourceCodeBean(s.getSolutionId(), "#include<test.h>");
-
-        System.out.println(s.getSolutionId());
-        sc.setSolutionId(s.getSolutionId());
-        scdao.addSourceCode(sc);
+        SolutionBean sbean = sdao.findSolution(125);
+        sbean.setResult((short)2);
+        sdao.editSolution(sbean);
 
         /*
         // update solution
