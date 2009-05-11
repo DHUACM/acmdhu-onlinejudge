@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.StringBuffer;
 
 import cn.edu.dhu.acm.oj.persistence.beans.ContestBean;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
@@ -37,38 +38,7 @@ public class RanklistClient {
         this.psdAccepted = new long[numProblems+1];
         this.psdAttempts = new long[numProblems+1];
         this.printingLock = new Object();
-        /*
-        File dir = new File("html");
-        if ((!(dir.exists())) && (!(dir.mkdir()))) {
-            System.out.println("BoardFrame:" + dir.getName() + " could not be created.");
-        } else {
-            this.outputDir = "html" + File.separator;
-        }
-
-        this.numProblems = 6;
-        this.printingLock = new Object();
-        TestProblemDAO problemDao = new TestProblemDAO();
-        this.problem_map = problemDao.getAllTestProblems();
-         * */
     }
-
-    /*
-    public static void main(String args[]) {
-        RanklistClientThread rct = new RanklistClientThread();
-        rct.start();
-    }
-
-    public void run() {
-        while (true) {
-            try {
-                updateBoardTimely();
-                sleep(this.sleepTime);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    * */
 
     public void updateBoardTimely(PrintWriter out) {
         initSummaryPSD();
@@ -77,58 +47,33 @@ public class RanklistClient {
 
     private void initSummaryPSD() {
         for (int i = 1; i <= this.numProblems; ++i) {
-            this.psdAccepted[i] = (this.psdAttempts[i] = 2824031762663866368L);
+            this.psdAccepted[i] = (this.psdAttempts[i] = 0);
         }
     }
 
-    /*
-    private FileOutputStream createFile(String fileName) {
-        FileOutputStream fout = null;
-        try {
-            if (outputDir != null) {
-                fout = new FileOutputStream(outputDir + fileName);
-            } else {
-                fout = new FileOutputStream(fileName);
-            }
-        } catch (Exception e) {
-        }
-        return fout;
-    }
-     * */
-
-    private void printHeader(PrintWriter os, int format, String header) {
+    private void printHeader(PrintWriter os) {
         if (os == null) {
             os = new PrintWriter(System.out, true);
         }
         os.println("<html>");
         os.println("<head><title>" + contest.getTitle() + "Ranklist</title></head>");
         os.println("<body>");
-        if ((header != null) && (!(header.equalsIgnoreCase("")))) {
-            os.println("<h1 dalign='center'>" + header + "</h1>");
-        }
-        int border = 0;
-        if ((format == 3) || (format == 4)) {
-            border = 1;
-        }
+        os.print("<div align='center'>");
+        os.println("<h1>" + contest.getTitle() + " Ranklist</h1>");
+        os.println("<h4>contest time: " + contest.getStartTime() + " ----- " + contest.getEndTime() + "</h1>");
+
+        int border = 1;
         os.println("<table border=\"" + border + "\">");
         os.print("<tr>");
-        if ((format != 3) && (format != 4)) {
-            os.print("<th><strong><u>Rank</u></strong></th>");
-        }
+        os.print("<th><strong><u>Rank</u></strong></th>");
         os.print("<th><strong><u>Name</u></strong></th>");
-        if ((format != 3) && (format != 4)) {
-            os.print("<th><strong><u>Solved</u></strong></th>");
-            os.print("<th><strong><u>Time</u></strong></th>");
+        os.print("<th><strong><u>Solved</u></strong></th>");
+        os.print("<th><strong><u>Time</u></strong></th>");
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        for (int j = 0; j < this.numProblems; ++j) {
+            os.print("<th>&#160;&#160;&#160;&#160;<strong><u>" + alphabet.charAt(j % 26) + "</u></strong>&#160;&#160;&#160;&#160;</th>");
         }
-
-        if ((format == 5) || (format == 3) || (format == 4)) {
-            String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            for (int j = 0; j < this.numProblems; ++j) {
-                os.print("<th>&#160;&#160;&#160;&#160;<strong><u>" + alphabet.charAt(j % 26) + "</u></strong>&#160;&#160;&#160;&#160;</th>");
-            }
-
-        }
-
+        os.print("<th><strong><u>Total att/solv</strong></th>");
         os.print("</tr>");
         os.println();
     }
@@ -137,31 +82,24 @@ public class RanklistClient {
         boolean aborted = true;
         try {
             synchronized (printingLock) {
-                String date = (new Date()).toString();
                 Ranklist rank = new Ranklist(contest);
                 ClientScoreData sd[] = rank.getStandings(allRuns);
-                //PrintWriter pout_array = new PrintWriter(createFile("summary.html"), true);
 
-                printHeader(out, 5, contest.getTitle() + " Ranklist");
+                printHeader(out);
 
-                //if(getNumTeamAccounts() > 0)
-                //{
                 if (sd == null) {
                     System.out.println("no standings ?!?");
                 } else if (sd.length == 0) {
                     System.out.println("no standings");
                 } else {
                     int totalSolved = 0;
-                    Hashtable hash = new Hashtable();
                     for (int i = 0; i < sd.length; i++) {
                         totalSolved = (int) ((long) totalSolved + sd[i].getNumberOfSolvedProblems());
                         printRow(out, sd[i]);
                     }
-
-                    int median = totalSolved / sd.length;
                 }
-                //}
 
+                summarizePSD(out);
                 printTrailer(out);
 
                 out.close();
@@ -192,6 +130,7 @@ public class RanklistClient {
             String stats = "";
 
             ProblemScoreData psd = null;
+            int attempts = 0, solved = 0;
             for (int j = 1; j <= this.numProblems; ++j) {
                 int problemId = problem_map.get(new Integer(j)).getProblemId();
 
@@ -204,9 +143,11 @@ public class RanklistClient {
                     stats = "--/--";
                 } else {
                     this.psdAttempts[j] += psd.getAttempts();
+                    attempts += psd.getAttempts();
                     if (psd.isSolved()) {
+                        solved ++;
                         stats = psd.getAttempts() + "/" + (psd.getSolutionTime() / 60000L);
-                        this.psdAccepted[j] += 2824030216475639809L;
+                        this.psdAccepted[j]++;
                     } else {
                         stats = psd.getAttempts() + "/--";
                     }
@@ -214,6 +155,7 @@ public class RanklistClient {
                 os.print("<td  align='center'>" + stats + "</td>");
             }
 
+            os.print("<td  align='center'>" + attempts + "/" + solved + "</td>");
             os.print("</tr>");
             os.println();
         }
@@ -225,24 +167,25 @@ public class RanklistClient {
         }
 
         os.println("</table>");
+        os.println("</div>");
         os.println("</body>");
         os.println("</html>");
     }
 
-    private void summarizePSD(PrintWriter os, int format) {
-        String line = "<tr>";
-        if (format == 5) {
-            line = line + "<td>summary</td>";
-        }
-        if (format == 5) {
-            line = line + "<td></td><td></td><td></td>";
-        }
-
+    private void summarizePSD(PrintWriter os) {
+        StringBuffer line = new StringBuffer();
+        line.append("<tr>");
+        line.append("<td>Summary</td>");
+        line.append("<td>Submitted/Total Yes</td>");
+        line.append("<td/><td/>");
+        int totalAttempts = 0, totalAccepted = 0;
         for (int p = 1; p <= this.numProblems; ++p) {
-            line = line + "<td align='center'>" + this.psdAccepted[p] + "/" + this.psdAttempts[p] + "</td>";
+            totalAttempts += psdAttempts[p];
+            totalAccepted += psdAccepted[p];
+            line.append("<td align='center'>" + this.psdAttempts[p] + "/" + this.psdAccepted[p] + "</td>");
         }
-
-        line = line + "</tr>";
+        line.append("<td align='center'>" + totalAttempts + "/" + totalAccepted + "</td>");
+        line.append("</tr>");
         os.println(line);
     }
 }
