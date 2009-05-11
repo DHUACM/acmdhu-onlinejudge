@@ -7,6 +7,13 @@
     <property name="hibernate.connection.url">jdbc:mysql://acm.dhu.edu.cn:3306/dhuoj?useUnicode=true&amp;characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.c3p0.max_size">200</property>
+    <property name="hibernate.c3p0.min_size">10</property>
+    <property name="hibernate.c3p0.timeout">5000</property>
+    <property name="hibernate.c3p0.max_statements">100</property>
+    <property name="hibernate.c3p0.idle_test_period">3000</property>
+    <property name="hibernate.c3p0.acquire_increment">2</property>
+    <property name="hibernate.c3p0.validate">true</property>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Problem.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Solution.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Contest.hbm.xml"/>
