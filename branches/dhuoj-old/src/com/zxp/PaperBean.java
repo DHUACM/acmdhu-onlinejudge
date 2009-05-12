@@ -152,40 +152,6 @@ public class PaperBean {
     root.marshal(filePath);
   }
 
-  /**
-   * 打开试卷
-   * filePath代表要打开的试卷位置
- **/
-    public void unmarshal( String filePath ) throws Exception{
-      root = Element.unmarshal(filePath);
-      problemRoot = root.getChild("ProblemList");
-      paperDetail = new PaperDetail( root.getChild("PaperDetail") );
-
-
-      vertifySignature();
-
-      List list = problemRoot.getChildren("ProblemArchive");
-      problemList.clear();
-      for( int i = 0; i < list.size(); i++ ){
-        problemList.add( list.get(i) );
-      }
-
-      String tmpDir = System.getProperty("java.io.tmpdir");
-      for (int i = 0; i < problemList.size(); i++ ){
-        Element elem = (Element)problemList.get(i);
-        ProblemArchiveBean bean = new ProblemArchiveBean(elem);
-        bean.getProblem().writeFigureList(tmpDir);
-
-        elem.detach();
-        new Document(elem);
-      }
-
-      //decypt
-      String tmp = problemRoot.getAttributeValue("encrypted");
-      if(!tmp.equals("0") ){
-        decryptNode();
-      }
-    }
     /**
      * 得到试卷根节点
     **/
@@ -202,13 +168,6 @@ public class PaperBean {
     **/
     public int getProblemCount(){
       return problemList.size();
-    }
-    /**
-     * 返回第index个电子程序题对象
-    **/
-    public ProblemArchiveBean getProblemAt( int index ){
-      Element elem = (Element)problemList.get( index );
-      return  new ProblemArchiveBean( elem );
     }
     /**
      * 向试卷内添加一道电子程序题
@@ -387,4 +346,92 @@ public class PaperBean {
       passFlag = checkBean.solutionFlag;
       return tmp;
     }
+
+
+    /**
+     * Read a paper from a file.
+     *
+     * @param filePath Path of the paper's XML file.
+     *        A path name must be passed in, instead of a URI.
+     *
+     * @author Zhou Xiaopeng, Zhu Kai.
+     */
+    public void unmarshal( String filePath )
+    throws Exception {
+        File paperFile = new File(filePath);
+        if ( !paperFile.isAbsolute() )
+            paperFile = paperFile.getAbsoluteFile();
+
+        this.paperDirectory = paperFile.getParent();
+
+        String fileURI = paperFile.toURI().toASCIIString();
+
+        root = Element.unmarshal(fileURI);
+        problemRoot = root.getChild("ProblemList");
+        paperDetail = new PaperDetail( root.getChild("PaperDetail") );
+
+        vertifySignature();
+
+        List list = problemRoot.getChildren("ProblemArchive");
+        problemList.clear();
+        for( int i = 0; i < list.size(); i++ ){
+            problemList.add( list.get(i) );
+        }
+
+        String tmpDir = System.getProperty("java.io.tmpdir");
+        for (int i = 0; i < problemList.size(); i++ ){
+            Element elem = (Element)problemList.get(i);
+            ProblemArchiveBean bean = new ProblemArchiveBean(elem);
+            bean.getProblem().writeFigureList(tmpDir);
+
+            elem.detach();
+            new Document(elem);
+        }
+
+        //decypt
+        String tmp = problemRoot.getAttributeValue("encrypted");
+        if(!tmp.equals("0") ){
+            decryptNode();
+        }
+}
+
+/**
+* Get the problem at index {@code ind} in this paper.
+*
+* @author Zhou Xiaopeng, Zhu Kai.
+*/
+public ProblemArchiveBean getProblemAt(int ind) {
+Element elem = (Element)problemList.get(ind);
+ProblemArchiveBean prob = new ProblemArchiveBean(elem);
+prob.setArchiveDirectory(this.paperDirectory);
+return prob;
+}
+
+/**
+* Return the directory of the paper's XML file.
+*
+* @author Zhu Kai.
+*/
+public String getPaperDirectory() {
+return this.paperDirectory;
+}
+
+/**
+* Set the directory of the paper's XML file.
+*
+* @param dir Path of the directory to be set.
+*
+* @author Zhu Kai.
+*/
+public void setPaperDirectory(String dir) {
+this.paperDirectory = dir;
+}
+
+
+/**
+* Directory where the paper's XML file is.
+*
+* @author Zhu Kai.
+*/
+private String paperDirectory;
 }
