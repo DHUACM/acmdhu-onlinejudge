@@ -393,45 +393,45 @@ public class PaperBean {
         if(!tmp.equals("0") ){
             decryptNode();
         }
-}
+    }
 
-/**
-* Get the problem at index {@code ind} in this paper.
-*
-* @author Zhou Xiaopeng, Zhu Kai.
-*/
-public ProblemArchiveBean getProblemAt(int ind) {
-Element elem = (Element)problemList.get(ind);
-ProblemArchiveBean prob = new ProblemArchiveBean(elem);
-prob.setArchiveDirectory(this.paperDirectory);
-return prob;
-}
+    /**
+    * Get the problem at index {@code ind} in this paper.
+    *
+    * @author Zhou Xiaopeng, Zhu Kai.
+    */
+    public ProblemArchiveBean getProblemAt(int ind) {
+        Element elem = (Element)problemList.get(ind);
+        ProblemArchiveBean prob = new ProblemArchiveBean(elem);
+        prob.setArchiveDirectory(this.paperDirectory);
+        return prob;
+    }
 
-/**
-* Return the directory of the paper's XML file.
-*
-* @author Zhu Kai.
-*/
-public String getPaperDirectory() {
-return this.paperDirectory;
-}
+    /**
+    * Return the directory of the paper's XML file.
+    *
+    * @author Zhu Kai.
+    */
+    public String getPaperDirectory() {
+        return this.paperDirectory;
+    }
 
-/**
-* Set the directory of the paper's XML file.
-*
-* @param dir Path of the directory to be set.
-*
-* @author Zhu Kai.
-*/
-public void setPaperDirectory(String dir) {
-this.paperDirectory = dir;
-}
+    /**
+    * Set the directory of the paper's XML file.
+    *
+    * @param dir Path of the directory to be set.
+    *
+    * @author Zhu Kai.
+    */
+    public void setPaperDirectory(String dir) {
+        this.paperDirectory = dir;
+    }
 
 
-/**
-* Directory where the paper's XML file is.
-*
-* @author Zhu Kai.
-*/
-private String paperDirectory;
+    /**
+    * Directory where the paper's XML file is.
+    *
+    * @author Zhu Kai.
+    */
+    private String paperDirectory;
 }
