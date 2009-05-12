@@ -1,104 +1,189 @@
+// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/kpdus/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   ProblemArchiveBean.java
+
 package com.dyf;
 
 import java.io.*;
 import org.jdom.*;
 
-/*
-* @author  Dong Yunfeng
-* @version 1.0, 5/10/2003
-*
- */
+// Referenced classes of package com.dyf:
+//            NodeBean, ProblemBean, TestDataBean, SolutionBean
 
-public final class ProblemArchiveBean
-        extends NodeBean {
+public final class ProblemArchiveBean extends NodeBean
+{
 
-    private final static String SOFTWARE_VERSION = "1.0";
+    public ProblemArchiveBean(Element x)
+    {
+        super(x);
+    }
 
-    public ProblemArchiveBean() {
+    public ProblemArchiveBean()
+    {
         super("ProblemArchive");
         Document document = new Document(root);
-
-        root.setAttribute("version", SOFTWARE_VERSION);
+        root.setAttribute("version", "1.1");
         setChecked(false);
-
         addNode(new NodeBean("Title"));
         addNode(new NodeBean("Author"));
+        addNode(new NodeBean("JudgeType"));
+        setJudgeType("Multiple Case");
         addNode(new ProblemBean());
         addNode(new TestDataBean());
         addNode(new SolutionBean());
     }
 
-    public ProblemArchiveBean(Element x) {
-        super(x);
+    public String getAuthor()
+    {
+        return root.getChildText("Author");
     }
 
-    public void read(String filename) throws IOException, JDOMException {
-        root = Element.unmarshal(filename);
+    public String getJudgeType()
+    {
+        if(getVersion().equals("1.0") || root.getChildText("JudgeType").equals(""))
+            return "Multiple Case";
+        else
+            return root.getChildText("JudgeType");
     }
 
-    public void write(String filename) throws IOException {
-        root.marshal(filename);
+    public ProblemBean getProblem()
+    {
+        return new ProblemBean(root.getChild("Problem"));
     }
 
-    public String getVersion() {
+    public SolutionBean getSolution()
+    {
+        return new SolutionBean(root.getChild("Solution"));
+    }
+
+    public String getTitle()
+    {
+        return root.getChildText("Title");
+    }
+
+    public String getVersion()
+    {
         return root.getAttributeValue("version");
     }
 
-    public boolean isChecked() {
+    public boolean isChecked()
+    {
         return root.getAttributeValue("checked").equals("true");
     }
 
-    public void setChecked(boolean flag) {
+    public void setAuthor(String str)
+    {
+        root.setChildText("Author", str);
+    }
+
+    public void setChecked(boolean flag)
+    {
         root.setAttribute("checked", Boolean.toString(flag));
     }
 
-    public String transform() throws Exception {
+    public void setJudgeType(String str)
+    {
+        if(getVersion().equals("1.0"))
+        {
+            root.setAttribute("version", "1.1");
+            addNode(new NodeBean("JudgeType"));
+        }
+        root.setChildText("JudgeType", str);
+    }
+
+    public void setTitle(String str)
+    {
+        root.setChildText("Title", str);
+    }
+
+    public String transform()
+        throws Exception
+    {
         ProblemBean problem = getProblem();
         TestDataBean testData = getTestData();
-
         NodeBean sampleInput = new NodeBean("SampleInput", true);
         NodeBean sampleOutput = new NodeBean("SampleOutput", true);
         sampleInput.getElement().setText(testData.getSampleInput());
         sampleOutput.getElement().setText(testData.getSampleOutput());
-
         problem.addNode(sampleInput);
         problem.addNode(sampleOutput);
-
-        InputStream stylesheet =
-                ProblemArchiveBean.class.getResourceAsStream("ProblemArchive.xsl");
+        java.io.InputStream stylesheet = (com.dyf.ProblemArchiveBean.class).getResourceAsStream("ProblemArchive.xsl");
         String str = root.transform(stylesheet);
-
         sampleInput.getElement().detach();
         sampleOutput.getElement().detach();
-
         return str;
     }
 
-    public String getTitle() {
-        return root.getChildText("Title");
+    public void write(String filename)
+        throws IOException
+    {
+        root.marshal(filename);
     }
 
-    public void setTitle(String str) {
-        root.setChildText("Title", str);
+    private static final String SOFTWARE_VERSION = "1.1";
+
+
+    /**
+     * Read a problem archive from a file.
+     *
+     * @param filename Path of the problem's XML file.
+     *        A path name must be passed in, instead of a URI.
+     *
+     * @author Dong Yunfeng, Zhu Kai
+     */
+    public void read(String filename)
+        throws JDOMException, IOException
+    {
+        File problemFile = new File(filename);
+        if ( !problemFile.isAbsolute() )
+            problemFile = problemFile.getAbsoluteFile();
+
+        this.archiveDirectory = problemFile.getParent();
+
+        String fileURI = problemFile.toURI().toASCIIString();
+
+        super.root = Element.unmarshal(fileURI);
     }
 
-    public String getAuthor() {
-        return root.getChildText("Author");
+    /**
+     * Get the test data object of this problem.
+     *
+     * @author Dong Yunfeng, Zhu Kai
+     */
+    public TestDataBean getTestData()
+    {
+        TestDataBean testData
+            = new TestDataBean( super.root.getChild("TestData") );
+        testData.setArchiveDirectory(this.archiveDirectory);
+        return testData;
     }
 
-    public void setAuthor(String str) {
-        root.setChildText("Author", str);
+    /**
+     * Return the directory of the problem's XML file.
+     *
+     * @author Zhu Kai.
+     */
+    public String getArchiveDirectory() {
+        return this.archiveDirectory;
     }
 
-    public ProblemBean getProblem() {
-        return new ProblemBean(root.getChild("Problem"));
+    /**
+     * Set the directory of the problem's XML file.
+     *
+     * @param dir Path of the directory to be set.
+     *
+     * @author Zhu Kai.
+     */
+    public void setArchiveDirectory(String dir) {
+        this.archiveDirectory = dir;
     }
 
-    public TestDataBean getTestData() {
-        return new TestDataBean(root.getChild("TestData"));
-    }
 
-    public SolutionBean getSolution() {
-        return new SolutionBean(root.getChild("Solution"));
-    }
+    /**
+     * Directory where the problem's XML file is.
+     *
+     * @author Zhu Kai.
+     */
+    private String archiveDirectory;
 }
