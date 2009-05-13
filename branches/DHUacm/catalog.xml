@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://192.168.0.101:8084/webserver/LoginService?wsdl" uri="xml-resources/web-service-references/LoginService/wsdl/192.168.0.101_8084/webserver/LoginService.wsdl"/>
+    <system systemId="http://192.168.0.101:8084/webserver/LoginService?xsd=1" uri="xml-resources/web-service-references/LoginService/wsdl/192.168.0.101_8084/webserver/LoginService.xsd_1.xsd"/>
+    <system systemId="http://192.168.0.101:8084/webserver/SubmitCodeService?wsdl" uri="xml-resources/web-service-references/SubmitCodeService/wsdl/192.168.0.101_8084/webserver/SubmitCodeService.wsdl"/>
+    <system systemId="http://192.168.0.101:8084/webserver/SubmitCodeService?xsd=1" uri="xml-resources/web-service-references/SubmitCodeService/wsdl/192.168.0.101_8084/webserver/SubmitCodeService.xsd_1.xsd"/>
+    <system systemId="http://acm.dhu.edu.cn:80/dhuoj/ContestService?wsdl" uri="xml-resources/web-service-references/ContestService/wsdl/acm.dhu.edu.cn_80/dhuoj/ContestService.wsdl"/>
+    <system systemId="http://acm.dhu.edu.cn:80/dhuoj/ContestService?xsd=1" uri="xml-resources/web-service-references/ContestService/wsdl/acm.dhu.edu.cn_80/dhuoj/ContestService.xsd_1.xsd"/>
+    <system systemId="http://acm.dhu.edu.cn:80/dhuoj/UserAccountService?wsdl" uri="xml-resources/web-service-references/UserAccountService/wsdl/acm.dhu.edu.cn_80/dhuoj/UserAccountService.wsdl"/>
+    <system systemId="http://acm.dhu.edu.cn:80/dhuoj/UserAccountService?xsd=1" uri="xml-resources/web-service-references/UserAccountService/wsdl/acm.dhu.edu.cn_80/dhuoj/UserAccountService.xsd_1.xsd"/>
+</catalog>
