@@ -15,8 +15,7 @@ public class Control {
     public Control() {
     }
 
-    public static void init(MainFrame f) {
-        frame = f;
+    public static void init() {
         eb = new EnvironmentBean("Environment.xml");
         submittimes = 0;
         //cn = new ClientNet();
@@ -24,12 +23,20 @@ public class Control {
         allAC = 0;
         language = "Cpp";
         allcodecnt = 0;
-        model = "Trainer";
+        model = "Trainer-Local";
         jb = new JudgeBean();
         jb.setEnvironmentBean(eb);
         stdsb = new SolutionBean();
         islogined = false;
-        subFrame = new SubmissionFrame();
+        //subFrame = new SubmissionFrame();
+    }
+
+    public static void setMainFrame(MainFrame f) {
+        frame = f;
+    }
+
+    public static void setLoginFrame(LoginFrame l) {
+        loginframe = l;
     }
 
     public static void setModel(String str) {
@@ -54,6 +61,7 @@ public class Control {
             stdsb = new SolutionBean();
             nowPaperNum = 0;
             frame.setTitle(x);
+            frame.setPaper();
         } catch (Exception E) {
             frame.smallDialog("Paper get error!", "Error", 0);
         }
@@ -65,7 +73,7 @@ public class Control {
         nowPaperNum = 0;
         stdsb = new SolutionBean();
         allAC = 0;
-        frame.getAC(allAC);
+    //frame.getAC(allAC);
     }
 
     public static void setLanguage(String str) {
@@ -86,37 +94,33 @@ public class Control {
         code = co;
     }
 
-    public static void showSubFrame(){
-        subFrame.setVisible(true);
-    }
+    public static boolean login(String username, String password) {
 
-    public static void login(String username, String password) {
-
-        try { // Call Web Service Operation
+        try {
             cn.edu.dhu.acm.oj.webservice.UserAccountServiceService service = new cn.edu.dhu.acm.oj.webservice.UserAccountServiceService();
             cn.edu.dhu.acm.oj.webservice.UserAccountService port = service.getUserAccountServicePort();
-            // TODO initialize WS operation arguments here
             cn.edu.dhu.acm.oj.webservice.LoginForm userForm = new cn.edu.dhu.acm.oj.webservice.LoginForm();
-            // TODO process result here
             userForm.setUsername(username);
             userForm.setPassword(password);
             java.lang.Boolean loginresult = port.login(userForm);
             if (loginresult) {
-                frame.smallDialog("         Login Success!", "Done", 1);
-                frame.getJB_GetPaper().setEnabled(true);
                 islogined = true;
-                //pname = username;
+                message = "         Login Success!";
                 id = username;
                 psw = password;
             } else {
-                frame.smallDialog("Login Failed!", "Error", 0);
+                islogined = false;
+                message = "Login Failed!";
             }
         } catch (Exception ex) {
-            frame.smallDialog("Server can't be found!", "Error", 0);
+            islogined = false;
+            message = "Server can't be found!";
         }
+        return islogined;
     }
 
-    public static void Register(String nick,String uid,String pwd,String sch,String email){
+    public static boolean Register(String nick, String uid, String pwd, String sch, String email) {
+        boolean ans = false;
         try { // Call Web Service Operation
             cn.edu.dhu.acm.oj.webservice.UserAccountServiceService service = new cn.edu.dhu.acm.oj.webservice.UserAccountServiceService();
             cn.edu.dhu.acm.oj.webservice.UserAccountService port = service.getUserAccountServicePort();
@@ -128,17 +132,17 @@ public class Control {
             r.setPassword(pwd);
             r.setSchool(sch);
             r.setUserID(uid);
-            java.lang.Boolean ans = port.register(r);
-            if(ans){
-                frame.smallDialog("Register OK!", "Done", 1);
-            }
-            else{
-                frame.smallDialog("Register Failed!", "Error", 0);
+            ans = port.register(r);
+            if (ans) {
+                message = "Register OK!";
+            } else {
+                message = "Register Failed!";
             }
         } catch (Exception ex) {
-            frame.smallDialog(ex.getMessage(), "Error", 0);
+            ans = false;
+            message = ex.getMessage();
         }
-
+        return ans;
     }
 
     public static void SaveReplyMessage(String str) {
@@ -184,7 +188,7 @@ public class Control {
             if (reply.indexOf("Yes") >= 0 && 0 == accepted[problemindex]) {
                 accepted[problemindex] = 1;
                 allAC++;
-                frame.getAC(allAC);
+            //frame.getAC(allAC);
             }
         } else if (str.indexOf("FAILED") >= 0) {
             frame.smallDialog(str, "Error", 0);
@@ -224,19 +228,19 @@ public class Control {
                 null, new Integer(bean.getRuntime()),
                 bean.getSubmitDate().toString()
             };
-            subFrame.updateRow(row);
+            frame.updateRow(row);
             return bean.getResult();
         } catch (Exception ex) {
             //frame.smallDialog("Server can't be found! in query", "Error", 0);
-            System.out.println("Query failed!\n"+ex.getMessage());
+            System.out.println("Query failed!\n" + ex.getMessage());
             return -1;
         }
 
     }
 
-    public static void WsSubmit(String paperNo, int problemNo,String problemName) {
-        if (!model.equals("Net")) {
-            LocalSubmit(paperNo,""+problemNo);
+    public static void WsSubmit(String paperNo, int problemNo, String problemName) {
+        if (model.indexOf("Local")!=-1) {
+            LocalSubmit(paperNo, "" + problemNo);
             return;
         }
         try { // Call Web Service Operation
@@ -249,27 +253,28 @@ public class Control {
             byte lan = getLanguageByte();
             submitForm.setLanguage(lan);
             //int problemid=Integer.parseInt(problemNo);
-            submitForm.setProblemID(problemNo+1);
+            submitForm.setProblemID(problemNo + 1);
             submitForm.setPassword(psw);
             submitForm.setSource(code);
             submitForm.setUserID(id);
             java.lang.Integer submitresult = port.submitCode(submitForm);
-            short tmp=0;
+            short tmp = 0;
             Object[] row = new Object[]{
                 new Integer(submitresult), null,
                 problemName, Const.VERDICT[0],
                 Const.LANGUAGE[lan], null,
                 null
             };
-            subFrame.updateRow(row);
-            showSubFrame();
+            frame.updateRow(row);
+            //showSubFrame();
+            frame.showStatus();
             RunQuerySumbmitStatus query = new RunQuerySumbmitStatus(submitresult);
             Thread thread = new Thread(query);
             thread.start();
             frame.smallDialog("         Submit OK!", "Done", 1);
         //System.out.println("queryid = " + submitresult);
         } catch (Exception ex) {
-            frame.smallDialog("Submit failed!\n"+ex.getMessage(), "Error", 0);
+            frame.smallDialog("Submit failed!\n" + ex.getMessage(), "Error", 0);
         }
 
     }
@@ -389,14 +394,16 @@ public class Control {
         return paperNo;
     }
 
-    public static byte getLanguageByte(){
-        if(language.equals("C")){
+    public static String getMessage() {
+        return message;
+    }
+
+    public static byte getLanguageByte() {
+        if (language.equals("C")) {
             return Const.C;
-        }
-        else if(language.equals("Cpp")){
+        } else if (language.equals("Cpp")) {
             return Const.CPP;
-        }
-        else{
+        } else {
             return Const.JAVA;
         }
     }
@@ -459,9 +466,10 @@ public class Control {
     private static String code;
     private static String result;
     private static String testOut;
+    private static String message;
     private static MainFrame frame;
+    private static LoginFrame loginframe;
     private static boolean islogined;
     private static PaperPanel paperpanel;
-    private static SubmissionFrame subFrame;
-
+    //private static SubmissionFrame subFrame;
 }

@@ -41,6 +41,28 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCB_LanguageActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="JB_New">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="New"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_NewActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JB_Open">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Open"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_OpenActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JButton" name="JB_Save">
           <Properties>
             <Property name="text" type="java.lang.String" value="Save"/>
@@ -71,6 +93,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_SubmitActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JB_Status">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_StatusActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

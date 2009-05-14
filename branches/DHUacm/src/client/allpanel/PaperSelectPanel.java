@@ -6,33 +6,20 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
     /** Creates new form PaperSelectPanel */
     private javax.swing.JDialog dialog;
-    private PaperPanel paperpanel;
 
-    public PaperSelectPanel(javax.swing.JDialog d, PaperPanel p) {
+    public PaperSelectPanel(javax.swing.JDialog d) {
         initComponents();
         dialog = d;
-        paperpanel = p;
         try {
             java.io.File dir = new java.io.File("./paper");
             String[] files = dir.list();
-            if (Control.getModel().equals("Net")) {
-                for (int i = 0; i < files.length; i++) {
-                    java.io.File file = new java.io.File(dir, files[i]);
-                    if (file.getName().indexOf("a+b") == -1) {
-                        JCB_Paper.addItem(file.getName());
-                    }
-                }
-            } else {
-                for (int i = 0; i < files.length; i++) {
-                    java.io.File file = new java.io.File(dir, files[i]);
-                    String str = file.getName();
-
-                    if (str.indexOf("a+b") == -1 && str.indexOf("contest") == -1) {
-                        JCB_Paper.addItem(file.getName());
-                    }
+            for (int i = 0; i < files.length; i++) {
+                java.io.File file = new java.io.File(dir, files[i]);
+                String name = file.getName();
+                if (name.indexOf("a+b") == -1 && name.indexOf("xml") != -1) {
+                    JCB_Paper.addItem(file.getName());
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,12 +59,11 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
     private void JB_GetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetActionPerformed
         //if (JPF_Password.getText().equals("acm426")) {
-            Control.setPaper(JCB_Paper.getSelectedItem().toString());
-            paperpanel.setPaper();
-            dialog.dispose();
-        //} else {
-        //    Control.getMainFrame().smallDialog("       Wrong Password!", "Error", 0);
-        //}
+        dialog.dispose();
+        Control.setPaper(JCB_Paper.getSelectedItem().toString());
+    //} else {
+    //    Control.getMainFrame().smallDialog("       Wrong Password!", "Error", 0);
+    //}
     }//GEN-LAST:event_JB_GetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,33 +17,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
-              <Component id="TF_ID" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="TF_Nick" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="TF_Pwd" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" max="32767" attributes="1"/>
+                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="JB_Reset" alignment="0" max="32767" attributes="1"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="JB_Register" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
-              <Component id="TF_Email" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
-              <Component id="TF_Sch" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="JB_Register" alignment="0" pref="141" max="32767" attributes="0"/>
+                  <Component id="TF_ID" alignment="0" pref="141" max="32767" attributes="0"/>
+                  <Component id="TF_Email" alignment="0" pref="141" max="32767" attributes="0"/>
+                  <Component id="TF_Sch" alignment="0" pref="141" max="32767" attributes="0"/>
+                  <Component id="JPF_Pwd" alignment="1" pref="141" max="32767" attributes="0"/>
+                  <Component id="TF_Nick" alignment="0" pref="141" max="32767" attributes="0"/>
+                  <Component id="JPF_RPwd" alignment="1" pref="141" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,20 +54,28 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_Pwd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JPF_Pwd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_Email" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JPF_RPwd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_Sch" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_Sch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_Email" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="JB_Register" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="JB_Register" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JB_Reset" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,7 +83,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NickName :"/>
+        <Property name="text" type="java.lang.String" value="Nick Name :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -107,32 +107,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TF_ID">
-      <Properties>
-        <Property name="columns" type="int" value="10"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TF_Nick">
-      <Properties>
-        <Property name="columns" type="int" value="10"/>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="TF_Pwd">
-      <Properties>
-        <Property name="columns" type="int" value="10"/>
-      </Properties>
+    <Component class="javax.swing.JPasswordField" name="JPF_Pwd">
     </Component>
     <Component class="javax.swing.JTextField" name="TF_Sch">
-      <Properties>
-        <Property name="columns" type="int" value="10"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TF_SchActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TF_Email">
-      <Properties>
-        <Property name="columns" type="int" value="10"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="JB_Register">
       <Properties>
@@ -140,6 +125,21 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_RegisterActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Repeat Password :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="JPF_RPwd">
+    </Component>
+    <Component class="javax.swing.JButton" name="JB_Reset">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reset"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_ResetActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

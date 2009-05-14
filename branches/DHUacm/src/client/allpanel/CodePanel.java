@@ -31,10 +31,13 @@ public class CodePanel extends javax.swing.JPanel {
 
         jToolBar = new javax.swing.JToolBar();
         JCB_Language = new javax.swing.JComboBox();
+        JB_New = new javax.swing.JButton();
+        JB_Open = new javax.swing.JButton();
         JB_Save = new javax.swing.JButton();
         JB_Compile = new javax.swing.JButton();
         JB_Test = new javax.swing.JButton();
         JB_Submit = new javax.swing.JButton();
+        JB_Status = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         JSP_Code = new javax.swing.JScrollPane();
         JEP_Tmep = new javax.swing.JEditorPane();
@@ -54,6 +57,28 @@ public class CodePanel extends javax.swing.JPanel {
             }
         });
         jToolBar.add(JCB_Language);
+
+        JB_New.setText("New");
+        JB_New.setFocusable(false);
+        JB_New.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_New.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_NewActionPerformed(evt);
+            }
+        });
+        jToolBar.add(JB_New);
+
+        JB_Open.setText("Open");
+        JB_Open.setFocusable(false);
+        JB_Open.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Open.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_OpenActionPerformed(evt);
+            }
+        });
+        jToolBar.add(JB_Open);
 
         JB_Save.setText("Save");
         JB_Save.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +111,17 @@ public class CodePanel extends javax.swing.JPanel {
             }
         });
         jToolBar.add(JB_Submit);
+
+        JB_Status.setText("Status");
+        JB_Status.setFocusable(false);
+        JB_Status.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Status.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_StatusActionPerformed(evt);
+            }
+        });
+        jToolBar.add(JB_Status);
 
         add(jToolBar, java.awt.BorderLayout.NORTH);
 
@@ -161,9 +197,25 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void JB_TestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TestActionPerformed
         JTP_Info.setSelectedIndex(1);
     }//GEN-LAST:event_JB_TestActionPerformed
+
+    private void JB_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_StatusActionPerformed
+        Control.getMainFrame().showStatus();
+}//GEN-LAST:event_JB_StatusActionPerformed
+
+    private void JB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_NewActionPerformed
+        Control.getMainFrame().NewCodePanel();
+}//GEN-LAST:event_JB_NewActionPerformed
+
+    private void JB_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OpenActionPerformed
+        Control.getMainFrame().OpenCodePanel();
+    }//GEN-LAST:event_JB_OpenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Compile;
+    private javax.swing.JButton JB_New;
+    private javax.swing.JButton JB_Open;
     private javax.swing.JButton JB_Save;
+    private javax.swing.JButton JB_Status;
     private javax.swing.JButton JB_Submit;
     private javax.swing.JButton JB_Test;
     private javax.swing.JComboBox JCB_Language;
