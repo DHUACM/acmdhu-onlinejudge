@@ -76,9 +76,7 @@ public class SubmitPanel extends javax.swing.JPanel {
     private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SubmitActionPerformed
         dialog.dispose();
         try {
-            String temp = JCB_Paper.getSelectedItem().toString();
-            temp = temp.substring(0, temp.length() - ".xml".length());
-            RunSubmit runSubmit = new RunSubmit(temp, JCB_Problem.getSelectedIndex(),JCB_Problem.getSelectedItem().toString());
+            RunSubmit runSubmit = new RunSubmit(JCB_Problem.getSelectedIndex(),JCB_Problem.getSelectedItem().toString());
             Thread thread = new Thread(runSubmit);
             thread.start();
         } catch (Exception e) {

@@ -25,12 +25,7 @@ public class LoginFrame extends MyFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         java.awt.Dimension dialogSize = this.getSize();
         this.setLocation((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2);
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new MainFrame();
-            }
-        });
+        new MainFrame();
     }
 
     /** This method is called from within the constructor to
@@ -42,24 +37,32 @@ public class LoginFrame extends MyFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JP_Left = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        JB_Register = new javax.swing.JButton();
+        JB_Help = new javax.swing.JButton();
+        JP_Right = new javax.swing.JPanel();
         JF_UserID = new javax.swing.JTextField();
         JPF_Password = new javax.swing.JPasswordField();
-        JB_Register = new javax.swing.JButton();
-        JB_Login = new javax.swing.JButton();
         JCB_Model = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        JB_Help = new javax.swing.JButton();
+        JB_Login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        JB_Local = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DHUacm");
 
+        JP_Left.setLayout(new java.awt.GridLayout(5, 1));
+
         jLabel1.setText("User ID:");
+        JP_Left.add(jLabel1);
 
         jLabel2.setText("Password:");
+        JP_Left.add(jLabel2);
+
+        jLabel3.setText("Model:");
+        JP_Left.add(jLabel3);
 
         JB_Register.setText("Register");
         JB_Register.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +70,26 @@ public class LoginFrame extends MyFrame {
                 JB_RegisterActionPerformed(evt);
             }
         });
+        JP_Left.add(JB_Register);
+
+        JB_Help.setText("Help");
+        JP_Left.add(JB_Help);
+
+        getContentPane().add(JP_Left, java.awt.BorderLayout.WEST);
+
+        JP_Right.setLayout(new java.awt.GridLayout(5, 1));
+
+        JF_UserID.setColumns(20);
+        JP_Right.add(JF_UserID);
+        JP_Right.add(JPF_Password);
+
+        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Trainer-Net", "Examination", "Contest", "Trainer-Local" }));
+        JCB_Model.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCB_ModelActionPerformed(evt);
+            }
+        });
+        JP_Right.add(JCB_Model);
 
         JB_Login.setText("Login");
         JB_Login.addActionListener(new java.awt.event.ActionListener() {
@@ -74,75 +97,13 @@ public class LoginFrame extends MyFrame {
                 JB_LoginActionPerformed(evt);
             }
         });
-
-        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Trainer-Net", "Contest", "Examination" }));
-        JCB_Model.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JCB_ModelActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Model:");
-
-        JB_Help.setText("Help");
+        JP_Right.add(JB_Login);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("DHUacm_version3.0 ");
+        JP_Right.add(jLabel4);
 
-        JB_Local.setText("Trainer-Local");
-        JB_Local.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_LocalActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(JB_Help, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JB_Register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JF_UserID, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addComponent(JPF_Password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addComponent(JCB_Model, javax.swing.GroupLayout.Alignment.TRAILING, 0, 269, Short.MAX_VALUE)
-                    .addComponent(JB_Login, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JB_Local)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(JF_UserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(JPF_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(JCB_Model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JB_Register)
-                    .addComponent(JB_Login))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JB_Help)
-                    .addComponent(jLabel4)
-                    .addComponent(JB_Local)))
-        );
+        getContentPane().add(JP_Right, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,26 +115,26 @@ public class LoginFrame extends MyFrame {
     }//GEN-LAST:event_JB_RegisterActionPerformed
 
     private void JB_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LoginActionPerformed
-        boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
-        if (ans) {
+        if (model.indexOf("Local") != -1) {
             Control.setModel(model);
-            smallDialog(Control.getMessage(), "Done", 1);
             this.setVisible(false);
             Control.getMainFrame().setVisible(true);
         } else {
-            smallDialog(Control.getMessage(), "Error", 0);
+            boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
+            if (ans) {
+                Control.setModel(model);
+                smallDialog(Control.getMessage(), "Done", 1);
+                this.setVisible(false);
+                Control.getMainFrame().setVisible(true);
+            } else {
+                smallDialog(Control.getMessage(), "Error", 0);
+            }
         }
     }//GEN-LAST:event_JB_LoginActionPerformed
 
     private void JCB_ModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_ModelActionPerformed
         model = JCB_Model.getSelectedItem().toString();
 }//GEN-LAST:event_JCB_ModelActionPerformed
-
-    private void JB_LocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LocalActionPerformed
-        Control.setModel("Trainer-Local");
-        this.setVisible(false);
-        Control.getMainFrame().setVisible(true);
-}//GEN-LAST:event_JB_LocalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,12 +150,13 @@ public class LoginFrame extends MyFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Help;
-    private javax.swing.JButton JB_Local;
     private javax.swing.JButton JB_Login;
     private javax.swing.JButton JB_Register;
     private javax.swing.JComboBox JCB_Model;
     private javax.swing.JTextField JF_UserID;
     private javax.swing.JPasswordField JPF_Password;
+    private javax.swing.JPanel JP_Left;
+    private javax.swing.JPanel JP_Right;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

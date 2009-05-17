@@ -20,7 +20,7 @@ public class RunProgram extends Thread {
         sourcelanguage = "";
     }
 
-    public void destroyPro() {
+    public void destroy() {
         try {
             runresult = false;
             runinfo = "Time Limit Exceeded";

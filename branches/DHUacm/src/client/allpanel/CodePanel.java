@@ -14,11 +14,18 @@ public class CodePanel extends javax.swing.JPanel {
         tabbedPane = jtp;
         JSP_Code.setViewportView(JEP_Code);
         JEP_Code = new ClipTextArea(JSP_Code);
-        JTP_Info.addTab("Test", new TestPanel());
+        file = new File(title);
+        line = System.getProperty("line.separator");
     }
 
     public void setCode(String str) {
         JEP_Code.setText(str);
+    }
+
+    public void Save() throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+        out.write(JEP_Code.getText());
+        out.close();
     }
 
     /** This method is called from within the constructor to
@@ -29,7 +36,7 @@ public class CodePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar = new javax.swing.JToolBar();
+        TB_Code = new javax.swing.JToolBar();
         JCB_Language = new javax.swing.JComboBox();
         JB_New = new javax.swing.JButton();
         JB_Open = new javax.swing.JButton();
@@ -42,13 +49,28 @@ public class CodePanel extends javax.swing.JPanel {
         JSP_Code = new javax.swing.JScrollPane();
         JEP_Tmep = new javax.swing.JEditorPane();
         JTP_Info = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        JP_CompileInfo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTA_CompileInfo = new javax.swing.JTextArea();
+        JP_Test = new javax.swing.JPanel();
+        TB_Test = new javax.swing.JToolBar();
+        JB_RunTest = new javax.swing.JButton();
+        JB_Clear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        TF_Time = new javax.swing.JTextField();
+        jPanelAll = new javax.swing.JPanel();
+        JP_Left = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTA_In = new javax.swing.JTextArea();
+        JP_Right = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTA_Out = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
-        jToolBar.setFloatable(false);
+        TB_Code.setFloatable(false);
 
         JCB_Language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cpp", "C", "Java" }));
         JCB_Language.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +78,7 @@ public class CodePanel extends javax.swing.JPanel {
                 JCB_LanguageActionPerformed(evt);
             }
         });
-        jToolBar.add(JCB_Language);
+        TB_Code.add(JCB_Language);
 
         JB_New.setText("New");
         JB_New.setFocusable(false);
@@ -67,7 +89,7 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_NewActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_New);
+        TB_Code.add(JB_New);
 
         JB_Open.setText("Open");
         JB_Open.setFocusable(false);
@@ -78,15 +100,15 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_OpenActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Open);
+        TB_Code.add(JB_Open);
 
-        JB_Save.setText("Save");
+        JB_Save.setText("SaveAs");
         JB_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_SaveActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Save);
+        TB_Code.add(JB_Save);
 
         JB_Compile.setText("Compile");
         JB_Compile.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +116,7 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_CompileActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Compile);
+        TB_Code.add(JB_Compile);
 
         JB_Test.setText("Test");
         JB_Test.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +124,7 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_TestActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Test);
+        TB_Code.add(JB_Test);
 
         JB_Submit.setText("Submit");
         JB_Submit.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +132,7 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_SubmitActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Submit);
+        TB_Code.add(JB_Submit);
 
         JB_Status.setText("Status");
         JB_Status.setFocusable(false);
@@ -121,9 +143,9 @@ public class CodePanel extends javax.swing.JPanel {
                 JB_StatusActionPerformed(evt);
             }
         });
-        jToolBar.add(JB_Status);
+        TB_Code.add(JB_Status);
 
-        add(jToolBar, java.awt.BorderLayout.NORTH);
+        add(TB_Code, java.awt.BorderLayout.NORTH);
 
         jSplitPane1.setDividerLocation(300);
         jSplitPane1.setDividerSize(7);
@@ -134,15 +156,77 @@ public class CodePanel extends javax.swing.JPanel {
 
         jSplitPane1.setTopComponent(JSP_Code);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        JP_CompileInfo.setLayout(new java.awt.BorderLayout());
 
         JTA_CompileInfo.setColumns(20);
         JTA_CompileInfo.setRows(5);
         jScrollPane1.setViewportView(JTA_CompileInfo);
 
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        JP_CompileInfo.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        JTP_Info.addTab("CompileInformation", jPanel1);
+        JTP_Info.addTab("CompileInformation", JP_CompileInfo);
+
+        JP_Test.setLayout(new java.awt.BorderLayout());
+
+        TB_Test.setFloatable(false);
+
+        JB_RunTest.setText("Compile&RunTest");
+        JB_RunTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_RunTestActionPerformed(evt);
+            }
+        });
+        TB_Test.add(JB_RunTest);
+
+        JB_Clear.setText("Clear");
+        JB_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ClearActionPerformed(evt);
+            }
+        });
+        TB_Test.add(JB_Clear);
+
+        jLabel1.setText("Time_Limit(sec) : ");
+        TB_Test.add(jLabel1);
+
+        TF_Time.setText("5");
+        TB_Test.add(TF_Time);
+
+        JP_Test.add(TB_Test, java.awt.BorderLayout.NORTH);
+
+        jPanelAll.setLayout(new java.awt.GridLayout(1, 2));
+
+        JP_Left.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setText("Test In:");
+        JP_Left.add(jLabel2, java.awt.BorderLayout.NORTH);
+
+        JTA_In.setColumns(20);
+        JTA_In.setFont(new java.awt.Font("DialogInput", 0, 13));
+        JTA_In.setRows(5);
+        jScrollPane2.setViewportView(JTA_In);
+
+        JP_Left.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        jPanelAll.add(JP_Left);
+
+        JP_Right.setLayout(new java.awt.BorderLayout());
+
+        JTA_Out.setColumns(20);
+        JTA_Out.setFont(new java.awt.Font("DialogInput", 0, 13));
+        JTA_Out.setRows(5);
+        jScrollPane3.setViewportView(JTA_Out);
+
+        JP_Right.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jLabel3.setText("RunTest Result:");
+        JP_Right.add(jLabel3, java.awt.BorderLayout.NORTH);
+
+        jPanelAll.add(JP_Right);
+
+        JP_Test.add(jPanelAll, java.awt.BorderLayout.CENTER);
+
+        JTP_Info.addTab("Test", JP_Test);
 
         jSplitPane1.setRightComponent(JTP_Info);
 
@@ -151,20 +235,15 @@ public class CodePanel extends javax.swing.JPanel {
 
 private void JB_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveActionPerformed
     javax.swing.JFileChooser chooser = new javax.swing.JFileChooser("./");
-    chooser.setSelectedFile(new File(name + "." + language.toLowerCase()));
+    chooser.setSelectedFile(new File(name));
     if (chooser.showSaveDialog(this) == javax.swing.JFileChooser.APPROVE_OPTION) {
         try {
-            File file = chooser.getSelectedFile();
+            file = chooser.getSelectedFile();
             name = file.getName();
-            if (name.indexOf(".") != -1) {
-                name = name.substring(0, name.indexOf("."));
-            }
             tabbedPane.setTitleAt(panelint, name);
-            BufferedWriter out = new BufferedWriter(new FileWriter(file));
-            out.write(JEP_Code.getText());
-            out.close();
+            Save();
         } catch (Exception ex) {
-            Control.getMainFrame().smallDialog("Save Failed!", "Error", 0);
+            Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
         }
     }
 }//GEN-LAST:event_JB_SaveActionPerformed
@@ -175,19 +254,28 @@ private void JB_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_JCB_LanguageActionPerformed
 
 private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SubmitActionPerformed
-    Control.setSingleAnswerDoc(name, language, JEP_Code.getText());
-    javax.swing.JDialog dialog = new javax.swing.JDialog();
-    SubmitPanel submitpanel = new SubmitPanel(dialog);
-    Control.getMainFrame().newDialog(dialog, submitpanel, "Submit");
+    try {
+        Save();
+        Control.setLanguage(language);
+        Control.setCode(JEP_Code.getText() + line);
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        SubmitPanel submitpanel = new SubmitPanel(dialog);
+        Control.getMainFrame().newDialog(dialog, submitpanel, "Submit");
+    } catch (Exception e) {
+        Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
+    }
 }//GEN-LAST:event_JB_SubmitActionPerformed
 
     private void JB_CompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CompileActionPerformed
         try {
+            Save();
             JTA_CompileInfo.setText("Compiling~~~");
-            Control.setSingleAnswerDoc(name, language, JEP_Code.getText());
+            Control.setLanguage(language);
+            Control.setCode(JEP_Code.getText() + line);
             Control.Compile();
             JTA_CompileInfo.setText(Control.getCompileOut());
-            System.out.println(Control.getCompileOut());
+        } catch (IOException ioe) {
+            Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
         } catch (Exception e) {
             e.printStackTrace();
             JTA_CompileInfo.setText("Set your Compile Path~");
@@ -210,27 +298,71 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Control.getMainFrame().OpenCodePanel();
     }//GEN-LAST:event_JB_OpenActionPerformed
 
+    private void JB_RunTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_RunTestActionPerformed
+        try {
+            Save();
+            JTA_CompileInfo.setText("Compiling~~~");
+            Control.setLanguage(language);
+            Control.setCode(JEP_Code.getText() + line);
+            long tl = Long.parseLong(TF_Time.getText());
+            Control.RunTest(JTA_In.getText(), tl);
+
+            JTA_CompileInfo.setText(Control.getCompileOut());
+            JTA_Out.setText(Control.getTestOut());
+        } catch (IOException ioe) {
+            Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
+        } catch (NumberFormatException ne) {
+            JTA_Out.setText("TimeLimit Error!\nIt isn't a number!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JTA_CompileInfo.setText("Set your Compile Path!");
+        }
+
+}//GEN-LAST:event_JB_RunTestActionPerformed
+
+    private void JB_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ClearActionPerformed
+        JTA_In.setText("");
+        JTA_Out.setText("");
+}//GEN-LAST:event_JB_ClearActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JB_Clear;
     private javax.swing.JButton JB_Compile;
     private javax.swing.JButton JB_New;
     private javax.swing.JButton JB_Open;
+    private javax.swing.JButton JB_RunTest;
     private javax.swing.JButton JB_Save;
     private javax.swing.JButton JB_Status;
     private javax.swing.JButton JB_Submit;
     private javax.swing.JButton JB_Test;
     private javax.swing.JComboBox JCB_Language;
     private javax.swing.JEditorPane JEP_Tmep;
+    private javax.swing.JPanel JP_CompileInfo;
+    private javax.swing.JPanel JP_Left;
+    private javax.swing.JPanel JP_Right;
+    private javax.swing.JPanel JP_Test;
     private javax.swing.JScrollPane JSP_Code;
     private javax.swing.JTextArea JTA_CompileInfo;
+    private javax.swing.JTextArea JTA_In;
+    private javax.swing.JTextArea JTA_Out;
     private javax.swing.JTabbedPane JTP_Info;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar TB_Code;
+    private javax.swing.JToolBar TB_Test;
+    private javax.swing.JTextField TF_Time;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanelAll;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
     private String language = "Cpp";
     private String name;
     private int panelint;
     private javax.swing.JTabbedPane tabbedPane;
     private ClipTextArea JEP_Code;
+    private File file;
+    private String line;
 }

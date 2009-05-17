@@ -9,6 +9,7 @@ public class ReadInputStream extends Thread {
         content = "";
     }
 
+    @Override
     public void run() {
         StringBuffer buffer = new StringBuffer();
         try {
@@ -27,7 +28,6 @@ public class ReadInputStream extends Thread {
             System.out.println(IOE.toString());
         }
         content = buffer.toString();
-        System.gc();
     }
 
     public String getMessage() {

@@ -16,29 +16,27 @@ public class MainFrame extends MyFrame {
         Control.setMainFrame(this);
         JP_Paper.add(paperpanel, java.awt.BorderLayout.CENTER);
         int i = Control.getAllcodecnt();
-        String title = "Code00";
+        String title = "A";
         codenum = 1;
         JTP_Code.add(title, new CodePanel(title, i, JTP_Code));
         JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
+        cowName = new String[]{
+                    "QueryID", "ContestID", "Problem", "Verdict", "Language", "RunTime(ms)", "SubmitTime"
+                };
         Table.setModel(dtb = new javax.swing.table.DefaultTableModel(
                 new Object[][]{ //{null, null, null, null, null, null, null}
-                },
-                new String[]{
-                    "#", "ContestID", "ProblemID", "Verdict", "Language", "Run Time(ms)", "Submission Date"
-                }) {
+                }, cowName) {
 
             Class[] types = new Class[]{
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
+            @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
         });
         Table.setEnabled(false);
-
-
-
         Control.setPaper("a+b.xml");
         paperpanel.setPaper();
     }
@@ -60,6 +58,13 @@ public class MainFrame extends MyFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         MenuBar = new javax.swing.JMenuBar();
+        JM_Tool1 = new javax.swing.JMenu();
+        JMI_New = new javax.swing.JMenuItem();
+        JMI_Open = new javax.swing.JMenuItem();
+        JMI_Save = new javax.swing.JMenuItem();
+        JMI_SaveAs = new javax.swing.JMenuItem();
+        JMI_Logout = new javax.swing.JMenuItem();
+        JMI_Exit = new javax.swing.JMenuItem();
         JM_Tool = new javax.swing.JMenu();
         JMI_SetEnv = new javax.swing.JMenuItem();
         JMI_SetFile = new javax.swing.JMenuItem();
@@ -101,6 +106,51 @@ public class MainFrame extends MyFrame {
 
         getContentPane().add(TP_Main, java.awt.BorderLayout.CENTER);
 
+        JM_Tool1.setText("File");
+
+        JMI_New.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        JMI_New.setText("New");
+        JMI_New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMI_NewActionPerformed(evt);
+            }
+        });
+        JM_Tool1.add(JMI_New);
+
+        JMI_Open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        JMI_Open.setText("Open");
+        JMI_Open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMI_OpenActionPerformed(evt);
+            }
+        });
+        JM_Tool1.add(JMI_Open);
+
+        JMI_Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMI_Save.setText("Save");
+        JMI_Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMI_SaveActionPerformed(evt);
+            }
+        });
+        JM_Tool1.add(JMI_Save);
+
+        JMI_SaveAs.setText("Save As");
+        JMI_SaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMI_SaveAsActionPerformed(evt);
+            }
+        });
+        JM_Tool1.add(JMI_SaveAs);
+
+        JMI_Logout.setText("Logout");
+        JM_Tool1.add(JMI_Logout);
+
+        JMI_Exit.setText("Exit");
+        JM_Tool1.add(JMI_Exit);
+
+        MenuBar.add(JM_Tool1);
+
         JM_Tool.setText("Tool");
 
         JMI_SetEnv.setText("SetCompilerPath");
@@ -118,6 +168,7 @@ public class MainFrame extends MyFrame {
 
         JM_Help.setText("Help");
 
+        JMI_Help.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         JMI_Help.setText("Help");
         JMI_Help.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +185,7 @@ public class MainFrame extends MyFrame {
         setJMenuBar(MenuBar);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-783)/2, (screenSize.height-569)/2, 783, 569);
+        setBounds((screenSize.width-808)/2, (screenSize.height-571)/2, 808, 571);
     }// </editor-fold>//GEN-END:initComponents
 
 private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SetEnvActionPerformed
@@ -146,17 +197,50 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void JMI_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_HelpActionPerformed
     }//GEN-LAST:event_JMI_HelpActionPerformed
 
+    private void JMI_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_NewActionPerformed
+        NewCodePanel();
+}//GEN-LAST:event_JMI_NewActionPerformed
+
+    private void JMI_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_OpenActionPerformed
+        OpenCodePanel();
+    }//GEN-LAST:event_JMI_OpenActionPerformed
+
+    private void JMI_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SaveActionPerformed
+        CodePanel cp = (CodePanel) JTP_Code.getSelectedComponent();
+        if (cp != null) {
+            try {
+                cp.Save();
+            } catch (Exception e) {
+                smallDialog("Save File Error!", "Error", 0);
+            }
+        }
+    }//GEN-LAST:event_JMI_SaveActionPerformed
+
+    private void JMI_SaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SaveAsActionPerformed
+        CodePanel cp = (CodePanel) JTP_Code.getSelectedComponent();
+        if (cp != null) {
+            try {
+            } catch (Exception e) {
+                smallDialog("Save File Error!", "Error", 0);
+            }
+        }
+
+    }//GEN-LAST:event_JMI_SaveAsActionPerformed
+
     public void NewCodePanel() {
         int i = Control.getAllcodecnt();
-        String title = "Code";
-        if (codenum < 10) {
-            title += "0" + codenum;
+        String title;
+        char c = 'A';
+        c += codenum;
+        if (codenum < 26) {
+            title = "" + c;
         } else {
-            title += codenum;
+            title = "" + codenum;
         }
         codenum++;
         JTP_Code.add(title, new CodePanel(title, i, JTP_Code));
         JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
+        JTP_Code.setSelectedIndex(i);
     }
 
     public void OpenCodePanel() {
@@ -166,6 +250,7 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 String fileName = chooser.getSelectedFile().getPath();
                 java.io.File file = new java.io.File(fileName);
                 int fileSize = (int) file.length();
+
                 int charReaded = 0;
                 java.io.FileReader in = new java.io.FileReader(file);
                 char[] data = new char[fileSize];
@@ -173,24 +258,49 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     charReaded += in.read(data, charReaded, fileSize - charReaded);
                 }
                 in.close();
-                String SourceCode = "";
+                StringBuffer SourceCode = new StringBuffer();
                 for (int i = 0; i < charReaded; i++) {
-                    SourceCode += data[i];
+                    SourceCode.append(data[i]);
                 }
+
                 int i = Control.getAllcodecnt();
                 String title = file.getName();
-                if (title.indexOf(".") != -1) {
-                    title = title.substring(0, title.indexOf("."));
-                }
                 CodePanel cp = new CodePanel(title, i, JTP_Code);
-                cp.setCode(SourceCode);
+                cp.setCode(SourceCode.toString());
                 JTP_Code.add(title, cp);
                 JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
-
+                JTP_Code.setSelectedIndex(i);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public void deleteqid(Integer qid) {
+        int len = dtb.getRowCount();
+        for (int i = 0; i < len; i++) {
+            Integer id = (Integer) dtb.getValueAt(i, 0);
+            if (qid.equals(id)) {
+                dtb.removeRow(i);
+                break;
+            }
+        }
+        Table.repaint();
+    }
+
+    public String getRowString(Integer qid) {
+        String ans = "";
+        int len = dtb.getRowCount();
+        for (int i = 0; i < len; i++) {
+            Integer id = (Integer) dtb.getValueAt(i, 0);
+            if (qid.equals(id)) {
+                for (int j = 2; j < cowName.length-1; j++) {
+                    ans += String.format("%s : %s\n", cowName[j], dtb.getValueAt(i, j));
+                }
+                break;
+            }
+        }
+        return ans;
     }
 
     public void updateRow(Object[] row) {
@@ -220,17 +330,24 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         TP_Main.setSelectedIndex(1);
     }
 
-    public void setPaper(){
+    public void setPaper() {
         paperpanel.setPaper();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMI_About;
+    private javax.swing.JMenuItem JMI_Exit;
     private javax.swing.JMenuItem JMI_Help;
+    private javax.swing.JMenuItem JMI_Logout;
+    private javax.swing.JMenuItem JMI_New;
+    private javax.swing.JMenuItem JMI_Open;
+    private javax.swing.JMenuItem JMI_Save;
+    private javax.swing.JMenuItem JMI_SaveAs;
     private javax.swing.JMenuItem JMI_SetEnv;
     private javax.swing.JMenuItem JMI_SetFile;
     private javax.swing.JMenu JM_Help;
     private javax.swing.JMenu JM_Tool;
+    private javax.swing.JMenu JM_Tool1;
     private javax.swing.JPanel JP_Coding;
     private javax.swing.JPanel JP_Paper;
     private javax.swing.JPanel JP_Status;
@@ -242,8 +359,7 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private PaperPanel paperpanel;
-    private static java.util.Timer t1;
-    private static java.util.Timer t2;
     private int codenum;
     public javax.swing.table.DefaultTableModel dtb;
+    private String[] cowName;
 }

@@ -5,28 +5,52 @@ package config;
  * @author
  */
 public class Const {
-    /**VERDICT: WAIT=0,QUEUE=1,AC=2,WA=3,TLE=4,MLE=5,PE=6,RE=7,CE=8*/
-    public static final String[] VERDICT = {"WAIT", "QUEUE", "AC", "WA", "TLE", "MLE", "PE", "RE", "CE"};
+
+    /**Verdict to short*/
+    public static final short getVerdictShort(String v) {
+        short ans = 0;
+        for (short i = 0; i < VERDICT.length; i++) {
+            if (v.equalsIgnoreCase(VERDICT[i])) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
+    }
     /**判题结果：等待*/
     public static final String WAIT = "WAIT";
     /**判题结果：队列，待判*/
     public static final String QUEUE = "QUEUE";
     /**判题结果：通过*/
-    public static final String AC = "AC";
+    public static final String AC = "Accepted";
     /**判题结果：答案错误*/
-    public static final String WA = "WA";
+    public static final String WA = "Wrong Answer";
     /**判题结果：超时*/
-    public static final String TLE = "TLE";
+    public static final String TLE = "Time Limit Exceeded";
     /**判题结果：超内存*/
-    public static final String MLE = "MLE";
+    public static final String MLE = "Memory Limit Exceeded";
     /**判题结果：运行时错误*/
-    public static final String PE = "PE";
+    public static final String PE = "Presentation Error";
     /**判题结果：运行时错误*/
-    public static final String RE = "RE";
+    public static final String RE = "Runtime Error";
     /**判题结果：编译错误*/
-    public static final String CE = "CE";
+    public static final String CE = "Compile Error";
+    /**VERDICT: WAIT=0,QUEUE=1,AC=2,WA=3,TLE=4,MLE=5,PE=6,RE=7,CE=8*/
+    public static final String[] VERDICT = {WAIT, QUEUE, AC, WA, TLE, MLE, PE, RE, CE};
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
-    public static final String[] LANGUAGE ={"","C","CPP","JAVA"};
+    public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
+
+    /**Language to byte*/
+    public static final byte getLanguageByte(String l) {
+        byte ans = 0;
+        for (byte i = 0; i < LANGUAGE.length; i++) {
+            if (l.equalsIgnoreCase(LANGUAGE[i])) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
+    }
     /**语言类型，C语言*/
     public static final byte C = 1;
     /**语言类型，C++*/
@@ -79,4 +103,6 @@ public class Const {
     public static final long SLEEPTIME = 10000;
     /**Output File Size*/
     public static final long FILEMAXSIZE = 512L;
+    /**Compile Name*/
+    public static final String COMPILENAME = "Main";
 }

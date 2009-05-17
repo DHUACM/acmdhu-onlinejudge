@@ -1,22 +1,25 @@
-
 package judge;
+
+import config.Const;
 
 public class CheckAnswer {
 
-    public CheckAnswer() {
-        checkresult = false;
-        checkinfo = "";
-        stdans = "";
-        checkedans = "";
-        offset = 0;
+    public CheckAnswer(String out, String ans) {
+        this.out = out;
+        this.ans = ans;
     }
 
-    public void setStandarAnswer(String s) {
-        stdans = s;
+    public CheckAnswer() {
+        out = "";
+        ans = "";
     }
 
     public void setAnswer(String s) {
-        checkedans = s;
+        out = s;
+    }
+
+    public void setStandarAnswer(String s) {
+        ans = s;
     }
 
     private String removeSP(String s) {
@@ -31,58 +34,63 @@ public class CheckAnswer {
         return temp;
     }
 
-    private void compare(String std, String ans) {
-        int stdlen = std.length();
-        int anslen = ans.length();
-        int len = stdlen <= anslen ? stdlen : anslen;
-        for (int i = 0; i < len; i++) {
-            offset++;
-            if (std.charAt(i) != ans.charAt(i)) {
-                return;
-            }
-        }
-
-    }
-
     public void AnswerCheck() {
-        int len1 = stdans.length();
-        int len2 = checkedans.length();
-        if (stdans.compareTo(checkedans) == 0) {
-            checkresult = true;
-            checkinfo = String.valueOf(String.valueOf(checkinfo)).concat("Accepted");
-            return;
-        }
-        if (len2 == len1) {
-            if (stdans.compareTo(checkedans) != 0) {
-                checkinfo = String.valueOf(String.valueOf(checkinfo)).concat("Wrong Answer");
+        verdict = Const.WA;
+        int len1 = ans.length();
+        int len2 = out.length();
+        int samenum = 0;
+        for (int i = 0; i < Math.min(len1, len2); i++) {
+            if (ans.charAt(i) == out.charAt(i)) {
+                samenum++;
             }
+        }
+        percent = samenum * 100 / Math.max(len1, len2);
+        if (samenum == Math.max(len1, len2)) {
+            verdict = Const.AC;
         } else {
-            stdans = removeSP(stdans);
-            checkedans = removeSP(checkedans);
-            if (stdans.compareTo(checkedans) != 0) {
-                checkinfo = String.valueOf(String.valueOf(checkinfo)).concat("Wrong Answer");
-            } else {
-                checkinfo = String.valueOf(String.valueOf(checkinfo)).concat("Presentation Error");
+            ans = removeSP(ans);
+            out = removeSP(out);
+            if (ans.equals(out)) {
+                verdict = Const.PE;
             }
-            return;
         }
+
     }
 
     public int getFirstWrongplace() {
-        compare(stdans, checkedans);
+        int offset = 0;
+        int stdlen = out.length();
+        int anslen = ans.length();
+        int len = Math.min(stdlen, anslen);
+        for (int i = 0; i < len; i++) {
+            offset++;
+            if (out.charAt(i) != ans.charAt(i)) {
+                break;
+            }
+        }
         return offset;
     }
 
     public boolean getCheckResult() {
-        return checkresult;
+        if (verdict.equals(Const.AC)) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getVerdict() {
+        return verdict;
     }
 
     public String getCheckInfo() {
-        return checkinfo;
+        return verdict;
     }
-    private boolean checkresult;
-    private String checkinfo;
-    private String stdans;
-    private String checkedans;
-    private int offset;
+
+    public int getPercent() {
+        return percent;
+    }
+    private String verdict;
+    private int percent;
+    private String ans;
+    private String out;
 }

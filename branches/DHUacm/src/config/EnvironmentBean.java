@@ -135,4 +135,42 @@ public class EnvironmentBean {
     public int getSearchPathCount() {
         return this.EnvironmentRoot.getChild("SearchPath").getChildrenCount("Spath");
     }
+
+    public String getCompileCom(String lan, String file, String exe) {
+        List l = getUsage(lan);
+        String commandline = "";
+        for (int i = 1; i < l.size() - 1; i++) {
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <Path/>]") == 0) {
+                commandline += getPath(lan);
+                continue;
+            }
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <Cmd/>]") == 0) {
+                commandline += getCmd(lan);
+                continue;
+            }
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <Source/>]") == 0) {
+                commandline += getSource();
+                continue;
+            }
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <SName/>]") == 0) {
+                commandline += file;
+                commandline += getFormerSuffix(lan);
+                continue;
+            }
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <Target/>]") == 0) {
+                commandline += getTarget();
+                continue;
+            }
+            if (l.get(i).toString().compareToIgnoreCase("[Element: <TName/>]") == 0) {
+                commandline += exe;
+                commandline += getLatterSuffix(lan);
+            } else {
+                String temp = l.get(i).toString();
+                int j = temp.length();
+                temp = temp.substring(7, j - 1);
+                commandline += temp;
+            }
+        }
+        return commandline;
+    }
 }
