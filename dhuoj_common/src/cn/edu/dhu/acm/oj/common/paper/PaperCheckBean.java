@@ -10,7 +10,7 @@ public class PaperCheckBean {
   boolean  integralityFlag;
   boolean  typeFlag;
 
-  JudgeBean judgeBean;
+  //JudgeBean judgeBean;
   EnvironmentBean environmentBean;
   /**
    * �Ծ��Լ���Ĺ��캯��
@@ -20,29 +20,31 @@ public class PaperCheckBean {
     integralityFlag = false;
     typeFlag = false;
 
-    judgeBean = new JudgeBean();
+    //judgeBean = new JudgeBean();
     environmentBean = new EnvironmentBean("Environment.xml");
-    judgeBean.setEnvironmentBean(environmentBean);
+    //judgeBean.setEnvironmentBean(environmentBean);
   }
   /**
    * �����ӳ����⣭��pBean�������Ƿ�ͨ���Լ�
    **/
   public boolean checkProblem( ProblemArchiveBean pBean ){
-    judgeBean.setSolutionBean( pBean.getSolution() );
-    judgeBean.setTestDataBean( pBean.getTestData() );
-    judgeBean.judgeCheck();
-
-    System.out.println( judgeBean.getResultBean().getCompileInfo() );
-    System.out.println( judgeBean.getResultBean().getCompileResult() );
-    System.out.println( judgeBean.getResultBean().getRunInfo() );
-
-
-    if( judgeBean.getResultBean().getCheckResult() )
+      //TODO: change the old judge to new
+//    judgeBean.setSolutionBean( pBean.getSolution() );
+//    judgeBean.setTestDataBean( pBean.getTestData() );
+//    judgeBean.judgeCheck();
+//
+//    System.out.println( judgeBean.getResultBean().getCompileInfo() );
+//    System.out.println( judgeBean.getResultBean().getCompileResult() );
+//    System.out.println( judgeBean.getResultBean().getRunInfo() );
+//
+//
+//    if( judgeBean.getResultBean().getCheckResult() )
+//      return true;
+//    else{
+//      System.out.println( judgeBean.getResultBean().getCheckInfo() );
+//      return false;
+//    }
       return true;
-    else{
-      System.out.println( judgeBean.getResultBean().getCheckInfo() );
-      return false;
-    }
   }
   /**
    * ����Ծ���Ϣ��Ķ��󣭣�paperDetail�Ƿ��������Ƿ�ͨ���Լ�

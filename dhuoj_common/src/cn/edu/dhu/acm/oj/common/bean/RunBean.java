@@ -1,20 +1,15 @@
 package cn.edu.dhu.acm.oj.common.bean;
 
-import java.util.Date;
 import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class RunBean {
 
-    private int runID;
-    private int problemID;
-    private String userID;
     private short result;
     private String sourceCode;
     private String compileInfo;
     private long timeUsed;
     private long memoryUsed;
     private byte language;
-    private Date submitDate;
     private long timeLimit;
     private long memoryLimit;
     private long caseTimeLimit;
@@ -102,28 +97,12 @@ public class RunBean {
         this.percent = percent;
     }
 
-    public int getProblemID() {
-        return problemID;
-    }
-
-    public void setProblemID(int problemID) {
-        this.problemID = problemID;
-    }
-
     public short getResult() {
         return result;
     }
 
     public void setResult(short result) {
         this.result = result;
-    }
-
-    public int getRunID() {
-        return runID;
-    }
-
-    public void setRunID(int runID) {
-        this.runID = runID;
     }
 
     public String getSourceCode() {
@@ -150,14 +129,6 @@ public class RunBean {
         this.stdAns = stdAns;
     }
 
-    public Date getSubmitDate() {
-        return submitDate;
-    }
-
-    public void setSubmitDate(Date submitDate) {
-        this.submitDate = submitDate;
-    }
-
     public long getTimeLimit() {
         return timeLimit;
     }
@@ -172,13 +143,5 @@ public class RunBean {
 
     public void setTimeUsed(long timeUsed) {
         this.timeUsed = timeUsed;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 }
