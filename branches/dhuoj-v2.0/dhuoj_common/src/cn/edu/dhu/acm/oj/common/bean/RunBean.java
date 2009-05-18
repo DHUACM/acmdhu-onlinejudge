@@ -7,7 +7,7 @@ public class RunBean {
     private int runID;
     private int problemID;
     private String userID;
-    private int result;
+    private short result;
     private String sourceCode;
     private String compileInfo;
     private long timeUsed;
@@ -17,11 +17,12 @@ public class RunBean {
     private long timeLimit;
     private long memoryLimit;
     private long caseTimeLimit;
+    private String input;
+    private String output;
+    private String stdAns;
     private boolean isSpecial;
-    private String inputPath;
-    private String outputPath;
+    private String specialCode;
     private int percent;
-    private String stdCode;
 
     public long getCaseTimeLimit() {
         return caseTimeLimit;
@@ -39,12 +40,12 @@ public class RunBean {
         this.compileInfo = compileInfo;
     }
 
-    public String getInputPath() {
-        return inputPath;
+    public String getInput() {
+        return input;
     }
 
-    public void setInputPath(String inputPath) {
-        this.inputPath = inputPath;
+    public void setInput(String input) {
+        this.input = input;
     }
 
     public boolean isIsSpecial() {
@@ -79,12 +80,12 @@ public class RunBean {
         this.memoryUsed = memoryUsed;
     }
 
-    public String getOutputPath() {
-        return outputPath;
+    public String getOutput() {
+        return output;
     }
 
-    public void setOutputPath(String outputPath) {
-        this.outputPath = outputPath;
+    public void setOutput(String output) {
+        this.output = output;
     }
 
     public int getPercent() {
@@ -103,11 +104,11 @@ public class RunBean {
         this.problemID = problemID;
     }
 
-    public int getResult() {
+    public short getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(short result) {
         this.result = result;
     }
 
@@ -127,12 +128,20 @@ public class RunBean {
         this.sourceCode = sourceCode;
     }
 
-    public String getStdCode() {
-        return stdCode;
+    public String getSpecialCode() {
+        return specialCode;
     }
 
-    public void setStdCode(String stdCode) {
-        this.stdCode = stdCode;
+    public void setSpecialCode(String specialCode) {
+        this.specialCode = specialCode;
+    }
+
+    public String getStdAns() {
+        return stdAns;
+    }
+
+    public void setStdAns(String stdAns) {
+        this.stdAns = stdAns;
     }
 
     public Date getSubmitDate() {

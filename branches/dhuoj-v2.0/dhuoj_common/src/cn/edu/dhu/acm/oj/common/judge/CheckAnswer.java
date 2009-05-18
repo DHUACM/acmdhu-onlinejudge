@@ -72,24 +72,20 @@ public class CheckAnswer {
     }
 
     public boolean getCheckResult() {
-        if (verdict.equals(Const.AC)) {
+        if (verdict == Const.AC) {
             return true;
         }
         return false;
     }
 
-    public String getVerdict() {
-        return verdict;
-    }
-
-    public String getCheckInfo() {
+    public short getVerdict() {
         return verdict;
     }
 
     public int getPercent() {
         return percent;
     }
-    private String verdict;
+    private short verdict;
     private int percent;
     private String ans;
     private String out;

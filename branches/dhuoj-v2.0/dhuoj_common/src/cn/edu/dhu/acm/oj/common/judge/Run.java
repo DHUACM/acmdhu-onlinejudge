@@ -14,7 +14,7 @@ public class Run extends Thread {
 
     private void InputData(OutputStream os)
             throws IOException {
-        os.write(runbean.getIn().getBytes());
+        os.write(runbean.getInput().getBytes());
         os.close();
     }
 
@@ -23,7 +23,7 @@ public class Run extends Thread {
         try {
             runbean.setResult(Const.TLE);
             tend = System.currentTimeMillis();
-            runbean.setTimeused(tend - tbegin);
+            runbean.setTimeUsed(tend - tbegin);
             pro.destroy();
             pin.close();
             pout.close();
@@ -36,7 +36,7 @@ public class Run extends Thread {
     @Override
     public void run() {
         try {
-            tk = new TimeoutKill(runbean.getTIME_LIMIT());
+            tk = new TimeoutKill(runbean.getTimeLimit());
             System.out.println("Run : " + commandline);
             pro = Runtime.getRuntime().exec(commandline);
             tbegin = System.currentTimeMillis();
@@ -57,15 +57,15 @@ public class Run extends Thread {
             errris.join();
 
             tend = System.currentTimeMillis();
-            runbean.setTimeused(tend - tbegin);
+            runbean.setTimeUsed(tend - tbegin);
             int exitValue = pro.exitValue();
             if (exitValue == 0) {
                 tk.stop();
-                runbean.setOut(outris.getMessage());
+                runbean.setOutput(outris.getMessage());
             } else {
                 tk.stop();
                 runbean.setResult(Const.RE);
-                runbean.setOut(outris.getMessage());
+                runbean.setOutput(outris.getMessage());
             }
             pin.close();
             pro.destroy();
