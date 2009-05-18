@@ -91,7 +91,8 @@ public final class ProblemArchiveBean extends NodeBean {
         sampleOutput.getElement().setText(testData.getSampleOutput());
         problem.addNode(sampleInput);
         problem.addNode(sampleOutput);
-        java.io.InputStream stylesheet = (ProblemArchiveBean.class).getResourceAsStream("ProblemArchive.xsl");
+        java.io.InputStream stylesheet = new FileInputStream("./ProblemArchive.xsl");
+                //(ProblemArchiveBean.class).getResourceAsStream("./ProblemArchive.xsl");
         String str = root.transform(stylesheet);
         sampleInput.getElement().detach();
         sampleOutput.getElement().detach();

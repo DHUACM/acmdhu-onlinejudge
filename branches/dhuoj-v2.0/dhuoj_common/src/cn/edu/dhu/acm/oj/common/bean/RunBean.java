@@ -1,6 +1,7 @@
 package cn.edu.dhu.acm.oj.common.bean;
 
 import java.util.Date;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class RunBean {
 
@@ -23,6 +24,11 @@ public class RunBean {
     private boolean isSpecial;
     private String specialCode;
     private int percent;
+
+    public RunBean() {
+        result = Const.QUEUE;
+        isSpecial = false;
+    }
 
     public long getCaseTimeLimit() {
         return caseTimeLimit;
@@ -175,5 +181,4 @@ public class RunBean {
     public void setUserID(String userID) {
         this.userID = userID;
     }
-
 }
