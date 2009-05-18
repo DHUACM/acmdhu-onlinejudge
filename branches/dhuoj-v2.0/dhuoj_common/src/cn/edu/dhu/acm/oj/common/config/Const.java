@@ -11,10 +11,13 @@ public class Const {
     public static final short PE = 6;
     public static final short RE = 7;
     public static final short CE = 8;
-    
     /**VERDICT: WAIT=0,QUEUE=1,AC=2,WA=3,TLE=4,MLE=5,PE=6,RE=7,CE=8*/
     public static final String[] VERDICT = {"WAIT", "QUEUE", "Accepted", "Wrong Answer",
-    "Time Limit Exceeded", "Memory Limit Exceeded", "Presentation Error", "Runtime Error", "Compile Error"};
+        "Time Limit Exceeded", "Memory Limit Exceeded", "Presentation Error", "Runtime Error", "Compile Error"};
+    public static final String[] TABLECOLNAME = {"QueryID", "ContestID", "Problem",
+        "Verdict", "Language", "RunTime(ms)", "SubmitTime"};
+    public static final Class[] TABLECOLTYPE = {Integer.class, Integer.class,
+        String.class, String.class, String.class, Integer.class, String.class};
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
     public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
 
@@ -54,4 +57,5 @@ public class Const {
     public static final long FILEMAXSIZE = 512L;
     /**Compile Name*/
     public static final String COMPILENAME = "Main";
+    public static final String INITPAPER = "1000.xml";
 }

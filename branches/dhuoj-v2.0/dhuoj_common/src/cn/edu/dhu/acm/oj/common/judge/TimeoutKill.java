@@ -8,10 +8,6 @@ class TimeoutKill extends Thread {
         tle = false;
     }
 
-    public void setTestThread(RunProgram r) {
-        rp = r;
-    }
-
     public void setTestThread(Run r) {
         rp = r;
     }
