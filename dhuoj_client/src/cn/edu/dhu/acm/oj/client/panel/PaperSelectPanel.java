@@ -1,6 +1,6 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
-import clientGUI.Control;
+import cn.edu.dhu.acm.oj.client.Control;
 
 public class PaperSelectPanel extends javax.swing.JPanel {
 

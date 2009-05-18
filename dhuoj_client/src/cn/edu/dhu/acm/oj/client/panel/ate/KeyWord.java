@@ -1,4 +1,4 @@
-package clientGUI.allpanel.ate;
+package cn.edu.dhu.acm.oj.client.panel.ate;
 
 import javax.swing.text.Segment;
 

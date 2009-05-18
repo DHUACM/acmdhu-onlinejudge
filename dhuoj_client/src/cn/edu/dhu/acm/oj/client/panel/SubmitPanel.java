@@ -1,8 +1,8 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
-import paper.*;
-import clientGUI.Control;
-import clientGUI.thread.*;
+import cn.edu.dhu.acm.oj.common.paper.*;
+import cn.edu.dhu.acm.oj.client.Control;
+import cn.edu.dhu.acm.oj.client.thread.*;
 
 public class SubmitPanel extends javax.swing.JPanel {
 

@@ -1,8 +1,8 @@
-package clientGUI.allpanel.ate;
+package cn.edu.dhu.acm.oj.client.panel.ate;
 
 import java.awt.*;
 import javax.swing.text.*;
-import config.Const;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class MyEditorKit extends DefaultEditorKit {
 

@@ -1,7 +1,7 @@
-package clientGUI.thread;
+package cn.edu.dhu.acm.oj.client.thread;
 
-import clientGUI.*;
-import config.Const;
+import cn.edu.dhu.acm.oj.client.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class RunQuerySumbmitStatus implements Runnable {
 

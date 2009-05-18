@@ -1,8 +1,8 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
 import java.io.*;
-import clientGUI.allpanel.ate.*;
-import clientGUI.Control;
+import cn.edu.dhu.acm.oj.client.panel.ate.*;
+import cn.edu.dhu.acm.oj.client.Control;
 
 public class CodePanel extends javax.swing.JPanel {
 
@@ -308,7 +308,7 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Control.RunTest(JTA_In.getText(), tl);
 
             JTA_CompileInfo.setText(Control.getCompileOut());
-            JTA_Out.setText(Control.getTestOut()+"**End of RunTest**");
+            JTA_Out.setText(Control.getTestOut());
         } catch (IOException ioe) {
             Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
         } catch (NumberFormatException ne) {

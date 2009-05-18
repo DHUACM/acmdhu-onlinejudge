@@ -1,7 +1,7 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
-import config.*;
-import clientGUI.Control;
+import cn.edu.dhu.acm.oj.common.config.*;
+import cn.edu.dhu.acm.oj.client.Control;
 
 public class EnvironmentPanel extends javax.swing.JPanel {
 
