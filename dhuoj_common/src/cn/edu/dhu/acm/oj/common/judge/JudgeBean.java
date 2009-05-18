@@ -270,7 +270,7 @@ public class JudgeBean {
                 ca.setStandarAnswer(tdb.getTestOutput());
                 ca.AnswerCheck();
                 rb.setCheckResult(ca.getCheckResult());
-                rb.setCheckInfo(ca.getCheckInfo());
+                rb.setCheckInfo(Const.VERDICT[ca.getVerdict()]);
                 rb.setFirstWrongplace(ca.getFirstWrongplace());
                 if (rb.getCheckInfo().equals("Accepted")) {
                     rb.setCheckPercent(100);

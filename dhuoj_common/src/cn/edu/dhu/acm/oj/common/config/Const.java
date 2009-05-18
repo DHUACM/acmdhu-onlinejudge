@@ -2,28 +2,19 @@ package cn.edu.dhu.acm.oj.common.config;
 
 public class Const {
 
-    /**Verdict to short*/
-    public static final short getVerdictShort(String v) {
-        short ans = 0;
-        for (short i = 0; i < VERDICT.length; i++) {
-            if (v.equalsIgnoreCase(VERDICT[i])) {
-                ans = i;
-                break;
-            }
-        }
-        return ans;
-    }
-    public static final String WAIT = "WAIT";
-    public static final String QUEUE = "QUEUE";
-    public static final String AC = "Accepted";
-    public static final String WA = "Wrong Answer";
-    public static final String TLE = "Time Limit Exceeded";
-    public static final String MLE = "Memory Limit Exceeded";
-    public static final String PE = "Presentation Error";
-    public static final String RE = "Runtime Error";
-    public static final String CE = "Compile Error";
+    public static final short WAIT = 0;
+    public static final short QUEUE = 1;
+    public static final short AC = 2;
+    public static final short WA = 3;
+    public static final short TLE = 4;
+    public static final short MLE = 5;
+    public static final short PE = 6;
+    public static final short RE = 7;
+    public static final short CE = 8;
+    
     /**VERDICT: WAIT=0,QUEUE=1,AC=2,WA=3,TLE=4,MLE=5,PE=6,RE=7,CE=8*/
-    public static final String[] VERDICT = {WAIT, QUEUE, AC, WA, TLE, MLE, PE, RE, CE};
+    public static final String[] VERDICT = {"WAIT", "QUEUE", "Accepted", "Wrong Answer",
+    "Time Limit Exceeded", "Memory Limit Exceeded", "Presentation Error", "Runtime Error", "Compile Error"};
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
     public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
 

@@ -21,12 +21,12 @@ public class Judger {
     }
 
     public void Check() {
-        if (rbean.getResult().equals(Const.QUEUE)) {
+        if (rbean.getResult() == Const.QUEUE) {
             CheckAnswer ca = new CheckAnswer();
-            ca.setAnswer(rbean.getOut());
-            ca.setStandarAnswer(rbean.getAns());
+            ca.setAnswer(rbean.getOutput());
+            ca.setStandarAnswer(rbean.getStdAns());
             ca.AnswerCheck();
-            rbean.setResult(ca.getCheckInfo());
+            rbean.setResult(ca.getVerdict());
             rbean.setPercent(ca.getPercent());
         }
     }
