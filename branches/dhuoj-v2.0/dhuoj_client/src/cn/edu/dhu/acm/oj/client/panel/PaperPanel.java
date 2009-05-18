@@ -1,7 +1,7 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
-import paper.*;
-import clientGUI.Control;
+import cn.edu.dhu.acm.oj.common.paper.*;
+import cn.edu.dhu.acm.oj.client.Control;
 
 public class PaperPanel extends javax.swing.JPanel {
 

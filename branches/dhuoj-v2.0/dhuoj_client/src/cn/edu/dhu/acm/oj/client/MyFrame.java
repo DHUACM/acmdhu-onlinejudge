@@ -1,4 +1,4 @@
-package clientGUI;
+package cn.edu.dhu.acm.oj.client;
 
 public class MyFrame extends javax.swing.JFrame {
 

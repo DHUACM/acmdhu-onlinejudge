@@ -1,9 +1,9 @@
-package clientGUI.allpanel.ate;
+package cn.edu.dhu.acm.oj.client.panel.ate;
 
 import javax.swing.JEditorPane;
 import javax.swing.JTextArea;
 import javax.swing.text.*;
-import config.Const;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class MyDocument extends PlainDocument {
 

@@ -1,6 +1,6 @@
-package clientGUI.thread;
+package cn.edu.dhu.acm.oj.client.thread;
 
-import clientGUI.*;
+import cn.edu.dhu.acm.oj.client.*;
 
 public class RunSubmit implements Runnable {
 

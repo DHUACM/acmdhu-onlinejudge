@@ -1,11 +1,11 @@
-package clientGUI;
+package cn.edu.dhu.acm.oj.client;
 
-import config.*;
-import judge.*;
-import judge.bean.*;
-import paper.PaperBean;
-import clientGUI.thread.*;
-import clientGUI.allpanel.*;
+import cn.edu.dhu.acm.oj.common.config.*;
+import cn.edu.dhu.acm.oj.common.judge.*;
+import cn.edu.dhu.acm.oj.common.bean.*;
+import cn.edu.dhu.acm.oj.common.paper.PaperBean;
+import cn.edu.dhu.acm.oj.client.thread.*;
+import cn.edu.dhu.acm.oj.client.panel.*;
 
 public class Control {
 
@@ -129,7 +129,7 @@ public class Control {
 
     public static boolean Compile() {
         runbean = new RunBean();
-        runbean.setCode(code);
+        runbean.setSourceCode(code);
         runbean.setLanguage(Const.getLanguageByte(language));
         judger = new Judger(runbean, envbean);
         boolean ans = judger.Compile();
@@ -153,7 +153,7 @@ public class Control {
                 bean.getSubmitDate().toString()
             };
             frame.updateRow(row);
-            if(bean.getResult()>1){
+            if (bean.getResult() > 1) {
                 showResult(qid);
             }
             return bean.getResult();
@@ -167,13 +167,12 @@ public class Control {
     public static void WsSubmit(int problemNo, String problemName) {
         int isOK = 0;
         compiled = true;
-//        LocalJudge(problemNo, problemName);
-        if(!compiled){
+        LocalJudge(problemNo, problemName);
+        if (!compiled) {
             return;
         }
         if (model.indexOf("Local") != -1) {
-            message = runbean.getResult();
-            isOK = 1;
+            showResult(localqid);
         } else {
             try {
                 cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
@@ -214,15 +213,15 @@ public class Control {
         if (!Compile()) {
             return;
         }
-        runbean.setIn(test);
-        runbean.setTIME_LIMIT(tl);
+        runbean.setInput(test);
+        runbean.setTimeLimit(tl);
         judger.Run();
 
-        String r = runbean.getResult();
-        if (r.equals(Const.QUEUE)) {
-            testOut = runbean.getOut();
+        short r = runbean.getResult();
+        if (r == Const.QUEUE) {
+            testOut = runbean.getOutput();
         } else {
-            testOut = "Error: " + r + "\n" + runbean.getOut();
+            testOut = "Error: " + r + "\n" + runbean.getOutput();
         }
     }
 
@@ -231,16 +230,16 @@ public class Control {
             compiled = false;
             return;
         }
-        runbean.setIn(paperbean.getProblemAt(problemNo).getTestData().getTestInput());
-        runbean.setAns(paperbean.getProblemAt(problemNo).getTestData().getTestOutput());
-        runbean.setTIME_LIMIT(paperbean.getProblemAt(problemNo).getTestData().getTimeLimit());
+        runbean.setInput(paperbean.getProblemAt(problemNo).getTestData().getTestInput());
+        runbean.setStdAns(paperbean.getProblemAt(problemNo).getTestData().getTestOutput());
+        runbean.setTimeLimit(paperbean.getProblemAt(problemNo).getTestData().getTimeLimit());
         judger.Run();
         judger.Check();
 
         Object[] row = new Object[]{
             localqid, null,
             problemName, runbean.getResult(),
-            language, runbean.getTimeused(),
+            language, runbean.getTimeUsed(),
             null
         };
         frame.updateRow(row);

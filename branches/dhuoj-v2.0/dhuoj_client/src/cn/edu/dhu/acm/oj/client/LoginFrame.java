@@ -1,6 +1,6 @@
-package clientGUI;
+package cn.edu.dhu.acm.oj.client;
 
-import clientGUI.allpanel.*;
+import cn.edu.dhu.acm.oj.client.panel.*;
 
 public class LoginFrame extends MyFrame {
 

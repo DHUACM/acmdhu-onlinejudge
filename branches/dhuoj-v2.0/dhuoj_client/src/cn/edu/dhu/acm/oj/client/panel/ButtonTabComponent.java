@@ -1,10 +1,10 @@
-package clientGUI.allpanel;
+package cn.edu.dhu.acm.oj.client.panel;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.*;
-import clientGUI.*;
+import cn.edu.dhu.acm.oj.client.*;
 
 /**
  * Component to be used as tabComponent;
