@@ -1,9 +1,6 @@
 package cn.edu.dhu.acm.oj.common.paper;
 
-import java.io.*;
-import java.util.*;
 import org.jdom.*;
-import problem.*;
 
 public class PaperDetail {
       private Element detailRoot;
