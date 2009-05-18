@@ -94,6 +94,24 @@ public class SolutionDAO extends BaseHibernateDAO {
         }
     }
 
+    public List<SolutionBean> findUnjudgedSolutionsInRange(int first, int max){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            session.flush();
+            Query query=session.createQuery("from SolutionBean where result= 0 order by solutionId asc");
+            query.setFirstResult(first);
+            query.setMaxResults(max);
+            List<SolutionBean> rs=query.list();
+            tx.commit();
+            session.close();
+            return rs;
+        } catch(Exception e) {
+            log.error("find contest solutions in range failed", e);
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         SolutionDAO sdao = new SolutionDAO();
         SolutionBean sbean = sdao.findSolution(125);

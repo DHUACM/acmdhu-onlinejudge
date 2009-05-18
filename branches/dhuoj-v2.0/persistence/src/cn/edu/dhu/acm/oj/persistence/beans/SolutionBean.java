@@ -19,6 +19,8 @@ public class SolutionBean  implements java.io.Serializable {
     private byte language;
     private int contestId;
     private byte valid = 1;
+    private SourceCodeBean sourceCode;
+    private CompileinfoBean compileInfo;
 
     public SolutionBean() {
     }
@@ -33,6 +35,18 @@ public class SolutionBean  implements java.io.Serializable {
         this.result = result;
         this.language = language;
         this.contestId = contestId;
+    }
+
+    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language, SourceCodeBean src) {
+        this.problemId = problemId;
+        this.userId = userId;
+        this.runtime = runtime;
+        this.memory = memory;
+        this.submitDate = submitDate;
+        this.result = result;
+        this.language = language;
+        this.contestId = contestId;
+        this.sourceCode = src;
     }
    
     public Integer getSolutionId() {
@@ -105,6 +119,22 @@ public class SolutionBean  implements java.io.Serializable {
     
     public void setValid(byte valid) {
         this.valid = valid;
+    }
+
+    public CompileinfoBean getCompileInfo() {
+        return compileInfo;
+    }
+
+    public void setCompileInfo(CompileinfoBean compileInfo) {
+        this.compileInfo = compileInfo;
+    }
+
+    public SourceCodeBean getSourceCode() {
+        return sourceCode;
+    }
+
+    public void setSourceCode(SourceCodeBean sourceCode) {
+        this.sourceCode = sourceCode;
     }
 
 }
