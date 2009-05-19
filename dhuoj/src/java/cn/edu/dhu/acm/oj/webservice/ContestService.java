@@ -7,6 +7,7 @@ package cn.edu.dhu.acm.oj.webservice;
 
 import cn.edu.dhu.acm.oj.common.form.SubmitCodeForm;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
+import cn.edu.dhu.acm.oj.persistence.beans.ContestBean;
 import cn.edu.dhu.acm.oj.logic.facade.ContestFacade;
 import cn.edu.dhu.acm.oj.exception.*;
 import javax.jws.WebMethod;
@@ -44,6 +45,16 @@ public class ContestService {
     public SolutionBean querySubmitStatus(@WebParam(name = "solutionId")
     Integer solutionId) {
         return ContestFacade.querySubmitStatus(solutionId);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getContestList")
+    public java.util.List<ContestBean> getContestList(@WebParam(name = "firstResult")
+    int firstResult, @WebParam(name = "maxResults")
+    int maxResults) {
+        return ContestFacade.getContests(firstResult, maxResults);
     }
 
 }
