@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
+import cn.edu.dhu.acm.oj.common.config.Const;
 import cn.edu.dhu.acm.oj.common.form.SubmitCodeForm;
 import cn.edu.dhu.acm.oj.common.util.Util;
 import cn.edu.dhu.acm.oj.persistence.beans.*;
@@ -15,7 +16,7 @@ public class ContestFacade {
 
     public static int submitCode(SubmitCodeForm scf) throws ContestNotStartException, ContestClosedException, UserLoginFailException {
         SolutionBean sbean = new SolutionBean(scf.getUserID(), scf.getContestID(),
-                scf.getProblemID(), 0, 0, Util.getTime(), (short)0, scf.getLanguage());
+                scf.getProblemID(), 0, 0, Util.getTime(), scf.getLocalJudgeResult(), scf.getLanguage());
 
         String userID = scf.getUserID();
         String password = scf.getPassword();
@@ -42,6 +43,12 @@ public class ContestFacade {
         sbean.setProblemId(contestProblems.get(seq).getProblemId());
 
         SolutionDAO sdao = new SolutionDAO();
+
+        // check local judge result
+        if (sbean.getResult() == Const.AC) {
+            sbean.setResult(Const.WAIT);
+        }
+
         sdao.addSolution(sbean);
 
         SourceCodeBean scbean = new SourceCodeBean(sbean.getSolutionId(), scf.getSource());
@@ -69,6 +76,11 @@ public class ContestFacade {
     public static ContestBean getContest(int cid) {
         ContestDAO cdao = new ContestDAO();
         return cdao.findContest(cid);
+    }
+
+    public static List<ContestBean> getContests(int first, int max) {
+        ContestDAO cdao = new ContestDAO();
+        return cdao.findContestInRange(first, max);
     }
 
     public static TreeMap<String, UserBean> getUsersByRank(List<SolutionBean> runs) {

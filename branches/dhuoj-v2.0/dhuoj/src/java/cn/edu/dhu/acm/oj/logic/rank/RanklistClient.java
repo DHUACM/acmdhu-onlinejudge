@@ -59,7 +59,7 @@ public class RanklistClient {
         os.println("<head><title>" + contest.getTitle() + "Ranklist</title></head>");
         os.println("<body>");
         os.print("<div align='center'>");
-        os.println("<h1>" + contest.getTitle() + " Ranklist</h1>");
+        os.println("<h1>" + contest.getTitle() + "</h1>");
         os.println("<h4>contest time: " + contest.getStartTime() + " ----- " + contest.getEndTime() + "</h1>");
 
         int border = 1;
@@ -124,7 +124,8 @@ public class RanklistClient {
         } else {
             os.print("<tr>");
             os.print("<td  align='center'>" + csd.getRank() + "</td>");
-            os.print("<td  align='center'>" + user_map.get(csd.getUserID()).getNick() + "</td>");
+            UserBean ub = user_map.get(csd.getUserID());
+            os.print("<td  align='center'>" + ub.getUserId() + "(" + ub.getNick() + ")" + "</td>");
             os.print("<td  align='center'>" + csd.getNumberOfSolvedProblems() + "</td>");
             os.print("<td  align='center'>" + (csd.getScore() / 60000L) + "</td>");
             String stats = "";

@@ -8,6 +8,7 @@ public class SubmitCodeForm implements java.io.Serializable{
     private byte language = 0;
     private int contestID = 0;
     private int problemID = 0;
+    private short localJudgeResult = 0;
 
     public SubmitCodeForm() {
     }
@@ -66,6 +67,14 @@ public class SubmitCodeForm implements java.io.Serializable{
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public short getLocalJudgeResult() {
+        return localJudgeResult;
+    }
+
+    public void setLocalJudgeResult(short localJudgeResult) {
+        this.localJudgeResult = localJudgeResult;
     }
     
 }
