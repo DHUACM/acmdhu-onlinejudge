@@ -75,7 +75,7 @@
     <Compiler>
         <Language>C</Language>
         <Version>2.0</Version>
-        <Path>/usr/bin/</Path>
+        <Path>D:\Program Files\DEV-CPP\Bin\</Path>
         <ErrorType>1</ErrorType>
         <Cmd>gcc</Cmd>
         <Usage xml:space="preserve">

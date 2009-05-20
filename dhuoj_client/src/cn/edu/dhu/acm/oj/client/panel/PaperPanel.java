@@ -37,6 +37,10 @@ public class PaperPanel extends javax.swing.JPanel {
         JEP_Problem.setText("");
     }
 
+    public void showGetpaper(){
+        JB_GetPaper.setEnabled(true);
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -68,6 +72,7 @@ public class PaperPanel extends javax.swing.JPanel {
         ToolBar.add(JCB_Problem);
 
         JB_GetPaper.setText("GetPaper");
+        JB_GetPaper.setEnabled(false);
         JB_GetPaper.setFocusable(false);
         JB_GetPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_GetPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

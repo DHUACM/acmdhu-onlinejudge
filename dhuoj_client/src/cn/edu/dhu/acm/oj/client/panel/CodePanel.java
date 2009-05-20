@@ -16,6 +16,7 @@ public class CodePanel extends javax.swing.JPanel {
         JEP_Code = new ClipTextArea(JSP_Code);
         file = new File(title);
         line = System.getProperty("line.separator");
+        JEP_Code.setText("//Code here");
     }
 
     public void setCode(String str) {

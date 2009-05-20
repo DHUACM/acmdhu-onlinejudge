@@ -19,6 +19,7 @@ public class Control {
         model = "Trainer-Local";
         islogined = false;
         localqid = 0;
+        contestid = 3;
     }
 
     public static void setMainFrame(MainFrame f) {
@@ -76,6 +77,24 @@ public class Control {
         code = co;
     }
 
+    public static void getContest() {
+        //TODO: getContest
+//        try {
+//            cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
+//            cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
+//            int firstResult = 0;
+//            int maxResults = 0;
+//            java.util.List<cn.edu.dhu.acm.oj.webservice.ContestBean> result = port.getContestList(firstResult, maxResults);
+//            for (int i = 0; i < result.size(); i++) {
+//                cn.edu.dhu.acm.oj.webservice.ContestBean cb = result.get(i);
+//            //cb.getTitle();
+//            }
+//            System.out.println("Result = " + result);
+//        } catch (Exception ex) {
+//            // TODO handle custom exceptions here
+//        }
+    }
+
     public static boolean login(String username, String password) {
 
         try {
@@ -103,12 +122,10 @@ public class Control {
 
     public static boolean Register(String nick, String uid, String pwd, String sch, String email) {
         boolean ans = false;
-        try { // Call Web Service Operation
+        try {
             cn.edu.dhu.acm.oj.webservice.UserAccountServiceService service = new cn.edu.dhu.acm.oj.webservice.UserAccountServiceService();
             cn.edu.dhu.acm.oj.webservice.UserAccountService port = service.getUserAccountServicePort();
-            // TODO initialize WS operation arguments here
             cn.edu.dhu.acm.oj.webservice.RegisterForm r = new cn.edu.dhu.acm.oj.webservice.RegisterForm();
-            // TODO process result here
             r.setEmail(email);
             r.setNickName(nick);
             r.setPassword(pwd);
@@ -172,22 +189,28 @@ public class Control {
             return;
         }
         if (model.indexOf("Local") != -1) {
-            showResult(localqid);
+            showResult(localqid - 1);
         } else {
+            if (problemName.indexOf("A+B") != -1) {
+                contestid = 0;
+            } else {
+                contestid = 3;
+            }
             try {
+                frame.deleteqid(localqid - 1);
                 cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
                 cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
                 cn.edu.dhu.acm.oj.webservice.SubmitCodeForm submitForm = new cn.edu.dhu.acm.oj.webservice.SubmitCodeForm();
                 byte lan = Const.getLanguageByte(language);
-                submitForm.setContestID(2);
+                submitForm.setContestID(contestid);
                 submitForm.setLanguage(lan);
                 submitForm.setProblemID(problemNo + 1);
                 submitForm.setPassword(psw);
                 submitForm.setSource(code);
                 submitForm.setUserID(id);
+                submitForm.setLocalJudgeResult(runbean.getResult());
                 java.lang.Integer submitresult = port.submitCode(submitForm);
-                short tmp = 0;
-//                frame.deleteqid(localqid - 1);
+                RunQuerySumbmitStatus query = new RunQuerySumbmitStatus(submitresult);
                 Object[] row = new Object[]{
                     submitresult, null,
                     problemName, Const.VERDICT[0],
@@ -195,18 +218,23 @@ public class Control {
                     null
                 };
                 frame.updateRow(row);
-                //frame.showStatus();
-                RunQuerySumbmitStatus query = new RunQuerySumbmitStatus(submitresult);
                 Thread thread = new Thread(query);
                 thread.start();
                 isOK = 1;
                 message = "         Submit OK!";
+                if (problemName.indexOf("A+B") != -1) {
+                    if (runbean.getResult() == Const.AC) {
+                        paperpanel.showGetpaper();
+                    }
+                }
             } catch (Exception ex) {
                 isOK = 0;
                 message = "Submit failed!\n" + ex.getMessage();
             }
             frame.smallDialog(message, "Submit", isOK);
+
         }
+
     }
 
     public static void RunTest(String test, long tl) {
@@ -238,12 +266,12 @@ public class Control {
 
         Object[] row = new Object[]{
             localqid, null,
-            problemName, runbean.getResult(),
+            problemName, Const.VERDICT[runbean.getResult()],
             language, runbean.getTimeUsed(),
             null
         };
         frame.updateRow(row);
-        showResult(localqid);
+
         localqid++;
     }
 
@@ -308,6 +336,7 @@ public class Control {
     private static int nowPaperNum = 0;
     private static int allcodecnt;
     private static int localqid;
+    private static int contestid;
     private static String model;
     private static String language;
     private static String paperNo;
