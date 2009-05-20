@@ -25,6 +25,12 @@
 <message name="querySubmitStatusResponse">
 <part name="parameters" element="tns:querySubmitStatusResponse"></part>
 </message>
+<message name="getContestList">
+<part name="parameters" element="tns:getContestList"></part>
+</message>
+<message name="getContestListResponse">
+<part name="parameters" element="tns:getContestListResponse"></part>
+</message>
 <portType name="ContestService">
 <operation name="submitCode">
 <input message="tns:submitCode"></input>
@@ -36,6 +42,10 @@
 <operation name="querySubmitStatus">
 <input message="tns:querySubmitStatus"></input>
 <output message="tns:querySubmitStatusResponse"></output>
+</operation>
+<operation name="getContestList">
+<input message="tns:getContestList"></input>
+<output message="tns:getContestListResponse"></output>
 </operation>
 </portType>
 <binding name="ContestServicePortBinding" type="tns:ContestService">
@@ -59,6 +69,15 @@
 </fault>
 </operation>
 <operation name="querySubmitStatus">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="getContestList">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

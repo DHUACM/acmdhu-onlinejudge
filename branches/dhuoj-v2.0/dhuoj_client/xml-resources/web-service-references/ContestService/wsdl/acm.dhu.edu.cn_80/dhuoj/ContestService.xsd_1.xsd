@@ -6,6 +6,10 @@
 
 <xs:element name="UserLoginFailException" type="tns:UserLoginFailException"></xs:element>
 
+<xs:element name="getContestList" type="tns:getContestList"></xs:element>
+
+<xs:element name="getContestListResponse" type="tns:getContestListResponse"></xs:element>
+
 <xs:element name="querySubmitStatus" type="tns:querySubmitStatus"></xs:element>
 
 <xs:element name="querySubmitStatusResponse" type="tns:querySubmitStatusResponse"></xs:element>
@@ -13,6 +17,32 @@
 <xs:element name="submitCode" type="tns:submitCode"></xs:element>
 
 <xs:element name="submitCodeResponse" type="tns:submitCodeResponse"></xs:element>
+
+<xs:complexType name="getContestList">
+<xs:sequence>
+<xs:element name="firstResult" type="xs:int"></xs:element>
+<xs:element name="maxResults" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contestBean" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="contestBean">
+<xs:sequence>
+<xs:element name="contestId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="defunct" type="xs:byte"></xs:element>
+<xs:element name="description" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="endTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="private_" type="xs:byte"></xs:element>
+<xs:element name="startTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="submitCode">
 <xs:sequence>
@@ -24,6 +54,7 @@
 <xs:sequence>
 <xs:element name="contestID" type="xs:int"></xs:element>
 <xs:element name="language" type="xs:byte"></xs:element>
+<xs:element name="localJudgeResult" type="xs:int"></xs:element>
 <xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="problemID" type="xs:int"></xs:element>
 <xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
@@ -69,6 +100,7 @@
 
 <xs:complexType name="solutionBean">
 <xs:sequence>
+<xs:element name="compileInfo" type="tns:compileinfoBean" minOccurs="0"></xs:element>
 <xs:element name="contestId" type="xs:int"></xs:element>
 <xs:element name="language" type="xs:byte"></xs:element>
 <xs:element name="memory" type="xs:int"></xs:element>
@@ -76,9 +108,24 @@
 <xs:element name="result" type="xs:short"></xs:element>
 <xs:element name="runtime" type="xs:int"></xs:element>
 <xs:element name="solutionId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="sourceCode" type="tns:sourceCodeBean" minOccurs="0"></xs:element>
 <xs:element name="submitDate" type="xs:dateTime" minOccurs="0"></xs:element>
 <xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="valid" type="xs:byte"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileinfoBean">
+<xs:sequence>
+<xs:element name="error" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="solutionId" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sourceCodeBean">
+<xs:sequence>
+<xs:element name="solutionId" type="xs:int"></xs:element>
+<xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

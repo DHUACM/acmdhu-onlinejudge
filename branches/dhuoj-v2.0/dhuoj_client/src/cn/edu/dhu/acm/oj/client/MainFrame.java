@@ -1,6 +1,7 @@
 package cn.edu.dhu.acm.oj.client;
 
 import cn.edu.dhu.acm.oj.client.panel.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class MainFrame extends MyFrame {
 
@@ -12,20 +13,15 @@ public class MainFrame extends MyFrame {
         Control.setMainFrame(this);
         JP_Paper.add(paperpanel, java.awt.BorderLayout.CENTER);
         int i = Control.getAllcodecnt();
-        String title = "A";
+        String title = "New0";
         codenum = 1;
         JTP_Code.add(title, new CodePanel(title, i, JTP_Code));
         JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
-        cowName = new String[]{
-                    "QueryID", "ContestID", "Problem", "Verdict", "Language", "RunTime(ms)", "SubmitTime"
-                };
-        Table.setModel(dtb = new javax.swing.table.DefaultTableModel(
-                new Object[][]{ //{null, null, null, null, null, null, null}
-                }, cowName) {
 
-            Class[] types = new Class[]{
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
+        Table.setModel(dtb = new javax.swing.table.DefaultTableModel(
+                new Object[][]{}, Const.TABLECOLNAME) {
+
+            Class[] types = Const.TABLECOLTYPE;
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -33,7 +29,7 @@ public class MainFrame extends MyFrame {
             }
         });
         Table.setEnabled(false);
-        Control.setPaper("a+b.xml");
+        Control.setPaper(Const.INITPAPER);
         paperpanel.setPaper();
     }
 
@@ -53,6 +49,12 @@ public class MainFrame extends MyFrame {
         JP_Status = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
+        JP_Rank = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JEP_Rank = new javax.swing.JEditorPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        JB_Reflash = new javax.swing.JButton();
+        TF_URL = new javax.swing.JTextField();
         MenuBar = new javax.swing.JMenuBar();
         JM_Tool1 = new javax.swing.JMenu();
         JMI_New = new javax.swing.JMenuItem();
@@ -99,6 +101,38 @@ public class MainFrame extends MyFrame {
         JP_Status.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         TP_Main.addTab("Status", JP_Status);
+
+        JP_Rank.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane2.setViewportView(JEP_Rank);
+
+        JP_Rank.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        jToolBar1.setRollover(true);
+
+        JB_Reflash.setText("Reflash");
+        JB_Reflash.setFocusable(false);
+        JB_Reflash.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Reflash.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Reflash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ReflashActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(JB_Reflash);
+
+        TF_URL.setEditable(false);
+        TF_URL.setText("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=3");
+        TF_URL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TF_URLActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(TF_URL);
+
+        JP_Rank.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+
+        TP_Main.addTab("Rank", JP_Rank);
 
         getContentPane().add(TP_Main, java.awt.BorderLayout.CENTER);
 
@@ -223,16 +257,22 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     }//GEN-LAST:event_JMI_SaveAsActionPerformed
 
+    private void JB_ReflashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ReflashActionPerformed
+        try {
+            JEP_Rank.setPage(TF_URL.getText());
+        } catch (Exception e) {
+            JEP_Rank.setText(e.toString());
+        }
+}//GEN-LAST:event_JB_ReflashActionPerformed
+
+    private void TF_URLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_URLActionPerformed
+        this.JB_ReflashActionPerformed(evt);
+}//GEN-LAST:event_TF_URLActionPerformed
+
     public void NewCodePanel() {
         int i = Control.getAllcodecnt();
-        String title;
-        char c = 'A';
-        c += codenum;
-        if (codenum < 26) {
-            title = "" + c;
-        } else {
-            title = "" + codenum;
-        }
+        String title = "New";
+        title += codenum;
         codenum++;
         JTP_Code.add(title, new CodePanel(title, i, JTP_Code));
         JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
@@ -290,8 +330,8 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         for (int i = 0; i < len; i++) {
             Integer id = (Integer) dtb.getValueAt(i, 0);
             if (qid.equals(id)) {
-                for (int j = 2; j < cowName.length - 1; j++) {
-                    ans += String.format("%s : %s\n", cowName[j], dtb.getValueAt(i, j));
+                for (int j = 2; j < Const.TABLECOLNAME.length - 1; j++) {
+                    ans += String.format("%s : %s\n", Const.TABLECOLNAME[j], dtb.getValueAt(i, j));
                 }
                 break;
             }
@@ -331,6 +371,8 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JB_Reflash;
+    private javax.swing.JEditorPane JEP_Rank;
     private javax.swing.JMenuItem JMI_About;
     private javax.swing.JMenuItem JMI_Exit;
     private javax.swing.JMenuItem JMI_Help;
@@ -346,16 +388,19 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenu JM_Tool1;
     private javax.swing.JPanel JP_Coding;
     private javax.swing.JPanel JP_Paper;
+    private javax.swing.JPanel JP_Rank;
     private javax.swing.JPanel JP_Status;
     private javax.swing.JSplitPane JSP_PC;
     private javax.swing.JTabbedPane JTP_Code;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JTextField TF_URL;
     private javax.swing.JTabbedPane TP_Main;
     private javax.swing.JTable Table;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
     private PaperPanel paperpanel;
     private int codenum;
     public javax.swing.table.DefaultTableModel dtb;
-    private String[] cowName;
 }

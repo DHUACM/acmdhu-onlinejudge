@@ -1,6 +1,7 @@
 package cn.edu.dhu.acm.oj.client.panel;
 
 import cn.edu.dhu.acm.oj.client.Control;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class PaperSelectPanel extends javax.swing.JPanel {
 
@@ -16,7 +17,7 @@ public class PaperSelectPanel extends javax.swing.JPanel {
             for (int i = 0; i < files.length; i++) {
                 java.io.File file = new java.io.File(dir, files[i]);
                 String name = file.getName();
-                if (name.indexOf("a+b") == -1 && name.indexOf("xml") != -1) {
+                if (name.indexOf(Const.INITPAPER) == -1 && name.indexOf("xml") != -1) {
                     JCB_Paper.addItem(file.getName());
                 }
             }
@@ -37,6 +38,9 @@ public class PaperSelectPanel extends javax.swing.JPanel {
         JB_Get = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel2 = new javax.swing.JLabel();
+        JPF_Password = new javax.swing.JPasswordField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -55,21 +59,33 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
         add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        jLabel2.setText("Paper Password : ");
+        jToolBar1.add(jLabel2);
+        jToolBar1.add(JPF_Password);
+
+        add(jToolBar1, java.awt.BorderLayout.NORTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JB_GetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetActionPerformed
-        //if (JPF_Password.getText().equals("acm426")) {
-        dialog.dispose();
-        Control.setPaper(JCB_Paper.getSelectedItem().toString());
-    //} else {
-    //    Control.getMainFrame().smallDialog("       Wrong Password!", "Error", 0);
-    //}
+        if (JPF_Password.getText().equalsIgnoreCase("acmacm")) {
+            dialog.dispose();
+            Control.setPaper(JCB_Paper.getSelectedItem().toString());
+        } else {
+            Control.getMainFrame().smallDialog("       Wrong Password!", "Error", 0);
+        }
     }//GEN-LAST:event_JB_GetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Get;
     private javax.swing.JComboBox JCB_Paper;
+    private javax.swing.JPasswordField JPF_Password;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

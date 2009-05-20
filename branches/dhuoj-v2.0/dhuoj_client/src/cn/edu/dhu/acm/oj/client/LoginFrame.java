@@ -71,7 +71,8 @@ public class LoginFrame extends MyFrame {
         JP_Right.add(JF_UserID);
         JP_Right.add(JPF_Password);
 
-        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Trainer-Net", "Examination", "Contest", "Trainer-Local" }));
+        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Examination", "Contest", "Trainer-Net", "Trainer-Local" }));
+        JCB_Model.setEnabled(false);
         JCB_Model.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCB_ModelActionPerformed(evt);
