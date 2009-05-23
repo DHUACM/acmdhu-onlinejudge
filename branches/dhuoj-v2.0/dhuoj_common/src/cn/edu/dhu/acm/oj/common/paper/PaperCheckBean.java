@@ -2,6 +2,7 @@ package cn.edu.dhu.acm.oj.common.paper;
 
 import cn.edu.dhu.acm.oj.common.problem.*;
 import cn.edu.dhu.acm.oj.common.judge.*;
+import cn.edu.dhu.acm.oj.common.bean.RunBean;
 import cn.edu.dhu.acm.oj.common.config.*;
 
 public class PaperCheckBean {
@@ -10,7 +11,6 @@ public class PaperCheckBean {
   boolean  integralityFlag;
   boolean  typeFlag;
 
-  //JudgeBean judgeBean;
   EnvironmentBean environmentBean;
   /**
    * �Ծ��Լ���Ĺ��캯��
@@ -20,7 +20,6 @@ public class PaperCheckBean {
     integralityFlag = false;
     typeFlag = false;
 
-    //judgeBean = new JudgeBean();
     environmentBean = new EnvironmentBean("Environment.xml");
     //judgeBean.setEnvironmentBean(environmentBean);
   }

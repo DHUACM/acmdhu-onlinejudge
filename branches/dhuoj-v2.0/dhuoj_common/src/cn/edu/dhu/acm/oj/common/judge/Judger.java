@@ -34,7 +34,11 @@ public class Judger {
     public boolean Compile() {
         Compile cc = new Compile(rbean, envbean);
         compile = cc.doit();
-        compileinfo = cc.getCompileinfo();
+        if (compile) {
+            CheckMaliciousCode cmc = new CheckMaliciousCode(rbean, envbean);
+            compile = cmc.checkKeyWord();
+        }
+        compileinfo = rbean.getCompileInfo();
         return compile;
     }
 

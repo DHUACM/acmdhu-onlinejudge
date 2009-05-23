@@ -62,6 +62,9 @@ public class Run extends Thread {
             if (exitValue == 0) {
                 tk.stop();
                 runbean.setOutput(outris.getMessage());
+                if (outris.getMessage().length() >= Const.FILEMAXSIZE) {
+                    runbean.setResult(Const.OLE);
+                }
             } else {
                 tk.stop();
                 runbean.setResult(Const.RE);

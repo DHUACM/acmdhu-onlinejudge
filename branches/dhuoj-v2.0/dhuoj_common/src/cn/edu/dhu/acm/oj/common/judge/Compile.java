@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cn.edu.dhu.acm.oj.common.judge;
 
 import cn.edu.dhu.acm.oj.common.bean.*;
@@ -9,10 +5,6 @@ import cn.edu.dhu.acm.oj.common.config.*;
 import java.io.*;
 import java.util.Scanner;
 
-/**
- *
- * @author Administrator
- */
 public class Compile {
 
     public Compile(RunBean rb, EnvironmentBean eb) {
@@ -52,7 +44,7 @@ public class Compile {
             out.close();
 
             String commandline = envbean.getCompileCmd(lan, Const.COMPILENAME, Const.COMPILENAME);
-            System.out.println("Compile : "+commandline);
+            System.out.println("Compile : " + commandline);
             Watcher watch = new Watcher(commandline);
             Thread t = new Thread(watch);
             t.start();
@@ -72,28 +64,25 @@ public class Compile {
 
             try {
                 if (p.exitValue() != 0) {
-                    throw new Exception();
+                    runbean.setCompileInfo(getError(p.getErrorStream()));
+                    compileresult = false;
                 } else {
-                    compileinfo = "Compile successfully\n";
+                    runbean.setCompileInfo("Compile successfully");
                     compileresult = true;
                 }
             } catch (Exception e) {
-                compileinfo = getError(p.getErrorStream());
+                runbean.setCompileInfo("Compile no exitValue!\nMay your compile TLE!");
                 compileresult = false;
             }
         } catch (Exception e) {
             e.printStackTrace();
             compileresult = false;
+            runbean.setCompileInfo("Compile unknow error");
         } finally {
             file.delete();
         }
         return compileresult;
     }
-
-    public String getCompileinfo() {
-        return compileinfo;
-    }
     private RunBean runbean;
     private EnvironmentBean envbean;
-    private String compileinfo;
 }
