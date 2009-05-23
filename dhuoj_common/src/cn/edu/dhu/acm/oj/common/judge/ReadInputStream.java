@@ -1,5 +1,6 @@
 package cn.edu.dhu.acm.oj.common.judge;
 
+import cn.edu.dhu.acm.oj.common.config.*;
 import java.io.*;
 
 public class ReadInputStream extends Thread {
@@ -22,7 +23,7 @@ public class ReadInputStream extends Thread {
                 if (n != 13) {
                     buffer.append((char) n);
                 }
-            } while (true);
+            } while (buffer.length() < Const.FILEMAXSIZE);
             in.close();
         } catch (IOException IOE) {
             System.out.println(IOE.toString());
