@@ -1,14 +1,9 @@
-// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.geocities.com/kpdus/jad.html
-// Decompiler options: packimports(3) 
-// Source File Name:   ProblemArchiveBean.java
+
 package cn.edu.dhu.acm.oj.common.problem;
 
 import java.io.*;
 import org.jdom.*;
 
-// Referenced classes of package com.dyf:
-//            NodeBean, ProblemBean, TestDataBean, SolutionBean
 public final class ProblemArchiveBean extends NodeBean {
 
     public ProblemArchiveBean(Element x) {
@@ -81,8 +76,7 @@ public final class ProblemArchiveBean extends NodeBean {
         root.setChildText("Title", str);
     }
 
-    public String transform()
-            throws Exception {
+    public String transform() throws Exception {
         ProblemBean problem = getProblem();
         TestDataBean testData = getTestData();
         NodeBean sampleInput = new NodeBean("SampleInput", true);
@@ -91,8 +85,7 @@ public final class ProblemArchiveBean extends NodeBean {
         sampleOutput.getElement().setText(testData.getSampleOutput());
         problem.addNode(sampleInput);
         problem.addNode(sampleOutput);
-        java.io.InputStream stylesheet = new FileInputStream("./ProblemArchive.xsl");
-                //(ProblemArchiveBean.class).getResourceAsStream("./ProblemArchive.xsl");
+        java.io.InputStream stylesheet =  getClass().getResourceAsStream("/cn/edu/dhu/acm/oj/common/resource/ProblemArchive.xsl");
         String str = root.transform(stylesheet);
         sampleInput.getElement().detach();
         sampleOutput.getElement().detach();
