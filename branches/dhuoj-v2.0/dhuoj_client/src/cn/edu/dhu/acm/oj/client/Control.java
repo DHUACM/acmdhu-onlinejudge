@@ -13,13 +13,19 @@ public class Control {
     }
 
     public static void init() {
-        envbean = new EnvironmentBean("Environment.xml");
+        java.io.File f = new java.io.File("./Environment.xml");
+        if (f.exists()) {
+            System.out.println("Exist Environment.xml");
+            envbean = new EnvironmentBean("./Environment.xml");
+        } else {
+            System.out.println("No Environment.xml");
+            envbean = new EnvironmentBean();
+        }
         language = "Cpp";
         allcodecnt = 0;
         model = "Trainer-Local";
         islogined = false;
         localqid = 0;
-        contestid = 3;
     }
 
     public static void setMainFrame(MainFrame f) {
@@ -44,9 +50,25 @@ public class Control {
 
     public static void setPaper(String x) {
         try {
-            paperNo = x;
+            paperName = x;
+            StringBuffer tmp = new StringBuffer();
+            for (int i = 0; i < x.length(); i++) {
+                if (x.charAt(i) >= '0' && x.charAt(i) <= '9') {
+                    tmp.append(x.charAt(i));
+                }
+            }
+            String num = tmp.toString();
+            try {
+                contestid = Integer.parseInt(num);
+            } catch (Exception e) {
+                contestid = 0;
+            }
             paperbean = new PaperBean();
-            paperbean.unmarshal((new StringBuilder()).append("./paper/").append(paperNo).toString());
+            if (x.equals(Const.INITPAPER)) {
+                paperbean.unmarshal();
+            } else {
+                paperbean.unmarshal("./paper/" + paperName);
+            }
             nowPaperNum = 0;
             frame.setTitle(x);
             frame.setPaper();
@@ -56,7 +78,7 @@ public class Control {
     }
 
     public static void removePaper() {
-        paperNo = null;
+        paperName = null;
         paperbean = null;
         nowPaperNum = 0;
     }
@@ -79,20 +101,20 @@ public class Control {
 
     public static void getContest() {
         //TODO: getContest
-//        try {
-//            cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
-//            cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
-//            int firstResult = 0;
-//            int maxResults = 0;
-//            java.util.List<cn.edu.dhu.acm.oj.webservice.ContestBean> result = port.getContestList(firstResult, maxResults);
-//            for (int i = 0; i < result.size(); i++) {
-//                cn.edu.dhu.acm.oj.webservice.ContestBean cb = result.get(i);
-//            //cb.getTitle();
-//            }
-//            System.out.println("Result = " + result);
-//        } catch (Exception ex) {
-//            // TODO handle custom exceptions here
-//        }
+        try {
+            cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
+            cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
+            int firstResult = 0;
+            int maxResults = 0;
+            java.util.List<cn.edu.dhu.acm.oj.webservice.ContestBean> result = port.getContestList(firstResult, maxResults);
+            for (int i = 0; i < result.size(); i++) {
+                cn.edu.dhu.acm.oj.webservice.ContestBean cb = result.get(i);
+            //cb.get
+            }
+            System.out.println("Result = " + result);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
     }
 
     public static boolean login(String username, String password) {
@@ -149,12 +171,12 @@ public class Control {
         runbean.setSourceCode(code);
         runbean.setLanguage(Const.getLanguageByte(language));
         judger = new Judger(runbean, envbean);
-        boolean ans = judger.Compile();
+        compiled = judger.Compile();
         compileOut = judger.getCompileinfo();
-        if (!ans) {
+        if (!compiled) {
             frame.smallDialog("Compile Error!", "Error", 0);
         }
-        return ans;
+        return compiled;
     }
 
     public static short Query(Integer qid) {
@@ -183,19 +205,10 @@ public class Control {
 
     public static void WsSubmit(int problemNo, String problemName) {
         int isOK = 0;
-        compiled = true;
         LocalJudge(problemNo, problemName);
-        if (!compiled) {
-            return;
-        }
         if (model.indexOf("Local") != -1) {
             showResult(localqid - 1);
         } else {
-            if (problemName.indexOf("A+B") != -1) {
-                contestid = 0;
-            } else {
-                contestid = 3;
-            }
             try {
                 frame.deleteqid(localqid - 1);
                 cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
@@ -222,7 +235,7 @@ public class Control {
                 thread.start();
                 isOK = 1;
                 message = "         Submit OK!";
-                if (problemName.indexOf("A+B") != -1) {
+                if (contestid == 0) {
                     if (runbean.getResult() == Const.AC) {
                         paperpanel.showGetpaper();
                     }
@@ -238,32 +251,28 @@ public class Control {
     }
 
     public static void RunTest(String test, long tl) {
-        if (!Compile()) {
-            return;
-        }
-        runbean.setInput(test);
-        runbean.setTimeLimit(tl);
-        judger.Run();
-
-        short r = runbean.getResult();
-        if (r == Const.QUEUE) {
-            testOut = runbean.getOutput();
-        } else {
-            testOut = "Error: " + r + "\n" + runbean.getOutput();
+        if (Compile()) {
+            runbean.setInput(test);
+            runbean.setTimeLimit(tl);
+            judger.Run();
+            short r = runbean.getResult();
+            if (r == Const.QUEUE) {
+                testOut = runbean.getOutput();
+            } else {
+                testOut = "Error: " + Const.VERDICT[r] + "\n" + runbean.getOutput();
+            }
         }
     }
 
     private static void LocalJudge(int problemNo, String problemName) {
-        if (!Compile()) {
-            compiled = false;
-            return;
-        }
-        runbean.setInput(paperbean.getProblemAt(problemNo).getTestData().getTestInput());
-        runbean.setStdAns(paperbean.getProblemAt(problemNo).getTestData().getTestOutput());
-        runbean.setTimeLimit(paperbean.getProblemAt(problemNo).getTestData().getTimeLimit());
-        judger.Run();
-        judger.Check();
+        if (Compile()) {
+            runbean.setInput(paperbean.getProblemAt(problemNo).getTestData().getTestInput());
+            runbean.setStdAns(paperbean.getProblemAt(problemNo).getTestData().getTestOutput());
+            runbean.setTimeLimit(paperbean.getProblemAt(problemNo).getTestData().getTimeLimit());
+            judger.Run();
+            judger.Check();
 
+        }
         Object[] row = new Object[]{
             localqid, null,
             problemName, Const.VERDICT[runbean.getResult()],
@@ -271,7 +280,6 @@ public class Control {
             null
         };
         frame.updateRow(row);
-
         localqid++;
     }
 
@@ -305,8 +313,8 @@ public class Control {
         return frame;
     }
 
-    public static String getPaperNo() {
-        return paperNo;
+    public static String getPaperName() {
+        return paperName;
     }
 
     public static String getMessage() {
@@ -339,7 +347,7 @@ public class Control {
     private static int contestid;
     private static String model;
     private static String language;
-    private static String paperNo;
+    private static String paperName;
     private static String compileOut;
     private static String id;
     private static String psw;

@@ -72,7 +72,6 @@ public class PaperPanel extends javax.swing.JPanel {
         ToolBar.add(JCB_Problem);
 
         JB_GetPaper.setText("GetPaper");
-        JB_GetPaper.setEnabled(false);
         JB_GetPaper.setFocusable(false);
         JB_GetPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_GetPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

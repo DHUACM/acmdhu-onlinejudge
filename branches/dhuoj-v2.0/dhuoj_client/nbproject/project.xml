@@ -8,6 +8,9 @@
                 <dependency dependsOn="wsimport-client-compile" target="-do-compile-single"/>
                 <dependency dependsOn="wsimport-client-generate" target="-pre-pre-compile"/>
             </extension>
+            <extension file="jnlp-impl.xml" id="jws">
+                <dependency dependsOn="jnlp" target="jar"/>
+            </extension>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>dhuoj_client</name>

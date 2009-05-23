@@ -17,7 +17,7 @@ public class SubmitPanel extends javax.swing.JPanel {
                 java.io.File file = new java.io.File(dir, files[i]);
                 JCB_Paper.addItem(file.getName());
             }
-            JCB_Paper.setSelectedItem(Control.getPaperNo());
+            JCB_Paper.setSelectedItem(Control.getPaperName());
             pb = Control.getPaperBean();
             int papernum = pb.getProblemCount();
             for (int i = 0; i < papernum; i++) {

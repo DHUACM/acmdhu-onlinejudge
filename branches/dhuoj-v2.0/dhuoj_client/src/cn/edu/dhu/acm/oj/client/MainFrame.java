@@ -96,6 +96,7 @@ public class MainFrame extends MyFrame {
 
             }
         ));
+        Table.setEnabled(false);
         jScrollPane1.setViewportView(Table);
 
         JP_Status.add(jScrollPane1, java.awt.BorderLayout.CENTER);
