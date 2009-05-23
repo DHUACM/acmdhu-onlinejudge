@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="true">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">3</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>6</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFGnb3sfFXFqUUtq4MR1iWeBQDQvDAhQ7v90wC2kc1Y+K+1XeYORX5AjDvw==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe><![CDATA[<pre>
+登陆及提交说明
+请不要擅自操作键盘和鼠标，根据现场工作的人员的指示操作。
+
+
+2)试题描述说明
+试题主要是描述了一个问题，并请你用程序来解决这个问题。一般来说，你所编写的程序应该能够接受题目中所描述的数据，按照题目的描述处理这些数据，并且严格按照输出描述(The Output)中所述的格式输出结果。程序将提交到服务器进行打分。打分详情可见‘3)打分说明’部分。
+试题主要分为六部分: 
+1.标题
+包括试题的主标题，以及副标题Time Limit部分，Time Limit表示所提交的答题程序所能运行的最长时间，如果超过这个时间，程序无论输出是否正确，都将被裁判端判为Time Limit Exceed。
+比如Time Limit是10 sec(10秒)。如果提交的答题程序运行时间超过10秒，则会被判为Time Limit Exceed，无论答题程序输出是否正确，也就是说在10秒内答题程序输出的结果正确或错误都不会得到任何提示。
+
+2.Descripiton
+题目描述，作为题目的主要部分，对问题进行详细的说明。
+
+3.The Input
+输入描述部分，这部分描述了输入数据及其格式和范围。输入答题程序的数据将严格按照这部分的描述。
+
+4.The Output
+输出描述，这部分描述了答题程序所应该输出的数据及其格式。答题程序必须按照这部分的描述来输出，否则很有可能无法通过裁判端的测试。
+
+5.Sample Input
+输入样例，以实例来说明输入数据的格式。请注意这里的数据只是作为实例，并不代表实际测试答题程序的数据是这些。因此能正确处理Sample中的数据并不代表程序一定能通过。不过，Sample数据一定是实际测试数据的子集，因此不能正确处理Sample就一定无法在裁判端通过。所以没有通过Sample的程序最好不要贸然提交。
+
+6.Sample Output
+对应输入样例的输出数据，用来说明答题程序所应输出的格式。答题程序的输出应该严格按照这部分所示输出。比如：
+在Sample Output中有两个整数独占一行，并且以空格分隔，如下：
+2 3
+那么如下的输出都是错误的：
+a=2 b=3
+或
+2       3
+或
+3 2
+必须严格按照Sample Output中所示的格式输出才有可能通过裁判端打分。
+
+3)打分说明
+打分结果		评判标准
+Compile Error		编译错
+Time Limited Exceeded	程序运行超过时间限制
+Run Time Error		程序运行错误
+Wrong Answer		输出结果中关键数据错误
+Presentation Error	格式错
+Accepted		输出结果完全正确
+
+
+4)程序编写说明
+1.C/C++
+首先，必须注意程序的main函数需要定义成int型，然后必须return 0。
+其次，如果输入描述(The Output)中没有明确规定输入结束标志或说以EOF结束，那么可以使用如下格式来读入：
+
+while(cin&gt;&gt;a)或while(scanf("%d",&a)!=EOF)
+
+
+以输入两数求和为例，可以使用以下程序来输入和处理：
+//code start
+#include&lt;iostream.h&gt;
+int main(){
+	int a,b;
+	while(cin&gt;&gt;a&gt;&gt;b){
+		cout&lt;&lt;a+b&lt;&lt;endl;
+	}
+	return 0;
+}
+
+2.Pascal
+Pascal采用Free Pascal编译器。
+以两数求和为例，代码为：
+Program p1000(Input, Output); 
+Var 
+	a, b: Integer; 
+Begin
+	while not eof(Readln(a, b)) do
+	begin 
+		Writeln(a + b); 
+	end;
+End.
+</pre>]]></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="2">
+        <ProblemArchive version="1.0" checked="true">
+            <Title>Hello,东华!</Title>
+            <Author>ZhuXingYin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">给你一个字符串S，输出Hello,S!</Description>
+                <InputSpec xml:space="preserve">你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，其中仅有一个字符串S；S的长度不会超过100位；每行的行首和行尾都没有多余的空格。在所有数据的前后，以及两组数据之间都没有多余的空行。</InputSpec>
+                <OutputSpec xml:space="preserve">对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一组对应的答案。每组答案占一行，Hello,S!</OutputSpec>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">XRZoyAtt3JI=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>LYbr7XVykxq93cE13WkHk7XR/LMZLYHfz1uYIkJ4sCnZcFNPe0hUV8kKOf37LuZiKoyb0esG79uK1pdhp5SzzisXJ9QuKmX6gNWajU7GCshSMwHHQ8TLJvhnC97Ko63saIu/oTmvmp8dfgk3pGKJT+1SlghcnsgOZshxT1U+4f98Kylvoc5AzSPoTci+Hn5q9SyZxX4dauRYqOOSbcm4m/Zi7hxLUjiRHKXd1ZM7kyfsadd6giLhXFmBRqG2BH3h4SrBluab7d/DQO1tXMiVqhhzLYb3Ricdf1CwcEBf+uP+lN2SVG2b9Lrew7kdbvBkRmAAELcOeAPv10JzDfnDs4PBpw9r3jnIcHSa2Z9uzPR2izPIu1mvWg==</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">AWQV4AfLhlE=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>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</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>幼儿园分班问题</Title>
+            <Author>ZhuXingyin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">某幼儿园只招收3至7岁的小孩。3、4岁入小班，5、6岁入中班，7岁入大班。给出一个孩子的年龄，请问他应该被分到什么班。</Description>
+                <InputSpec xml:space="preserve">你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，其中只包含一个整数i（1≤i≤10），表示一个孩子的年龄，程序输入以0结束。在行首和行尾没有多余的空格。</InputSpec>
+                <OutputSpec xml:space="preserve">对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出一组对应的答案。每组答案占一行，其中包含这个孩子应该进入的班级。如果是小班，则输出“One.”；如果是中班，则输出：“Two.”；如果是大班，则输出：“Three.”；如果该孩子的年龄不能进入幼儿园，则输出：“No.”。在行首和行尾不要输出多余的空格；在所有数据前后不要输出多余的空行；两组数据之间也不要输出多余的空行。</OutputSpec>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">y1jE8SoQQ1E=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>NLWfchXyfxM9Q3wmzT2K5U9D4OvDrAoe+hMxSYScUcLSvrY+MhYKRnJ5uP8e14RyPqy8DxF3D19PivP5eRIX3ZClbfAc3FOuiD5wGbKH2cc3Xs64lFQPKJygajXTAJXfViBaDFaQZVXtQX+Bw7AMQzXqD3uOusaZh9thXmdz7ql3I2811YCsLoJRudOegthVP9+IJ4IszB0I9Ks3OiO21DnHmUDPPLD4NxkZcvkBVRplOqi8KVfRsTt7pmE9PkHbbqjDojuwIha3UMk5T8AdWa0L2zkXsyXOHUJ0FKZQs1Nv4rA+wtprwlvahtnAjryYsj0ApV9giQbt4PVVY+7ItIbW5KzPWL7U9OFd/Wh0JY4K2ynB/Fl0ejmZwKkpO40NXkMIHzc48fihw5z5rnnq3KucH82V9+slt1DJOU/AHVniBHc/kxc6pKPIqv/1yA3Nx259arooxhPOhsm7q0r2NfZD5dAqzXAPcnH1IiEypvaZQWCuP/g2d54yRE0PlU9a4MfCmEiWHXraTSVs08EilcdjRzFHvwhGU+A1DxMXTMJK7fFINJhPnK/0NtGRUdfC4i978YIi9m4=</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">6kqw3xZbv0o=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>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</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>求绝对值</Title>
+            <Author>ZhuXingyin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">给你一个整数，请求出这个数字的绝对值。</Description>
+                <InputSpec xml:space="preserve">你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，其中仅有一个整数N；N的绝对值不会超过1,000位数；输入的数据没有前导零；如果N是负数，则在负号和最左边一位数字之间不会有空格。每行的行首和行尾都没有多余的空格。在所有数据的前后，以及两组数据之间都没有多余的空行。</InputSpec>
+                <OutputSpec xml:space="preserve">对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一组对应的答案。每组答案占一行，其中仅有一个整数，即N的绝对值。在行首和行尾不要输出多余的空格。在所有数据的前后，以及两组数据之间不要输出多余的空行。</OutputSpec>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">C5s3g0rLFpI=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>b6grhGK5KuSQHqj8d6/efcxcYNIlpUCaQgRoSi7Pc8DFMrpQ+1Xm3BcbR03NDIuDWmIXrISgkt9OCfrlVJngz+L5sZ3S+5Hnm7qq3bPE7EXnfJb3h1/37WoENM5j1u8NclNfmnV6HYuO7txMKGXum3q1qryavDTqF0NcyiK1PKBiEHMcI7DdwgKC+sU+N2ds09O+ZUZsLnFNU9pHVvbgrGD280uAuh9VxCK0GCnCHhqIbAmJ+NSCrziM1y26GKJ4N2h+wCZyjROtEKCtNs+bmKGX3knZ83WjSm+WtmaPjbZ74S/77ueGB2YB4AIHy7zJIW7iC86UAYAIHJV71z3jfYhsCYn41IKvPckS70ziCdGhl95J2fN1o1gX4v0UMN3RA61akQkgFob43QP6E/BZJJV+jNbKLPTZhhsEhWr2L6pj4ryu3fHuaT4+Pwl+VIkRnVwz6DcjNkIz5DXfS21q0w==</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">8Qet8aTLBEw=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>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BVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Iu1zSo9RVYhWxhpRN33mUMJimXIEGTnl5xgLtNxcj1+Q5cT9rjC6kYNibvgetaZO892PHeOy2tgXvHqf4gj7UVM8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/H1XRsFVeyL8fVdGwVV7Ivx9V0bBVXsi/BtBxnshyU+hJxob1sSQOxgLtNxcj1+Q0N+Ro3Ob9yOoJDrU/U7vmKcV6vEPkSR6/TeJqVTI7RI</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>函数求值</Title>
+            <Author>ZhuXingyin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">根据如下所示的函数，输入相应的x值，求出对应的y值。&lt;br&gt;&lt;IMG SRC="function1.jpg"&gt;</Description>
+                <InputSpec xml:space="preserve">你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，每行一个，为一系列函数自变量X的值（X为实数，X不等于2）。
+在行首和行尾没有多余的空格。</InputSpec>
+                <OutputSpec xml:space="preserve">对应每一个输入的自变量X，输出对应的函数值Y，每行一个。Y的值保留小数点后6位，所有数据前后没有多余的空行，两组数据之间也没有多余的空行。</OutputSpec>
+                <Figure filename="function1.jpg">
+                    <Text />
+                    <Image xml:space="preserve">/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADSAesDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA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T6XFZ+IBJdoEHmpBcTQRSt8pJKI/IyoIDFsevegDxvwZfa74H+J8LeJII4IfGaC5ZY43Cw3EjlkQ7l3B1ZyhXOF80FicV9BjoK5TXfh74Z8Tm0OtWM96LSLyoPNvZ/kX14f5mOBljljgZJxXT28K29tFAhcpGgRTJI0jEAY5ZiSx9yST3oAkrEv9Iv7q7lmh8S6rZRtjEMEdqUTAA4Lws3J55PXpxW3RjnPegDAg0TUYZ45ZPFesTojhmieK0CuAeQ22AHHrgg+nNb/aiigBjEcnjjmuEnnm+ItxJY2UskXhKFjHeXkZKvqjA4aGJhgiEEYeQY34Krxuau7I5Pqa4IfBP4ekf8i//wCTlx/8XQBveEfEWkeItPuxoceyx067fT12qgjby1XBj2Ejy8FdvTjtXCeMoW8WfGzwpoloY8aEp1W7mWQMUG9CEZcggkxx+pxKDjA59C0nw3p/hrQ5NK8O20NjH87oCrSDzGB+Z8sGft1bOBgEYGI/DXhyLw/BPK1w9/qd64lv9QlUCS5kAIB44VAOFQcKOBySSAbw6ClpB0FLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUU0HOP8KdQAUUUUAFFFFABRRRQAUUUUAFFFFABXI3ralpXxFivTZSXGj6pZRWLy28TSPb3EbyMhcD7sTLKw3YIBAztHJ66igBg3e/1p46UUUAFFFFABgelFFFABiiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAMD0owPSiigAxRRRQAUUUUAFFFFABgelFFFABgelGB6UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACYGaWiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==</Image>
+                </Figure>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">6pdhlPLZZw0=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>k9SJLSA5SgA1Cu8sWDH57zeAquIEYyAHLqYFATU2kSnRFLogRofszrh11LGZxXThwW3DUB3RxC76SH/YjbOjdiKJKPWB9vPBvEDsk7QebFKUHgZ9DMCwlzpg2OlXiy/ATvOATmZkQL1SIw//2JwF+Q1BVjzgal16ODcb90wdi6eBQT0xwjePzZvuMVGFTuTkot+XHDvYpvuCsnlGBQAoUeUJ28V7crejGoO7myYIw119Cr3WfRzlijpRaYe/qf9KxFlwH1ZhuRb9EtcQJecJPQcFTgWYHjpTm0xQuZICP7XSa4ZGQSIll3idO9NE8nkSLsxPLdZcy4j9EtcQJecJPdQ2WeSGvC114twm7SCRLR1V+8USsZF2HEGy2RR6LNfOdFGEI6p2orAAcz1AINHkC4MCDMGAxG11fUtojNUAKJCFEKDeh4lc6w==</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">PioHKfdoqLY=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>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</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>数字之和</Title>
+            <Author>ZhuXingyin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">输入一个正整数，求这个正整数的各位数字之和，如果得到的正整数的位数大于等于两位，则继续对这个数进行各位数字求和运算，直到这个正整数只有一位。</Description>
+                <InputSpec xml:space="preserve">你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组测试数据为正整数，每行一个N，N小于20000，程序输入以0结束。                 </InputSpec>
+                <OutputSpec xml:space="preserve">对每组测试数据，你的程序需要向标准输出文件（通常为启动该程序的文本终端）依次输出一组对应的答案：输出一个个位数，所有数据前后没有多余的空行，两组数据之间也没有多余的空行。</OutputSpec>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">KW1JEPg+94w=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>3ApqBOul/iOm2pUDPgzoBwSuyJIl5DX9R8+i/RFsEMcDn8BO1H6ZVAAQDUleG3uR1fwV4FmvXxnEExk20/XKx+jjbgrbcxXdmAbPkeMHZXyuxgaW8rEvjZlsOavyH/Ukn5H2jl43e+S3LP9CHOGfwfekGFOigrfcj7dgClmqunjdBn3b6sCO6P+9j3vRlJeceKLtHv9pmrHAy3k/0TFVZqrTm2zBqIo8fTbdwzYmC4o3AowyLvLEuz50wpYREme/f0Cp8SNq2prmvfaFyIYnUM4ntLaLHIXsXQg3Str2JhTJWLEYbn8STfIcCl5nZAWPi2NfN9zxR/Rt9kW5e0Zj48Y+ib7SUzw+JRkT+geqkBLNRxpPP7ZLIGTybAIXgjtGBaJx1A6DQkb7+0rllnC7TRGZrrl9roHkyfFFwMEe7IytNekbPuJeZm8baDXWNAfY85hJMbsxr6x7/DFipbv77g==</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">q+XNtYwaDXY=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>UpBHOf4sp9sA1sgouoxws0qUwfd7fgNx1drns1QftnE3ThZ+vv/UCY4QLwb9XU0TYtPgtqCNEB97ZMCyL8/V1JNZ5latSg5dFjiLOD28/Bcqn5CBu+cQddkc8fuGUchXoZ301hIKQ4/6gWXwGBziZredCRqOyBDqifd8s2jaGOLyb0LZYU/QMUo6pxlrbQWAnh9ipjCIp/sxcGuscSzlGcBVS6t1lLqRjQWznI+uSsvGgPq3QFZsIxsHZW1+Ez8p8m9C2WFP0DF2y5gJvuCrETz7KAdslNi1Rmj7mEnBkmv+uXbkJcvbd6GbWAVfSRJyw3DMsGhiSuiAOL6mxCZErd1hWIFDkkyrK7cE6JGrsDCTWeZWrUoOXRY4izg9vPwXH5GqCncIIVTZHPH7hlHIV+5FeHxxQ3RHFEeZBl7R3/OghVgAkQjzZSzz8ED1YwSXtzGbcLuQ7mjyb0LZYU/QMb/kXKdWjgZtFDkt3eopJ8CFnLknUQCPs56T99uB+rEI2Rzx+4ZRyFev9pE7Exw/trL23AfTa0HgMXBrrHEs5RnAVUurdZS6kUKdDT6YowaxFzDhYHX8xsn/tc/o0fV7MfJvQtlhT9AxXX4+Rj6iHdblZ1CYW0j12PJvQtlhT9Ax7RMQUf4h4Znd0QRnNCgCu9nsIpJqxKfsNKHSIK7S+7vyb0LZYU/QMfAOpH3yNIseX+pvJiwYGUVWFadB5ooHq14d6XW8Ap8ZXS3yM+y1s+AdagangD77NUj/tOrP7gmqkXqc+NUwwGAUN02Jikb4BaDtmiyqaTdtRmj7mEnBkmtmG8Y7XH+suM0lI3eiajgPtvHn8jX5KE3yb0LZYU/QMfohUewaVCmkqZEu9Vc40HHxTohBfjfCBWNVImV4wnG+0lhLj6fT67GM/PoH0phbKwOazETtAyeDkXqc+NUwwGAdagangD77NXhCXRYjTEQNeQHKd+ooDIwolmtiqBjQiSRLEY/4HqIgQv4C+7Yfd2Hyb0LZYU/QMfAOpH3yNIsecl0h8Pc36lizjP60QXE7Tynb0EemEOQh2Oc6qzVOQ7AUN02Jikb4BVc2I1d5WAK9S7SztBTKHpD8vz+3W/orBPJvQtlhT9Ax7RMQUf4h4Znd0QRnNCgCu4z9mukPXbNwYp3oIARiInPyb0LZYU/QMfFOiEF+N8IFQgOTJls114uzjP60QXE7Tynb0EemEOQhVl/9WWfdW9/i5oo29t8KS43taV7HQSOR8m9C2WFP0DHz5q/Y3U0xGL1hzHrxz8MYoIVYAJEI82Us8/BA9WMElyxZw3s+6cfYBHxAMSkKQtqTWeZWrUoOXT6Uk6wdsMl69czCcipoAW/uesE8fn7R8S0WRXYaki6KY2MNhNiRHXsA9NiXhjky+ckmJiYop3r68m9C2WFP0DHJWxbXnAmOCIVZ/toiLWA1oIVYAJEI82Us8/BA9WMEl8LdtH3TVMSmy0KICB+ESZRXNiNXeVgCvfJvQtlhT9AxllHv+ZaXroOcoOhN6nDZCe21vDl9wov9UxoHbPkwY/q46pA3Vpfu0P9CV1HIwZKj2Rzx+4ZRyFfbtHG3ZqeS+uNJTEJyYChk3pgLTfSwth+HnNywzCjAM8cZxC3Lxe3rX0Y/JqQ/4TltrRk0SLW1UPJvQtlhT9AxXEJxgUUcUoycoOhN6nDZCe21vDl9wov9UxoHbPkwY/rFMniq0laYZR1qBqeAPvs1SP+06s/uCaqRepz41TDAYBQ3TYmKRvgFoO2aLKppN21GaPuYScGSa2Ybxjtcf6y4q2x0r0IBKtu28efyNfkoTfJvQtlhT9Ax+iFR7BpUKaSpkS71VzjQcfFOiEF+N8IFY1UiZXjCcb7SWEuPp9PrsXCYizdXAqF9oU+QGad51Dryb0LZYU/QMdQnEXU8MzItoO2aLKppN21GaPuYScGSa2Ybxjtcf6y4wIIxTyMCRNWcHhYIJnPoHJNZ5latSg5d7nrBPH5+0fE7Ennyisuw7XhCXRYjTEQNeQHKd+ooDIxEFJNeAQctQs0XmrNXssMrB3TrZDtenbiRepz41TDAYLnEC2E0lGuSNRfneicUStrwDqR98jSLHm2mTVv1/WF4CbuyZ0h8RbyaekjaGIaW2AOazETtAyeDkXqc+NUwwGAdagangD77NXhCXRYjTEQNeQHKd+ooDIwbe8LPaq2FXEWKeuNeECRKnB4WCCZz6ByTWeZWrUoOXe56wTx+ftHxOxJ58orLsO14Ql0WI0xEDXkBynfqKAyMO8qkWORp4wDNF5qzV7LDKwd062Q7Xp24kXqc+NUwwGC5xAthNJRrkjUX53onFEra8A6kffI0ix5tpk1b9f1heAm7smdIfEW8mnpI2hiGltgDmsxE7QMng5F6nPjVMMBgHWoGp4A++zV4Ql0WI0xEDXkBynfqKAyMnDRyGSs37o6XLTbJwujwEs8yjYIbnACi8m9C2WFP0DHxTohBfjfCBTTGvN7qEo2OMXBrrHEs5RnAVUurdZS6kTIpCPbDL263meVaT/JdeAiN7Wlex0EjkXELtgDaPaeztoTWIj2fxcnZHPH7hlHIV9CuqfKq/tQChPwUsrSXXDfY7BuV8rVmNXP9HG3UyrUj2Rzx+4ZRyFfemAtN9LC2H7mVKxnshymwMXBrrHEs5RnAVUurdZS6kYHcqdBqeOMry0KICB+ESZRXNiNXeVgCvfJvQtlhT9AxllHv+ZaXroOcoOhN6nDZCe21vDl9wov9UxoHbPkwY/o8UnU9UF7i9f9CV1HIwZKj2Rzx+4ZRyFfbtHG3ZqeS+uNJTEJyYChk3pgLTfSwth+HnNywzCjAM8cZxC3Lxe3rX0Y/JqQ/4TltrRk0SLW1UPJvQtlhT9AxXEJxgUUcUoycoOhN6nDZCe21vDl9wov9UxoHbPkwY/pUBcRlnxi4lHpqlaqTAST+2Rzx+4ZRyFfemAtN9LC2HwR8QDEpCkLaFDkt3eopJ8CFnLknUQCPs8XcilTuFIezYWFnkXn4bMDvzHEO18JLFimiSGnfisxGIFm6J7GGMBVPqeOqYq/++DX2R0/2MufFBBLH7wQIkOE=</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="true">
+            <Title>皇帝出行问题</Title>
+            <Author>ZhuXingyin</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">你有一个NXN的棋盘， 1 ≤ N ≤ 100。在棋盘上，只有一个皇帝。皇帝的位置用数字r，c了来描述。r是行号，c是列号。位置(1,1)是棋盘左下角的位置，而(n,n)是棋盘右上角的位置。
+这个问题是要你计算皇帝从一个起点到一个终点的移动的最小的移动次数。如果移动是不可能的，输出:“no move”.如果你从没玩过象棋，不要担心。你只需要以下的一条提示：皇帝可以对角线移动任意多的步数，只要途中无障碍物。</Description>
+                <InputSpec xml:space="preserve">输入的开头为一个整数，C，表示以下有几个测试组。每个测试的组在下面描述。接下来是一个空行，同样的，在两个相邻的测试组中间也会有空行。
+对于每一个测试组，第一行是一个整数T，1 ≤ T ≤ 100，表示这个组中有几个测试数据。第二行是一个整数N(1 ≤ N ≤ 100)，N表示的是棋盘的大小(N*N)。然后就是T组的测试数据。每组一行，每行四个整数，用空格隔开。前两个整数是皇帝的出发的位置(r,c)，后两个是终点的位置(r,c)。</InputSpec>
+                <OutputSpec xml:space="preserve">对于每个测试数据，你需要打出一行，表示皇帝从起点到终点移动的最小的次数。如不可能，打出“no move”。</OutputSpec>
+            </Problem>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">swQ+Iz1ULA4=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>M4JnL0rGoXkmnRoI3aWw6z00c0jCNfD3mcqOLOexVmcarj3nHXa0H+Z6rhV0P2CpWIpAydO6lrLN33f37LqtWNpDolCTtpYiqDflmgaeK2pcc9XIAh5BHgpbU2SOoYwEqPKpKz/hZMiNnQxS5H9wy4kUE5IFsVyUbFTjO9YCCwS173DwUS1R9IRTqPU8iderMawJxsxgIjEP2gO8fLou7YE5QKggYfe831J+YRx8M17NY+myyUGdU61TJRrgqeTTgsug+WRrcPrwhXJZRTPAjnvWAspAJKgmD9StZLKN0K3+/d/hxsSdzTg4HNBzv/dKJVEGGRUu/nTkvbsTCmZJk/ECJzDOWujsIR3Sn9dGgqrQzhCummmIah0xXfjF3fVMx0a0b2QAXsk3RY8eGiKWid/E+CiGJYKRyA/67PEzf5QZMbVVBkb+7jIEKVTWU4YfCGena2QhpVcY6vGr1y2nXpo+6KIrJDHbU51ZO9A9qXAn/ewyNFcon1nMwskLrHcv6/VpzxZK45+3yinc5RCJsSKwAxfHREbh3a4P5hubPIbTDnIv5ug5UE6la4sfKSC5HAD2Jr4CwGnSg89XAFnRriv3tFV1SBq182mmZRzV/nfcf70w9wIj/UhlnRTQ73KER+6xqGguVpmtkNR2XSnpjaYoIX/Z0mUyjxlsWLCQSmtTnVk70D2pcCf97DI0VyifGaPJQLMOYkzm+u5f+sjex65vojeDOZRgEwBsX2ekcBUscgmFMa9HCZFbiIu++vIUD/SPAGMJHWK1zbyL7g61VmslbuT9aU0p3xkr22a0HVE=</CipherValue>
+                </CipherData>
+            </EncryptedData>
+            <EncryptedData xmlns="http://w2c.org/2001/04/xmlenc#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+                <EncryptionMethod xmlns="" Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <KeyName xmlns="">hl1by/Ls33M=</KeyName>
+                </ds:KeyInfo>
+                <CipherData xmlns="">
+                    <CipherValue>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</CipherValue>
+                </CipherData>
+            </EncryptedData>
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+
