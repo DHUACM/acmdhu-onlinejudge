@@ -9,14 +9,22 @@ public class EnvironmentBean {
 
     private Element EnvironmentRoot;
 
-    public EnvironmentBean(String filepath) {
+    public EnvironmentBean() {
         try {
-            this.EnvironmentRoot = Element.unmarshal(filepath);
+            java.io.InputStream in = getClass().getResourceAsStream("/cn/edu/dhu/acm/oj/common/resource/Environment.xml");
+            this.EnvironmentRoot = Element.unmarshal(in);
         } catch (Exception e) {
             System.err.println(e.toString());
-            System.err.println("*******************************");
-            System.err.println("* environment file open error *");
-            System.err.println("*******************************");
+            System.err.println("environment file open error");
+        }
+    }
+
+    public EnvironmentBean(String file) {
+        try {
+            this.EnvironmentRoot = Element.unmarshal(file);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            System.err.println("environment file open error");
         }
     }
 

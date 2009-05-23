@@ -81,6 +81,9 @@ public class Compile {
         } finally {
             file.delete();
         }
+        if(!compileresult){
+            runbean.setResult(Const.CE);
+        }
         return compileresult;
     }
     private RunBean runbean;

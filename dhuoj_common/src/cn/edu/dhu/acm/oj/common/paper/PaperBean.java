@@ -9,6 +9,7 @@ import org.jdom.output.*;
 import java.security.*;
 import java.security.spec.*;
 import cn.edu.dhu.acm.oj.common.problem.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class PaperBean {
 
@@ -117,7 +118,7 @@ public class PaperBean {
             signetcheck.update(info.getBytes());
 
             if (signetcheck.verify(signed)) {
-                System.out.println("ǩ����");
+                System.out.println("Verify signed");
                 return true;
             }
         } catch (NoSuchAlgorithmException e) {
@@ -129,7 +130,7 @@ public class PaperBean {
         } catch (Exception e) {
             System.out.println("Open Exception");
         }
-        System.out.println("ǩ����֤���");
+        System.out.println("vertifySignature");
         return false;
     }
 
@@ -374,6 +375,46 @@ public class PaperBean {
         String fileURI = paperFile.toURI().toASCIIString();
 
         root = Element.unmarshal(fileURI);
+        problemRoot = root.getChild("ProblemList");
+        paperDetail = new PaperDetail(root.getChild("PaperDetail"));
+
+        vertifySignature();
+
+        List list = problemRoot.getChildren("ProblemArchive");
+        problemList.clear();
+        for (int i = 0; i < list.size(); i++) {
+            problemList.add(list.get(i));
+        }
+
+        String tmpDir = System.getProperty("java.io.tmpdir");
+        for (int i = 0; i < problemList.size(); i++) {
+            Element elem = (Element) problemList.get(i);
+            ProblemArchiveBean bean = new ProblemArchiveBean(elem);
+            bean.getProblem().writeFigureList(tmpDir);
+
+            elem.detach();
+            new Document(elem);
+        }
+
+        //decypt
+        String tmp = problemRoot.getAttributeValue("encrypted");
+        if (!tmp.equals("0")) {
+            decryptNode();
+        }
+    }
+
+    /**
+     * Read a paper from a file.
+     *
+     * @param filePath Path of the paper's XML file.
+     *        A path name must be passed in, instead of a URI.
+     *
+     * @author Zhou Xiaopeng, Zhu Kai, Sun Cihai.
+     */
+    public void unmarshal()
+            throws Exception {
+        InputStream in = getClass().getResourceAsStream("/cn/edu/dhu/acm/oj/common/resource/"+Const.INITPAPER);
+        root = Element.unmarshal(in);
         problemRoot = root.getChild("ProblemList");
         paperDetail = new PaperDetail(root.getChild("PaperDetail"));
 

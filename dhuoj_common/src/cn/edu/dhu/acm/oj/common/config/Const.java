@@ -61,6 +61,8 @@ public class Const {
     public static final java.awt.Font font = new java.awt.Font("DialogInput", 0, 13);
     /**The Time status reflash*/
     public static final long SLEEPTIME = 10000;
+    /**The Time Judger sleep for Receiver and Sender*/
+    public static final long JUDGESLEEP = 100;
     /**Output File Size*/
     public static final long FILEMAXSIZE = 5L << 20;
     /**Compile Name*/
