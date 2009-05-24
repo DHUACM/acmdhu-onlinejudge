@@ -84,7 +84,7 @@ public class ContestFacade {
     }
 
     public static TreeMap<String, UserBean> getUsersByRank(List<SolutionBean> runs) {
-        TreeMap<String, UserBean> userMap = new TreeMap<String, UserBean>();
+        TreeMap<String, UserBean> userMap = new TreeMap();
         UserDAO udao = new UserDAO();
         for (SolutionBean sb : runs) {
             String uid = sb.getUserId();
@@ -92,6 +92,19 @@ public class ContestFacade {
             userMap.put(uid, ubean);
         }
         return userMap;
+    }
+
+    public static TreeMap<String, UserBean> getContestReservation(int cid) {
+        TreeMap<String, UserBean> revMap = new TreeMap();
+        ContestReservationDAO revdao = new ContestReservationDAO();
+        List<ContestReservationBean> revList = revdao.findContestReservationList(cid);
+        UserDAO udao = new UserDAO();
+        for (ContestReservationBean crb : revList) {
+            String uid = crb.getUserId();
+            UserBean ubean = udao.findUser(uid);
+            revMap.put(uid, ubean);
+        }
+        return revMap;
     }
 /*
     public static void main(String[] args) {
