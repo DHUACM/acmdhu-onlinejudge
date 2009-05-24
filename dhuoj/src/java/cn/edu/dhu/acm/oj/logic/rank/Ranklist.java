@@ -4,6 +4,7 @@ import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
 import cn.edu.dhu.acm.oj.persistence.beans.ContestBean;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
 import cn.edu.dhu.acm.oj.persistence.beans.UserBean;
@@ -75,7 +76,7 @@ public class Ranklist {
 	}
 	
 	
-	public ClientScoreData[] getStandings(ArrayList<SolutionBean> al) throws Exception
+	public ClientScoreData[] getStandings(ArrayList<SolutionBean> al, Set<String> userSet) throws Exception
 	{
 		TreeMap<String, ClientScoreData> csd_map = new TreeMap<String, ClientScoreData>();
 
@@ -84,6 +85,7 @@ public class Ranklist {
 			SolutionBean bean = al.get(i);
 			String userId = bean.getUserId();
 			ClientScoreData csd = (ClientScoreData)csd_map.get(userId);
+            userSet.remove(userId);
 			
 			// the user is not in the csd_map.
 			if ( csd == null )
@@ -105,6 +107,13 @@ public class Ranklist {
 			}
 			csd_map.put(userId, csd);
 		}
+
+        for (Iterator iter = userSet.iterator(); iter.hasNext(); ) {
+            String userId = (String)iter.next();
+            ClientScoreData csd = new ClientScoreData();
+            csd.setUserID(userId);
+            csd_map.put(userId, csd);
+        }
 		
 		TreeMap<ClientScoreData, ClientScoreData> ranklist_map = new TreeMap<ClientScoreData, ClientScoreData>();
 		Collection allUserInfoColl = csd_map.values();

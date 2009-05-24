@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://acm.dhu.edu.cn:3306/dhuoj?useUnicode=true&amp;characterEncoding=UTF-8</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dhuoj?useUnicode=true&amp;characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
     <property name="hibernate.c3p0.max_size">200</property>
@@ -21,5 +21,6 @@
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/ContestProblem.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/SourceCode.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Compileinfo.hbm.xml"/>
+    <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/ContestReservation.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

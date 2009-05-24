@@ -32,8 +32,13 @@ public class RanklistClient {
         problem_map = ContestFacade.getProblemsByContest(cid);
         // get all runs
         this.allRuns = (ArrayList)ContestFacade.querySubmitStatusByContest(cid);
-        // get users who submit codes in this contest.
-        this.user_map = ContestFacade.getUsersByRank(allRuns);
+        // private contest get users by reservation.
+        if (contest.getPrivate_() != 0) {
+            this.user_map = ContestFacade.getContestReservation(cid);
+        } else {
+            // get users who submit codes in this contest.
+            this.user_map = ContestFacade.getUsersByRank(allRuns);
+        }
         this.numProblems = problem_map.size();
         this.psdAccepted = new long[numProblems+1];
         this.psdAttempts = new long[numProblems+1];
@@ -83,7 +88,8 @@ public class RanklistClient {
         try {
             synchronized (printingLock) {
                 Ranklist rank = new Ranklist(contest);
-                ClientScoreData sd[] = rank.getStandings(allRuns);
+                TreeMap tm = (TreeMap)user_map.clone();
+                ClientScoreData sd[] = rank.getStandings(allRuns, tm.keySet());
 
                 printHeader(out);
 
