@@ -34,5 +34,11 @@
     <property name="valid" type="byte">
       <column name="valid" not-null="true"/>
     </property>
+    <property name="localJudgeResult" type="short">
+      <column name="local_judge_result" not-null="true"/>
+    </property>
+    <property name="percentage" type="int">
+      <column name="percentage" not-null="true"/>
+    </property>
   </class>
 </hibernate-mapping>
