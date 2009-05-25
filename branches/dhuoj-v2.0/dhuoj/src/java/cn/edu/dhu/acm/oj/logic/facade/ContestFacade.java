@@ -16,7 +16,7 @@ public class ContestFacade {
 
     public static int submitCode(SubmitCodeForm scf) throws ContestNotStartException, ContestClosedException, UserLoginFailException {
         SolutionBean sbean = new SolutionBean(scf.getUserID(), scf.getContestID(),
-                scf.getProblemID(), 0, 0, Util.getTime(), scf.getLocalJudgeResult(), scf.getLanguage());
+                scf.getProblemID(), 0, 0, Util.getTime(), Const.WAIT, scf.getLanguage(), scf.getLocalJudgeResult());
 
         String userID = scf.getUserID();
         String password = scf.getPassword();
@@ -44,10 +44,11 @@ public class ContestFacade {
 
         SolutionDAO sdao = new SolutionDAO();
 
+        /*
         // check local judge result
         if (sbean.getResult() == Const.AC) {
             sbean.setResult(Const.WAIT);
-        }
+        }*/
 
         sdao.addSolution(sbean);
 

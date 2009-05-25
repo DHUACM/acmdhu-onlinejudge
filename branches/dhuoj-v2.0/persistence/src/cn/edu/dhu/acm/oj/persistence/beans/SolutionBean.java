@@ -19,6 +19,8 @@ public class SolutionBean  implements java.io.Serializable {
     private byte language;
     private int contestId;
     private byte valid = 1;
+    private short localJudgeResult = 0;
+    private int percentage = 0;
     private SourceCodeBean sourceCode;
     private CompileinfoBean compileInfo;
 
@@ -26,7 +28,7 @@ public class SolutionBean  implements java.io.Serializable {
     }
 
 	
-    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language) {
+    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language, short localResult) {
         this.problemId = problemId;
         this.userId = userId;
         this.runtime = runtime;
@@ -35,9 +37,10 @@ public class SolutionBean  implements java.io.Serializable {
         this.result = result;
         this.language = language;
         this.contestId = contestId;
+        this.localJudgeResult = localResult;
     }
 
-    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language, SourceCodeBean src) {
+    public SolutionBean(String userId, int contestId, int problemId, int runtime, int memory, Date submitDate, short result, byte language, short localResult, SourceCodeBean src) {
         this.problemId = problemId;
         this.userId = userId;
         this.runtime = runtime;
@@ -46,6 +49,7 @@ public class SolutionBean  implements java.io.Serializable {
         this.result = result;
         this.language = language;
         this.contestId = contestId;
+        this.localJudgeResult = localResult;
         this.sourceCode = src;
     }
    
@@ -119,6 +123,22 @@ public class SolutionBean  implements java.io.Serializable {
     
     public void setValid(byte valid) {
         this.valid = valid;
+    }
+
+    public short getLocalJudgeResult() {
+        return localJudgeResult;
+    }
+
+    public void setLocalJudgeResult(short localJudgeResult) {
+        this.localJudgeResult = localJudgeResult;
+    }
+
+    public int getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
     }
 
     public CompileinfoBean getCompileInfo() {

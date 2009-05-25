@@ -28,5 +28,11 @@
     <property name="status" type="int">
       <column name="status" not-null="true"/>
     </property>
+    <property name="paperPath" type="string">
+      <column name="paper_path"/>
+    </property>
+    <property name="paperKey" type="string">
+      <column name="paper_key"/>
+    </property>
   </class>
 </hibernate-mapping>

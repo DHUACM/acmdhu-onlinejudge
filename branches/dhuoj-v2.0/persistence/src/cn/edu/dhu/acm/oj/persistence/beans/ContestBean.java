@@ -18,18 +18,22 @@ public class ContestBean  implements java.io.Serializable {
      private String description;
      private byte private_;
      private int status;
+     private String paperPath;
+     private String paperKey;
 
     public ContestBean() {
     }
 
     public ContestBean(String title, Date startTime, Date endTime, 
-            String description, byte private_, int status) {
+            String description, byte private_, int status, String paperPath, String paperKey) {
        this.title = title;
        this.startTime = startTime;
        this.endTime = endTime;
        this.description = description;
        this.private_ = private_;
        this.status = status;
+       this.paperPath = paperPath;
+       this.paperKey = paperKey;
     }
    
     public Integer getContestId() {
@@ -89,8 +93,21 @@ public class ContestBean  implements java.io.Serializable {
         this.status = status;
     }
 
+    public String getPaperKey() {
+        return paperKey;
+    }
 
+    public void setPaperKey(String paperKey) {
+        this.paperKey = paperKey;
+    }
 
+    public String getPaperPath() {
+        return paperPath;
+    }
+
+    public void setPaperPath(String paperPath) {
+        this.paperPath = paperPath;
+    }
 
 }
 
