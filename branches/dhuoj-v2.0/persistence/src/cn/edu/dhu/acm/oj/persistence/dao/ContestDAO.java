@@ -30,16 +30,16 @@ public class ContestDAO extends BaseHibernateDAO {
 		}
 	}
 
-    public void editContest(ContestBean cbean) {
-		log.debug("editing ContestBean instance");
+    public void updateContest(ContestBean cbean) {
+		log.debug("updating ContestBean instance");
 		try {
             Session session = getSession();
             Transaction tx = session.beginTransaction();
-            session.persist(cbean);
+            session.update(cbean);
             tx.commit();
-			log.debug("edit ContestBean successful");
+			log.debug("update ContestBean successful");
 		} catch (RuntimeException re) {
-			log.error("edit ContestBean failed", re);
+			log.error("update ContestBean failed", re);
 			throw re;
 		}
 	}

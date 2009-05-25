@@ -41,15 +41,16 @@ public class ProblemDAO extends BaseHibernateDAO {
         }
     }
 
-    public void editProblem(ProblemBean pbean) {
-        log.debug("edit ProblemBean instance");
+    public void updateProblem(ProblemBean pbean) {
+        log.debug("updating ProblemBean instance");
         try {
             Session session = getSession();
             Transaction tx = session.beginTransaction();
-            session.persist(pbean);
+            session.update(pbean);
             tx.commit();
+            log.debug("update ProblemBean successful");
         } catch (RuntimeException re) {
-            log.error("edit ProblemBean failed.", re);
+            log.error("update ProblemBean failed.", re);
             throw re;
         }
     }
@@ -94,7 +95,7 @@ public class ProblemDAO extends BaseHibernateDAO {
 
         // update problem
         pb.setTitle("EASY PROBLEM 1");
-        pdao.editProblem(pb);
+        pdao.updateProblem(pb);
     }
 
     /*

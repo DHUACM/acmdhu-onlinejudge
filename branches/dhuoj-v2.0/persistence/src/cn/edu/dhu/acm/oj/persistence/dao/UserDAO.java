@@ -30,16 +30,16 @@ public class UserDAO extends BaseHibernateDAO {
 		}
 	}
 
-    public void editUser(UserBean ubean) {
-		log.debug("persisting UserBean instance");
+    public void updateUser(UserBean ubean) {
+		log.debug("updateing UserBean instance");
 		try {
 			Session session = getSession();
             Transaction tx = session.beginTransaction();
-            session.persist(ubean);
+            session.update(ubean);
             tx.commit();
-			log.debug("persist successful");
+			log.debug("update successful");
 		} catch (RuntimeException re) {
-			log.error("persist failed", re);
+			log.error("update failed", re);
 			throw re;
 		}
 	}
