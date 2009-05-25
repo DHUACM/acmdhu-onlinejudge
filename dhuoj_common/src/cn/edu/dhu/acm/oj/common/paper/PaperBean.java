@@ -17,12 +17,11 @@ public class PaperBean {
     private Element root;
     private ArrayList problemList = new ArrayList();
     private Element problemRoot = new Element("ProblemList");
-    ;
     private PaperDetail paperDetail = new PaperDetail();
 
     /**
-     *�Ծ���Ĺ��캯��
-     **/
+     * Constructing an empty paper.
+     */
     public PaperBean() {
         passFlag = true;
         root = new Element("PaperSetter");
@@ -35,9 +34,8 @@ public class PaperBean {
     }
 
     /**
-     *�Ծ���Ĺ��캯��
-     * elem����Ծ�Ҫ���Ƶ����ڵ�ڵ�
-     **/
+     * Constructing a paper from an XML element.
+     */
     public PaperBean(Element elem) {
         root = elem;
         new Document(root);
@@ -51,9 +49,8 @@ public class PaperBean {
     }
 
     /**
-     *�����Ծ��Լ�λ
-     * �Ծ��Լ�λ������Ϊchecked����true��falseֵ
-     **/
+     * Setting this paper has been checked or not.
+     */
     public void setCheckSignal(boolean checked) {
         if (checked) {
             root.setAttribute("checked", "true");
@@ -63,17 +60,17 @@ public class PaperBean {
     }
 
     /**
-     * �����Ծ������ǩ��
-     **/
+     * Setting the digital signature of this paper.
+     */
     private void setDigitalSign() {
         XMLOutputter fmt = new XMLOutputter();
         String info = fmt.outputString(problemRoot);
         try {
             java.security.KeyPairGenerator keygen = java.security.KeyPairGenerator.getInstance("DSA");
             SecureRandom secrand = new SecureRandom();
-            secrand.setSeed("anada".getBytes()); //��ʼ����������
-            keygen.initialize(512, secrand);     //��ʼ����Կ�����
-            KeyPair keys = keygen.generateKeyPair(); //�����Կ��
+            secrand.setSeed("anada".getBytes());
+            keygen.initialize(512, secrand);
+            KeyPair keys = keygen.generateKeyPair();
             PublicKey pubkey = keys.getPublic();
             PrivateKey prikey = keys.getPrivate();
 
@@ -81,7 +78,7 @@ public class PaperBean {
             signet.initSign(prikey);
             signet.update(info.getBytes());
             byte[] signed = signet.sign();
-            byte[] bobEncodedPubKey = pubkey.getEncoded(); //��ɱ���
+            byte[] bobEncodedPubKey = pubkey.getEncoded();
             String str = Base64.byteArrayToBase64(bobEncodedPubKey);
 
             paperDetail.setPublicKey(str);
@@ -98,9 +95,8 @@ public class PaperBean {
     }
 
     /**
-     * ��֤�Ծ������ǩ��
-     * �����Ƿ���֤�ɹ�
-     **/
+     * Checking whether this paper has been modified based on the signature.
+     */
     private boolean vertifySignature() {
         try {
             String str = paperDetail.getPublicKey();
@@ -135,10 +131,8 @@ public class PaperBean {
     }
 
     /**
-     * ���������Ծ�
-     * filePath���Ҫ���浽��λ��
-     * @param filePath
-     * @throws Exception
+     * Saving this paper to a file.
+     * @param filePath The filename to save.
      */
     public void marshal(String filePath) throws Exception {
         for (int i = 0; i < problemList.size(); i++) {
@@ -151,8 +145,8 @@ public class PaperBean {
     }
 
     /**
-     * �õ��Ծ��ڵ�
-     **/
+     * Getting the root XML element of this paper.
+     */
     public Element getRootElement() {
         for (int i = 0; i < problemList.size(); i++) {
             Element elem = (Element) problemList.get(i);
@@ -163,14 +157,14 @@ public class PaperBean {
     }
 
     /**
-     * �õ��Ծ��ڰ�ĵ��ӳ����������
+     * Getting the number of problems in this paper.
      **/
     public int getProblemCount() {
         return problemList.size();
     }
 
     /**
-     * ���Ծ������һ�����ӳ�����
+     * Adding a problem into paper.
      **/
     public void addProblem(ProblemArchiveBean bean) {
         Element elem = bean.getElement();
@@ -180,31 +174,30 @@ public class PaperBean {
     }
 
     /**
-     * ɾ���Ծ��ڵĵ�index�����ӳ�����
+     * Removing the problem at the specified index.
      **/
     public void removeProblem(int index) {
         problemList.remove(index);
     }
 
     /**
-     * �����Ծ����������ӳ������λ��
-     **/
+     * Swaping the order of two problems.
+     */
     public void swapProblem(int a, int b) {
         Element tmpElem = (Element) problemList.get(a);
         problemList.set(a, problemList.get(b));
         problemList.set(b, tmpElem);
     }
 
-    /**
-     * �õ��Ծ��ڵ��Ծ���Ϣ��
-     **/
     public PaperDetail getPaperDetail() {
         return paperDetail;
     }
 
     /**
-     * ��XML���ӳ������Ծ�Ľڵ�node���м���
-     **/
+     * Encrypting the element named &ldquo;node&rdquo; in each problem.
+     *
+     * @param node Name of the elements to be encrypted.
+     */
     public void encryptNode(String node) {
         int count = Integer.parseInt(problemRoot.getAttributeValue("encrypted"));
         count++;
@@ -226,14 +219,13 @@ public class PaperBean {
                 elem.removeChild(node);
                 Element eRoot = paperEncrypt.getRootElement();
                 elem.addContent(eRoot);
-            } catch (Exception e) {
-            }
+            } catch (Exception e) {}
         }
     }
 
     /**
-     * �����Ծ������нڵ�
-     **/
+     * Decrypting all elements in the paper.
+     */
     public void decryptNode() {
         int count = Integer.parseInt(problemRoot.getAttributeValue("encrypted"));
         problemRoot.setAttribute("encrypted", "0");
@@ -266,9 +258,12 @@ public class PaperBean {
     }
 
     /**
-     * ����Ծ������������dataType���͵Ĳ������
-     * ���磬���trivial special ����Ժ�Ĳ��Ծ���ѵ����������ģʽ����Ҫ���Ծ�
-     **/
+     * Removing all test data of the given type.
+     *
+     * @param dataType The type name of the test data to be removed.
+     *                 e.g. &ldquo;sample&rdquo;, &ldquo;trivial&rdquo;
+     *                 of &ldquo;special&rdquo;.
+     */
     public void clearTestData(String dataType) {
         //dataType = "sample","trivial","special"
         int count = getProblemCount();
@@ -284,9 +279,8 @@ public class PaperBean {
     }
 
     /**
-     * ����Ծ��ڵ�������Ŀ
-     * �����Լ����
-     **/
+     * Checking all the problems in the paper.
+     */
     public boolean checkPaperProblems() {
         JFrame frame = new JFrame();
 
@@ -316,9 +310,6 @@ public class PaperBean {
         }
     }
 
-    /**
-     * ����Ծ�������
-     **/
     public String checkPaperIntegrality() {
         PaperCheckBean checkBean = new PaperCheckBean();
         String tmp = checkBean.checkPaperIntegrality(paperDetail);
@@ -326,18 +317,13 @@ public class PaperBean {
         return tmp;
     }
 
-    /**
-     * ����Ծ��DTD���ã�Ԥ��
-     **/
     public String checkPaperDtd() {
         passFlag = true;
         PaperCheckBean checkBean = new PaperCheckBean();
         return checkBean.checkDtd();
     }
 
-    /**
-     * ����Ծ����Ƿ�������ݵ�������ȷ
-     **/
+
     public String checkPaperType() {
         PaperCheckBean checkBean = new PaperCheckBean();
         String tmp = checkBean.checkElementType(paperDetail, getProblemCount());
@@ -345,9 +331,6 @@ public class PaperBean {
         return tmp;
     }
 
-    /**
-     * ����Ծ�������Դ����
-     **/
     public String checkPapersolution(ProblemArchiveBean bean) {
         PaperCheckBean checkBean = new PaperCheckBean();
         String tmp = checkBean.checkSolution(bean);
@@ -404,16 +387,16 @@ public class PaperBean {
     }
 
     /**
-     * Read a paper from a file.
+     * Reading the default paper.
      *
-     * @param filePath Path of the paper's XML file.
-     *        A path name must be passed in, instead of a URI.
-     *
-     * @author Zhou Xiaopeng, Zhu Kai, Sun Cihai.
+     * @author Zhou Xiaopeng, Sun Cihai.
      */
     public void unmarshal()
             throws Exception {
-        InputStream in = getClass().getResourceAsStream("/cn/edu/dhu/acm/oj/common/resource/"+Const.INITPAPER);
+        InputStream in = getClass().getResourceAsStream(
+                             "/cn/edu/dhu/acm/oj/common/resource/" +
+                             Const.INITPAPER
+                         );
         root = Element.unmarshal(in);
         problemRoot = root.getChild("ProblemList");
         paperDetail = new PaperDetail(root.getChild("PaperDetail"));
@@ -474,6 +457,8 @@ public class PaperBean {
     public void setPaperDirectory(String dir) {
         this.paperDirectory = dir;
     }
+
+    
     /**
      * Directory where the paper's XML file is.
      *
