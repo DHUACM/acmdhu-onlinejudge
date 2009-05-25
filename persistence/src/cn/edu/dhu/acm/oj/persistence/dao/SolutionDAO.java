@@ -30,16 +30,16 @@ public class SolutionDAO extends BaseHibernateDAO {
 		}
     }
 
-    public void editSolution(SolutionBean sbean) {
-		log.debug("persisting SolutionBean instance");
+    public void updateSolution(SolutionBean sbean) {
+		log.debug("updateing SolutionBean instance");
 		try {
 			Session session = getSession();
             Transaction tx = session.beginTransaction();
-            session.persist(sbean);
+            session.update(sbean);
             tx.commit();
-			log.debug("persist successful");
+			log.debug("update successful");
 		} catch (RuntimeException re) {
-			log.error("persist failed", re);
+			log.error("update failed", re);
 			throw re;
 		}
 	}
@@ -116,7 +116,7 @@ public class SolutionDAO extends BaseHibernateDAO {
         SolutionDAO sdao = new SolutionDAO();
         SolutionBean sbean = sdao.findSolution(125);
         sbean.setResult((short)2);
-        sdao.editSolution(sbean);
+        sdao.updateSolution(sbean);
 
         /*
         // update solution
