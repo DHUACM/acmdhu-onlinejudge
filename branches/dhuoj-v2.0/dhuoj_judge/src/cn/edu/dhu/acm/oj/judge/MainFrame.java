@@ -1,15 +1,49 @@
 package cn.edu.dhu.acm.oj.judge;
 
 import cn.edu.dhu.acm.oj.judge.thread.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class MainFrame extends javax.swing.JFrame {
+
+    class Item {
+
+        String name;
+        byte index;
+
+        Item(String str, byte i) {
+            name = str;
+            index = i;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public byte getIndex() {
+            return index;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 
     /** Creates new form MainFrame */
     public MainFrame() {
         Control.init(this);
         receiver = new Receiver();
         sender = new Sender();
+        thread = new Thread(r);
+        //ManJPanel = new ManualJudgePanel();
         initComponents();
+        for (byte i = 0; i < Const.VERDICT.length; i++) {
+            Item item = new Item(Const.VERDICT[i], i);
+            JCB_Result.addItem(item);
+        }
+        JCB_Result.setSelectedIndex(Const.QUEUE);
+        JTA_CodeOut.setFont(Const.font);
+        JTA_StandardOut.setFont(Const.font);
     }
 
     /** This method is called from within the constructor to
@@ -22,16 +56,35 @@ public class MainFrame extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         JB_Apply = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
         JB_Auto = new javax.swing.JButton();
         jToolBar2 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
         JT_Gotten = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         JT_Queue = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jToolBar3 = new javax.swing.JToolBar();
+        JB_GetSubmit = new javax.swing.JButton();
+        JB_LookInformation = new javax.swing.JButton();
+        JB_LookPaper = new javax.swing.JButton();
+        JB_Judge = new javax.swing.JButton();
+        jToolBar4 = new javax.swing.JToolBar();
+        JCB_Result = new javax.swing.JComboBox();
+        JB_SendResult = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTA_StandardOut = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTA_CodeOut = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACMjudge");
+
+        jToolBar1.setFloatable(false);
 
         JB_Apply.setText("Apply");
         JB_Apply.addActionListener(new java.awt.event.ActionListener() {
@@ -41,20 +94,8 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(JB_Apply);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AutoJudge", "ManualJudge" }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jComboBox1);
-
         JB_Auto.setText("Start");
+        JB_Auto.setEnabled(false);
         JB_Auto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_AutoActionPerformed(evt);
@@ -64,9 +105,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
+        jToolBar2.setFloatable(false);
+
         jLabel1.setText("Have gotten :");
         jToolBar2.add(jLabel1);
 
+        JT_Gotten.setText("0");
         JT_Gotten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JT_GottenActionPerformed(evt);
@@ -76,9 +120,102 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Now in queue :");
         jToolBar2.add(jLabel2);
+
+        JT_Queue.setText("0");
         jToolBar2.add(JT_Queue);
 
         getContentPane().add(jToolBar2, java.awt.BorderLayout.SOUTH);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jToolBar3.setFloatable(false);
+
+        JB_GetSubmit.setText("GetSubmit");
+        JB_GetSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_GetSubmitActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(JB_GetSubmit);
+
+        JB_LookInformation.setText("LookInformation");
+        JB_LookInformation.setEnabled(false);
+        JB_LookInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_LookInformationActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(JB_LookInformation);
+
+        JB_LookPaper.setText("LookPaper");
+        JB_LookPaper.setEnabled(false);
+        JB_LookPaper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_LookPaperActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(JB_LookPaper);
+
+        JB_Judge.setText("Judge");
+        JB_Judge.setEnabled(false);
+        JB_Judge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_JudgeActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(JB_Judge);
+
+        jPanel1.add(jToolBar3, java.awt.BorderLayout.NORTH);
+
+        jToolBar4.setFloatable(false);
+        jToolBar4.add(JCB_Result);
+
+        JB_SendResult.setText("SendResult");
+        JB_SendResult.setEnabled(false);
+        JB_SendResult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SendResultActionPerformed(evt);
+            }
+        });
+        jToolBar4.add(JB_SendResult);
+
+        jPanel1.add(jToolBar4, java.awt.BorderLayout.SOUTH);
+
+        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        JTA_StandardOut.setBackground(new java.awt.Color(0, 0, 0));
+        JTA_StandardOut.setColumns(20);
+        JTA_StandardOut.setForeground(new java.awt.Color(255, 255, 255));
+        JTA_StandardOut.setRows(20);
+        jScrollPane1.setViewportView(JTA_StandardOut);
+
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jLabel3.setText("StandardOut:");
+        jPanel3.add(jLabel3, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.add(jPanel3);
+
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        JTA_CodeOut.setBackground(new java.awt.Color(0, 0, 0));
+        JTA_CodeOut.setColumns(20);
+        JTA_CodeOut.setForeground(new java.awt.Color(255, 255, 255));
+        JTA_CodeOut.setRows(20);
+        jScrollPane2.setViewportView(JTA_CodeOut);
+
+        jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        jLabel4.setText("CodeOut:");
+        jPanel4.add(jLabel4, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.add(jPanel4);
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -92,56 +229,80 @@ public class MainFrame extends javax.swing.JFrame {
     private void JB_ApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ApplyActionPerformed
         AppFrame = new ApplyFrame(this);
         AppFrame.setVisible(true);
-
+        JB_Auto.setEnabled(true);
     }//GEN-LAST:event_JB_ApplyActionPerformed
 
     private void JB_AutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AutoActionPerformed
         if (JB_Auto.getText().equals("Start")) {
-            if (thread == null) {
-                thread = new Thread(r);
-            }
-            thread.start();
             JB_Auto.setText("Stop");
+            Control.setIsauto(true);
+            JB_GetSubmit.setEnabled(false);
         } else {
             JB_Auto.setText("Start");
-            try {
-                thread.stop();
-                thread = null;
-            } catch (Exception ex) {
-            }
+            Control.setIsauto(false);
+            JB_GetSubmit.setEnabled(true);
         }
     }//GEN-LAST:event_JB_AutoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if (jComboBox1.getSelectedItem().toString().equals("ManualJudge")) {
-            HJPanel = new ManualJudgePanel();
-            getContentPane().add(HJPanel, java.awt.BorderLayout.CENTER);
-            if (JB_Auto.getText().equals("Stop")) {
-                try {
-                    thread.stop();
-                    thread = null;
-                    JB_Auto.setText("Start");
-                } catch (Exception ex) {
-                }
+    private void JB_GetSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetSubmitActionPerformed
+        try {
+            if (Control.GetSubmit()) {
+                JB_LookPaper.setEnabled(true);
+                JB_LookInformation.setEnabled(true);
+                JB_Judge.setEnabled(true);
+                JB_SendResult.setEnabled(true);
             }
-            JB_Auto.setEnabled(false);
-            pack();
-        } else {
-            getContentPane().remove(HJPanel);
-            HJPanel = null;
-            JB_Auto.setEnabled(true);
-            pack();
+        } catch (Exception e) {
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+}//GEN-LAST:event_JB_GetSubmitActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    private void JB_LookInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LookInformationActionPerformed
+        String str = "";
+        str += "\nContestID : " + Control.getSolutionbean().getContestId();
+        str += "\nProblemID : " + Control.getSolutionbean().getProblemId();
+        str += "\nUserID : " + Control.getSolutionbean().getUserId();
+        str += "\nLanguage : " + Const.LANGUAGE[Control.getSolutionbean().getLanguage()];
+        str += "\nCode :\n" + Control.getSolutionbean().getSourceCode().getSource();
+        new CodeInfFrame(str).setVisible(true);
+}//GEN-LAST:event_JB_LookInformationActionPerformed
+
+    private void JB_LookPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LookPaperActionPerformed
+        new ProblemLookFrame(Control.getPaperbean(), 0).setVisible(true);
+}//GEN-LAST:event_JB_LookPaperActionPerformed
+
+    private void JB_JudgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_JudgeActionPerformed
+        try {
+            Control.Judge();
+            JTA_StandardOut.setText(Control.getRunbean().getStdAns());
+            JTA_CodeOut.setText(Control.getRunbean().getOutput());
+            JCB_Result.setSelectedIndex(Control.getRunbean().getResult());
+        } catch (Exception e) {
+        }
+}//GEN-LAST:event_JB_JudgeActionPerformed
+
+    private void JB_SendResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SendResultActionPerformed
+        try {
+            Item item = (Item) JCB_Result.getSelectedItem();
+            Control.getRunbean().setResult(item.getIndex());
+            Control.SendResult();
+            JTA_StandardOut.setText("");
+            JTA_CodeOut.setText("");
+            JCB_Result.setSelectedIndex(Const.QUEUE);
+            JB_LookPaper.setEnabled(false);
+            JB_LookInformation.setEnabled(false);
+            JB_Judge.setEnabled(false);
+            JB_SendResult.setEnabled(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}//GEN-LAST:event_JB_SendResultActionPerformed
 
     public void StartApply() {
         TReceiver = new Thread(receiver);
         TSender = new Thread(sender);
         TReceiver.start();
         TSender.start();
+        thread.start();
     }
 
     public void setQueue(int size) {
@@ -167,15 +328,32 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Apply;
     private javax.swing.JButton JB_Auto;
+    private javax.swing.JButton JB_GetSubmit;
+    private javax.swing.JButton JB_Judge;
+    private javax.swing.JButton JB_LookInformation;
+    private javax.swing.JButton JB_LookPaper;
+    private javax.swing.JButton JB_SendResult;
+    private javax.swing.JComboBox JCB_Result;
+    private javax.swing.JTextArea JTA_CodeOut;
+    private javax.swing.JTextArea JTA_StandardOut;
     private javax.swing.JTextField JT_Gotten;
     private javax.swing.JTextField JT_Queue;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JToolBar jToolBar3;
+    private javax.swing.JToolBar jToolBar4;
     // End of variables declaration//GEN-END:variables
-    private ManualJudgePanel HJPanel;
+    //private ManualJudgePanel ManJPanel;
     private RunAuto r = new RunAuto();
     private Thread thread = new Thread(r);
     private ApplyFrame AppFrame;

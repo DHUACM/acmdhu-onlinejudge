@@ -20,8 +20,9 @@ public class Control {
         envbean = new EnvironmentBean();
         solutionbean = null;
         mainframe = f;
+        isauto = false;
         try {
-            server = new ServerSocket(Const.SERVER_RCV_SOCKET);
+            server = new ServerSocket(Const.CLIENT_RCV_SOCKET);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,6 +30,11 @@ public class Control {
 
     public static void setIP(String SIP) {
         ServerIP = SIP;
+        System.out.println(SIP);
+    }
+
+    public static void setIsauto(boolean t){
+        isauto = t;
     }
 
     //for Receiver
@@ -58,15 +64,19 @@ public class Control {
     }
 
     //Main Step 1
-    public static void GetSubmit() {
+    public static boolean GetSubmit() {
+        boolean ans = false;
         synchronized (receivequeue) {
             if (receivequeue.isEmpty()) {
                 solutionbean = null;
             } else {
                 solutionbean = receivequeue.removeFirst();
+                ans = true;
                 mainframe.setGotten();
+                mainframe.setQueue(receivequeue.size());
             }
         }
+        return ans;
     }
 
     //Main Step 2
@@ -78,7 +88,6 @@ public class Control {
                 judger.Run();
                 judger.Check();
             }
-            //send.push(run);
             System.out.println(runbean.getResult());
         }
     }
@@ -107,6 +116,7 @@ public class Control {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public static int getQueueNum() {
@@ -127,8 +137,8 @@ public class Control {
         return paperbean;
     }
 
-    public static int getProblemID() {
-        return problemID;
+    public static boolean getIsauto(){
+        return isauto;
     }
 
     //private:
@@ -136,20 +146,17 @@ public class Control {
         runbean = new RunBean();
         runbean.setLanguage(solutionbean.getLanguage());
         runbean.setSourceCode(solutionbean.getSourceCode().getSource());
-        String name = "contest" + solutionbean.getContestId() + ".xml";
+        String name = solutionbean.getProblemId() + ".xml";
         if (!name.equals(paperName)) {
             setPaper(name);
         }
-        problemID = solutionbean.getProblemId();
-        //TODO: problemNo = sb.getProblemID - Contest.firstNo, not 0
-        problemID = 0;
-        runbean.setInput(paperbean.getProblemAt(problemID).getTestData().getTestInput());
-        runbean.setStdAns(paperbean.getProblemAt(problemID).getTestData().getTestOutput());
-        runbean.setTimeLimit(paperbean.getProblemAt(problemID).getTestData().getTimeLimit());
+        runbean.setInput(tmpIn);
+        runbean.setStdAns(tmpAns);
+        runbean.setTimeLimit(tmpTimelim);
     }
 
     private static void Run2Solution() {
-        solutionbean.getCompileInfo().setError(runbean.getCompileInfo());
+        //solutionbean.getCompileInfo().setError(runbean.getCompileInfo());
         solutionbean.setRuntime((int) runbean.getTimeUsed());
         solutionbean.setResult(runbean.getResult());
     }
@@ -159,6 +166,9 @@ public class Control {
             paperName = x;
             paperbean = new PaperBean();
             paperbean.unmarshal("./paper/" + paperName);
+            tmpIn = paperbean.getProblemAt(0).getTestData().getTestInput();
+            tmpAns = paperbean.getProblemAt(0).getTestData().getTestOutput();
+            tmpTimelim = paperbean.getProblemAt(0).getTestData().getTimeLimit();
         } catch (Exception E) {
             E.printStackTrace();
         }
@@ -185,6 +195,7 @@ public class Control {
                 socket.close();
                 socket = null;
             } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
@@ -196,8 +207,10 @@ public class Control {
     private static final LinkedList<SolutionBean> sendqueue = new LinkedList();
     private static PaperBean paperbean;
     private static String paperName = Const.INITPAPER;
+    private static String tmpIn,tmpAns;
+    private static long tmpTimelim;
+    private static boolean isauto;
     private static MainFrame mainframe;
     private static SolutionBean solutionbean;
     private static RunBean runbean;
-    private static int problemID;
 }

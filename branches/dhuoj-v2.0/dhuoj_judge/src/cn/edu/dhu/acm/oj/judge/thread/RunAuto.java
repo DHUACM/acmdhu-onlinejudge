@@ -7,6 +7,10 @@ public class RunAuto implements Runnable {
     public void run() {
         while (true) {
             try {
+                if(!Control.getIsauto()){
+                    Thread.sleep(3000);
+                    continue;
+                }
                 int cnt = Control.getQueueNum();
                 int time = 3000;
                 if (cnt > 2) {
