@@ -48,11 +48,12 @@ public class ServerSendImpl implements Runnable {
                 curJ = 0;
             }
             JudgeBean j = listJ.get(curJ);
+            int usedJ = curJ++;
             socket = new Socket(j.getIp(), j.getPort());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeObject(b);
             Scanner scan = new Scanner(socket.getInputStream());
-
+            System.out.println("Send Solution" + b.getSolutionId() + " to Judge" + usedJ + " successfully.");
             if (scan.nextLine().equals("OK")) {
                 return true;
             } else {

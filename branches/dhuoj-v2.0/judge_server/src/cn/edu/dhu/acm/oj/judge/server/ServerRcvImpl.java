@@ -32,8 +32,9 @@ public class ServerRcvImpl implements Runnable {
                 ois = new ObjectInputStream(socket.getInputStream());
                 Object obj = ois.readObject();
                 if (obj instanceof SolutionBean) {
-                    dbs.addJudged((SolutionBean) obj);
-                    System.out.println("Server收到判题结果:" + ((SolutionBean)obj).getSolutionId());
+                    SolutionBean sbean = (SolutionBean) obj;
+                    dbs.addJudged(sbean);
+                    System.out.println("Server receieve RunBean " + sbean.getSolutionId() + ", judged result: " + sbean.getResult());
                     socket.getOutputStream().write("OK\r\n".getBytes());
                 }
             } catch (Exception e) {

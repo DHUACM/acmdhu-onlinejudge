@@ -33,7 +33,7 @@ public class DBService implements Runnable
                 for(SolutionBean sbean : list)
                 {
                     sbean.setResult(Const.QUEUE);
-                    sol_dao.editSolution(sbean);
+                    sol_dao.updateSolution(sbean);
                     SourceCodeBean scbean = src_dao.findSourceCode(sbean.getSolutionId());
                     sbean.setSourceCode(scbean);
                     synchronized(unjudge_queue)
@@ -45,8 +45,8 @@ public class DBService implements Runnable
                 synchronized(judged_queue)
                 {
                     while (!judged_queue.isEmpty()) {
-                        SolutionBean sbean = judged_queue.getFirst();
-                        sol_dao.editSolution(sbean);
+                        SolutionBean sbean = judged_queue.removeFirst();
+                        sol_dao.updateSolution(sbean);
                     }
                 }
                 
