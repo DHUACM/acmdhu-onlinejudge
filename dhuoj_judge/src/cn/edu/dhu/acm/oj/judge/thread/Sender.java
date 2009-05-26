@@ -11,6 +11,7 @@ public class Sender implements Runnable {
                 Control.Send();
                 Thread.sleep(Const.JUDGESLEEP);
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

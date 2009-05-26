@@ -26,6 +26,8 @@ public class ApplyFrame extends javax.swing.JFrame {
         jLabel1.setText("ServerIP:");
         getContentPane().add(jLabel1);
 
+        TF_ServerIP.setColumns(10);
+        TF_ServerIP.setText("192.168.0.101");
         TF_ServerIP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TF_ServerIPActionPerformed(evt);
