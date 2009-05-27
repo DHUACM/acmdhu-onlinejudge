@@ -10,11 +10,12 @@ import cn.edu.dhu.acm.oj.common.util.Util;
 import cn.edu.dhu.acm.oj.persistence.beans.*;
 import cn.edu.dhu.acm.oj.persistence.dao.*;
 import cn.edu.dhu.acm.oj.exception.*;
+import java.util.Set;
 
 
 public class ContestFacade {
 
-    public static int submitCode(SubmitCodeForm scf) throws ContestNotStartException, ContestClosedException, UserLoginFailException {
+    public static int submitCode(SubmitCodeForm scf) throws SubmitFailException {
         SolutionBean sbean = new SolutionBean(scf.getUserID(), scf.getContestID(),
                 scf.getProblemID(), 0, 0, Util.getTime(), Const.WAIT, scf.getLanguage(), scf.getLocalJudgeResult());
 
@@ -24,7 +25,7 @@ public class ContestFacade {
         UserDAO udao = new UserDAO();
         UserBean ubean = udao.chkLogin(userID, password);
         // userId not match with its password
-        if (ubean == null) throw new UserLoginFailException("User " + userID + " not match with its password. Submit Failed.");
+        if (ubean == null) throw new SubmitFailException("User " + userID + " not match with its password. Submit Failed.");
 
         int cid = scf.getContestID();
         int seq = scf.getProblemID();
@@ -35,21 +36,20 @@ public class ContestFacade {
         int cmpStartTime = Calendar.getInstance().getTime().compareTo(cbean.getStartTime());
         int cmpEndTime = Calendar.getInstance().getTime().compareTo(cbean.getEndTime());
         // contest not start.
-        if (cmpStartTime < 0) throw new ContestNotStartException("Contest " + cid + " not start, submit code failed.");
+        if (cmpStartTime < 0) throw new SubmitFailException("Contest " + cid + " not start, submit code failed.");
         // contest has closed
-        if (cmpEndTime > 0) throw new ContestClosedException("Contest" + cid + " has closed, submit code failed.");
+        if (cmpEndTime > 0) throw new SubmitFailException("Contest" + cid + " has closed, submit code failed.");
+
+        // user cannot submit code to private contest which he/she has not registered.
+        if (cbean.getPrivate_() != 0) {
+            if (!getContestReservation(cid).containsKey(userID))
+                throw new SubmitFailException("Fail to submit to private contest without reservation.");
+        }
 
         TreeMap<Integer, ContestProblemBean> contestProblems = getProblemsByContest(cid);
         sbean.setProblemId(contestProblems.get(seq).getProblemId());
 
         SolutionDAO sdao = new SolutionDAO();
-
-        /*
-        // check local judge result
-        if (sbean.getResult() == Const.AC) {
-            sbean.setResult(Const.WAIT);
-        }*/
-
         sdao.addSolution(sbean);
 
         SourceCodeBean scbean = new SourceCodeBean(sbean.getSolutionId(), scf.getSource());
@@ -107,12 +107,17 @@ public class ContestFacade {
         }
         return revMap;
     }
-/*
+
+    /*
     public static void main(String[] args) {
-        // public SubmitCodeForm(String uid, int pid, int cid, byte lang, String src)
-        SubmitCodeForm scf = new SubmitCodeForm("hyj", 1003, 1, (byte)1, "hello.test");
-        int sid = ContestFacade.submitCode(scf);
-        System.out.println("sid = " + sid);
+        List<ContestBean> clist = ContestFacade.getContests(0, 100);
+        java.util.Iterator<ContestBean> iter = clist.listIterator();
+        while (iter.hasNext()) {
+            int cid = iter.next().getContestId();
+            if (cid != 5 && cid != 6) {
+                iter.remove();
+            }
+        }
     }
- * */
+     */
 }

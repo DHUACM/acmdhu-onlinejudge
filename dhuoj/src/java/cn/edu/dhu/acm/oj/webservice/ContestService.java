@@ -54,7 +54,17 @@ public class ContestService {
     public java.util.List<ContestBean> getContestList(@WebParam(name = "firstResult")
     int firstResult, @WebParam(name = "maxResults")
     int maxResults) {
-        return ContestFacade.getContests(firstResult, maxResults);
+        // TODO: this function will be modified later.
+        java.util.List<ContestBean> clist = ContestFacade.getContests(0, 100);
+        java.util.Iterator<ContestBean> iter = clist.listIterator();
+        while (iter.hasNext()) {
+            int cid = iter.next().getContestId();
+            if (cid != 5 && cid != 6) {
+                iter.remove();
+            }
+        }
+        return clist;
+        //return ContestFacade.getContests(firstResult, maxResults);
     }
 
 }

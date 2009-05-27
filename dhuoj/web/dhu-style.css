@@ -1,0 +1,103 @@
+.big-title {
+	font-size: 18pt;
+	font-weight: bold;
+	color: #045269;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+}
+.hor-menu {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.hor-menu:link {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.hor-menu:active {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.hor-menu:visited {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.hor-menu:hover {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+	font-weight: bold;
+}
+.copyright {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+}
+
+.dhu-link {
+	font-size: 9pt;
+	color: #FFA4A6;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+}
+a.dhu-link:link {
+	font-size: 9pt;
+	color: #FFA4A6;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.dhu-link:active {
+	font-size: 9pt;
+	color: #FFA4A6;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.dhu-link:visited {
+	font-size: 9pt;
+	color: #FFA4A6;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.dhu-link:hover {
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+.big-text {
+	font-size: 18pt;
+	color: #333333;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+}
+.text-body {
+	font-size: 9pt;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+}
+a.text-body:link {
+	color: #045269;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.text-body:active {
+	color: #045269;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.text-body:visited {
+	color: #045269;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a.text-body:hover {
+	color: #b41b29;
+	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
+	text-decoration: none;
+}
+a{
+	text-decoration:none;}
