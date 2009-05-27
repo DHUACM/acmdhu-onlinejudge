@@ -26,15 +26,11 @@ public class ContestService {
      */
     @WebMethod(operationName = "submitCode")
     public Integer submitCode(@WebParam(name = "submitForm")
-    SubmitCodeForm submitForm) throws ContestNotStartException, ContestClosedException, UserLoginFailException {
+    SubmitCodeForm submitForm) throws SubmitFailException {
         try {
             return ContestFacade.submitCode(submitForm);
-        } catch(ContestNotStartException cnse) {
-            throw cnse;
-        } catch(ContestClosedException cce) {
-            throw cce;
-        } catch(UserLoginFailException ulfe) {
-            throw ulfe;
+        } catch(SubmitFailException sfe) {
+            throw sfe;
         }
     }
 
@@ -65,6 +61,15 @@ public class ContestService {
         }
         return clist;
         //return ContestFacade.getContests(firstResult, maxResults);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getMyContestList")
+    public java.util.List<ContestBean> getMyContestList(@WebParam(name = "userID")
+    String userID) {
+        return ContestFacade.getMyReservedContest(userID);
     }
 
 }

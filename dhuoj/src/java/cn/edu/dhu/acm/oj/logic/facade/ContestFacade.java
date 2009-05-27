@@ -3,6 +3,7 @@ package cn.edu.dhu.acm.oj.logic.facade;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.TreeMap;
 import cn.edu.dhu.acm.oj.common.config.Const;
 import cn.edu.dhu.acm.oj.common.form.SubmitCodeForm;
@@ -108,16 +109,21 @@ public class ContestFacade {
         return revMap;
     }
 
+    public static List<ContestBean> getMyReservedContest(String userId) {
+        ContestReservationDAO revdao = new ContestReservationDAO();
+        List<ContestReservationBean> revList = revdao.findUserReservedContest(userId);
+        LinkedList<ContestBean> myList = new LinkedList();
+        ContestDAO cdao = new ContestDAO();
+        for (ContestReservationBean crb : revList) {
+            ContestBean cbean = cdao.findContest(crb.getContestId());
+            myList.add(cbean);
+        }
+        return myList;
+    }
+
     /*
     public static void main(String[] args) {
-        List<ContestBean> clist = ContestFacade.getContests(0, 100);
-        java.util.Iterator<ContestBean> iter = clist.listIterator();
-        while (iter.hasNext()) {
-            int cid = iter.next().getContestId();
-            if (cid != 5 && cid != 6) {
-                iter.remove();
-            }
-        }
+        List list = getMyReservedContest("intest01");
     }
      */
 }
