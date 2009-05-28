@@ -109,21 +109,27 @@ public class ContestFacade {
         return revMap;
     }
 
-    public static List<ContestBean> getMyReservedContest(String userId) {
-        ContestReservationDAO revdao = new ContestReservationDAO();
-        List<ContestReservationBean> revList = revdao.findUserReservedContest(userId);
-        LinkedList<ContestBean> myList = new LinkedList();
+    public static ContestBean getContestDetail(String uid, int cid) throws ContestException {
         ContestDAO cdao = new ContestDAO();
-        for (ContestReservationBean crb : revList) {
-            ContestBean cbean = cdao.findContest(crb.getContestId());
-            myList.add(cbean);
+        ContestBean cbean = cdao.findContest(cid);
+        if (cbean == null) throw new ContestException("Fail to get detail information about contest" + cid);
+        if (cbean.getPrivate_() != 0) {
+            ContestReservationDAO crdao = new ContestReservationDAO();
+            List<ContestReservationBean> my_contests = crdao.findUserReservedContest(uid);
+            boolean match = false;
+            for (ContestReservationBean crb : my_contests) {
+                if (crb.getContestId() == cid) match = true;
+            }
+            if (match) return cbean;
+            else throw new ContestException("This is a private contest, register it first or contact the administrator.");
+        } else {
+            return cbean;
         }
-        return myList;
     }
 
     /*
-    public static void main(String[] args) {
-        List list = getMyReservedContest("intest01");
+    public static void main(String[] args) throws Exception {
+        getContestDetail("intest01", 3);
     }
      */
 }

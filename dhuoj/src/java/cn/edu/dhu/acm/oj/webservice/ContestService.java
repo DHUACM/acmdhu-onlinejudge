@@ -5,11 +5,13 @@
 
 package cn.edu.dhu.acm.oj.webservice;
 
+import java.util.Date;
 import cn.edu.dhu.acm.oj.common.form.SubmitCodeForm;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
 import cn.edu.dhu.acm.oj.persistence.beans.ContestBean;
 import cn.edu.dhu.acm.oj.logic.facade.ContestFacade;
 import cn.edu.dhu.acm.oj.exception.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -54,10 +56,16 @@ public class ContestService {
         java.util.List<ContestBean> clist = ContestFacade.getContests(0, 100);
         java.util.Iterator<ContestBean> iter = clist.listIterator();
         while (iter.hasNext()) {
-            int cid = iter.next().getContestId();
-            if (cid != 5 && cid != 6) {
-                iter.remove();
-            }
+            ContestBean cbean = iter.next();
+            // calculate contest status
+            Date startTime = cbean.getStartTime();
+            Date endTime = cbean.getEndTime();
+            Date now = java.util.Calendar.getInstance().getTime();
+            if (startTime.after(now)) cbean.setStatus(Const.CONTEST_PENDING);
+            else if (endTime.before(now)) cbean.setStatus(Const.CONTEST_ENDED);
+            else cbean.setStatus(Const.CONTEST_RUNNING);
+            cbean.setPaperPath(null);
+            cbean.setPaperKey(null);
         }
         return clist;
         //return ContestFacade.getContests(firstResult, maxResults);
@@ -66,10 +74,15 @@ public class ContestService {
     /**
      * Web service operation
      */
-    @WebMethod(operationName = "getMyContestList")
-    public java.util.List<ContestBean> getMyContestList(@WebParam(name = "userID")
-    String userID) {
-        return ContestFacade.getMyReservedContest(userID);
+    @WebMethod(operationName = "getContestDetail")
+    public ContestBean getContestDetail(@WebParam(name = "userID")
+    String userID, @WebParam(name = "contestID")
+    int contestID) throws cn.edu.dhu.acm.oj.exception.ContestException {
+        try {
+            return ContestFacade.getContestDetail(userID, contestID);
+        } catch(ContestException ce) {
+            throw ce;
+        }
     }
 
 }
