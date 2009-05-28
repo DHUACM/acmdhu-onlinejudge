@@ -71,6 +71,20 @@ public class ContestDAO extends BaseHibernateDAO {
         }
     }
 
+    public List<ContestBean> findContestByStatus(int status){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            Query query=session.createQuery("from ContestBean where status=" + status);
+            List<ContestBean> rs=query.list();
+            tx.commit();
+            return rs;
+        } catch(Exception e) {
+            log.error("find contest by status failed.", e);
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         ContestDAO cdao = new ContestDAO();
 

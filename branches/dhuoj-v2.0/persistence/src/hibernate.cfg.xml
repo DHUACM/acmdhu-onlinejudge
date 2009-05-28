@@ -19,8 +19,9 @@
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Contest.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/User.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/ContestProblem.hbm.xml"/>
+    <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/ContestReservation.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/SourceCode.hbm.xml"/>
     <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Compileinfo.hbm.xml"/>
-    <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/ContestReservation.hbm.xml"/>
+    <mapping resource="cn/edu/dhu/acm/oj/persistence/beans/Message.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
