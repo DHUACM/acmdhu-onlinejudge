@@ -10,7 +10,7 @@
         <Spath>C:\MinGW\bin</Spath>
         <Spath>D:\MinGW\bin</Spath>
     </SearchPath>
-    <SourceCodeTemp />
+    <SourceCodeTemp>./</SourceCodeTemp>
     <History>./history/</History>
     <JavaProblemNotice />
     <Compiler>

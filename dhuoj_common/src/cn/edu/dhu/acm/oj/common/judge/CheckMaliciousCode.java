@@ -9,9 +9,8 @@ import cn.edu.dhu.acm.oj.common.config.*;
  */
 public class CheckMaliciousCode {
 
-    public CheckMaliciousCode(RunBean rb, EnvironmentBean eb) {
+    public CheckMaliciousCode(RunBean rb) {
         runbean = rb;
-        envbean = eb;
     }
 
     boolean isValidCharacter(char c) {
@@ -34,6 +33,9 @@ public class CheckMaliciousCode {
     }
 
     boolean checkKeyWord() {
+        if (runbean.getLanguage() != Const.C && runbean.getLanguage() != Const.CPP) {
+            return true;
+        }
         boolean checkedresult = true;
         String checkinfo = "";
         try {
@@ -94,5 +96,4 @@ public class CheckMaliciousCode {
         return checkedresult;
     }
     private RunBean runbean;
-    EnvironmentBean envbean;
 }

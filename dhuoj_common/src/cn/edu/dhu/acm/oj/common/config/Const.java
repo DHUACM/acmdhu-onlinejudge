@@ -20,6 +20,10 @@ public class Const {
         "Verdict", "Language", "RunTime(ms)", "SubmitTime"};
     public static final Class[] TABLECOLTYPE = {Integer.class, Integer.class,
         String.class, String.class, String.class, Integer.class, String.class};
+    public static final String[] GETPAPERCOLNAME = {"ID", "Title", "Description", "StartTime",
+        "EndTime", "Status", "Get"};
+    public static final Class[] GETPAPERCOLTYPE = {Integer.class, String.class,
+        String.class, String.class, String.class, javax.swing.JButton.class};
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
     public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
 
@@ -34,6 +38,7 @@ public class Const {
         }
         return ans;
     }
+    public static final byte PASCAL = 0;
     public static final byte C = 1;
     public static final byte CPP = 2;
     public static final byte JAVA = 3;
@@ -42,16 +47,11 @@ public class Const {
         "fputc", "fgetc", "fgets", "fread", "fwrite", "rewind", "fseek", "ftell",
         "ferror", "fopen", "freopen", "fclose", "fprintf", "fscanf", "FILE",
         "opendir", "readdir", "seekdir", "telldir", "getenv", "system", "execl", "execlp",
-        "execv", "execvp	access", "chdir", "fchdir", "readdir", "remove", "rename"};
+        "execv", "execvp	access", "chdir", "fchdir", "readdir", "remove",
+        "rename", "open", "fork"};
     public static final int COMPILE_TIME = 2000;
     /**The Time for JAVA run*/
     public static final int JAVA_LIMIT = 3;
-    //public static final String JVM = "D:\\dhuoj\\compiler\\jdk\\jre\\bin\\java-rmi.exe";
-    //public static final String USER = "administrator";
-    //public static final String PASS = "sunci777";
-    //public static final String TOKEN_SERVER = "9c6300202e877f4f7444f51aba6143d6";
-    //public static final String TOKEN_CLIENT = "���Ԫ";
-    public static final String SERVER_IP = "192.168.0.102";
     public static final int SERVER_RCV_SOCKET = 58001;
     public static final int CLIENT_RCV_SOCKET = 58002;
     public static final String DB_URL = "jdbc:mysql://acm.dhu.edu.cn:3306/dhuoj?useUnicode=true&characterEncoding=utf8&autoReconnect=true";
@@ -62,10 +62,16 @@ public class Const {
     /**The Time status reflash*/
     public static final long SLEEPTIME = 10000;
     /**The Time Judger sleep for Receiver and Sender*/
-    public static final long JUDGESLEEP = 100;
+    public static final long JUDGESLEEP = 1000;
     /**Output File Size*/
     public static final long FILEMAXSIZE = 5L << 20;
     /**Compile Name*/
     public static final String COMPILENAME = "Main";
-    public static final String INITPAPER = "contest0.xml";
+
+    public static final String CLIENTPAPERSUFFIX = ".xml";
+    public static final String JUDGEPAPERSUFFIX = ".xml";
+    public static final String CONTESTPREFIX = "contest";
+    public static final String PROBLEMPREFIX = "problem";
+    public static final String INITPAPER = CONTESTPREFIX+"0"+CLIENTPAPERSUFFIX;
+    public static final int PROBLEMSTART = 1000;
 }

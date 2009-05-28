@@ -58,20 +58,6 @@ public class CheckAnswer {
         }
     }
 
-    public int getFirstWrongplace() {
-        int offset = 0;
-        int stdlen = out.length();
-        int anslen = ans.length();
-        int len = Math.min(stdlen, anslen);
-        for (int i = 0; i < len; i++) {
-            offset++;
-            if (out.charAt(i) != ans.charAt(i)) {
-                break;
-            }
-        }
-        return offset;
-    }
-
     public boolean getCheckResult() {
         if (verdict == Const.AC) {
             return true;

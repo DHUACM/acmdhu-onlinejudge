@@ -10,6 +10,21 @@ public class Judger {
         envbean = eb;
     }
 
+    public String getCompileinfo() {
+        return compileinfo;
+    }
+
+    public boolean Compile() {
+        Compile cc = new Compile(rbean, envbean);
+        compile = cc.doit();
+        if (compile) {
+            CheckMaliciousCode cmc = new CheckMaliciousCode(rbean);
+            compile = cmc.checkKeyWord();
+        }
+        compileinfo = rbean.getCompileInfo();
+        return compile;
+    }
+
     public void Run() {
         Run rr = new Run(rbean, envbean);
         rr.start();
@@ -29,21 +44,6 @@ public class Judger {
             rbean.setResult(ca.getVerdict());
             rbean.setPercent(ca.getPercent());
         }
-    }
-
-    public boolean Compile() {
-        Compile cc = new Compile(rbean, envbean);
-        compile = cc.doit();
-        if (compile) {
-            CheckMaliciousCode cmc = new CheckMaliciousCode(rbean, envbean);
-            compile = cmc.checkKeyWord();
-        }
-        compileinfo = rbean.getCompileInfo();
-        return compile;
-    }
-
-    public String getCompileinfo() {
-        return compileinfo;
     }
     private RunBean rbean;
     private EnvironmentBean envbean;
