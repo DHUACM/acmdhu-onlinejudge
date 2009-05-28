@@ -11,7 +11,7 @@ public class RunAuto implements Runnable {
                     Thread.sleep(3000);
                     continue;
                 }
-                int cnt = Control.getQueueNum();
+                int cnt = Control.getSolutionQueueNum();
                 int time = 3000;
                 if (cnt > 2) {
                     time = 0;

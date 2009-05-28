@@ -37,6 +37,9 @@ public class MainFrame extends javax.swing.JFrame {
         thread = new Thread(r);
         //ManJPanel = new ManualJudgePanel();
         initComponents();
+        JTA_Response.setText(initResponse);
+        JTA_Response.setEditable(false);
+        Control.setIsAcceptLocaljudge(CH_AcceptLocal.isSelected());
         for (byte i = 0; i < Const.VERDICT.length; i++) {
             Item item = new Item(Const.VERDICT[i], i);
             JCB_Result.addItem(item);
@@ -57,11 +60,15 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         JB_Apply = new javax.swing.JButton();
         JB_Auto = new javax.swing.JButton();
+        CH_AcceptLocal = new javax.swing.JCheckBox();
         jToolBar2 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
         JT_Gotten = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        JT_Queue = new javax.swing.JTextField();
+        JT_SolutionQueue = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        JT_MessageQueue = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jToolBar3 = new javax.swing.JToolBar();
         JB_GetSubmit = new javax.swing.JButton();
@@ -80,6 +87,21 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         JTA_CodeOut = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jToolBar5 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JTA_Question = new javax.swing.JTextArea();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTA_Response = new javax.swing.JTextArea();
+        jToolBar6 = new javax.swing.JToolBar();
+        jTextField1 = new javax.swing.JTextField();
+        JB_SendMessage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACMjudge");
@@ -103,6 +125,17 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(JB_Auto);
 
+        CH_AcceptLocal.setText("AcceptLocalJudge");
+        CH_AcceptLocal.setFocusable(false);
+        CH_AcceptLocal.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        CH_AcceptLocal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        CH_AcceptLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CH_AcceptLocalActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(CH_AcceptLocal);
+
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
         jToolBar2.setFloatable(false);
@@ -110,6 +143,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("Have gotten :");
         jToolBar2.add(jLabel1);
 
+        JT_Gotten.setEditable(false);
         JT_Gotten.setText("0");
         JT_Gotten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,11 +152,24 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jToolBar2.add(JT_Gotten);
 
-        jLabel2.setText("Now in queue :");
+        jLabel2.setText("Solution queue :");
         jToolBar2.add(jLabel2);
 
-        JT_Queue.setText("0");
-        jToolBar2.add(JT_Queue);
+        JT_SolutionQueue.setEditable(false);
+        JT_SolutionQueue.setText("0");
+        jToolBar2.add(JT_SolutionQueue);
+
+        jLabel7.setText("Message queue:");
+        jToolBar2.add(jLabel7);
+
+        JT_MessageQueue.setEditable(false);
+        JT_MessageQueue.setText("0");
+        JT_MessageQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JT_MessageQueueActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(JT_MessageQueue);
 
         getContentPane().add(jToolBar2, java.awt.BorderLayout.SOUTH);
 
@@ -215,7 +262,79 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        jTabbedPane1.addTab("Judge", jPanel1);
+
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jToolBar5.setFloatable(false);
+        jToolBar5.setRollover(true);
+
+        jButton1.setText("GetQuestion");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(jButton1);
+
+        jPanel5.add(jToolBar5, java.awt.BorderLayout.NORTH);
+
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jLabel5.setText("Question:");
+        jPanel6.add(jLabel5, java.awt.BorderLayout.CENTER);
+
+        JTA_Question.setColumns(20);
+        JTA_Question.setRows(5);
+        jScrollPane4.setViewportView(JTA_Question);
+
+        jPanel6.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        jSplitPane1.setTopComponent(jPanel6);
+
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setText("Response:");
+        jPanel7.add(jLabel6, java.awt.BorderLayout.PAGE_START);
+
+        JTA_Response.setColumns(20);
+        JTA_Response.setRows(5);
+        jScrollPane3.setViewportView(JTA_Response);
+
+        jPanel7.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jSplitPane1.setRightComponent(jPanel7);
+
+        jPanel5.add(jSplitPane1, java.awt.BorderLayout.CENTER);
+
+        jToolBar6.setFloatable(false);
+        jToolBar6.setRollover(true);
+
+        jTextField1.setEditable(false);
+        jTextField1.setEnabled(false);
+        jToolBar6.add(jTextField1);
+
+        JB_SendMessage.setText("SendResponse");
+        JB_SendMessage.setFocusable(false);
+        JB_SendMessage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_SendMessage.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_SendMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_SendMessageActionPerformed(evt);
+            }
+        });
+        jToolBar6.add(JB_SendMessage);
+
+        jPanel5.add(jToolBar6, java.awt.BorderLayout.SOUTH);
+
+        jTabbedPane1.addTab("Message", jPanel5);
+
+        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -297,6 +416,43 @@ public class MainFrame extends javax.swing.JFrame {
         }
 }//GEN-LAST:event_JB_SendResultActionPerformed
 
+    private void CH_AcceptLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CH_AcceptLocalActionPerformed
+        Control.setIsAcceptLocaljudge(CH_AcceptLocal.isSelected());
+}//GEN-LAST:event_CH_AcceptLocalActionPerformed
+
+    private void JT_MessageQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_MessageQueueActionPerformed
+        // TODO add your handling code here:
+}//GEN-LAST:event_JT_MessageQueueActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if (Control.GetMessage()) {
+                JTA_Response.setEditable(true);
+                JB_SendMessage.setEnabled(true);
+                JTA_Question.setText(Control.getMessagebean().getQuestion());
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JB_SendMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SendMessageActionPerformed
+        try {
+            String str = JTA_Response.getText();
+            if (str.equals("")) {
+                System.out.println("Response empty!");
+                return;
+            }
+            Control.getMessagebean().setResponse(str);
+            Control.SendMessage();
+            JTA_Question.setText("");
+            JTA_Response.setText(initResponse);
+            JTA_Response.setEditable(false);
+            JB_SendMessage.setEnabled(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_JB_SendMessageActionPerformed
+
     public void StartApply() {
         TReceiver = new Thread(receiver);
         TSender = new Thread(sender);
@@ -305,13 +461,17 @@ public class MainFrame extends javax.swing.JFrame {
         thread.start();
     }
 
-    public void setQueue(int size) {
-        JT_Queue.setText("" + size);
+    public void setSolutionQueue(int size) {
+        JT_SolutionQueue.setText("" + size);
     }
 
-    public void setGotten() {
-        gotten++;
-        JT_Gotten.setText("" + gotten);
+    public void setMessageQueue(int size) {
+        JT_MessageQueue.setText("" + size);
+    }
+
+    public void setSolutionGotten() {
+        solutiongotten++;
+        JT_Gotten.setText("" + solutiongotten);
     }
 
     /**
@@ -326,32 +486,51 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CH_AcceptLocal;
     private javax.swing.JButton JB_Apply;
     private javax.swing.JButton JB_Auto;
     private javax.swing.JButton JB_GetSubmit;
     private javax.swing.JButton JB_Judge;
     private javax.swing.JButton JB_LookInformation;
     private javax.swing.JButton JB_LookPaper;
+    private javax.swing.JButton JB_SendMessage;
     private javax.swing.JButton JB_SendResult;
     private javax.swing.JComboBox JCB_Result;
     private javax.swing.JTextArea JTA_CodeOut;
+    private javax.swing.JTextArea JTA_Question;
+    private javax.swing.JTextArea JTA_Response;
     private javax.swing.JTextArea JTA_StandardOut;
     private javax.swing.JTextField JT_Gotten;
-    private javax.swing.JTextField JT_Queue;
+    private javax.swing.JTextField JT_MessageQueue;
+    private javax.swing.JTextField JT_SolutionQueue;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;
+    private javax.swing.JToolBar jToolBar5;
+    private javax.swing.JToolBar jToolBar6;
     // End of variables declaration//GEN-END:variables
     //private ManualJudgePanel ManJPanel;
     private RunAuto r = new RunAuto();
@@ -361,5 +540,6 @@ public class MainFrame extends javax.swing.JFrame {
     private Thread TSender;
     private Receiver receiver;
     private Sender sender;
-    private int gotten = 0;
+    private int solutiongotten = 0;
+    private String initResponse = "Sorry! No Response!";
 }

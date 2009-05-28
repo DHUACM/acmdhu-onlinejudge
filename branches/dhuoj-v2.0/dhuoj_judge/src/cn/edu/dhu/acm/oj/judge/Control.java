@@ -6,6 +6,7 @@ import cn.edu.dhu.acm.oj.common.bean.RunBean;
 import cn.edu.dhu.acm.oj.common.config.Const;
 import cn.edu.dhu.acm.oj.common.paper.PaperBean;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
+import cn.edu.dhu.acm.oj.persistence.beans.MessageBean;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -17,10 +18,19 @@ public class Control {
     }
 
     public static void init(MainFrame f) {
-        envbean = new EnvironmentBean();
+
+        java.io.File file = new java.io.File("./Environment.xml");
+        if (file.exists()) {
+            System.out.println("Exist Environment.xml");
+            envbean = new EnvironmentBean("./Environment.xml");
+        } else {
+            System.out.println("No Environment.xml");
+            envbean = new EnvironmentBean();
+        }
         solutionbean = null;
         mainframe = f;
         isauto = false;
+        isAcceptLocaljudge = true;
         try {
             server = new ServerSocket(Const.CLIENT_RCV_SOCKET);
         } catch (Exception e) {
@@ -28,12 +38,19 @@ public class Control {
         }
     }
 
-    public static void setIP(String SIP) {
-        ServerIP = SIP;
-        System.out.println(SIP);
+    public static boolean isIsAcceptLocaljudge() {
+        return isAcceptLocaljudge;
     }
 
-    public static void setIsauto(boolean t){
+    public static void setIsAcceptLocaljudge(boolean isAcceptLocaljudge) {
+        Control.isAcceptLocaljudge = isAcceptLocaljudge;
+    }
+
+    public static void setIP(String SIP) {
+        ServerIP = SIP;
+    }
+
+    public static void setIsauto(boolean t) {
         isauto = t;
     }
 
@@ -45,10 +62,18 @@ public class Control {
             ois = new ObjectInputStream(socket.getInputStream());
             Object obj = ois.readObject();
             if (obj instanceof SolutionBean) {
-                synchronized (receivequeue) {
-                    receivequeue.add((SolutionBean) obj);
-                    mainframe.setQueue(receivequeue.size());
+                synchronized (solutionqueue) {
+                    solutionqueue.add((SolutionBean) obj);
+                    mainframe.setSolutionQueue(solutionqueue.size());
                     System.out.println("Received a SolutionBean");
+                    socket.getOutputStream().write("OK\r\n".getBytes());
+                }
+            }
+            else if(obj instanceof MessageBean){
+                synchronized (messagequeue) {
+                    messagequeue.add((MessageBean) obj);
+                    mainframe.setMessageQueue(messagequeue.size());
+                    System.out.println("Received a MessageBean");
                     socket.getOutputStream().write("OK\r\n".getBytes());
                 }
             }
@@ -63,26 +88,35 @@ public class Control {
         }
     }
 
-    //Main Step 1
+    //Judge Step 1
     public static boolean GetSubmit() {
         boolean ans = false;
-        synchronized (receivequeue) {
-            if (receivequeue.isEmpty()) {
+        synchronized (solutionqueue) {
+            if (solutionqueue.isEmpty()) {
                 solutionbean = null;
             } else {
-                solutionbean = receivequeue.removeFirst();
+                solutionbean = solutionqueue.removeFirst();
                 ans = true;
-                mainframe.setGotten();
-                mainframe.setQueue(receivequeue.size());
+                mainframe.setSolutionGotten();
+                mainframe.setSolutionQueue(solutionqueue.size());
             }
         }
         return ans;
     }
 
-    //Main Step 2
+    //Judge Step 2
     public static void Judge() {
         if (solutionbean != null) {
+
             Solution2Run();
+            if(isAcceptLocaljudge){
+                short localresult = solutionbean.getLocalJudgeResult();
+                if(localresult!=Const.AC && localresult != Const.CE){
+                    runbean.setResult(localresult);
+                    return;
+                }
+            }
+
             judger = new Judger(runbean, envbean);
             if (judger.Compile()) {
                 judger.Run();
@@ -92,7 +126,7 @@ public class Control {
         }
     }
 
-    //Main Step 3
+    //Judge Step 3
     public static void SendResult() {
         if (solutionbean != null) {
             Run2Solution();
@@ -102,12 +136,36 @@ public class Control {
         }
     }
 
+    //Message Step 1
+    public static boolean GetMessage(){
+        boolean ans = false;
+        synchronized (messagequeue) {
+            if (messagequeue.isEmpty()) {
+                messagebean = null;
+            } else {
+                messagebean = messagequeue.removeFirst();
+                ans = true;
+                mainframe.setMessageQueue(messagequeue.size());
+            }
+        }
+        return ans;
+    }
+
+    //Message Step 2
+    public static void SendMessage(){
+        if (messagebean != null) {
+            synchronized (sendqueue) {
+                sendqueue.add(messagebean);
+            }
+        }
+    }
+
     //for Sender
     public static void Send() {
         try {
             synchronized (sendqueue) {
                 if (!sendqueue.isEmpty()) {
-                    if (sendRunBean(sendqueue.getFirst())) {
+                    if (sendBean(sendqueue.getFirst())) {
                         sendqueue.removeFirst();
                         System.out.println("send one");
                     }
@@ -119,9 +177,9 @@ public class Control {
 
     }
 
-    public static int getQueueNum() {
-        synchronized (receivequeue) {
-            return receivequeue.size();
+    public static int getSolutionQueueNum() {
+        synchronized (solutionqueue) {
+            return solutionqueue.size();
         }
     }
 
@@ -133,11 +191,15 @@ public class Control {
         return solutionbean;
     }
 
+    public static MessageBean getMessagebean(){
+        return messagebean;
+    }
+
     public static PaperBean getPaperbean() {
         return paperbean;
     }
 
-    public static boolean getIsauto(){
+    public static boolean getIsauto() {
         return isauto;
     }
 
@@ -146,6 +208,7 @@ public class Control {
         runbean = new RunBean();
         runbean.setLanguage(solutionbean.getLanguage());
         runbean.setSourceCode(solutionbean.getSourceCode().getSource());
+
         String name = solutionbean.getProblemId() + ".xml";
         if (!name.equals(paperName)) {
             setPaper(name);
@@ -174,7 +237,7 @@ public class Control {
         }
     }
 
-    private static boolean sendRunBean(SolutionBean b) {
+    private static boolean sendBean(Object b) {
         Socket socket = null;
         try {
             socket = new Socket(ServerIP, Const.SERVER_RCV_SOCKET);
@@ -203,14 +266,17 @@ public class Control {
     private static Judger judger;
     private static EnvironmentBean envbean;
     private static ServerSocket server = null;
-    private static final LinkedList<SolutionBean> receivequeue = new LinkedList();
-    private static final LinkedList<SolutionBean> sendqueue = new LinkedList();
+    private static final LinkedList<SolutionBean> solutionqueue = new LinkedList();
+    private static final LinkedList<MessageBean> messagequeue = new LinkedList();
+    private static final LinkedList<Object> sendqueue = new LinkedList();
     private static PaperBean paperbean;
     private static String paperName = Const.INITPAPER;
-    private static String tmpIn,tmpAns;
+    private static String tmpIn,  tmpAns;
     private static long tmpTimelim;
     private static boolean isauto;
+    private static boolean isAcceptLocaljudge;
     private static MainFrame mainframe;
     private static SolutionBean solutionbean;
+    private static MessageBean messagebean;
     private static RunBean runbean;
 }
