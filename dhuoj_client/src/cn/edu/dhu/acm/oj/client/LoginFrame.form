@@ -66,8 +66,10 @@
         <Component class="javax.swing.JButton" name="JB_Help">
           <Properties>
             <Property name="text" type="java.lang.String" value="Help"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_HelpActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
