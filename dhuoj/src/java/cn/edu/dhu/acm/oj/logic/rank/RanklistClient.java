@@ -2,7 +2,6 @@ package cn.edu.dhu.acm.oj.logic.rank;
 
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
 import cn.edu.dhu.acm.oj.persistence.beans.UserBean;
 import cn.edu.dhu.acm.oj.persistence.beans.ContestProblemBean;
 import cn.edu.dhu.acm.oj.logic.facade.ContestFacade;
+import cn.edu.dhu.acm.oj.common.util.Util;
 
 public class RanklistClient {
 
@@ -65,7 +65,8 @@ public class RanklistClient {
         os.println("<body>");
         os.print("<div align='center'>");
         os.println("<h1>" + contest.getTitle() + "</h1>");
-        os.println("<h4>contest time: " + contest.getStartTime() + " ----- " + contest.getEndTime() + "</h1>");
+        os.println("<h4>contest time: " + contest.getStartTime() + " ----- " + contest.getEndTime() + "</h4>");
+        os.println("<h4>last update: " + Util.getTimeString() + "</h4>");
 
         int border = 1;
         os.println("<table border=\"" + border + "\">");

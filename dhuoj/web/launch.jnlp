@@ -6,21 +6,16 @@
         <homepage href=""/>
         <description>DHUacm</description>
         <description kind="short">DHUacm</description>
-
-
     </information>
-<security>
-<all-permissions/>
-</security>
+    <security>
+        <all-permissions/>
+    </security>
     <resources>
-<j2se version="1.5+"/>
-<jar eager="true" href="dhuoj_client.jar" main="true"/>
-
-
-    <jar href="lib/jdom.jar"/>
-<jar href="lib/dhuoj_common.jar"/>
-</resources>
+        <j2se version="1.5+"/>
+        <jar eager="true" href="dhuoj_client.jar" main="true"/>
+        <jar href="lib/jdom.jar"/>
+        <jar href="lib/dhuoj_common.jar"/>
+    </resources>
     <application-desc main-class="cn.edu.dhu.acm.oj.client.LoginFrame">
-
     </application-desc>
 </jnlp>
