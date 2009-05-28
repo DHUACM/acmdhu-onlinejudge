@@ -56,7 +56,7 @@ public class Compile {
         } catch (Exception e) {
             System.out.println(e.toString());
             compileresult = false;
-            runbean.setCompileInfo("No Compiler found!\nClick MenuItem Tool to Set your Compile Path!");
+            runbean.setCompileInfo("Unknow Error!");
         } finally {
             file.delete();
         }
