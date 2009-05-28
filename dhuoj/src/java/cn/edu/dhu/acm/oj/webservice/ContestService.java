@@ -64,8 +64,7 @@ public class ContestService {
             if (startTime.after(now)) cbean.setStatus(Const.CONTEST_PENDING);
             else if (endTime.before(now)) cbean.setStatus(Const.CONTEST_ENDED);
             else cbean.setStatus(Const.CONTEST_RUNNING);
-            cbean.setPaperPath(null);
-            cbean.setPaperKey(null);
+            // TODO: set paper path and key to null.
         }
         return clist;
         //return ContestFacade.getContests(firstResult, maxResults);
