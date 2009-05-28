@@ -1,6 +1,6 @@
 package cn.edu.dhu.acm.oj.judge.server;
 
-import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
+import cn.edu.dhu.acm.oj.persistence.beans.*;
 import cn.edu.dhu.acm.oj.common.config.Const;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
@@ -34,7 +34,12 @@ public class ServerRcvImpl implements Runnable {
                 if (obj instanceof SolutionBean) {
                     SolutionBean sbean = (SolutionBean) obj;
                     dbs.addJudged(sbean);
-                    System.out.println("Server receieve RunBean " + sbean.getSolutionId() + ", judged result: " + sbean.getResult());
+                    System.out.println("Server receive RunBean " + sbean.getSolutionId() + ", judged result: " + sbean.getResult());
+                    socket.getOutputStream().write("OK\r\n".getBytes());
+                } else if (obj instanceof MessageBean) {
+                    MessageBean mbean = (MessageBean) obj;
+                    dbs.addAnswered(mbean);
+                    System.out.println("Server receive MessageBean " + mbean.getMessageId()  + ".");
                     socket.getOutputStream().write("OK\r\n".getBytes());
                 }
             } catch (Exception e) {

@@ -14,13 +14,19 @@ public class DBService implements Runnable
     
     private final LinkedList<SolutionBean> judged_queue = new LinkedList();
 
+    private final LinkedList<MessageBean> unanswered_queue = new LinkedList();
+
+    private final LinkedList<MessageBean> answered_queue = new LinkedList();
+
     private SolutionDAO sol_dao = null;
     private SourceCodeDAO src_dao = null;
+    private MessageDAO msg_dao = null;
 
     public DBService()
     {
         sol_dao = new SolutionDAO();
         src_dao = new SourceCodeDAO();
+        msg_dao = new MessageDAO();
     }
 
     public void run()
@@ -49,8 +55,24 @@ public class DBService implements Runnable
                         sol_dao.updateSolution(sbean);
                     }
                 }
+
+                List<MessageBean> msgList = msg_dao.findNewMessagesInRange(0, 20);
+                for (MessageBean msg : msgList) {
+                    msg.setStatus(Const.MSG_IN_QUEUE);
+                    msg_dao.updateMessage(msg);
+                    synchronized(unanswered_queue) {
+                        unanswered_queue.add(msg);
+                    }
+                }
+
+                synchronized(answered_queue) {
+                    while (!answered_queue.isEmpty()) {
+                        MessageBean msg = answered_queue.removeFirst();
+                        msg_dao.updateMessage(msg);
+                    }
+                }
                 
-                TimeUnit.MILLISECONDS.sleep(300);
+                TimeUnit.MILLISECONDS.sleep(500);
             }
             catch(Exception e)
             {
@@ -75,11 +97,34 @@ public class DBService implements Runnable
         }
     }
 
+    public MessageBean getUnansweredFirst()
+    {
+        synchronized(unanswered_queue)
+        {
+            if(unanswered_queue.isEmpty())
+            {
+                return null;
+            }
+            else
+            {
+                return unanswered_queue.getFirst();
+            }
+        }
+    }
+
     public void removeUnjudgeFirst()
     {
         synchronized(unjudge_queue)
         {
             unjudge_queue.removeFirst();
+        }
+    }
+
+    public void removeUnansweredFirst()
+    {
+        synchronized(unanswered_queue)
+        {
+            unanswered_queue.removeFirst();
         }
     }
     
@@ -88,6 +133,14 @@ public class DBService implements Runnable
         synchronized(judged_queue)
         {
             judged_queue.add(b);
+        }
+    }
+
+    public void addAnswered(MessageBean mb)
+    {
+        synchronized(answered_queue)
+        {
+            answered_queue.add(mb);
         }
     }
 
