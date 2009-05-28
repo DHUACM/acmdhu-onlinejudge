@@ -5,6 +5,7 @@
   <table-filter match-name="contest"/>
   <table-filter match-name="contest_problem"/>
   <table-filter match-name="contest_reservation"/>
+  <table-filter match-name="message"/>
   <table-filter match-name="problem"/>
   <table-filter match-name="solution"/>
   <table-filter match-name="user"/>
