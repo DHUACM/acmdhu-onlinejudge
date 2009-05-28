@@ -31,6 +31,10 @@ public class Const {
     public static final int CONTEST_RUNNING = 1;
     public static final int CONTEST_ENDED = 2;
 
+    public static final int MSG_NEW = 0;
+    public static final int MSG_IN_QUEUE = 1;
+    public static final int MSG_ANSWERED = 2;
+
     /**Language to byte*/
     public static final byte getLanguageByte(String l) {
         byte ans = 0;
