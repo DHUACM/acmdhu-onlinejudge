@@ -155,7 +155,7 @@ public class Control {
             } else {
                 frame.setTitle(Const.CONTESTPREFIX + num);
                 contestid = num;
-                frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid);
+                frame.setURL("http://acm.dhu.edu.cn/dhuoj/rank/contest" + contestid + ".html");
             }
 
             paperbean = new PaperBean();
@@ -261,8 +261,9 @@ public class Control {
     //public Main step:
     public static void CheckTmppath() {
         boolean ans = true;
+        String str = "";
         if (tmppath.indexOf(" ") != -1) {
-            message = "Tmp path can't include white space \" \"!";
+            str = "Tmp path can't include white space \" \"!";
             ans = false;
         } else {
             try {
@@ -270,13 +271,13 @@ public class Control {
                 out.write("Hello world!");
                 out.close();
             } catch (Exception e) {
-                message = "No permission on Tmp path!";
+                str = "No permission on Tmp path!";
                 ans = false;
             }
         }
         if (!ans) {
             frame.showEnvPanel();
-            frame.smallDialog(message, "Error", 0);
+            frame.smallDialog(str, "Error", 0);
         } else {
             System.out.println("Tmp path check ok!");
         }
@@ -326,7 +327,7 @@ public class Control {
             }
         } catch (Exception ex) {
             islogined = false;
-            message = "Server can't be found!";
+            message = "Server can not found!";
         }
         return islogined;
     }
@@ -494,7 +495,7 @@ public class Control {
                     mid, null, result.getResponse()
                 };
                 frame.updateQuestionRow(row);
-                String r = "Question : \n\n\t"+result.getQuestion()+"\n"+"Response : \n\n\t"+result.getResponse();
+                String r = "Question : \n\n\t" + result.getQuestion() + "\n" + "Response : \n\n\t" + result.getResponse();
                 frame.smallDialog(r, "Question", 1);
             }
         } catch (Exception ex) {

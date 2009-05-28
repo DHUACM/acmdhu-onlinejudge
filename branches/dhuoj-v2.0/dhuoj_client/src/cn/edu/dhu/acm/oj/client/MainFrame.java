@@ -89,7 +89,6 @@ public class MainFrame extends MyFrame {
         JMI_SetEnv = new javax.swing.JMenuItem();
         JM_Help = new javax.swing.JMenu();
         JMI_Help = new javax.swing.JMenuItem();
-        JMI_About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,9 +263,6 @@ public class MainFrame extends MyFrame {
         });
         JM_Help.add(JMI_Help);
 
-        JMI_About.setText("About");
-        JM_Help.add(JMI_About);
-
         MenuBar.add(JM_Help);
 
         setJMenuBar(MenuBar);
@@ -280,6 +276,15 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_JMI_SetEnvActionPerformed
 
     private void JMI_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_HelpActionPerformed
+        try {
+            if (java.awt.Desktop.isDesktopSupported()) {
+                java.awt.Desktop.getDesktop().browse(new java.net.URI("http://acm.dhu.edu.cn/dhuoj/help.htm"));
+            } else {
+                smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+            }
+        } catch (Exception e) {
+            smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+        }
     }//GEN-LAST:event_JMI_HelpActionPerformed
 
     private void JMI_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_NewActionPerformed
@@ -477,7 +482,6 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JButton JB_Post;
     private javax.swing.JButton JB_Reflash;
     private javax.swing.JEditorPane JEP_Rank;
-    private javax.swing.JMenuItem JMI_About;
     private javax.swing.JMenuItem JMI_Help;
     private javax.swing.JMenuItem JMI_New;
     private javax.swing.JMenuItem JMI_Open;

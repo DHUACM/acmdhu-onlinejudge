@@ -65,7 +65,11 @@ public class LoginFrame extends MyFrame {
         JP_Left.add(JB_Register);
 
         JB_Help.setText("Help");
-        JB_Help.setEnabled(false);
+        JB_Help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_HelpActionPerformed(evt);
+            }
+        });
         JP_Left.add(JB_Help);
 
         getContentPane().add(JP_Left, java.awt.BorderLayout.WEST);
@@ -137,6 +141,18 @@ public class LoginFrame extends MyFrame {
     private void JCB_ModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_ModelActionPerformed
         model = JCB_Model.getSelectedItem().toString();
 }//GEN-LAST:event_JCB_ModelActionPerformed
+
+    private void JB_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_HelpActionPerformed
+        try {
+            if (java.awt.Desktop.isDesktopSupported()) {
+                java.awt.Desktop.getDesktop().browse(new java.net.URI("http://acm.dhu.edu.cn/dhuoj/help.htm"));
+            } else {
+                smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+            }
+        } catch (Exception e) {
+            smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+        }
+    }//GEN-LAST:event_JB_HelpActionPerformed
 
     /**
      * @param args the command line arguments
