@@ -127,6 +127,12 @@ public class EnvironmentBean {
         this.EnvironmentRoot.setChildText("SourceCodeTemp", path);
     }
 
+    public void setSourceTarget(String sourcepath , String targetpath){
+        Element tmp = this.EnvironmentRoot.getChild("Run");
+        tmp.setChildText("Source", sourcepath);
+        tmp.setChildText("Target", targetpath);
+    }
+
     public void toFile(String filepath) throws IOException {
         this.EnvironmentRoot.marshal(filepath);
     }

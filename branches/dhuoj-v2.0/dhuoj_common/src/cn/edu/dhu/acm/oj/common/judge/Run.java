@@ -36,7 +36,11 @@ public class Run extends Thread {
     @Override
     public void run() {
         try {
-            tk = new TimeoutKill(runbean.getTimeLimit());
+            long tle = runbean.getTimeLimit();
+            if (runbean.getLanguage() == Const.JAVA) {
+                tle = tle * Const.JAVA_LIMIT;
+            }
+            tk = new TimeoutKill(tle);
             System.out.println("Run : " + commandline);
             pro = Runtime.getRuntime().exec(commandline);
             tbegin = System.currentTimeMillis();
