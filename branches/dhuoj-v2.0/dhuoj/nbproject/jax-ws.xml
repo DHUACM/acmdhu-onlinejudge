@@ -7,6 +7,9 @@
     <service name="ContestService">
       <implementation-class>cn.edu.dhu.acm.oj.webservice.ContestService</implementation-class>
     </service>
+    <service name="MessageService">
+      <implementation-class>cn.edu.dhu.acm.oj.webservice.MessageService</implementation-class>
+    </service>
   </services>
   <clients/>
   <jsr109>false</jsr109>

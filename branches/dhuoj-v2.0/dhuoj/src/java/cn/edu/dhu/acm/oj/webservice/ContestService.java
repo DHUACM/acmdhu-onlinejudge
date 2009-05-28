@@ -57,14 +57,19 @@ public class ContestService {
         java.util.Iterator<ContestBean> iter = clist.listIterator();
         while (iter.hasNext()) {
             ContestBean cbean = iter.next();
-            // calculate contest status
-            Date startTime = cbean.getStartTime();
-            Date endTime = cbean.getEndTime();
-            Date now = java.util.Calendar.getInstance().getTime();
-            if (startTime.after(now)) cbean.setStatus(Const.CONTEST_PENDING);
-            else if (endTime.before(now)) cbean.setStatus(Const.CONTEST_ENDED);
-            else cbean.setStatus(Const.CONTEST_RUNNING);
-            // TODO: set paper path and key to null.
+            if (cbean.getContestId() == 0) {
+                // cid = 0 is for problem archive.
+                iter.remove();
+            } else {
+                // calculate contest status
+                Date startTime = cbean.getStartTime();
+                Date endTime = cbean.getEndTime();
+                Date now = java.util.Calendar.getInstance().getTime();
+                if (startTime.after(now)) cbean.setStatus(Const.CONTEST_PENDING);
+                else if (endTime.before(now)) cbean.setStatus(Const.CONTEST_ENDED);
+                else cbean.setStatus(Const.CONTEST_RUNNING);
+                // TODO: set paper path and key to null.
+            }
         }
         return clist;
         //return ContestFacade.getContests(firstResult, maxResults);
