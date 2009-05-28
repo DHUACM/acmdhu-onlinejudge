@@ -16,17 +16,18 @@ public class Const {
     public static final String[] VERDICT = {"WAIT", "QUEUE", "Accepted", "Wrong Answer",
         "Time Limit Exceeded", "Memory Limit Exceeded", "Presentation Error", "Runtime Error",
         "Compile Error", "Output Limit Exceeded"};
-    public static final String[] TABLECOLNAME = {"QueryID", "ContestID", "Problem",
+    public static final String[] STATUSTABLECOLNAME = {"QueryID", "ContestID", "Problem",
         "Verdict", "Language", "RunTime(ms)", "SubmitTime"};
-    public static final Class[] TABLECOLTYPE = {Integer.class, Integer.class,
+    public static final Class[] STATUSTABLECOLTYPE = {Integer.class, Integer.class,
         String.class, String.class, String.class, Integer.class, String.class};
+    public static final String[] QUESTIONTABLECOLNAME = {"QueryID", "Question", "Response",};
+    public static final Class[] QUESTIONTABLECOLTYPE = {Integer.class, String.class, String.class};
     public static final String[] GETPAPERCOLNAME = {"ID", "Title", "Description", "StartTime",
         "EndTime", "Status", "Get"};
     public static final Class[] GETPAPERCOLTYPE = {Integer.class, String.class,
         String.class, String.class, String.class, javax.swing.JButton.class};
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
     public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
-
     public static final int CONTEST_PENDING = 0;
     public static final int CONTEST_RUNNING = 1;
     public static final int CONTEST_ENDED = 2;
@@ -68,18 +69,21 @@ public class Const {
     /**The code Font*/
     public static final java.awt.Font font = new java.awt.Font("DialogInput", 0, 13);
     /**The Time status reflash*/
-    public static final long SLEEPTIME = 10000;
+    public static final long CLIENTSTATUSTIME = 15000;
+    /**The Time question reflash*/
+    public static final long CLIENTQUESTIONTIME = 20000;
     /**The Time Judger sleep for Receiver and Sender*/
     public static final long JUDGESLEEP = 1000;
+    /**Submit Time From lastsubmit*/
+    public static final long SUBMITSLEEP = 30000;
     /**Output File Size*/
     public static final long FILEMAXSIZE = 5L << 20;
     /**Compile Name*/
     public static final String COMPILENAME = "Main";
-
     public static final String CLIENTPAPERSUFFIX = ".xml";
     public static final String JUDGEPAPERSUFFIX = ".xml";
     public static final String CONTESTPREFIX = "contest";
     public static final String PROBLEMPREFIX = "problem";
-    public static final String INITPAPER = CONTESTPREFIX+"0"+CLIENTPAPERSUFFIX;
+    public static final String INITPAPER = CONTESTPREFIX + "0" + CLIENTPAPERSUFFIX;
     public static final int PROBLEMSTART = 1000;
 }
