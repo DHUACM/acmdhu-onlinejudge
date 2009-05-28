@@ -10,14 +10,8 @@
 <message name="submitCodeResponse">
 <part name="parameters" element="tns:submitCodeResponse"></part>
 </message>
-<message name="ContestNotStartException">
-<part name="fault" element="tns:ContestNotStartException"></part>
-</message>
-<message name="ContestClosedException">
-<part name="fault" element="tns:ContestClosedException"></part>
-</message>
-<message name="UserLoginFailException">
-<part name="fault" element="tns:UserLoginFailException"></part>
+<message name="SubmitFailException">
+<part name="fault" element="tns:SubmitFailException"></part>
 </message>
 <message name="querySubmitStatus">
 <part name="parameters" element="tns:querySubmitStatus"></part>
@@ -31,13 +25,20 @@
 <message name="getContestListResponse">
 <part name="parameters" element="tns:getContestListResponse"></part>
 </message>
+<message name="getContestDetail">
+<part name="parameters" element="tns:getContestDetail"></part>
+</message>
+<message name="getContestDetailResponse">
+<part name="parameters" element="tns:getContestDetailResponse"></part>
+</message>
+<message name="ContestException">
+<part name="fault" element="tns:ContestException"></part>
+</message>
 <portType name="ContestService">
 <operation name="submitCode">
 <input message="tns:submitCode"></input>
 <output message="tns:submitCodeResponse"></output>
-<fault message="tns:ContestNotStartException" name="ContestNotStartException"></fault>
-<fault message="tns:ContestClosedException" name="ContestClosedException"></fault>
-<fault message="tns:UserLoginFailException" name="UserLoginFailException"></fault>
+<fault message="tns:SubmitFailException" name="SubmitFailException"></fault>
 </operation>
 <operation name="querySubmitStatus">
 <input message="tns:querySubmitStatus"></input>
@@ -46,6 +47,11 @@
 <operation name="getContestList">
 <input message="tns:getContestList"></input>
 <output message="tns:getContestListResponse"></output>
+</operation>
+<operation name="getContestDetail">
+<input message="tns:getContestDetail"></input>
+<output message="tns:getContestDetailResponse"></output>
+<fault message="tns:ContestException" name="ContestException"></fault>
 </operation>
 </portType>
 <binding name="ContestServicePortBinding" type="tns:ContestService">
@@ -58,14 +64,8 @@
 <output>
 <soap:body use="literal"></soap:body>
 </output>
-<fault name="ContestNotStartException">
-<soap:fault name="ContestNotStartException" use="literal"></soap:fault>
-</fault>
-<fault name="ContestClosedException">
-<soap:fault name="ContestClosedException" use="literal"></soap:fault>
-</fault>
-<fault name="UserLoginFailException">
-<soap:fault name="UserLoginFailException" use="literal"></soap:fault>
+<fault name="SubmitFailException">
+<soap:fault name="SubmitFailException" use="literal"></soap:fault>
 </fault>
 </operation>
 <operation name="querySubmitStatus">
@@ -85,6 +85,18 @@
 <output>
 <soap:body use="literal"></soap:body>
 </output>
+</operation>
+<operation name="getContestDetail">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+<fault name="ContestException">
+<soap:fault name="ContestException" use="literal"></soap:fault>
+</fault>
 </operation>
 </binding>
 <service name="ContestServiceService">

@@ -8,7 +8,6 @@ public class LoginFrame extends MyFrame {
     public LoginFrame() {
         initComponents();
         model = JCB_Model.getSelectedItem().toString();
-        Control.init();
         Control.setLoginFrame(this);
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         java.awt.Dimension dialogSize = this.getSize();
@@ -29,19 +28,21 @@ public class LoginFrame extends MyFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         JB_Register = new javax.swing.JButton();
         JB_Help = new javax.swing.JButton();
         JP_Right = new javax.swing.JPanel();
         JF_UserID = new javax.swing.JTextField();
         JPF_Password = new javax.swing.JPasswordField();
         JCB_Model = new javax.swing.JComboBox();
+        TF_Server = new javax.swing.JTextField();
         JB_Login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DHUacm");
 
-        JP_Left.setLayout(new java.awt.GridLayout(5, 1));
+        JP_Left.setLayout(new java.awt.GridLayout(6, 1));
 
         jLabel1.setText("User ID:");
         JP_Left.add(jLabel1);
@@ -52,6 +53,9 @@ public class LoginFrame extends MyFrame {
         jLabel3.setText("Model:");
         JP_Left.add(jLabel3);
 
+        jLabel5.setText("Server:");
+        JP_Left.add(jLabel5);
+
         JB_Register.setText("Register");
         JB_Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,23 +65,28 @@ public class LoginFrame extends MyFrame {
         JP_Left.add(JB_Register);
 
         JB_Help.setText("Help");
+        JB_Help.setEnabled(false);
         JP_Left.add(JB_Help);
 
         getContentPane().add(JP_Left, java.awt.BorderLayout.WEST);
 
-        JP_Right.setLayout(new java.awt.GridLayout(5, 1));
+        JP_Right.setLayout(new java.awt.GridLayout(6, 1));
 
         JF_UserID.setColumns(20);
         JP_Right.add(JF_UserID);
         JP_Right.add(JPF_Password);
 
-        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Examination", "Contest", "Trainer-Net", "Trainer-Local" }));
+        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Contest", "Examination", "Trainer-Net", "Trainer-Local" }));
+        JCB_Model.setEnabled(false);
         JCB_Model.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCB_ModelActionPerformed(evt);
             }
         });
         JP_Right.add(JCB_Model);
+
+        TF_Server.setText("acm.dhu.edu.cn");
+        JP_Right.add(TF_Server);
 
         JB_Login.setText("Login");
         JB_Login.addActionListener(new java.awt.event.ActionListener() {
@@ -103,17 +112,22 @@ public class LoginFrame extends MyFrame {
     }//GEN-LAST:event_JB_RegisterActionPerformed
 
     private void JB_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LoginActionPerformed
+        model = TF_Server.getText();
         if (model.indexOf("Local") != -1) {
             Control.setModel(model);
             this.setVisible(false);
             Control.getMainFrame().setVisible(true);
+            Control.CheckTmppath();
         } else {
+            String ser = TF_Server.getText();
+            Control.setServer(ser);
             boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
             if (ans) {
                 Control.setModel(model);
-                smallDialog(Control.getMessage(), "Done", 1);
-                this.setVisible(false);
+                setVisible(false);
                 Control.getMainFrame().setVisible(true);
+                Control.CheckTmppath();
+                Control.getMainFrame().smallDialog(Control.getMessage(), "Done", 1);
             } else {
                 smallDialog(Control.getMessage(), "Error", 0);
             }
@@ -145,10 +159,12 @@ public class LoginFrame extends MyFrame {
     private javax.swing.JPasswordField JPF_Password;
     private javax.swing.JPanel JP_Left;
     private javax.swing.JPanel JP_Right;
+    private javax.swing.JTextField TF_Server;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
     private String model;
 }

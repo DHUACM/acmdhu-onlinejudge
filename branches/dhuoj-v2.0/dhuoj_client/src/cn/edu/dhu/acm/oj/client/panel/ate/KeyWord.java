@@ -7,13 +7,13 @@ class KeyWord {
     public KeyWord() {
         language = "";
         KEYWORDS = KEYWORDSPASCAL;
-        language = "Pascal";
+        language = "CPP";
     }
 
     public void setKeyWord(String l) {
-        if (l.compareToIgnoreCase("Pascal") == 0) {
+        if (l.compareToIgnoreCase("PASCAL") == 0) {
             KEYWORDS = KEYWORDSPASCAL;
-        } else if (l.compareToIgnoreCase("Java") == 0) {
+        } else if (l.compareToIgnoreCase("JAVA") == 0) {
             KEYWORDS = KEYWORDSJAVA;
         } else {
             KEYWORDS = KEYWORDSCPP;

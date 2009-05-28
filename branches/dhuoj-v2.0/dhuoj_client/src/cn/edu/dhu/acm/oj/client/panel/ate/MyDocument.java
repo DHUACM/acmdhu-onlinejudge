@@ -8,7 +8,7 @@ import cn.edu.dhu.acm.oj.common.config.Const;
 public class MyDocument extends PlainDocument {
 
     public MyDocument() {
-        language = "";
+        language = "CPP";
         putProperty(javax.swing.text.PlainDocument.tabSizeAttribute, 4);
     }
 

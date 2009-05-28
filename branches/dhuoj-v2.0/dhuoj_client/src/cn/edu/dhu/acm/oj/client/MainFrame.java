@@ -8,9 +8,10 @@ public class MainFrame extends MyFrame {
     /** Creates new form MainFrame */
     public MainFrame() {
         paperpanel = new PaperPanel();
-        Control.setPaperpanel(paperpanel);
         initComponents();
         Control.setMainFrame(this);
+        Control.init();
+        Control.setPaperpanel(paperpanel);
         JP_Paper.add(paperpanel, java.awt.BorderLayout.CENTER);
         int i = Control.getAllcodecnt();
         String title = "New0";
@@ -18,17 +19,31 @@ public class MainFrame extends MyFrame {
         JTP_Code.add(title, new CodePanel(title, i, JTP_Code));
         JTP_Code.setTabComponentAt(i, new ButtonTabComponent(JTP_Code));
 
-        Table.setModel(dtb = new javax.swing.table.DefaultTableModel(
-                new Object[][]{}, Const.TABLECOLNAME) {
+        StatusTable.setModel(statusdtb = new javax.swing.table.DefaultTableModel(
+                new Object[][]{}, Const.STATUSTABLECOLNAME) {
 
-            Class[] types = Const.TABLECOLTYPE;
+            Class[] types = Const.STATUSTABLECOLTYPE;
 
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
         });
-        Table.setEnabled(false);
+        StatusTable.setEnabled(false);
+
+        QuestionTable.setModel(questiondtb = new javax.swing.table.DefaultTableModel(
+                new Object[][]{}, Const.QUESTIONTABLECOLNAME) {
+
+            Class[] types = Const.QUESTIONTABLECOLTYPE;
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
+        QuestionTable.setEnabled(false);
+
+
         Control.setPaper(Const.INITPAPER);
         paperpanel.setPaper();
     }
@@ -48,24 +63,30 @@ public class MainFrame extends MyFrame {
         JTP_Code = new javax.swing.JTabbedPane();
         JP_Status = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Table = new javax.swing.JTable();
+        StatusTable = new javax.swing.JTable();
         JP_Rank = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         JEP_Rank = new javax.swing.JEditorPane();
         jToolBar1 = new javax.swing.JToolBar();
         JB_Reflash = new javax.swing.JButton();
         TF_URL = new javax.swing.JTextField();
+        JP_Question = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        QuestionTable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JTA_Question = new javax.swing.JTextArea();
+        jToolBar2 = new javax.swing.JToolBar();
+        JB_Post = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         JM_Tool1 = new javax.swing.JMenu();
         JMI_New = new javax.swing.JMenuItem();
         JMI_Open = new javax.swing.JMenuItem();
         JMI_Save = new javax.swing.JMenuItem();
         JMI_SaveAs = new javax.swing.JMenuItem();
-        JMI_Logout = new javax.swing.JMenuItem();
-        JMI_Exit = new javax.swing.JMenuItem();
         JM_Tool = new javax.swing.JMenu();
         JMI_SetEnv = new javax.swing.JMenuItem();
-        JMI_SetFile = new javax.swing.JMenuItem();
         JM_Help = new javax.swing.JMenu();
         JMI_Help = new javax.swing.JMenuItem();
         JMI_About = new javax.swing.JMenuItem();
@@ -88,7 +109,7 @@ public class MainFrame extends MyFrame {
 
         JP_Status.setLayout(new java.awt.BorderLayout());
 
-        Table.setModel(new javax.swing.table.DefaultTableModel(
+        StatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -96,8 +117,8 @@ public class MainFrame extends MyFrame {
 
             }
         ));
-        Table.setEnabled(false);
-        jScrollPane1.setViewportView(Table);
+        StatusTable.setEnabled(false);
+        jScrollPane1.setViewportView(StatusTable);
 
         JP_Status.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -111,7 +132,7 @@ public class MainFrame extends MyFrame {
 
         jToolBar1.setRollover(true);
 
-        JB_Reflash.setText("Reflash");
+        JB_Reflash.setText("ShowRankList");
         JB_Reflash.setFocusable(false);
         JB_Reflash.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_Reflash.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -123,7 +144,6 @@ public class MainFrame extends MyFrame {
         jToolBar1.add(JB_Reflash);
 
         TF_URL.setEditable(false);
-        TF_URL.setText("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=3");
         TF_URL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TF_URLActionPerformed(evt);
@@ -134,6 +154,51 @@ public class MainFrame extends MyFrame {
         JP_Rank.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         TP_Main.addTab("Rank", JP_Rank);
+
+        JP_Question.setLayout(new java.awt.BorderLayout());
+
+        QuestionTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(QuestionTable);
+
+        JP_Question.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        JTA_Question.setColumns(20);
+        JTA_Question.setRows(5);
+        jScrollPane4.setViewportView(JTA_Question);
+
+        jPanel1.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        JB_Post.setText("Post This Question");
+        JB_Post.setFocusable(false);
+        JB_Post.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Post.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Post.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_PostActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(JB_Post);
+
+        jPanel1.add(jToolBar2, java.awt.BorderLayout.SOUTH);
+
+        jLabel1.setText("Ask your question:");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        JP_Question.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        TP_Main.addTab("Question", JP_Question);
 
         getContentPane().add(TP_Main, java.awt.BorderLayout.CENTER);
 
@@ -174,26 +239,17 @@ public class MainFrame extends MyFrame {
         });
         JM_Tool1.add(JMI_SaveAs);
 
-        JMI_Logout.setText("Logout");
-        JM_Tool1.add(JMI_Logout);
-
-        JMI_Exit.setText("Exit");
-        JM_Tool1.add(JMI_Exit);
-
         MenuBar.add(JM_Tool1);
 
         JM_Tool.setText("Tool");
 
-        JMI_SetEnv.setText("SetCompilerPath");
+        JMI_SetEnv.setText("SetEnvironment");
         JMI_SetEnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMI_SetEnvActionPerformed(evt);
             }
         });
         JM_Tool.add(JMI_SetEnv);
-
-        JMI_SetFile.setText("SetFilePath");
-        JM_Tool.add(JMI_SetFile);
 
         MenuBar.add(JM_Tool);
 
@@ -216,13 +272,11 @@ public class MainFrame extends MyFrame {
         setJMenuBar(MenuBar);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-808)/2, (screenSize.height-571)/2, 808, 571);
+        setBounds((screenSize.width-834)/2, (screenSize.height-577)/2, 834, 577);
     }// </editor-fold>//GEN-END:initComponents
 
 private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_SetEnvActionPerformed
-    javax.swing.JDialog dialog = new javax.swing.JDialog();
-    EnvironmentPanel dlg = new EnvironmentPanel(dialog);
-    newDialog(dialog, dlg, "SetEnvironment");
+    showEnvPanel();
 }//GEN-LAST:event_JMI_SetEnvActionPerformed
 
     private void JMI_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_HelpActionPerformed
@@ -260,15 +314,35 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void JB_ReflashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ReflashActionPerformed
         try {
-            JEP_Rank.setPage(TF_URL.getText());
+            if (java.awt.Desktop.isDesktopSupported()) {
+                java.awt.Desktop.getDesktop().browse(new java.net.URI(TF_URL.getText()));
+            } else {
+                JEP_Rank.setPage(TF_URL.getText());
+                smallDialog("Please use your browser to open:\n" + TF_URL.getText(), "Warning", 0);
+            }
         } catch (Exception e) {
-            JEP_Rank.setText(e.toString());
+            smallDialog("Please use your browser to open:\n" + TF_URL.getText(), "Warning", 0);
         }
 }//GEN-LAST:event_JB_ReflashActionPerformed
 
     private void TF_URLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_URLActionPerformed
         this.JB_ReflashActionPerformed(evt);
 }//GEN-LAST:event_TF_URLActionPerformed
+
+    private void JB_PostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_PostActionPerformed
+        String str = JTA_Question.getText();
+        if (str.equals("")) {
+            smallDialog("Your Question is empty!", "Error", 0);
+        } else {
+            Control.PostQuestion(str);
+        }
+    }//GEN-LAST:event_JB_PostActionPerformed
+
+    public void showEnvPanel() {
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        EnvironmentPanel dlg = new EnvironmentPanel(dialog);
+        newDialog(dialog, dlg, "SetEnvironment");
+    }
 
     public void NewCodePanel() {
         int i = Control.getAllcodecnt();
@@ -281,11 +355,14 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     public void OpenCodePanel() {
-        javax.swing.JFileChooser chooser = new javax.swing.JFileChooser("./");
+        javax.swing.JFileChooser chooser = new javax.swing.JFileChooser(Control.getWorkpath());
         if (chooser.showOpenDialog(this) == javax.swing.JFileChooser.APPROVE_OPTION) {
             try {
                 String fileName = chooser.getSelectedFile().getPath();
                 java.io.File file = new java.io.File(fileName);
+
+                System.out.println(file.getParent());
+
                 int fileSize = (int) file.length();
 
                 int charReaded = 0;
@@ -313,26 +390,27 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
 
-    public void deleteqid(Integer qid) {
-        int len = dtb.getRowCount();
+    public void deleteStatusQid(Integer qid) {
+        int len = statusdtb.getRowCount();
         for (int i = 0; i < len; i++) {
-            Integer id = (Integer) dtb.getValueAt(i, 0);
+            Integer id = (Integer) statusdtb.getValueAt(i, 0);
             if (qid.equals(id)) {
-                dtb.removeRow(i);
+                statusdtb.removeRow(i);
                 break;
             }
         }
-        Table.repaint();
+        StatusTable.repaint();
     }
 
-    public String getRowString(Integer qid) {
+    public String getStatusRowString(Integer qid) {
         String ans = "";
-        int len = dtb.getRowCount();
+        int len = statusdtb.getRowCount();
         for (int i = 0; i < len; i++) {
-            Integer id = (Integer) dtb.getValueAt(i, 0);
+            Integer id = (Integer) statusdtb.getValueAt(i, 0);
             if (qid.equals(id)) {
-                for (int j = 2; j < Const.TABLECOLNAME.length - 1; j++) {
-                    ans += String.format("%s : %s\n", Const.TABLECOLNAME[j], dtb.getValueAt(i, j));
+                ans = String.format("%s : %s", Const.STATUSTABLECOLNAME[2], statusdtb.getValueAt(i, 2));
+                for (int j = 3; j < Const.STATUSTABLECOLNAME.length - 1; j++) {
+                    ans += String.format("\n%s : %s", Const.STATUSTABLECOLNAME[j], statusdtb.getValueAt(i, j));
                 }
                 break;
             }
@@ -340,27 +418,51 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         return ans;
     }
 
-    public void updateRow(Object[] row) {
+    public void updateStatusRow(Object[] row) {
         Integer qid = (Integer) row[0];
-        int len = dtb.getRowCount();
+        int len = statusdtb.getRowCount();
         boolean find = false;
         int i;
         for (i = 0; i < len; i++) {
-            Integer id = (Integer) dtb.getValueAt(i, 0);
+            Integer id = (Integer) statusdtb.getValueAt(i, 0);
             if (qid.equals(id)) {
                 find = true;
                 break;
             }
         }
         if (!find) {
-            dtb.addRow(row);
+            statusdtb.addRow(row);
         } else {
-            dtb.setValueAt(row[1], i, 1);
-            dtb.setValueAt(row[3], i, 3);
-            dtb.setValueAt(row[5], i, 5);
-            dtb.setValueAt(row[6], i, 6);
+            statusdtb.setValueAt(row[1], i, 1);
+            statusdtb.setValueAt(row[3], i, 3);
+            statusdtb.setValueAt(row[5], i, 5);
+            statusdtb.setValueAt(row[6], i, 6);
         }
-        Table.repaint();
+        StatusTable.repaint();
+    }
+
+    public void updateQuestionRow(Object[] row) {
+        Integer qid = (Integer) row[0];
+        int len = questiondtb.getRowCount();
+        boolean find = false;
+        int i;
+        for (i = 0; i < len; i++) {
+            Integer id = (Integer) questiondtb.getValueAt(i, 0);
+            if (qid.equals(id)) {
+                find = true;
+                break;
+            }
+        }
+        if (!find) {
+            questiondtb.addRow(row);
+        } else {
+            questiondtb.setValueAt(row[2], i, 2);
+        }
+        QuestionTable.repaint();
+    }
+
+    public void setURL(String url) {
+        TF_URL.setText(url);
     }
 
     public void showStatus() {
@@ -372,36 +474,43 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JB_Post;
     private javax.swing.JButton JB_Reflash;
     private javax.swing.JEditorPane JEP_Rank;
     private javax.swing.JMenuItem JMI_About;
-    private javax.swing.JMenuItem JMI_Exit;
     private javax.swing.JMenuItem JMI_Help;
-    private javax.swing.JMenuItem JMI_Logout;
     private javax.swing.JMenuItem JMI_New;
     private javax.swing.JMenuItem JMI_Open;
     private javax.swing.JMenuItem JMI_Save;
     private javax.swing.JMenuItem JMI_SaveAs;
     private javax.swing.JMenuItem JMI_SetEnv;
-    private javax.swing.JMenuItem JMI_SetFile;
     private javax.swing.JMenu JM_Help;
     private javax.swing.JMenu JM_Tool;
     private javax.swing.JMenu JM_Tool1;
     private javax.swing.JPanel JP_Coding;
     private javax.swing.JPanel JP_Paper;
+    private javax.swing.JPanel JP_Question;
     private javax.swing.JPanel JP_Rank;
     private javax.swing.JPanel JP_Status;
     private javax.swing.JSplitPane JSP_PC;
+    private javax.swing.JTextArea JTA_Question;
     private javax.swing.JTabbedPane JTP_Code;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JTable QuestionTable;
+    private javax.swing.JTable StatusTable;
     private javax.swing.JTextField TF_URL;
     private javax.swing.JTabbedPane TP_Main;
-    private javax.swing.JTable Table;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     // End of variables declaration//GEN-END:variables
     private PaperPanel paperpanel;
     private int codenum;
-    public javax.swing.table.DefaultTableModel dtb;
+    public javax.swing.table.DefaultTableModel statusdtb;
+    public javax.swing.table.DefaultTableModel questiondtb;
 }

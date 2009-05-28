@@ -29,7 +29,16 @@
     <target name="wsimport-client-clean-ContestService" depends="-init-project">
         <delete dir="${build.generated.dir}/wsimport/client/cn/edu/dhu/acm/oj/webservice"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-UserAccountService, wsimport-client-ContestService"/>
+    <target name="wsimport-client-MessageService" depends="wsimport-init">
+        <property name="wsdl-MessageService" location="xml-resources/web-service-references/MessageService/wsdl/acm.dhu.edu.cn_80/dhuoj/MessageService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/client" wsdl="${wsdl-MessageService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://acm.dhu.edu.cn:80/dhuoj/MessageService?wsdl" xnocompile="true">
+            <produces dir="${build.generated.dir}/wsimport/client/cn/edu/dhu/acm/oj/webservice" includes="MessageService.java" casesensitive="no"/>
+        </wsimport>
+    </target>
+    <target name="wsimport-client-clean-MessageService" depends="-init-project">
+        <delete dir="${build.generated.dir}/wsimport/client/cn/edu/dhu/acm/oj/webservice"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-UserAccountService, wsimport-client-ContestService, wsimport-client-MessageService"/>
     <target name="wsimport-client-compile-depend" if="do.depend.true">
         <j2seproject3:depend srcdir="${build.generated.dir}/wsimport/client" classpath="${libs.jaxws21.classpath}:${javac.classpath}" destdir="${build.classes.dir}"/>
     </target>

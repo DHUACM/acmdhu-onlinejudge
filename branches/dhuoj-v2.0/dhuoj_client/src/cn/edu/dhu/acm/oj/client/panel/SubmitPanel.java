@@ -1,6 +1,7 @@
 package cn.edu.dhu.acm.oj.client.panel;
 
 import cn.edu.dhu.acm.oj.common.paper.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 import cn.edu.dhu.acm.oj.client.Control;
 import cn.edu.dhu.acm.oj.client.thread.*;
 
@@ -11,19 +12,16 @@ public class SubmitPanel extends javax.swing.JPanel {
         initComponents();
         dialog = d;
         try {
-            java.io.File dir = new java.io.File("./paper");
-            String[] files = dir.list();
-            for (int i = 0; i < files.length; i++) {
-                java.io.File file = new java.io.File(dir, files[i]);
-                JCB_Paper.addItem(file.getName());
-            }
-            JCB_Paper.setSelectedItem(Control.getPaperName());
             pb = Control.getPaperBean();
             int papernum = pb.getProblemCount();
             for (int i = 0; i < papernum; i++) {
                 JCB_Problem.addItem((char) ('A' + i) + ".   " + pb.getProblemAt(i).getTitle());
             }
             JCB_Problem.setSelectedIndex(Control.getNowpapernum());
+            for (int i = 0; i < Const.LANGUAGE.length; i++) {
+                JCB_Language.addItem(Const.LANGUAGE[i]);
+            }
+            JCB_Language.setSelectedItem(Control.getLanguage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,8 +36,8 @@ public class SubmitPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jLabel1 = new javax.swing.JLabel();
-        JCB_Paper = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        JCB_Language = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         JCB_Problem = new javax.swing.JComboBox();
         JB_Submit = new javax.swing.JButton();
@@ -48,11 +46,12 @@ public class SubmitPanel extends javax.swing.JPanel {
 
         jToolBar1.setRollover(true);
 
-        jLabel1.setText("Paper:");
-        jToolBar1.add(jLabel1);
+        jLabel3.setText("Language:");
+        jToolBar1.add(jLabel3);
 
-        JCB_Paper.setEnabled(false);
-        jToolBar1.add(JCB_Paper);
+        JCB_Language.setToolTipText("Same as the language on codepanel");
+        JCB_Language.setEnabled(false);
+        jToolBar1.add(JCB_Language);
 
         jLabel2.setText("Problem:");
         jToolBar1.add(jLabel2);
@@ -75,22 +74,27 @@ public class SubmitPanel extends javax.swing.JPanel {
 
     private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SubmitActionPerformed
         dialog.dispose();
-        try {
-            RunSubmit runSubmit = new RunSubmit(JCB_Problem.getSelectedIndex(),JCB_Problem.getSelectedItem().toString());
-            Thread thread = new Thread(runSubmit);
-            thread.start();
-        } catch (Exception e) {
+        long time = System.currentTimeMillis();
+        if (time - Control.getLastSubmitTime() > Const.SUBMITSLEEP) {
+            Control.setLastSubmitTime(time);
+            try {
+                RunSubmit runSubmit = new RunSubmit(JCB_Problem.getSelectedIndex(), JCB_Problem.getSelectedItem().toString());
+                Thread thread = new Thread(runSubmit);
+                thread.start();
+            } catch (Exception e) {
+            }
+        } else {
+            Control.getMainFrame().smallDialog("Can't Submit twice in " + Const.SUBMITSLEEP / 1000 + " sec.", "Error", 0);
         }
 }//GEN-LAST:event_JB_SubmitActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Submit;
-    private javax.swing.JComboBox JCB_Paper;
+    private javax.swing.JComboBox JCB_Language;
     private javax.swing.JComboBox JCB_Problem;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
-
     private PaperBean pb;
     javax.swing.JDialog dialog;
 }

@@ -50,6 +50,30 @@
         </wsimport-option>
       </wsimport-options>
     </client>
+    <client name="MessageService">
+      <wsdl-url>http://acm.dhu.edu.cn:80/dhuoj/MessageService?wsdl</wsdl-url>
+      <local-wsdl-file>acm.dhu.edu.cn_80/dhuoj/MessageService.wsdl</local-wsdl-file>
+      <package-name>cn.edu.dhu.acm.oj.webservice</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://acm.dhu.edu.cn:80/dhuoj/MessageService?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
   </clients>
   <jsr109>false</jsr109>
 </jax-ws>

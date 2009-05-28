@@ -3,18 +3,24 @@ package cn.edu.dhu.acm.oj.client.panel;
 import java.io.*;
 import cn.edu.dhu.acm.oj.client.panel.ate.*;
 import cn.edu.dhu.acm.oj.client.Control;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class CodePanel extends javax.swing.JPanel {
 
-    public CodePanel(String title, int i, javax.swing.JTabbedPane jtp) {
-        language = "Cpp";
+    public CodePanel(String title, int codepanelcnt, javax.swing.JTabbedPane jtp) {
         initComponents();
+        JEP_Code = new ClipTextArea(JSP_Code);
+        this.JCB_Language.removeAllItems();
+        for (int i = 0; i < Const.LANGUAGE.length; i++) {
+            JCB_Language.addItem(Const.LANGUAGE[i]);
+        }
+        language = Control.getLanguage();
+        JCB_Language.setSelectedItem(language);
         name = title;
-        panelint = i;
+        panelint = codepanelcnt;
         tabbedPane = jtp;
         JSP_Code.setViewportView(JEP_Code);
-        JEP_Code = new ClipTextArea(JSP_Code);
-        file = new File(title);
+        file = new File(Control.getWorkpath() + title);
         line = System.getProperty("line.separator");
         JEP_Code.setText("//Code here");
     }
@@ -45,7 +51,6 @@ public class CodePanel extends javax.swing.JPanel {
         JB_Compile = new javax.swing.JButton();
         JB_Test = new javax.swing.JButton();
         JB_Submit = new javax.swing.JButton();
-        JB_Status = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         JSP_Code = new javax.swing.JScrollPane();
         JEP_Tmep = new javax.swing.JEditorPane();
@@ -73,7 +78,6 @@ public class CodePanel extends javax.swing.JPanel {
 
         TB_Code.setFloatable(false);
 
-        JCB_Language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cpp", "C", "Java" }));
         JCB_Language.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCB_LanguageActionPerformed(evt);
@@ -82,6 +86,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JCB_Language);
 
         JB_New.setText("New");
+        JB_New.setToolTipText("New");
         JB_New.setFocusable(false);
         JB_New.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_New.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -93,6 +98,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JB_New);
 
         JB_Open.setText("Open");
+        JB_Open.setToolTipText("Open");
         JB_Open.setFocusable(false);
         JB_Open.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_Open.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -104,6 +110,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JB_Open);
 
         JB_Save.setText("SaveAs");
+        JB_Save.setToolTipText("SaveAs");
         JB_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_SaveActionPerformed(evt);
@@ -112,6 +119,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JB_Save);
 
         JB_Compile.setText("Compile");
+        JB_Compile.setToolTipText("Save+Compile");
         JB_Compile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_CompileActionPerformed(evt);
@@ -120,6 +128,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JB_Compile);
 
         JB_Test.setText("Test");
+        JB_Test.setToolTipText("To TestPanel");
         JB_Test.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_TestActionPerformed(evt);
@@ -128,23 +137,13 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Code.add(JB_Test);
 
         JB_Submit.setText("Submit");
+        JB_Submit.setToolTipText("Save+Run+Submit");
         JB_Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_SubmitActionPerformed(evt);
             }
         });
         TB_Code.add(JB_Submit);
-
-        JB_Status.setText("Status");
-        JB_Status.setFocusable(false);
-        JB_Status.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        JB_Status.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        JB_Status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_StatusActionPerformed(evt);
-            }
-        });
-        TB_Code.add(JB_Status);
 
         add(TB_Code, java.awt.BorderLayout.NORTH);
 
@@ -172,6 +171,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Test.setFloatable(false);
 
         JB_RunTest.setText("Compile&RunTest");
+        JB_RunTest.setToolTipText("TestIn'll endwith \\n");
         JB_RunTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_RunTestActionPerformed(evt);
@@ -180,6 +180,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Test.add(JB_RunTest);
 
         JB_Clear.setText("Clear");
+        JB_Clear.setToolTipText("Clear");
         JB_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_ClearActionPerformed(evt);
@@ -191,6 +192,7 @@ public class CodePanel extends javax.swing.JPanel {
         TB_Test.add(jLabel1);
 
         TF_Time.setText("5");
+        TF_Time.setToolTipText("Java'll *3 automatically");
         TB_Test.add(TF_Time);
 
         JP_Test.add(TB_Test, java.awt.BorderLayout.NORTH);
@@ -235,7 +237,7 @@ public class CodePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void JB_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SaveActionPerformed
-    javax.swing.JFileChooser chooser = new javax.swing.JFileChooser("./");
+    javax.swing.JFileChooser chooser = new javax.swing.JFileChooser(Control.getWorkpath());
     chooser.setSelectedFile(new File(name));
     if (chooser.showSaveDialog(this) == javax.swing.JFileChooser.APPROVE_OPTION) {
         try {
@@ -270,26 +272,19 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void JB_CompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CompileActionPerformed
         try {
             Save();
-            JTA_CompileInfo.setText("Compiling~~~");
+            JTA_CompileInfo.setText("Compiling...");
             Control.setLanguage(language);
             Control.setCode(JEP_Code.getText() + line);
-            Control.Compile();
+            Control.Compile(true);
             JTA_CompileInfo.setText(Control.getCompileOut());
-        } catch (IOException ioe) {
+        } catch (Exception ioe) {
             Control.getMainFrame().smallDialog("Save File Error!", "Error", 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JTA_CompileInfo.setText("Set your Compile Path~");
         }
     }//GEN-LAST:event_JB_CompileActionPerformed
 
     private void JB_TestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TestActionPerformed
         JTP_Info.setSelectedIndex(1);
     }//GEN-LAST:event_JB_TestActionPerformed
-
-    private void JB_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_StatusActionPerformed
-        Control.getMainFrame().showStatus();
-}//GEN-LAST:event_JB_StatusActionPerformed
 
     private void JB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_NewActionPerformed
         Control.getMainFrame().NewCodePanel();
@@ -306,7 +301,12 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Control.setLanguage(language);
             Control.setCode(JEP_Code.getText() + line);
             long tl = Long.parseLong(TF_Time.getText());
-            Control.RunTest(JTA_In.getText(), tl);
+            String testin = JTA_In.getText();
+            if(!testin.endsWith("\n")){
+                testin+="\n";
+                JTA_In.append("\n");
+            }
+            Control.RunTest(testin, tl);
 
             JTA_CompileInfo.setText(Control.getCompileOut());
             JTA_Out.setText(Control.getTestOut());
@@ -333,7 +333,6 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private javax.swing.JButton JB_Open;
     private javax.swing.JButton JB_RunTest;
     private javax.swing.JButton JB_Save;
-    private javax.swing.JButton JB_Status;
     private javax.swing.JButton JB_Submit;
     private javax.swing.JButton JB_Test;
     private javax.swing.JComboBox JCB_Language;
@@ -359,7 +358,7 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
-    private String language = "Cpp";
+    private String language = "CPP";
     private String name;
     private int panelint;
     private javax.swing.JTabbedPane tabbedPane;

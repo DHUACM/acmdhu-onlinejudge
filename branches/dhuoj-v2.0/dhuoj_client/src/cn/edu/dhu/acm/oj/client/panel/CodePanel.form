@@ -28,15 +28,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
         <Component class="javax.swing.JComboBox" name="JCB_Language">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Cpp"/>
-                <StringItem index="1" value="C"/>
-                <StringItem index="2" value="Java"/>
-              </StringArray>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCB_LanguageActionPerformed"/>
           </Events>
@@ -44,6 +35,7 @@
         <Component class="javax.swing.JButton" name="JB_New">
           <Properties>
             <Property name="text" type="java.lang.String" value="New"/>
+            <Property name="toolTipText" type="java.lang.String" value="New"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -55,6 +47,7 @@
         <Component class="javax.swing.JButton" name="JB_Open">
           <Properties>
             <Property name="text" type="java.lang.String" value="Open"/>
+            <Property name="toolTipText" type="java.lang.String" value="Open"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -66,6 +59,7 @@
         <Component class="javax.swing.JButton" name="JB_Save">
           <Properties>
             <Property name="text" type="java.lang.String" value="SaveAs"/>
+            <Property name="toolTipText" type="java.lang.String" value="SaveAs"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_SaveActionPerformed"/>
@@ -74,6 +68,7 @@
         <Component class="javax.swing.JButton" name="JB_Compile">
           <Properties>
             <Property name="text" type="java.lang.String" value="Compile"/>
+            <Property name="toolTipText" type="java.lang.String" value="Save+Compile"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_CompileActionPerformed"/>
@@ -82,6 +77,7 @@
         <Component class="javax.swing.JButton" name="JB_Test">
           <Properties>
             <Property name="text" type="java.lang.String" value="Test"/>
+            <Property name="toolTipText" type="java.lang.String" value="To TestPanel"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_TestActionPerformed"/>
@@ -90,20 +86,10 @@
         <Component class="javax.swing.JButton" name="JB_Submit">
           <Properties>
             <Property name="text" type="java.lang.String" value="Submit"/>
+            <Property name="toolTipText" type="java.lang.String" value="Save+Run+Submit"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_SubmitActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="JB_Status">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Status"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_StatusActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -210,6 +196,7 @@
                     <Component class="javax.swing.JButton" name="JB_RunTest">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Compile&amp;RunTest"/>
+                        <Property name="toolTipText" type="java.lang.String" value="TestIn&apos;ll endwith \n"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_RunTestActionPerformed"/>
@@ -218,6 +205,7 @@
                     <Component class="javax.swing.JButton" name="JB_Clear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Clear"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Clear"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_ClearActionPerformed"/>
@@ -231,6 +219,7 @@
                     <Component class="javax.swing.JTextField" name="TF_Time">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="5"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Java&apos;ll *3 automatically"/>
                       </Properties>
                     </Component>
                   </SubComponents>
