@@ -84,7 +84,7 @@ public class MyEditorKit extends DefaultEditorKit {
                     x = Utilities.drawTabbedText(token, x, y, g, this, p0 + index);
                     continue;
                 }
-                if (kw.getLanguage().compareToIgnoreCase("Pascal") == 0 && c == '(') {
+                if (kw.getLanguage().compareToIgnoreCase("PASCAL") == 0 && c == '(') {
                     index = i;
                     if (++i < count && segment.array[segment.offset + i] == '*') {
                         do {

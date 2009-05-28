@@ -19,7 +19,7 @@ public class ClipTextArea extends JEditorPane
         JSP_Code.setRowHeaderView(JTA_LineView);
         JSP_Code.setViewportView(this);
         kit = new MyEditorKit();
-        kit.setLanguage("Cpp");
+        kit.setLanguage("CPP");
         setEditorKitForContentType("", kit);
         setFont(new Font("DialogInput", 0, 13));
         setContentType("");
@@ -27,7 +27,7 @@ public class ClipTextArea extends JEditorPane
         setDocument(doc);
         doc.setJTextArea(JTA_LineView);
         doc.setJEditorPane(this);
-        doc.setLanguage("Cpp");
+        doc.setLanguage("CPP");
         doc.addUndoableEditListener(new UndoableEditListener() {
 
             public void undoableEditHappened(UndoableEditEvent e) {

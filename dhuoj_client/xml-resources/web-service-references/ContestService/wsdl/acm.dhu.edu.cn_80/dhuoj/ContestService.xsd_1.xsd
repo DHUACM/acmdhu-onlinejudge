@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://webservice.oj.acm.dhu.edu.cn/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice.oj.acm.dhu.edu.cn/">
 
-<xs:element name="ContestClosedException" type="tns:ContestClosedException"></xs:element>
+<xs:element name="ContestException" type="tns:ContestException"></xs:element>
 
-<xs:element name="ContestNotStartException" type="tns:ContestNotStartException"></xs:element>
+<xs:element name="SubmitFailException" type="tns:SubmitFailException"></xs:element>
 
-<xs:element name="UserLoginFailException" type="tns:UserLoginFailException"></xs:element>
+<xs:element name="getContestDetail" type="tns:getContestDetail"></xs:element>
+
+<xs:element name="getContestDetailResponse" type="tns:getContestDetailResponse"></xs:element>
 
 <xs:element name="getContestList" type="tns:getContestList"></xs:element>
 
@@ -17,6 +19,40 @@
 <xs:element name="submitCode" type="tns:submitCode"></xs:element>
 
 <xs:element name="submitCodeResponse" type="tns:submitCodeResponse"></xs:element>
+
+<xs:complexType name="getContestDetail">
+<xs:sequence>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="contestID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestDetailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contestBean" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="contestBean">
+<xs:sequence>
+<xs:element name="contestId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="defunct" type="xs:byte"></xs:element>
+<xs:element name="description" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="endTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="paperKey" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paperPath" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="private_" type="xs:byte"></xs:element>
+<xs:element name="startTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ContestException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="getContestList">
 <xs:sequence>
@@ -31,19 +67,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="contestBean">
-<xs:sequence>
-<xs:element name="contestId" type="xs:int" minOccurs="0"></xs:element>
-<xs:element name="defunct" type="xs:byte"></xs:element>
-<xs:element name="description" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="endTime" type="xs:dateTime" minOccurs="0"></xs:element>
-<xs:element name="private_" type="xs:byte"></xs:element>
-<xs:element name="startTime" type="xs:dateTime" minOccurs="0"></xs:element>
-<xs:element name="status" type="xs:int"></xs:element>
-<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="submitCode">
 <xs:sequence>
 <xs:element name="submitForm" type="tns:submitCodeForm" minOccurs="0"></xs:element>
@@ -54,7 +77,7 @@
 <xs:sequence>
 <xs:element name="contestID" type="xs:int"></xs:element>
 <xs:element name="language" type="xs:byte"></xs:element>
-<xs:element name="localJudgeResult" type="xs:int"></xs:element>
+<xs:element name="localJudgeResult" type="xs:short"></xs:element>
 <xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="problemID" type="xs:int"></xs:element>
 <xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
@@ -68,19 +91,7 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="ContestNotStartException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ContestClosedException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="UserLoginFailException">
+<xs:complexType name="SubmitFailException">
 <xs:sequence>
 <xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
@@ -103,7 +114,9 @@
 <xs:element name="compileInfo" type="tns:compileinfoBean" minOccurs="0"></xs:element>
 <xs:element name="contestId" type="xs:int"></xs:element>
 <xs:element name="language" type="xs:byte"></xs:element>
+<xs:element name="localJudgeResult" type="xs:short"></xs:element>
 <xs:element name="memory" type="xs:int"></xs:element>
+<xs:element name="percentage" type="xs:int"></xs:element>
 <xs:element name="problemId" type="xs:int"></xs:element>
 <xs:element name="result" type="xs:short"></xs:element>
 <xs:element name="runtime" type="xs:int"></xs:element>

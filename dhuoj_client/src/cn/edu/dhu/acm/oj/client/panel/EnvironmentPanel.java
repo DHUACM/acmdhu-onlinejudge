@@ -12,11 +12,12 @@ public class EnvironmentPanel extends javax.swing.JPanel {
         initComponents();
         try {
             OSname = System.getProperty("os.name");
-            JL_OS.setText("OS: " + OSname);
             JTF_Cpp.setText(eb.getPath("Cpp"));
             JTF_C.setText(eb.getPath("C"));
             JTF_Java.setText(eb.getPath("Java"));
             JTF_Pascal.setText(eb.getPath("Pascal"));
+            JTF_Work.setText(Control.getWorkpath());
+            JTF_Tmp.setText(Control.getTmppath());
             target = new String[numLan];
             flag = new boolean[numLan];
             for (int i = 0; i < numLan; i++) {
@@ -37,35 +38,34 @@ public class EnvironmentPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        JB_Auto = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        JL_OS = new javax.swing.JLabel();
+        JL_Message = new javax.swing.JLabel();
         JTF_Cpp = new javax.swing.JTextField();
         JTF_C = new javax.swing.JTextField();
         JTF_Java = new javax.swing.JTextField();
         JTF_Pascal = new javax.swing.JTextField();
+        JTF_Work = new javax.swing.JTextField();
+        JTF_Tmp = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         JB_OK = new javax.swing.JButton();
         JB_CppFind = new javax.swing.JButton();
         JB_CFind = new javax.swing.JButton();
         JB_JavaFind = new javax.swing.JButton();
         JB_PascalFind = new javax.swing.JButton();
+        JB_Work = new javax.swing.JButton();
+        JB_Tmp = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setLayout(new java.awt.GridLayout(5, 0));
-
-        JB_Auto.setText("AutoSet");
-        JB_Auto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JB_AutoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JB_Auto);
+        jPanel1.setLayout(new java.awt.GridLayout(7, 0));
+        jPanel1.add(jLabel1);
 
         jLabel2.setText("Cpp-g++");
         jPanel1.add(jLabel2);
@@ -79,12 +79,18 @@ public class EnvironmentPanel extends javax.swing.JPanel {
         jLabel5.setText("Pascal-fpc");
         jPanel1.add(jLabel5);
 
+        jLabel6.setText("Work");
+        jPanel1.add(jLabel6);
+
+        jLabel7.setText("Tmp");
+        jPanel1.add(jLabel7);
+
         add(jPanel1, java.awt.BorderLayout.WEST);
 
-        jPanel2.setLayout(new java.awt.GridLayout(5, 0));
+        jPanel2.setLayout(new java.awt.GridLayout(7, 0));
 
-        JL_OS.setText("OS: Unknow");
-        jPanel2.add(JL_OS);
+        JL_Message.setText("Click find to set your path : ");
+        jPanel2.add(JL_Message);
 
         JTF_Cpp.setColumns(20);
         JTF_Cpp.addActionListener(new java.awt.event.ActionListener() {
@@ -102,12 +108,14 @@ public class EnvironmentPanel extends javax.swing.JPanel {
 
         JTF_Pascal.setColumns(20);
         jPanel2.add(JTF_Pascal);
+        jPanel2.add(JTF_Work);
+        jPanel2.add(JTF_Tmp);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jPanel3.setLayout(new java.awt.GridLayout(5, 0));
+        jPanel3.setLayout(new java.awt.GridLayout(7, 0));
 
-        JB_OK.setText("Save");
+        JB_OK.setText("OK");
         JB_OK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_OKActionPerformed(evt);
@@ -147,6 +155,22 @@ public class EnvironmentPanel extends javax.swing.JPanel {
         });
         jPanel3.add(JB_PascalFind);
 
+        JB_Work.setText("find");
+        JB_Work.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_WorkActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JB_Work);
+
+        JB_Tmp.setText("find");
+        JB_Tmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_TmpActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JB_Tmp);
+
         add(jPanel3, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,56 +191,15 @@ public class EnvironmentPanel extends javax.swing.JPanel {
         }
 }//GEN-LAST:event_JB_JavaFindActionPerformed
 
-    private void JB_AutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AutoActionPerformed
-        if (OSname.equals("Linux")) {
-            String all = "/usr/bin/";
-            JTF_Cpp.setText(all);
-            JTF_C.setText(all);
-            JTF_Java.setText(all);
-            JTF_Pascal.setText(all);
-        } else {
-            int times = eb.getSearchPathCount();
-            for (int k = 0; k < times; k++) {
-                java.io.File f = new java.io.File(eb.getSearchPath(k));
-                if (!f.isFile() && !f.isDirectory()) {
-                    continue;
-                }
-                java.io.File[] files = f.listFiles();
-                for (int i = 0; i < files.length; i++) {
-                    if (files[i].isFile()) {
-                        for (int j = 0; j < numLan; j++) {
-                            if (flag[j]) {
-                                continue;
-                            }
-                            if (0 == files[i].getName().compareToIgnoreCase(target[j])) {
-                                String tpath = files[i].getAbsolutePath();
-                                tpath = tpath.substring(0, tpath.length() - target[j].length());
-                                flag[j] = true;
-                                eb.setPath(LanguageList[j].toString(), tpath);
-                            }
-                        }
-                    }
-                }
-            }
-            JTF_Cpp.setText(eb.getPath("Cpp"));
-            JTF_C.setText(eb.getPath("C"));
-            JTF_Java.setText(eb.getPath("Java"));
-            JTF_Pascal.setText(eb.getPath("Pascal"));
-        }
-        try {
-            eb.toFile("./Environment.xml");
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }//GEN-LAST:event_JB_AutoActionPerformed
-
     private void JB_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OKActionPerformed
         try {
             eb.setPath("Cpp", JTF_Cpp.getText());
             eb.setPath("C", JTF_C.getText());
             eb.setPath("Java", JTF_Java.getText());
             eb.setPath("Pascal", JTF_Pascal.getText());
-            eb.toFile("./Environment.xml");
+            Control.setWorkpath(JTF_Work.getText());
+            Control.setTmppath(JTF_Tmp.getText());
+            Control.CheckTmppath();
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -263,22 +246,54 @@ public class EnvironmentPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_JB_PascalFindActionPerformed
 
+    private void JB_WorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_WorkActionPerformed
+        javax.swing.JFileChooser chooser = new javax.swing.JFileChooser();
+        chooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+        if (chooser.showOpenDialog(this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+            String path = chooser.getSelectedFile().toString();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setSourceCodeTemp(path);
+            JTF_Work.setText(path);
+        }
+    }//GEN-LAST:event_JB_WorkActionPerformed
+
+    private void JB_TmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TmpActionPerformed
+        javax.swing.JFileChooser chooser = new javax.swing.JFileChooser();
+        chooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+        if (chooser.showOpenDialog(this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+            String path = chooser.getSelectedFile().toString();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setSourceTarget(path, path);
+            JTF_Tmp.setText(path);
+        }
+    }//GEN-LAST:event_JB_TmpActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JB_Auto;
     private javax.swing.JButton JB_CFind;
     private javax.swing.JButton JB_CppFind;
     private javax.swing.JButton JB_JavaFind;
     private javax.swing.JButton JB_OK;
     private javax.swing.JButton JB_PascalFind;
-    private javax.swing.JLabel JL_OS;
+    private javax.swing.JButton JB_Tmp;
+    private javax.swing.JButton JB_Work;
+    private javax.swing.JLabel JL_Message;
     private javax.swing.JTextField JTF_C;
     private javax.swing.JTextField JTF_Cpp;
     private javax.swing.JTextField JTF_Java;
     private javax.swing.JTextField JTF_Pascal;
+    private javax.swing.JTextField JTF_Tmp;
+    private javax.swing.JTextField JTF_Work;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

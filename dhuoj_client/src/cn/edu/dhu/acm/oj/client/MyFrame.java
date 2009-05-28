@@ -1,5 +1,7 @@
 package cn.edu.dhu.acm.oj.client;
 
+import cn.edu.dhu.acm.oj.client.panel.MessagePanel;
+
 public class MyFrame extends javax.swing.JFrame {
 
     public void newDialog(javax.swing.JDialog dialog, javax.swing.JPanel p, String title) {
@@ -14,6 +16,8 @@ public class MyFrame extends javax.swing.JFrame {
     }
 
     public void smallDialog(String str, String title, int model) {
-        javax.swing.JOptionPane.showMessageDialog(this, str, title, model);
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        MessagePanel dlg = new MessagePanel(dialog,str);
+        newDialog(dialog, dlg, title);
     }
 }
