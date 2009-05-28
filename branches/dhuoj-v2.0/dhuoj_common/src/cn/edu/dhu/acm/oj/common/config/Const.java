@@ -27,6 +27,10 @@ public class Const {
     /**LANGUAGE: ""=0,C=1,CPP=2,JAVA=3*/
     public static final String[] LANGUAGE = {"PASCAL", "C", "CPP", "JAVA"};
 
+    public static final int CONTEST_PENDING = 0;
+    public static final int CONTEST_RUNNING = 1;
+    public static final int CONTEST_ENDED = 2;
+
     /**Language to byte*/
     public static final byte getLanguageByte(String l) {
         byte ans = 0;
