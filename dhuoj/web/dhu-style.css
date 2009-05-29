@@ -80,24 +80,22 @@ a.dhu-link:hover {
 	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
 }
 a.text-body:link {
-	color: #045269;
+	color: #0000FF;
 	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
 	text-decoration: none;
 }
 a.text-body:active {
-	color: #045269;
+	color: #0000FF;
 	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
 	text-decoration: none;
 }
 a.text-body:visited {
-	color: #045269;
+	color: #0000FF;
 	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
 	text-decoration: none;
 }
 a.text-body:hover {
-	color: #b41b29;
+	color: #FF0000;
 	font-family: "Tahoma", "Verdana", "Arial", "sans-serif";
 	text-decoration: none;
 }
-a{
-	text-decoration:none;}
