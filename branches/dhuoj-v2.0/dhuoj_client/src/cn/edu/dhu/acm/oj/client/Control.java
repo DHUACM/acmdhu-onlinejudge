@@ -39,6 +39,22 @@ public class Control {
         frame = f;
     }
 
+    public static String getUserid() {
+        return userid;
+    }
+
+    public static void setUserid(String userid) {
+        Control.userid = userid;
+    }
+
+    public static String getUserpassword() {
+        return userpassword;
+    }
+
+    public static void setUserpassword(String userpassword) {
+        Control.userpassword = userpassword;
+    }
+
     public static MainFrame getMainFrame() {
         return frame;
     }
@@ -49,6 +65,10 @@ public class Control {
 
     public static LoginFrame getLoginframe() {
         return loginframe;
+    }
+
+    public static String getUserID() {
+        return userid;
     }
 
     public static void setModel(String str) {
@@ -67,12 +87,12 @@ public class Control {
         lastSubmitTime = t;
     }
 
-    public static void setNowpapernum(int x) {
-        nowPaperNum = x;
+    public static void setNowProblemNum(int x) {
+        nowProblemNum = x;
     }
 
-    public static int getNowpapernum() {
-        return nowPaperNum;
+    public static int getNowProblemNum() {
+        return nowProblemNum;
     }
 
     public static void setServer(String ip) {
@@ -88,22 +108,11 @@ public class Control {
         }
     }
 
-    public static void downloadPaper(int i, String pwd) {
-        String paperpath = "";
+    public static void downloadPaper(String pwd) {
         try {
-
-            cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
-            cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
-            cn.edu.dhu.acm.oj.webservice.ContestBean cb = port.getContestDetail(id, paperlist[i]);
-            String key = cb.getPaperKey();
-            if (key == null) {
-                key = "";
-            }
-            paperpath = cb.getPaperPath();
-
             int bytesum = 0;
             int byteread = 0;
-            if (!pwd.equals(key)) {
+            if (!pwd.equals(paperkey)) {
                 frame.smallDialog("PaperPassword Error!", "Error", 0);
                 return;
             }
@@ -111,11 +120,12 @@ public class Control {
             URLConnection conn = url.openConnection();
             InputStream inStream = conn.getInputStream();
             String filename;
-            if (paperlist[i] >= Const.PROBLEMSTART) {
-                filename = dhuojhomepath + Const.PROBLEMPREFIX + paperlist[i] + Const.CLIENTPAPERSUFFIX;
+            if (contestid >= Const.PROBLEMSTART) {
+                filename = dhuojhomepath + Const.PROBLEMPREFIX + contestid + Const.CLIENTPAPERSUFFIX;
             } else {
-                filename = tmppath + Const.CONTESTPREFIX + paperlist[i] + Const.CLIENTPAPERSUFFIX;
+                filename = tmppath + Const.CONTESTPREFIX + contestid + Const.CLIENTPAPERSUFFIX;
             }
+
             FileOutputStream fs = new FileOutputStream(filename);
 
             byte[] buffer = new byte[1024];
@@ -124,12 +134,33 @@ public class Control {
                 bytesum += byteread;
                 fs.write(buffer, 0, byteread);
             }
-            contestid = paperlist[i];
             setPaper(filename);
         } catch (Exception e) {
             frame.smallDialog("DownloadPaper Error!\n" + e.getMessage(), "Error", 0);
             System.out.println(paperpath);
         }
+    }
+
+    public static boolean SetContest(int i) {
+        boolean ans = false;
+        paperpath = "";
+        try {
+            contestid = paperlist[i];
+            cn.edu.dhu.acm.oj.webservice.ContestServiceService service = new cn.edu.dhu.acm.oj.webservice.ContestServiceService();
+            cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
+            cn.edu.dhu.acm.oj.webservice.ContestBean cb = port.getContestDetail(userid, paperlist[i]);
+            paperkey = cb.getPaperKey();
+            if (paperkey == null) {
+                paperkey = "";
+            }
+            paperpath = cb.getPaperPath();
+            ans = true;
+            frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid );
+        } catch (Exception e) {
+            frame.smallDialog("GetContest Error!\n" + e.getMessage(), "Error", 0);
+            System.out.println(paperpath);
+        }
+        return ans;
     }
 
     public static void setPaper(String filename) {
@@ -154,8 +185,8 @@ public class Control {
                 frame.setTitle(Const.PROBLEMPREFIX + num);
             } else {
                 frame.setTitle(Const.CONTESTPREFIX + num);
-                contestid = num;
-                frame.setURL("http://acm.dhu.edu.cn/dhuoj/rank/contest" + contestid + ".html");
+                nowPaperNum = num;
+                frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid );
             }
 
             paperbean = new PaperBean();
@@ -164,7 +195,7 @@ public class Control {
             } else {
                 paperbean.unmarshal(paperName);
             }
-            nowPaperNum = 0;
+            nowProblemNum = 0;
             frame.setPaper();
         } catch (Exception E) {
             frame.smallDialog("Paper get error!", "Error", 0);
@@ -178,7 +209,7 @@ public class Control {
     public static void removePaper() {
         paperName = null;
         paperbean = null;
-        nowPaperNum = 0;
+        nowProblemNum = 0;
     }
 
     public static void setLanguage(String str) {
@@ -319,8 +350,8 @@ public class Control {
             if (loginresult) {
                 islogined = true;
                 message = "Login Success!";
-                id = username;
-                psw = password;
+                userid = username;
+                userpassword = password;
             } else {
                 islogined = false;
                 message = "Login Failed!";
@@ -382,12 +413,14 @@ public class Control {
             cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
             java.lang.Integer solutionId = qid;
             cn.edu.dhu.acm.oj.webservice.SolutionBean bean = port.querySubmitStatus(solutionId);
+            //getRuntime - > null, new Integer(bean.getRuntime())
             Object[] row = new Object[]{
                 qid, new Integer(bean.getContestId()),
                 null, Const.VERDICT[bean.getResult()],
-                null, new Integer(bean.getRuntime()),
+                null, null,
                 bean.getSubmitDate().toString()
             };
+
             frame.updateStatusRow(row);
             ans = bean.getResult();
             if (ans != Const.WAIT && ans != Const.QUEUE) {
@@ -412,12 +445,12 @@ public class Control {
                 cn.edu.dhu.acm.oj.webservice.ContestService port = service.getContestServicePort();
                 cn.edu.dhu.acm.oj.webservice.SubmitCodeForm submitForm = new cn.edu.dhu.acm.oj.webservice.SubmitCodeForm();
                 byte lan = Const.getLanguageByte(language);
-                submitForm.setContestID(contestid);
+                submitForm.setContestID(nowPaperNum);
                 submitForm.setLanguage(lan);
                 submitForm.setProblemID(problemNo + 1);
-                submitForm.setPassword(psw);
+                submitForm.setPassword(userpassword);
                 submitForm.setSource(code);
-                submitForm.setUserID(id);
+                submitForm.setUserID(userid);
                 submitForm.setLocalJudgeResult(runbean.getResult());
                 java.lang.Integer submitresult = port.submitCode(submitForm);
                 RunQuerySumbmitStatus query = new RunQuerySumbmitStatus(submitresult);
@@ -432,11 +465,7 @@ public class Control {
                 thread.start();
                 isOK = 1;
                 message = "Submit OK!";
-                if (contestid == 0) {
-                    if (runbean.getResult() == Const.AC) {
-                        paperpanel.showGetpaper();
-                    }
-                }
+                paperpanel.showGetpaper();
             } catch (Exception ex) {
                 isOK = 0;
                 message = "Submit failed!\n" + ex.getMessage();
@@ -466,7 +495,7 @@ public class Control {
             cn.edu.dhu.acm.oj.webservice.MessageServiceService service = new cn.edu.dhu.acm.oj.webservice.MessageServiceService(MessageServiceURL, MessageServiceQName);
             cn.edu.dhu.acm.oj.webservice.MessageService port = service.getMessageServicePort();
             cn.edu.dhu.acm.oj.webservice.MessageForm msgForm = new cn.edu.dhu.acm.oj.webservice.MessageForm();
-            msgForm.setUserID(id);
+            msgForm.setUserID(userid);
             msgForm.setQuestion(question);
             int mid = port.postMessage(msgForm);
             RunQueryMessageStatus r = new RunQueryMessageStatus(mid);
@@ -535,10 +564,11 @@ public class Control {
     private static PaperPanel paperpanel;
     private static Judger judger;
     private static RunBean runbean;
-    private static int nowPaperNum = 0;
+    private static int nowProblemNum = 0;
     private static int allcodecnt;
     private static int localqid;
     private static int contestid;
+    private static int nowPaperNum = 0;
     private static int[] paperlist;
     private static int[] statuslist;
     private static long lastSubmitTime;
@@ -546,14 +576,16 @@ public class Control {
     private static String language;
     private static String paperName;
     private static String compileOut;
-    private static String id;
-    private static String psw;
+    private static String userid = "Test";
+    private static String userpassword;
     private static String code;
     private static String testOut;
     private static String message;
     private static String workpath;
     private static String tmppath;
     private static String dhuojhomepath;
+    private static String paperpath;
+    private static String paperkey;
     private static java.net.URL UserAccountServiceURL;
     private static java.net.URL ContestServiceURL;
     private static java.net.URL MessageServiceURL;

@@ -12,14 +12,19 @@ public class RunQuerySumbmitStatus implements Runnable {
     }
 
     public void run() {
+        try {
+            Thread.sleep(Const.QUERYINITTIME);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         while (true) {
             try {
-                Thread.sleep(Const.CLIENTSTATUSTIME);
                 int ans = Control.Query(queryID);
                 System.out.println(queryID + " : " + Const.VERDICT[ans]);
                 if (ans != Const.WAIT && ans != Const.QUEUE) {
                     break;
                 }
+                Thread.sleep(Const.CLIENTSTATUSTIME);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
