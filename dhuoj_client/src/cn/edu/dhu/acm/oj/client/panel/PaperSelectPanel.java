@@ -49,19 +49,6 @@ public class PaperSelectPanel extends javax.swing.JPanel {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            String[] contest = Control.getContest();
-            int[] status = Control.getStatuslist();
-            if (contest != null) {
-                //int cnt = 0;
-                for (int i = 0; i < contest.length; i++) {
-                    if(status[i] == Const.CONTEST_PENDING || status[i] == Const.CONTEST_RUNNING){
-                        Item item = new Item(contest[i], i);
-                        JCB_Paper.addItem(item);
-                        //cnt++;
-                    }
-                }
-            }
         }
     }
 
@@ -75,8 +62,8 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jLabel1 = new javax.swing.JLabel();
         JCB_Paper = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
         JPF_Password = new javax.swing.JPasswordField();
         JB_Get = new javax.swing.JButton();
 
@@ -87,11 +74,10 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
-
-        jLabel1.setText("Local paper:");
-        jToolBar1.add(jLabel1);
-
         jToolBar1.add(JCB_Paper);
+
+        jLabel1.setText("Password:");
+        jToolBar1.add(jLabel1);
 
         JPF_Password.setColumns(5);
         JPF_Password.addActionListener(new java.awt.event.ActionListener() {
@@ -114,13 +100,11 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
     private void JB_GetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetActionPerformed
         if (Control.getModel().indexOf("Local") != -1) {
-            dialog.dispose();
             Control.setPaper(JCB_Paper.getSelectedItem().toString());
         } else {
             dialog.dispose();
-            Item item = (Item) JCB_Paper.getSelectedItem();
             String pwd = JPF_Password.getText();
-            Control.downloadPaper(item.getIndex(), pwd);
+            Control.downloadPaper(pwd);
         }
     }//GEN-LAST:event_JB_GetActionPerformed
 

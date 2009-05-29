@@ -93,10 +93,10 @@ public class PaperPanel extends javax.swing.JPanel {
         }
         try {
             if (i == papernum) {
-                Control.setNowpapernum(0);
+                Control.setNowProblemNum(0);
                 JEP_Problem.setText(pb.getPaperDetail().getDecribe());
             } else {
-                Control.setNowpapernum(i);
+                Control.setNowProblemNum(i);
                 JEP_Problem.setText(pb.getProblemAt(i).transform());
             }
             JEP_Problem.setCaretPosition(0);

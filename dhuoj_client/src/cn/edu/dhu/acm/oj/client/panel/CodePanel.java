@@ -1,11 +1,13 @@
 package cn.edu.dhu.acm.oj.client.panel;
 
 import java.io.*;
+import java.awt.*;
+import java.awt.print.*;
 import cn.edu.dhu.acm.oj.client.panel.ate.*;
 import cn.edu.dhu.acm.oj.client.Control;
 import cn.edu.dhu.acm.oj.common.config.Const;
 
-public class CodePanel extends javax.swing.JPanel {
+public class CodePanel extends javax.swing.JPanel implements Printable {
 
     public CodePanel(String title, int codepanelcnt, javax.swing.JTabbedPane jtp) {
         initComponents();
@@ -51,6 +53,7 @@ public class CodePanel extends javax.swing.JPanel {
         JB_Compile = new javax.swing.JButton();
         JB_Test = new javax.swing.JButton();
         JB_Submit = new javax.swing.JButton();
+        JB_Print = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         JSP_Code = new javax.swing.JScrollPane();
         JEP_Tmep = new javax.swing.JEditorPane();
@@ -144,6 +147,18 @@ public class CodePanel extends javax.swing.JPanel {
             }
         });
         TB_Code.add(JB_Submit);
+
+        JB_Print.setText("Print");
+        JB_Print.setToolTipText("print");
+        JB_Print.setFocusable(false);
+        JB_Print.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Print.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_PrintActionPerformed(evt);
+            }
+        });
+        TB_Code.add(JB_Print);
 
         add(TB_Code, java.awt.BorderLayout.NORTH);
 
@@ -302,8 +317,8 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Control.setCode(JEP_Code.getText() + line);
             long tl = Long.parseLong(TF_Time.getText());
             String testin = JTA_In.getText();
-            if(!testin.endsWith("\n")){
-                testin+="\n";
+            if (!testin.endsWith("\n")) {
+                testin += "\n";
                 JTA_In.append("\n");
             }
             Control.RunTest(testin, tl);
@@ -326,11 +341,118 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         JTA_Out.setText("");
 }//GEN-LAST:event_JB_ClearActionPerformed
 
+    private void JB_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_PrintActionPerformed
+        printStr = Control.getUserID() + "\n" + name + "\n\n" + JEP_Code.getText();
+        printStr = printStr.replaceAll("\t", "    ");
+        if (printStr != null && printStr.length() > 0) {
+            PAGES = getPagesCount(printStr);
+            PrinterJob myPrtJob = PrinterJob.getPrinterJob();
+            PageFormat pageFormat = myPrtJob.defaultPage();
+            myPrtJob.setPrintable(this, pageFormat);
+
+            if (myPrtJob.printDialog()) {
+                try {
+                    myPrtJob.print();
+                } catch (PrinterException pe) {
+                    pe.printStackTrace();
+                }
+            }
+        } else {
+            Control.getMainFrame().smallDialog("Sorry, Printer Job is Empty, Print Cancelled!",
+                    "Empty", 0);
+        }
+}//GEN-LAST:event_JB_PrintActionPerformed
+
+    public int print(Graphics g, PageFormat pf, int page) throws PrinterException {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setPaint(Color.black);
+        if (page >= PAGES) {
+            return Printable.NO_SUCH_PAGE;
+        }
+        g2.translate(pf.getImageableX(), pf.getImageableY());
+        drawCurrentPageText(g2, pf, page);
+        return Printable.PAGE_EXISTS;
+    }
+
+    private void drawCurrentPageText(Graphics2D g2, PageFormat pf, int page) {
+        String s = getDrawText(printStr)[page];
+        java.awt.font.FontRenderContext context = g2.getFontRenderContext();
+        Font f = Const.font;
+        String drawText;
+        float ascent = 16;
+        int k, i = f.getSize(), lines = 0;
+        while (s.length() > 0 && lines < 54) {
+            k = s.indexOf('\n');
+            if (k != -1) {
+                lines += 1;
+                drawText = s.substring(0, k);
+                g2.drawString(drawText, 0, ascent);
+                if (s.substring(k + 1).length() > 0) {
+                    s = s.substring(k + 1);
+                    ascent += i;
+                }
+            } else {
+                lines += 1;
+                drawText = s;
+                g2.drawString(drawText, 0, ascent);
+                s = "";
+            }
+        }
+    }
+
+    public String[] getDrawText(String s) {
+        String[] drawText = new String[PAGES];
+        for (int i = 0; i < PAGES; i++) {
+            drawText[i] = "";
+        }
+        int k, suffix = 0, lines = 0;
+        while (s.length() > 0) {
+            if (lines < 54) {
+                k = s.indexOf('\n');
+                if (k != -1) {
+                    lines += 1;
+                    drawText[suffix] = drawText[suffix] + s.substring(0, k + 1);
+                    if (s.substring(k + 1).length() > 0) {
+                        s = s.substring(k + 1);
+                    }
+                } else {
+                    lines += 1;
+
+                    drawText[suffix] = drawText[suffix] + s;
+                    s = "";
+                }
+            } else {
+                lines = 0;
+                suffix++;
+            }
+        }
+        return drawText;
+    }
+
+    public int getPagesCount(String curStr) {
+        int page = 0;
+        int position, count = 0;
+        String str = curStr;
+        while (str.length() > 0) {
+            position = str.indexOf('\n');
+            count += 1;
+            if (position != -1) {
+                str = str.substring(position + 1);
+            } else {
+                str = "";
+            }
+        }
+        if (count > 0) {
+            page = count / 54 + 1;
+        }
+        return page;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Clear;
     private javax.swing.JButton JB_Compile;
     private javax.swing.JButton JB_New;
     private javax.swing.JButton JB_Open;
+    private javax.swing.JButton JB_Print;
     private javax.swing.JButton JB_RunTest;
     private javax.swing.JButton JB_Save;
     private javax.swing.JButton JB_Submit;
@@ -365,4 +487,6 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private ClipTextArea JEP_Code;
     private File file;
     private String line;
+    private String printStr;
+    private int PAGES;
 }

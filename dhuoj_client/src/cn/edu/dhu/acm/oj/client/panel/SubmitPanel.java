@@ -17,7 +17,7 @@ public class SubmitPanel extends javax.swing.JPanel {
             for (int i = 0; i < papernum; i++) {
                 JCB_Problem.addItem((char) ('A' + i) + ".   " + pb.getProblemAt(i).getTitle());
             }
-            JCB_Problem.setSelectedIndex(Control.getNowpapernum());
+            JCB_Problem.setSelectedIndex(Control.getNowProblemNum());
             for (int i = 0; i < Const.LANGUAGE.length; i++) {
                 JCB_Language.addItem(Const.LANGUAGE[i]);
             }

@@ -1,18 +1,44 @@
 package cn.edu.dhu.acm.oj.client;
 
 import cn.edu.dhu.acm.oj.client.panel.*;
+import cn.edu.dhu.acm.oj.common.config.Const;
 
 public class LoginFrame extends MyFrame {
+
+    class Item {
+
+        String name;
+        int index;
+
+        Item(String str, int i) {
+            name = str;
+            index = i;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 
     /** Creates new form LoginFrame */
     public LoginFrame() {
         initComponents();
-        model = JCB_Model.getSelectedItem().toString();
+        model = TF_Server.getText();
         Control.setLoginFrame(this);
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         java.awt.Dimension dialogSize = this.getSize();
         this.setLocation((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2);
         new MainFrame();
+
     }
 
     /** This method is called from within the constructor to
@@ -27,14 +53,14 @@ public class LoginFrame extends MyFrame {
         JP_Left = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        JB_ShowContest = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         JB_Register = new javax.swing.JButton();
         JB_Help = new javax.swing.JButton();
         JP_Right = new javax.swing.JPanel();
         JF_UserID = new javax.swing.JTextField();
         JPF_Password = new javax.swing.JPasswordField();
-        JCB_Model = new javax.swing.JComboBox();
+        JCB_Contest = new javax.swing.JComboBox();
         TF_Server = new javax.swing.JTextField();
         JB_Login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -50,8 +76,13 @@ public class LoginFrame extends MyFrame {
         jLabel2.setText("Password:");
         JP_Left.add(jLabel2);
 
-        jLabel3.setText("Model:");
-        JP_Left.add(jLabel3);
+        JB_ShowContest.setText("ShowContest:");
+        JB_ShowContest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ShowContestActionPerformed(evt);
+            }
+        });
+        JP_Left.add(JB_ShowContest);
 
         jLabel5.setText("Server:");
         JP_Left.add(jLabel5);
@@ -80,14 +111,12 @@ public class LoginFrame extends MyFrame {
         JP_Right.add(JF_UserID);
         JP_Right.add(JPF_Password);
 
-        JCB_Model.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Contest", "Examination", "Trainer-Net", "Trainer-Local" }));
-        JCB_Model.setEnabled(false);
-        JCB_Model.addActionListener(new java.awt.event.ActionListener() {
+        JCB_Contest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JCB_ModelActionPerformed(evt);
+                JCB_ContestActionPerformed(evt);
             }
         });
-        JP_Right.add(JCB_Model);
+        JP_Right.add(JCB_Contest);
 
         TF_Server.setText("acm.dhu.edu.cn");
         JP_Right.add(TF_Server);
@@ -123,24 +152,32 @@ public class LoginFrame extends MyFrame {
             Control.getMainFrame().setVisible(true);
             Control.CheckTmppath();
         } else {
+            if (!hasGetContest) {
+                smallDialog("Show and Get your contest first!", "Error", 0);
+                return;
+            }
             String ser = TF_Server.getText();
             Control.setServer(ser);
-            boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
+            Item item = (Item) JCB_Contest.getSelectedItem();
+            boolean ans;
+            ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
             if (ans) {
-                Control.setModel(model);
-                setVisible(false);
-                Control.getMainFrame().setVisible(true);
-                Control.CheckTmppath();
-                Control.getMainFrame().smallDialog(Control.getMessage(), "Done", 1);
+                ans = Control.SetContest(item.getIndex());
+                if (ans) {
+                    Control.setModel(model);
+                    setVisible(false);
+                    Control.getMainFrame().setVisible(true);
+                    Control.CheckTmppath();
+                    Control.getMainFrame().smallDialog(Control.getMessage(), "Done", 1);
+                }
             } else {
                 smallDialog(Control.getMessage(), "Error", 0);
             }
         }
     }//GEN-LAST:event_JB_LoginActionPerformed
 
-    private void JCB_ModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_ModelActionPerformed
-        model = JCB_Model.getSelectedItem().toString();
-}//GEN-LAST:event_JCB_ModelActionPerformed
+    private void JCB_ContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_ContestActionPerformed
+}//GEN-LAST:event_JCB_ContestActionPerformed
 
     private void JB_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_HelpActionPerformed
         try {
@@ -153,6 +190,36 @@ public class LoginFrame extends MyFrame {
             smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
         }
     }//GEN-LAST:event_JB_HelpActionPerformed
+
+    private void JB_ShowContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ShowContestActionPerformed
+        String ser = TF_Server.getText();
+        Control.setServer(ser);
+        if (JF_UserID.getText().equals("") || JPF_Password.getText().equals("")) {
+            smallDialog("Set your id or password!", "Error", 0);
+            return;
+        }
+        Control.setUserid(JF_UserID.getText());
+        Control.setUserpassword(JPF_Password.getText());
+
+        boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
+        if (ans) {
+            String[] contest = Control.getContest();
+            int[] status = Control.getStatuslist();
+            if (contest != null) {
+                for (int i = 0; i < contest.length; i++) {
+                    if (status[i] == Const.CONTEST_PENDING || status[i] == Const.CONTEST_RUNNING) {
+                        Item item = new Item(contest[i], i);
+                        JCB_Contest.addItem(item);
+                    }
+                }
+                hasGetContest = true;
+            }
+        } else {
+            smallDialog(Control.getMessage(), "Error", 0);
+        }
+
+        this.pack();
+    }//GEN-LAST:event_JB_ShowContestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,7 +237,8 @@ public class LoginFrame extends MyFrame {
     private javax.swing.JButton JB_Help;
     private javax.swing.JButton JB_Login;
     private javax.swing.JButton JB_Register;
-    private javax.swing.JComboBox JCB_Model;
+    private javax.swing.JButton JB_ShowContest;
+    private javax.swing.JComboBox JCB_Contest;
     private javax.swing.JTextField JF_UserID;
     private javax.swing.JPasswordField JPF_Password;
     private javax.swing.JPanel JP_Left;
@@ -178,9 +246,9 @@ public class LoginFrame extends MyFrame {
     private javax.swing.JTextField TF_Server;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
     private String model;
+    private boolean hasGetContest = false;
 }
