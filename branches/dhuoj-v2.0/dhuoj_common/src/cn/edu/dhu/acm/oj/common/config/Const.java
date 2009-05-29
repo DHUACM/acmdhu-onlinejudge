@@ -68,6 +68,8 @@ public class Const {
     public static final String DB_PASS = "123456";
     /**The code Font*/
     public static final java.awt.Font font = new java.awt.Font("DialogInput", 0, 13);
+    /**client first query sleep time*/
+    public static final long QUERYINITTIME = 30000;
     /**The Time status reflash*/
     public static final long CLIENTSTATUSTIME = 15000;
     /**The Time question reflash*/
