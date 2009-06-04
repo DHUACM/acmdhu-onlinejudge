@@ -76,7 +76,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="JL_Message">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Click find to set your path : "/>
+            <Property name="text" type="java.lang.String" value="Click find to set your path ,like:   c:\mingw\bin\   endwith&quot;\&quot;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="JTF_Cpp">

@@ -89,7 +89,7 @@ public class EnvironmentPanel extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(7, 0));
 
-        JL_Message.setText("Click find to set your path : ");
+        JL_Message.setText("Click find to set your path ,like:   c:\\mingw\\bin\\   endwith\"\\\"");
         jPanel2.add(JL_Message);
 
         JTF_Cpp.setColumns(20);
@@ -193,12 +193,42 @@ public class EnvironmentPanel extends javax.swing.JPanel {
 
     private void JB_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OKActionPerformed
         try {
-            eb.setPath("Cpp", JTF_Cpp.getText());
-            eb.setPath("C", JTF_C.getText());
-            eb.setPath("Java", JTF_Java.getText());
-            eb.setPath("Pascal", JTF_Pascal.getText());
-            Control.setWorkpath(JTF_Work.getText());
-            Control.setTmppath(JTF_Tmp.getText());
+            String path;
+            path = JTF_Cpp.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setPath("Cpp", path);
+
+            path = JTF_C.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setPath("C", path);
+
+            path = JTF_Java.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setPath("Java", path);
+
+            path = JTF_Pascal.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            eb.setPath("Pascal", path);
+
+            path = JTF_Work.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            Control.setWorkpath(path);
+
+            path = JTF_Tmp.getText();
+            if (path.charAt(path.length() - 1) != separator) {
+                path += separator;
+            }
+            Control.setTmppath(path);
             Control.CheckTmppath();
         } catch (Exception e) {
             System.out.println(e.toString());

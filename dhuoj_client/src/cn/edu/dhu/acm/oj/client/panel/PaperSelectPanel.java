@@ -36,6 +36,7 @@ public class PaperSelectPanel extends javax.swing.JPanel {
         dialog = d;
         if (Control.getModel().indexOf("Local") != -1) {
             //Local model
+            JCB_Paper.setEnabled(true);
             try {
                 java.io.File dir = new java.io.File(Control.getDhuojhomepath());
                 String[] files = dir.list();
@@ -74,6 +75,8 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
+
+        JCB_Paper.setEnabled(false);
         jToolBar1.add(JCB_Paper);
 
         jLabel1.setText("Password:");
@@ -100,7 +103,8 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
     private void JB_GetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetActionPerformed
         if (Control.getModel().indexOf("Local") != -1) {
-            Control.setPaper(JCB_Paper.getSelectedItem().toString());
+            dialog.dispose();
+            Control.setPaper(Control.getDhuojhomepath() + JCB_Paper.getSelectedItem().toString());
         } else {
             dialog.dispose();
             String pwd = JPF_Password.getText();
