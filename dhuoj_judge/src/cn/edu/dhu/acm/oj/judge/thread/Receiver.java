@@ -9,7 +9,7 @@ public class Receiver implements Runnable {
         while (true) {
             try {
                 Control.Receive();
-                Thread.sleep(Const.JUDGESLEEP);
+                //Thread.sleep(Const.JUDGESLEEP);
             } catch (Exception e) {
             }
         }
