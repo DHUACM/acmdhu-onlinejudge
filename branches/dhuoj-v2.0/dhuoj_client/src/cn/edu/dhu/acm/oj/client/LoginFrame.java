@@ -151,6 +151,7 @@ public class LoginFrame extends MyFrame {
             this.setVisible(false);
             Control.getMainFrame().setVisible(true);
             Control.CheckTmppath();
+            Control.getPaperpanel().showGetpaper();
         } else {
             if (!hasGetContest) {
                 smallDialog("Show and Get your contest first!", "Error", 0);
@@ -192,6 +193,7 @@ public class LoginFrame extends MyFrame {
     }//GEN-LAST:event_JB_HelpActionPerformed
 
     private void JB_ShowContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ShowContestActionPerformed
+        JCB_Contest.removeAllItems();
         String ser = TF_Server.getText();
         Control.setServer(ser);
         if (JF_UserID.getText().equals("") || JPF_Password.getText().equals("")) {

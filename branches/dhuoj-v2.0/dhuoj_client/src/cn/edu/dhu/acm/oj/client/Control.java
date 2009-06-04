@@ -20,6 +20,9 @@ public class Control {
         String sep = System.getProperty("file.separator");
         dhuojhomepath = System.getProperty("user.home") + sep + "dhuoj" + sep;
         tmppath = System.getProperty("java.io.tmpdir");
+        if (!tmppath.endsWith(sep)) {
+            tmppath += sep;
+        }
         workpath = dhuojhomepath + "yourcode" + sep;
         f = new java.io.File(dhuojhomepath);
         f.mkdir();
@@ -97,11 +100,11 @@ public class Control {
 
     public static void setServer(String ip) {
         try {
-            UserAccountServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.UserAccountServiceService.class.getResource("."), "http://" + ip + ":80/dhuoj/UserAccountService?wsdl");
+            UserAccountServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.UserAccountServiceService.class.getResource("."), "http://" + ip + "/dhuoj/UserAccountService?wsdl");
             UserAccountServiceQName = new javax.xml.namespace.QName("http://webservice.oj.acm.dhu.edu.cn/", "UserAccountServiceService");
-            ContestServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.UserAccountServiceService.class.getResource("."), "http://" + ip + ":80/dhuoj/ContestService?wsdl");
+            ContestServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.UserAccountServiceService.class.getResource("."), "http://" + ip + "/dhuoj/ContestService?wsdl");
             ContestServiceQName = new javax.xml.namespace.QName("http://webservice.oj.acm.dhu.edu.cn/", "ContestServiceService");
-            MessageServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.MessageServiceService.class.getResource("."), "http://" + ip + ":80/dhuoj/MessageService?wsdl");
+            MessageServiceURL = new java.net.URL(cn.edu.dhu.acm.oj.webservice.MessageServiceService.class.getResource("."), "http://" + ip + "/dhuoj/MessageService?wsdl");
             MessageServiceQName = new javax.xml.namespace.QName("http://webservice.oj.acm.dhu.edu.cn/", "MessageServiceService");
         } catch (Exception e) {
             frame.smallDialog("ServerIP Error!", "Error", 0);
@@ -155,7 +158,8 @@ public class Control {
             }
             paperpath = cb.getPaperPath();
             ans = true;
-            frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid );
+            //frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid);
+            frame.setURL("http://acm.dhu.edu.cn/dhuoj/rank/contest" + contestid + ".html");
         } catch (Exception e) {
             frame.smallDialog("GetContest Error!\n" + e.getMessage(), "Error", 0);
             System.out.println(paperpath);
@@ -182,11 +186,12 @@ public class Control {
             }
             int num = Integer.parseInt(tmp);
             if (num >= Const.PROBLEMSTART) {
-                frame.setTitle(Const.PROBLEMPREFIX + num);
+                frame.setTitle(userid + " " + Const.PROBLEMPREFIX + num);
             } else {
-                frame.setTitle(Const.CONTESTPREFIX + num);
+                frame.setTitle(userid + " " + Const.CONTESTPREFIX + num);
                 nowPaperNum = num;
-                frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid );
+                //frame.setURL("http://acm.dhu.edu.cn/dhuoj/contestrank?cid=" + contestid);
+                frame.setURL("http://acm.dhu.edu.cn/dhuoj/rank/contest" + contestid + ".html");
             }
 
             paperbean = new PaperBean();
@@ -349,7 +354,7 @@ public class Control {
             java.lang.Boolean loginresult = port.login(userForm);
             if (loginresult) {
                 islogined = true;
-                message = "Login Success!";
+                message = "Login Success!\nAfter you submit a+b problem,You can get contest Paper!";
                 userid = username;
                 userpassword = password;
             } else {
@@ -466,6 +471,9 @@ public class Control {
                 isOK = 1;
                 message = "Submit OK!";
                 paperpanel.showGetpaper();
+                if (nowPaperNum == 0) {
+                    frame.smallDialog("You can Click GetPaper Now!", "Success", 1);
+                }
             } catch (Exception ex) {
                 isOK = 0;
                 message = "Submit failed!\n" + ex.getMessage();
