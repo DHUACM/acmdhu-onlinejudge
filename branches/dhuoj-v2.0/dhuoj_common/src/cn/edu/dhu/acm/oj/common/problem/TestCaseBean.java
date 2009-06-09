@@ -1,14 +1,15 @@
-// Decompiled by Jad v1.5.8e. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.geocities.com/kpdus/jad.html
-// Decompiler options: packimports(3) 
-// Source File Name:   TestCaseBean.java
 package cn.edu.dhu.acm.oj.common.problem;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import org.jdom.Element;
-import java.io.*;
 
-// Referenced classes of package com.dyf:
-//            NodeBean
+/**
+ * A test case, including its input and output data.
+ *
+ * @author Dong Yunfeng, Zhu Kai
+ */
 public final class TestCaseBean extends NodeBean {
 
     public TestCaseBean(Element x) {
@@ -23,36 +24,25 @@ public final class TestCaseBean extends NodeBean {
     }
 
     public String getDifficulty() {
-        return root.getAttributeValue("difficulty");
+        return this.root.getAttributeValue("difficulty");
     }
 
-    //Old version, useless now.
-    //public String getTestInput()
-    //{
-    //    return root.getChildText("TestInput");
-    //}
-
-    //Old version, useless now.
-    //public String getTestOutput()
-    //{
-    //    return root.getChildText("TestOutput");
-    //}
     public void setDifficulty(String str) {
-        root.setAttribute("difficulty", str);
+        this.root.setAttribute("difficulty", str);
     }
 
     public void setTestInput(String str) {
         if (!str.endsWith("\n")) {
             str = str + '\n';
         }
-        root.setChildText("TestInput", str);
+        this.root.setChildText("TestInput", str);
     }
 
     public void setTestOutput(String str) {
-        if (!str.endsWith("\n")) {
-            str = str + '\n';
+        if ( !str.endsWith(TestCaseBean.LINE_BREAK) ) {
+            str = str + TestCaseBean.LINE_BREAK;
         }
-        root.setChildText("TestOutput", str);
+        this.root.setChildText("TestOutput", str);
     }
 
     /**
@@ -65,7 +55,8 @@ public final class TestCaseBean extends NodeBean {
      * @author Zhu Kai
      */
     public String getTestInput() {
-        String filename = super.root.getChild("TestInput").getAttributeValue("filename");
+        String filename = super.root.getChild("TestInput")
+                                    .getAttributeValue("filename");
         if (null == filename) {
             return super.root.getChildText("TestInput");
         }
@@ -88,7 +79,7 @@ public final class TestCaseBean extends NodeBean {
             raf.close();
         } catch (IOException ex) {
             ex.printStackTrace();
-        //Do nothing here, the string fileContent keeps empty.
+            //Do nothing here, the string fileContent keeps empty.
         }
 
         return fileContent;
@@ -105,10 +96,11 @@ public final class TestCaseBean extends NodeBean {
      * @author Zhu Kai
      */
     public void setTestInputFilename(String filename) {
-        if (null == filename || filename.isEmpty()) {
+        if ( null == filename || filename.isEmpty() ) {
             super.root.removeAttribute("filename");
         } else {
-            super.root.getChild("TestInput").setAttribute("filename", filename);
+            super.root.getChild("TestInput")
+                      .setAttribute("filename", filename);
         }
     }
 
@@ -122,7 +114,8 @@ public final class TestCaseBean extends NodeBean {
      * @author Zhu Kai
      */
     public String getTestOutput() {
-        String filename = super.root.getChild("TestOutput").getAttributeValue("filename");
+        String filename = super.root.getChild("TestOutput")
+                                    .getAttributeValue("filename");
         if (null == filename) {
             return super.root.getChildText("TestOutput");
         }
@@ -143,6 +136,7 @@ public final class TestCaseBean extends NodeBean {
             fileContent = new String(fileBytes);
             raf.close();
         } catch (IOException ex) {
+            ex.printStackTrace();
             //Do nothing here, the string fileContent keeps empty.
         }
 
@@ -163,7 +157,8 @@ public final class TestCaseBean extends NodeBean {
         if (null == filename || filename.isEmpty()) {
             super.root.removeAttribute("filename");
         } else {
-            super.root.getChild("TestOutput").setAttribute("filename", filename);
+            super.root.getChild("TestOutput")
+                      .setAttribute("filename", filename);
         }
     }
 
@@ -192,4 +187,7 @@ public final class TestCaseBean extends NodeBean {
      * @author Zhu Kai.
      */
     private String archiveDirectory;
+
+    
+    private static String LINE_BREAK = System.getProperty("line.separator");
 }

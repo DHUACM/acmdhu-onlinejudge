@@ -1,8 +1,12 @@
-
 package cn.edu.dhu.acm.oj.common.problem;
 
-import java.io.*;
-import org.jdom.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.xml.transform.TransformerException;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
 
 public final class ProblemArchiveBean extends NodeBean {
 
@@ -76,7 +80,7 @@ public final class ProblemArchiveBean extends NodeBean {
         root.setChildText("Title", str);
     }
 
-    public String transform() throws Exception {
+    public String transform() throws TransformerException {
         ProblemBean problem = getProblem();
         TestDataBean testData = getTestData();
         NodeBean sampleInput = new NodeBean("SampleInput", true);
@@ -85,7 +89,8 @@ public final class ProblemArchiveBean extends NodeBean {
         sampleOutput.getElement().setText(testData.getSampleOutput());
         problem.addNode(sampleInput);
         problem.addNode(sampleOutput);
-        java.io.InputStream stylesheet =  getClass().getResourceAsStream("/cn/edu/dhu/acm/oj/common/resource/ProblemArchive.xsl");
+        InputStream stylesheet = getClass().getResourceAsStream(
+            "/cn/edu/dhu/acm/oj/common/resource/ProblemArchive.xsl" );
         String str = root.transform(stylesheet);
         sampleInput.getElement().detach();
         sampleOutput.getElement().detach();
@@ -96,7 +101,6 @@ public final class ProblemArchiveBean extends NodeBean {
             throws IOException {
         root.marshal(filename);
     }
-    private static final String SOFTWARE_VERSION = "1.1";
 
     /**
      * Read a problem archive from a file.
@@ -126,7 +130,8 @@ public final class ProblemArchiveBean extends NodeBean {
      * @author Dong Yunfeng, Zhu Kai
      */
     public TestDataBean getTestData() {
-        TestDataBean testData = new TestDataBean(super.root.getChild("TestData"));
+        TestDataBean testData = new TestDataBean(
+            super.root.getChild("TestData") );
         testData.setArchiveDirectory(this.archiveDirectory);
         return testData;
     }
@@ -150,6 +155,13 @@ public final class ProblemArchiveBean extends NodeBean {
     public void setArchiveDirectory(String dir) {
         this.archiveDirectory = dir;
     }
+    
+    
+    
+
+
+    private static final String SOFTWARE_VERSION = "1.1";
+
     /**
      * Directory where the problem's XML file is.
      *
