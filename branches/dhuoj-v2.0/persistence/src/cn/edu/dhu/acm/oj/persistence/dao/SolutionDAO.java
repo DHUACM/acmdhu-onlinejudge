@@ -94,6 +94,22 @@ public class SolutionDAO extends BaseHibernateDAO {
         }
     }
 
+    public List<SolutionBean> findContestLoginStatus(int cid){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            session.flush();
+            Query query=session.createQuery("from SolutionBean where contestId= " + cid + " and problemId='1000' order by solutionId asc");
+            List<SolutionBean> rs=query.list();
+            tx.commit();
+            session.close();
+            return rs;
+        } catch(Exception e) {
+            log.error("find contest login status in range failed", e);
+            return null;
+        }
+    }
+
     public List<SolutionBean> findUnjudgedSolutionsInRange(int first, int max){
         try {
             Session session=getSession();

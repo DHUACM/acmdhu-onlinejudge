@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <listener>
-        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
-    </listener>
-    <listener>
         <description>dhuoj listener</description>
         <listener-class>cn.edu.dhu.acm.oj.web.listener.ContestListener</listener-class>
     </listener>
-    <servlet>
-        <servlet-name>UserAccountService</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-        </servlet>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>contestrank</servlet-name>
         <servlet-class>cn.edu.dhu.acm.oj.web.servlet.ContestRank</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ViewLogin</servlet-name>
+        <servlet-class>cn.edu.dhu.acm.oj.web.servlet.ViewLogin</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ContestService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet>
+        <servlet-name>UserAccountService</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
         </servlet>
@@ -27,16 +31,20 @@
         <load-on-startup>1</load-on-startup>
         </servlet>
     <servlet-mapping>
-        <servlet-name>UserAccountService</servlet-name>
-        <url-pattern>/UserAccountService</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>contestrank</servlet-name>
         <url-pattern>/contestrank</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ViewLogin</servlet-name>
+        <url-pattern>/viewlogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ContestService</servlet-name>
         <url-pattern>/ContestService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserAccountService</servlet-name>
+        <url-pattern>/UserAccountService</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MessageService</servlet-name>

@@ -65,10 +65,15 @@ public class ContestFacade {
         return sdao.findSolution(solutionId);
     }
 
+    public static List<SolutionBean> queryContestLoginStatus(int contestId) {
+        SolutionDAO sdao = new SolutionDAO();
+        return sdao.findContestLoginStatus(contestId);
+    }
     public static List<SolutionBean> querySubmitStatusByContest(int contestId) {
         SolutionDAO sdao = new SolutionDAO();
         return sdao.findContestSolutionsInRange(contestId, 0, Integer.MAX_VALUE);
     }
+
 
     public static TreeMap<Integer, ContestProblemBean> getProblemsByContest(int contestId) {
         ContestProblemDAO cpdao = new ContestProblemDAO();
