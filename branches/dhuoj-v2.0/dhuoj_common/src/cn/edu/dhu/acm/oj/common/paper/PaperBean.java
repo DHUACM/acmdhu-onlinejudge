@@ -475,7 +475,30 @@ public class PaperBean {
         this.paperDirectory = dir;
     }
 
-    
+
+
+
+
+    /**
+     * Replacing the old problem list with the edited problem list stored in
+     * member {@link #problemList problemList}.
+     * 
+     * @author Zhu Kai
+     * 
+     * @since SVN 93
+     */
+    private void updateProblemList() {
+        for (int i = 0; i < problemList.size(); i++) {
+            Element elem = (Element) problemList.get(i);
+            this.problemRoot.removeContent(elem);
+        }
+        this.problemRoot.setContent(this.problemList);
+    }
+
+
+
+
+
     /**
      * Directory where the paper's XML file is.
      *
