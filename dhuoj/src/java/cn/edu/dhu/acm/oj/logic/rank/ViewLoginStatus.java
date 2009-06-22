@@ -42,7 +42,7 @@ public class ViewLoginStatus {
 //        this.psdAttempts = new long[numProblems+1];
         this.printingLock = new Object();
         this.cntLoginUser = 0;
-        this.cntTotalUser = allRuns.size();
+        this.cntTotalUser = user_map.size();
     }
 
     private void printHeader(PrintWriter os) {
@@ -53,7 +53,7 @@ public class ViewLoginStatus {
         os.println("<head><title>" + contest.getTitle() + " Login Status</title></head>");
         os.println("<body>");
         os.print("<div align='center'>");
-        os.println("<h1>" + contest.getTitle() + "</h1>");
+        os.println("<h1>" + contest.getTitle() + " Login Status</h1>");
         os.println("<h4>contest time: " + contest.getStartTime() + " ----- " + contest.getEndTime() + "</h4>");
         os.println("<h4>last update: " + Util.getTimeString() + "</h4>");
 
@@ -153,7 +153,6 @@ public class ViewLoginStatus {
         StringBuffer line = new StringBuffer();
         line.append("<tr>");
         line.append("<td>Logined Users/Total Users</td>");
-        line.append("<td/><td/>");
         line.append("<td align='center'>" + cntLoginUser + "/" + cntTotalUser + "</td>");
         line.append("</tr>");
         os.println(line);

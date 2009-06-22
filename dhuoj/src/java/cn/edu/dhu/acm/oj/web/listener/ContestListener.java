@@ -11,7 +11,7 @@ public class ContestListener implements ServletContextListener
     public void contextInitialized(ServletContextEvent event)
     {
         timer = new Timer(true);
-        timer.schedule(new RankTask(event.getServletContext()), 0, 10000);
+        timer.schedule(new RankTask(event.getServletContext()), 0, 5000);
         event.getServletContext().log("Add update ranklist task.");
         timer.schedule(new ContestTask(event.getServletContext()), 0, 2000);
         event.getServletContext().log("Add update contest status task.");

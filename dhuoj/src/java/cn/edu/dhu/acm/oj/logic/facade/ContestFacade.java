@@ -22,12 +22,12 @@ public class ContestFacade {
 
         String userID = scf.getUserID();
         String password = scf.getPassword();
-
+/*
         UserDAO udao = new UserDAO();
         UserBean ubean = udao.chkLogin(userID, password);
         // userId not match with its password
         if (ubean == null) throw new SubmitFailException("User " + userID + " not match with its password. Submit Failed.");
-
+*/
         int cid = scf.getContestID();
         int seq = scf.getProblemID();
 
@@ -41,11 +41,12 @@ public class ContestFacade {
         // contest has closed
         if (cmpEndTime > 0) throw new SubmitFailException("Contest" + cid + " has closed, submit code failed.");
 
+        /*
         // user cannot submit code to private contest which he/she has not registered.
         if (cbean.getPrivate_() != 0) {
             if (!getContestReservation(cid).containsKey(userID))
                 throw new SubmitFailException("Fail to submit to private contest without reservation.");
-        }
+        }*/
 
         TreeMap<Integer, ContestProblemBean> contestProblems = getProblemsByContest(cid);
         sbean.setProblemId(contestProblems.get(seq).getProblemId());

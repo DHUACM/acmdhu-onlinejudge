@@ -79,10 +79,10 @@ public class UserDAO extends BaseHibernateDAO {
             String hqlStr=new String("from UserBean where userId='" + username +
                         "' and password='" + password + "'");
             List<UserBean> list = session.createQuery(hqlStr).list();
-            UserBean bean = list.get(0);
+            //UserBean bean = list.get(0);
             session.getTransaction().commit();
-            return bean;
-
+            //return bean;
+            return list.size() == 0 ? null : list.get(0);
         }catch(Exception e){
             log.error("check login failed", e);
             return null;

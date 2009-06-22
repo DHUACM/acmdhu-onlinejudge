@@ -30,7 +30,9 @@ public class ContestService {
     public Integer submitCode(@WebParam(name = "submitForm")
     SubmitCodeForm submitForm) throws SubmitFailException {
         try {
-            return ContestFacade.submitCode(submitForm);
+            int sid = ContestFacade.submitCode(submitForm);
+            System.out.println("user " + submitForm.getUserID() + " submit problem " + submitForm.getProblemID() + " successfully!");
+            return sid;
         } catch(SubmitFailException sfe) {
             throw sfe;
         }
