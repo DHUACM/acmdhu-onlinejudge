@@ -1,15 +1,32 @@
 package cn.edu.dhu.acm.oj.common.paper;
 
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
-import org.jdom.*;
-import org.jdom.input.*;
-import org.jdom.output.*;
-import java.security.*;
-import java.security.spec.*;
-import cn.edu.dhu.acm.oj.common.problem.*;
+import java.io.File;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.SignatureException;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.Namespace;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.XMLOutputter;
+
 import cn.edu.dhu.acm.oj.common.config.Const;
+import cn.edu.dhu.acm.oj.common.problem.ProblemArchiveBean;
+import cn.edu.dhu.acm.oj.common.problem.TestDataBean;
 
 public class PaperBean {
 
