@@ -43,7 +43,7 @@ public class ContestTask extends TimerTask
 
     private void updateContestStatus(int status) throws Exception {
         try {
-            List<ContestBean> contests = cdao.findContestInRange(0, Integer.MAX_VALUE);
+            List<ContestBean> contests = cdao.findContestByStatus(status);
             for (ContestBean contest : contests) {
                 long start = contest.getStartTime().getTime();
                 long end = contest.getEndTime().getTime();

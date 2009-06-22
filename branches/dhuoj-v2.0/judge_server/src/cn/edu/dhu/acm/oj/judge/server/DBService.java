@@ -68,6 +68,7 @@ public class DBService implements Runnable
                 synchronized(answered_queue) {
                     while (!answered_queue.isEmpty()) {
                         MessageBean msg = answered_queue.removeFirst();
+                        msg.setStatus(Const.MSG_ANSWERED);
                         msg_dao.updateMessage(msg);
                     }
                 }

@@ -26,7 +26,9 @@ public class UserAccountService {
     @WebMethod(operationName = "login")
     public Boolean login(@WebParam(name = "parameter")
     LoginForm loginForm) {
-        return UserFacade.login(loginForm);
+        boolean loginResult = UserFacade.login(loginForm);
+        System.out.println("User " + loginForm.getUsername() + " login success " + loginResult);
+        return loginResult;
     }
 
     /**

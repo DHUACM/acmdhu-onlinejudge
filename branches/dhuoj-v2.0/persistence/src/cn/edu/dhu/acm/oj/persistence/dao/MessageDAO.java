@@ -47,7 +47,10 @@ public class MessageDAO extends BaseHibernateDAO {
     public MessageBean findMessage(int mid) {
 		log.debug("getting MessageBean instance with id: " + mid);
 		try {
+            Session session = getSession();
+            session.flush();
 			MessageBean mbean = (MessageBean) getSession().get(MESSAGE_BEAN, mid);
+            session.close();
 			return mbean;
 		} catch (RuntimeException re) {
 			log.error("get MessageBean failed", re);
@@ -59,11 +62,13 @@ public class MessageDAO extends BaseHibernateDAO {
         try {
             Session session=getSession();
             Transaction tx = session.beginTransaction();
+            session.flush();
             Query query=session.createQuery("from MessageBean where status=0 order by message_id asc");
             query.setFirstResult(first);
             query.setMaxResults(max);
             List<MessageBean> rs=query.list();
             tx.commit();
+            session.close();
             return rs;
         } catch(Exception e) {
             log.error("find new messages in range failed", e);

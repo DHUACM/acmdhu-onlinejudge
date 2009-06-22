@@ -37,13 +37,15 @@ public class RankTask extends TimerTask
             for(ContestBean cbean:list)
             {
                 int cid = cbean.getContestId();
+                /*
                 long end = cbean.getEndTime().getTime();
                 long now = java.util.Calendar.getInstance().getTimeInMillis();
                 if(cid == 0 || end-now<=3600*1000)
                 {
                     // the board is locked in the last hour.
                     continue;
-                }
+                }*/
+                if (cid == 0) continue;
 
                 File fout = new File(rootPath+"rank" + File.separator + "contest"+cid+".html");
                 System.out.println("rank path = " + fout.toString());
