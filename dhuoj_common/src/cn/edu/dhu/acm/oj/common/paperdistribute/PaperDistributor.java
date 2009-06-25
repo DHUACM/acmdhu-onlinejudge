@@ -14,11 +14,34 @@ import java.io.IOException;
  * 
  * @author Zhu Kai
  * 
- * @version SVN 94
+ * @version SVN 95
  * 
  * @since SVN 93
  */
 public class PaperDistributor {
+    
+    /**
+     * Distributing a paper's XML file to each user. Each user will have a
+     * paper file encrypted with a key combined by his own password and a
+     * public password. All the encrypted files will be output to the
+     * specific directory.
+     * 
+     * @param paperFile XML file of the paper to be distributed.
+     * @param outputDirectory the directory where the encrypted paper files
+     *            are put.
+     * @param paperPassword the public password to encrypt/decrypt the
+     *            paper.
+     * @param userIDs names and passwords of the users to whom the paper is
+     *            distributed.
+     * 
+     * @throws IOException if any error occurs during file writing.
+     */
+    public static void distributePaper(
+        File paperFile, File outputDirectory,
+        String paperPassword, PaperUserID[] userIDs )
+    throws IOException {
+        //TODO to complete...
+    }
     
     /**
      * The stub main method.
