@@ -396,7 +396,7 @@ public class PaperBean {
             new Document(elem);
         }
 
-        //decypt
+        //decrypt
         String tmp = problemRoot.getAttributeValue("encrypted");
         if (!tmp.equals("0")) {
             decryptNode();
