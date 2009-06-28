@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import cn.edu.dhu.acm.oj.common.util.Cryptograph;
+
 /**
  * The class provides the function of distributing a paper. One distributed
  * paper is encrypted with a key composed of two parts: the paper's
@@ -14,17 +16,19 @@ import java.io.IOException;
  * 
  * @author Zhu Kai
  * 
- * @version SVN 95
+ * @version SVN 96
  * 
  * @since SVN 93
  */
 public class PaperDistributor {
-    
+
     /**
      * Distributing a paper's XML file to each user. Each user will have a
      * paper file encrypted with a key combined by his own password and a
      * public password. All the encrypted files will be output to the
-     * specific directory.
+     * specific directory, each named <i>userName.pae</i> while
+     * <i>userName</i> is the name of a user given by the {@code userIDs}
+     * parameter.
      * 
      * @param paperFile XML file of the paper to be distributed.
      * @param outputDirectory the directory where the encrypted paper files
@@ -40,9 +44,13 @@ public class PaperDistributor {
         File paperFile, File outputDirectory,
         String paperPassword, PaperUserID[] userIDs )
     throws IOException {
-        //TODO to complete...
+        for (PaperUserID userID: userIDs) {
+            encryptPaperFile( paperFile, outputDirectory, paperPassword,
+                              userID.getUserName(), userID.getPassword()
+                            );
+        }
     }
-    
+
     /**
      * The stub main method.
      */
@@ -71,14 +79,20 @@ public class PaperDistributor {
 
 
     /**
-     * Encrypting a paper for a specific user.
+     * Encrypting a paper for a specific user. The paper file is encrypted
+     * with AES algorithm, and output to the specific directory. The output
+     * filename is <i>userName.pae</i> while <i>userName</i> is the name of
+     * the user, specified by the {@code userName} parameter. The
+     * encryption key is the MD5 digest generated from the concatenation of
+     * the paper's password and the user's password.
      * 
-     * @param paperFile
-     * @param outputDirectory
-     * @param paperPassword
-     * @param userName
-     * @param userPassword
-     * @throws IOException
+     * @param paperFile the paper file to encrypt.
+     * @param outputDirectory the directory to put the encrypted file.
+     * @param paperPassword the password of the paper.
+     * @param userName the user's name.
+     * @param userPassword the user's password.
+     * 
+     * @throws IOException if any error occur during file I/O.
      */
     private static void encryptPaperFile(
         File paperFile, File outputDirectory,

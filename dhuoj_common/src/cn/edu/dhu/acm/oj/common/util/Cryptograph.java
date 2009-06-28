@@ -1,15 +1,17 @@
-package cn.edu.dhu.acm.oj.common.paperdistribute;
+package cn.edu.dhu.acm.oj.common.util;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.security.GeneralSecurityException;
+import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherOutputStream;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -191,6 +193,37 @@ public class Cryptograph {
         return digest;
     }
 
+    
+    /**
+     * Getting a cipher object for AES encryption/decryption.
+     * 
+     * @param key the encryption key, must be 16-byte.
+     * @param mode the operation mode of the wanted cipher (this is one of the
+     * following: {@code Cipher.ENCRYPT_MODE},
+     * {@code Cipher.DECRYPT_MODE}, {@code Cipher.WRAP_MODE} or
+     * {@code Cipher.UNWRAP_MODE})
+     * 
+     * @return a cipher object with specific key and operation mode.
+     * 
+     * @throws InvalidKeyException if the given key is not 16-byte.
+     * 
+     * @since SVN 96
+     */
+    public static Cipher getAESCipher( byte[] key, int mode )
+    throws InvalidKeyException {
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+
+        Cipher cipher = null;
+        try {
+            cipher = Cipher.getInstance("AES");
+        } catch (GeneralSecurityException e) {
+            //It can't happen, because the name AES is correct.
+        }
+        
+        cipher.init(mode, secretKeySpec);
+        
+        return cipher;
+    }
 
 
 
@@ -216,4 +249,5 @@ public class Cryptograph {
     }
 
     private static final Charset ASCII = Charset.forName("ASCII");
+    
 }
