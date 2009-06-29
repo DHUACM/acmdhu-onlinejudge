@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherOutputStream;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -19,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
  * 
  * @author Zhu Kai
  *
- * @since SVN 94
+ * @since SVN 97
  */
 public class Cryptograph {
 
@@ -29,27 +28,17 @@ public class Cryptograph {
      * @param origin The data to be encrypted.
      * @param key The 128-bit key.
      * 
-     * @return Bytes of the cipher.
+     * @return Bytes of the cipher, or {@code null} if encryption failed.
      * 
-     * @throws IllegalArgumentException Size of the key is not 16 bytes.
+     * @throws InvalidKeyException if the given key is not 16-byte.
      */
-    public static byte[] aesEncrypt( byte[] origin, byte[] key ) {
-        if (16 != key.length) {
-            throw new IllegalArgumentException(
-                "Wrong key size: " + key.length + "!" +
-                " Must be 16 bytes." );
-        }
-
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-
+    public static byte[] aesEncrypt( byte[] origin, byte[] key )
+    throws InvalidKeyException {
+        Cipher cipher = getAESCipher(key, Cipher.ENCRYPT_MODE);
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
-
-            byte[] cipherBytes = cipher.doFinal(origin);
-            return cipherBytes;
+            return cipher.doFinal(origin);
         } catch (GeneralSecurityException gse) {
-            return origin;
+            return null;
         }
     }
 
@@ -64,29 +53,14 @@ public class Cryptograph {
      * @param key The 128-bit key.
      * @param outputStream The stream to which the cipher is output.
      * 
-     * @throws IllegalArgumentException Size of the key is not 16 bytes.
+     * @throws InvalidKeyException if the given key is not 16-byte.
      * @throws IOException if an I/O error occurs.
      */
     public static void aesEncrypt( InputStream originStream, byte[] key,
                                    OutputStream outputStream )
-    throws IOException {
-        if (16 != key.length) {
-            throw new IllegalArgumentException(
-                "Wrong key size: " + key.length + "!" +
-                " Must be 16 bytes." );
-        }
-
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-
-        CipherOutputStream cipherOutputStream = null;
-        try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
-            cipherOutputStream =
-                new CipherOutputStream(outputStream, cipher);
-        } catch (GeneralSecurityException gse) {
-            //It can't happen.
-        }
+    throws InvalidKeyException, IOException {
+        CipherOutputStream cipherOutputStream = new CipherOutputStream(
+            outputStream, getAESCipher(key, Cipher.ENCRYPT_MODE) );
         
         int b = originStream.read();
         while (-1 != b) {
@@ -104,27 +78,18 @@ public class Cryptograph {
      * @param cipherBytes The data to be decrypted.
      * @param key The 128-bit key.
      * 
-     * @return Bytes of the original data.
+     * @return Bytes of the original data, or {@code null} if decryption
+     *         failed.
      * 
-     * @throws IllegalArgumentException Size of the key is not 16 bytes.
+     * @throws InvalidKeyException if the given key is not 16-byte.
      */
-    public static byte[] aesDecrypt( byte[] cipherBytes, byte[] key ) {
-        if (16 != key.length) {
-            throw new IllegalArgumentException(
-                "Wrong key size: " + key.length + "!" +
-                " Must be 16 bytes." );
-        }
-
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-
+    public static byte[] aesDecrypt( byte[] cipherBytes, byte[] key )
+    throws InvalidKeyException {
+        Cipher cipher = getAESCipher(key, Cipher.DECRYPT_MODE);
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
-
-            byte[] origin = cipher.doFinal(cipherBytes);
-            return origin;
+            return cipher.doFinal(cipherBytes);
         } catch (GeneralSecurityException gse) {
-            return cipherBytes;
+            return null;
         }
     }
 
@@ -139,29 +104,14 @@ public class Cryptograph {
      * @param key the 128-bit AES key.
      * @param outputStream the stream to which the cipher is output.
      * 
-     * @throws IllegalArgumentException size of the key is not 16 bytes.
+     * @throws InvalidKeyException if the given key is not 16-byte.
      * @throws IOException if an I/O error occurs.
      */
     public static void aesDecrypt( InputStream cipherStream, byte[] key,
                                    OutputStream outputStream )
-    throws IOException {
-        if (16 != key.length) {
-            throw new IllegalArgumentException(
-                "Wrong key size: " + key.length + "!" +
-                " Must be 16 bytes." );
-        }
-
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-
-        CipherOutputStream cipherOutputStream = null;
-        try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
-            cipherOutputStream =
-                new CipherOutputStream(outputStream, cipher);
-        } catch (GeneralSecurityException gse) {
-            //It can't happen.
-        }
+    throws InvalidKeyException, IOException {
+        CipherOutputStream cipherOutputStream = new CipherOutputStream(
+            outputStream, getAESCipher(key, Cipher.DECRYPT_MODE) );
         
         int b = cipherStream.read();
         while (-1 != b) {
@@ -193,15 +143,14 @@ public class Cryptograph {
         return digest;
     }
 
-    
     /**
-     * Getting a cipher object for AES encryption/decryption.
+     * Getting an initialized cipher object for AES encryption/decryption.
      * 
      * @param key the encryption key, must be 16-byte.
-     * @param mode the operation mode of the wanted cipher (this is one of the
-     * following: {@code Cipher.ENCRYPT_MODE},
-     * {@code Cipher.DECRYPT_MODE}, {@code Cipher.WRAP_MODE} or
-     * {@code Cipher.UNWRAP_MODE})
+     * @param mode the operation mode of the wanted cipher (this is one of
+     *            the following: {@code Cipher.ENCRYPT_MODE}, {@code
+     *            Cipher.DECRYPT_MODE}, {@code Cipher.WRAP_MODE} or {@code
+     *            Cipher.UNWRAP_MODE})
      * 
      * @return a cipher object with specific key and operation mode.
      * 
@@ -217,7 +166,7 @@ public class Cryptograph {
         try {
             cipher = Cipher.getInstance("AES");
         } catch (GeneralSecurityException e) {
-            //It can't happen, because the name AES is correct.
+            //It can't happen, because the name "AES" is correct.
         }
         
         cipher.init(mode, secretKeySpec);

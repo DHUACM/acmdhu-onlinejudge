@@ -1,6 +1,7 @@
 package cn.edu.dhu.acm.oj.common.paper;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.security.InvalidKeyException;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
@@ -42,7 +44,10 @@ public class PaperBean {
     public PaperBean() {
         passFlag = true;
         root = new Element("PaperSetter");
+        
+        //TODO This looks ugly, going to delete.
         new Document(root);
+        
         root.setAttribute("checked", "false");
         problemRoot.setAttribute("encrypted", "0");
 
@@ -55,12 +60,15 @@ public class PaperBean {
      */
     public PaperBean(Element elem) {
         root = elem;
+        
+        //TODO This looks ugly, going to delete.
         new Document(root);
+        
         problemRoot = root.getChild("ProblemList");
         List list = problemRoot.getChildren("ProblemArchive");
         problemList.clear();
         for (int i = 0; i < list.size(); i++) {
-            problemList.add(list.get(i));
+            problemList.add( list.get(i) );
         }
         paperDetail = new PaperDetail(root.getChild("PaperDetail"));
     }
@@ -186,7 +194,10 @@ public class PaperBean {
     public void addProblem(ProblemArchiveBean bean) {
         Element elem = bean.getElement();
         elem.detach();
+        
+        //TODO This looks ugly, going to delete.
         new Document(elem);
+        
         problemList.add(elem);
     }
 
@@ -356,11 +367,36 @@ public class PaperBean {
     }
 
     /**
+     * Reading a paper from an stream of XML.
+     * 
+     * @param in the input stream.
+     * 
+     * @throws JDOMException error occurs in parsing.
+     * @throws IOException if I/O error occurs.
+     * 
+     * @author Zhu Kai
+     * 
+     * @since SVN 96
+     */
+    public void readPaper(InputStream in)
+    throws JDOMException, IOException {
+        SAXBuilder saxBuilder = new SAXBuilder();
+        Document document = saxBuilder.build(in);
+        
+        this.root = document.getRootElement();
+        this.problemRoot = root.getChild("ProblemList");
+        this.paperDetail =
+            new PaperDetail( this.root.getChild("PaperDetail") );
+        
+        //TODO ...
+    }
+    
+    /**
      * Read a paper from a file.
-     *
-     * @param filePath Path of the paper's XML file.
-     *        A path name must be passed in, instead of a URI.
-     *
+     * 
+     * @param filePath Path of the paper's XML file. A path name must be
+     *            passed in, instead of a URI.
+     * 
      * @author Zhou Xiaopeng, Zhu Kai.
      */
     public void unmarshal(String filePath)
@@ -383,7 +419,7 @@ public class PaperBean {
         List list = problemRoot.getChildren("ProblemArchive");
         problemList.clear();
         for (int i = 0; i < list.size(); i++) {
-            problemList.add(list.get(i));
+            problemList.add( list.get(i) );
         }
 
         String tmpDir = System.getProperty("java.io.tmpdir");
@@ -393,12 +429,14 @@ public class PaperBean {
             bean.getProblem().writeFigureList(tmpDir);
 
             elem.detach();
+            
+            //TODO This looks ugly, going to delete.
             new Document(elem);
         }
 
         //decrypt
         String tmp = problemRoot.getAttributeValue("encrypted");
-        if (!tmp.equals("0")) {
+        if ( !tmp.equals("0") ) {
             decryptNode();
         }
     }
@@ -433,10 +471,12 @@ public class PaperBean {
             bean.getProblem().writeFigureList(tmpDir);
 
             elem.detach();
+            
+            //TODO This looks ugly, going to delete.
             new Document(elem);
         }
 
-        //decypt
+        //decrypt
         String tmp = problemRoot.getAttributeValue("encrypted");
         if (!tmp.equals("0")) {
             decryptNode();
