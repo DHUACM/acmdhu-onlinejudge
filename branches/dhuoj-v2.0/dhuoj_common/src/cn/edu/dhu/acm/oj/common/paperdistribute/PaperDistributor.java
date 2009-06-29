@@ -53,26 +53,17 @@ public class PaperDistributor {
     }
 
     /**
-     * The stub main method.
+     * The testing main method.
      */
     public static void main( String[] args ) throws Exception {
         String filename = args[0];
         String dirName = args[1];
-        String paperPassword = args[2];
-        String userName = args[3];
-        String userPassword = args[4];
         
         File paperFile = new File(filename);
         File outputDirectory = new File(dirName);
         
-        PaperDistributor.encryptPaperFile( paperFile, outputDirectory,
-                                           paperPassword,
-                                           userName, userPassword );
-        
-        File encryptedFile = new File(outputDirectory, userName + ".pae");
-        
-        PaperDistributor.decryptPaperFile( encryptedFile, outputDirectory,
-                                           paperPassword, userPassword);
+        PaperDistributor.distributePaper(paperFile, outputDirectory,
+            PaperDistributor.PAPER_PASSWORD, PaperDistributor.TEST_USERS);
     }
 
 
@@ -119,39 +110,22 @@ public class PaperDistributor {
             // It can't happen, the key must be valid.
             ike.printStackTrace();
         }
+        
+        inputStream.close();
+        //the output stream is closed by the aesEncrypt method, so needn't
+        //close it here.
     }
 
 
 
 
 
-    /**
-     * Decrypting a paper, just for test.
-     */
-    private static void decryptPaperFile(
-        File encryptedFile, File outputDirectory,
-        String paperPassword, String userPassword)
-    throws IOException {
-        String concat = paperPassword.concat(userPassword);
-        byte[] key = Cryptograph.stringMD5(concat);
-        
-        if ( !outputDirectory.isDirectory() ) {
-            outputDirectory.mkdirs();
-        }
-        
-        File outFile = new File(outputDirectory, "recover");
-        
-        BufferedInputStream inputStream = new BufferedInputStream(
-            new FileInputStream(encryptedFile) );
-        BufferedOutputStream outputStream = new BufferedOutputStream(
-            new FileOutputStream(outFile) );
-        
-        try {
-            Cryptograph.aesDecrypt(inputStream, key, outputStream);
-        } catch (InvalidKeyException ike) {
-            // It can't happen, the key must be valid.
-            ike.printStackTrace();
-        }
-    }
+    public static final String PAPER_PASSWORD = "paper";
+    
+    public static PaperUserID[] TEST_USERS = {
+        new PaperUserID("zhu", "123456"),
+        new PaperUserID("hu",  "789012"),
+        new PaperUserID("sun", "345678")
+    };
 
 }

@@ -1,9 +1,14 @@
 package cn.edu.dhu.acm.oj.common.paper;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.StringReader;
+import java.io.Writer;
+import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -34,9 +39,16 @@ public class PaperBean {
 
     public boolean passFlag;
     private Element root;
-    private ArrayList problemList = new ArrayList();
+    
     private Element problemRoot = new Element("ProblemList");
     private PaperDetail paperDetail = new PaperDetail();
+
+    @SuppressWarnings("unchecked")
+    private ArrayList problemList = new ArrayList();
+
+
+
+
 
     /**
      * Constructing an empty paper.
@@ -157,8 +169,18 @@ public class PaperBean {
 
     /**
      * Saving this paper to a file.
+     * 
      * @param filePath The filename to save.
+     * 
+     * @deprecated this method writes the XML file with the system default
+     *             character set, but always writes the XML header as:<br />
+     *             {@code <?xml version="1.0" encoding="gb2312"?>}<br />
+     *             So if the system's default character set is not GB2312,
+     *             the output file is wrong.
+     *             
+     * @see #savePaper
      */
+    @Deprecated
     public void marshal(String filePath) throws Exception {
         for (int i = 0; i < problemList.size(); i++) {
             Element elem = (Element) problemList.get(i);
@@ -168,7 +190,7 @@ public class PaperBean {
         setDigitalSign();
         root.marshal(filePath);
     }
-
+    
     /**
      * Getting the root XML element of this paper.
      */
@@ -367,31 +389,6 @@ public class PaperBean {
     }
 
     /**
-     * Reading a paper from an stream of XML.
-     * 
-     * @param in the input stream.
-     * 
-     * @throws JDOMException error occurs in parsing.
-     * @throws IOException if I/O error occurs.
-     * 
-     * @author Zhu Kai
-     * 
-     * @since SVN 96
-     */
-    public void readPaper(InputStream in)
-    throws JDOMException, IOException {
-        SAXBuilder saxBuilder = new SAXBuilder();
-        Document document = saxBuilder.build(in);
-        
-        this.root = document.getRootElement();
-        this.problemRoot = root.getChild("ProblemList");
-        this.paperDetail =
-            new PaperDetail( this.root.getChild("PaperDetail") );
-        
-        //TODO ...
-    }
-    
-    /**
      * Read a paper from a file.
      * 
      * @param filePath Path of the paper's XML file. A path name must be
@@ -495,6 +492,87 @@ public class PaperBean {
         return prob;
     }
 
+    /**
+     * Saving this paper to an XML file with the system default character
+     * set. This is a substitution of {@link #marshal marshal()}.
+     * 
+     * @param filename the filename to save.
+     * @throws IOException if any I/O error occurs.
+     * 
+     * @author Zhu Kai
+     * 
+     * @since SVN 98
+     */
+    public void savePaper(String filename)
+    throws IOException {
+        updateProblemList();
+        
+        setDigitalSign();
+        
+        Charset defaultCharset = Charset.defaultCharset();
+        
+        Writer out = new OutputStreamWriter(
+            new BufferedOutputStream( new FileOutputStream(filename) ),
+            defaultCharset
+        );
+        
+        XMLOutputter xmloutputter = new XMLOutputter();
+        xmloutputter.setEncoding( defaultCharset.name() );
+        xmloutputter.setNewlines(true);
+        xmloutputter.setIndent("    ");
+        xmloutputter.setTextNormalize(true);
+        
+        xmloutputter.output( this.root.getDocument(), out );
+    }
+    
+    /**
+     * Reading a paper from a stream of XML. Note that a paper read from a
+     * stream doesn't have a {@link #getPaperDirectory paper directory}, so
+     * it doesn't support external test case files.
+     * 
+     * @param in the input stream.
+     * 
+     * @throws JDOMException if error occurs in parsing.
+     * @throws IOException if I/O error occurs.
+     * 
+     * @author Zhu Kai
+     * 
+     * @since SVN 98
+     */
+    @SuppressWarnings("unchecked")
+    public void readPaper(InputStream in)
+    throws JDOMException, IOException {
+        SAXBuilder saxBuilder = new SAXBuilder();
+        Document document = saxBuilder.build(in);
+        
+        this.root = document.getRootElement();
+        this.problemRoot = root.getChild("ProblemList");
+        
+        this.problemList.clear();
+        this.problemList.addAll(
+            this.problemRoot.getChildren("ProblemArchive") );
+        
+        this.paperDetail =
+            new PaperDetail( this.root.getChild("PaperDetail") );
+        
+        vertifySignature();
+        
+        String tmpDir = System.getProperty("java.io.tmpdir");
+        for (int i = 0; i < problemList.size(); i++) {
+            Element elem = (Element) problemList.get(i);
+            ProblemArchiveBean bean = new ProblemArchiveBean(elem);
+            bean.getProblem().writeFigureList(tmpDir);
+            
+            this.problemRoot.removeContent(elem);
+        }
+
+        //decrypt
+        String tmp = problemRoot.getAttributeValue("encrypted");
+        if ( !tmp.equals("0") ) {
+            decryptNode();
+        }
+    }
+    
     /**
      * Return the directory of the paper's XML file.
      *

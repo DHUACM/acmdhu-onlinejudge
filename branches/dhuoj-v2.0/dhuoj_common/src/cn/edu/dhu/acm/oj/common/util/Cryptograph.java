@@ -46,8 +46,7 @@ public class Cryptograph {
      * Encrypting a data stream using AES algorithm with specific key and
      * outputting to the specific stream.
      * <p/>
-     * After encryption, both the input and output streams are
-     * {@code close}d.
+     * After encryption, both the output streams is {@code close}d.
      *
      * @param originStream Stream of the data to be encrypted.
      * @param key The 128-bit key.
@@ -68,7 +67,6 @@ public class Cryptograph {
             b = originStream.read();
         }
         
-        originStream.close();
         cipherOutputStream.close();
     }
 
