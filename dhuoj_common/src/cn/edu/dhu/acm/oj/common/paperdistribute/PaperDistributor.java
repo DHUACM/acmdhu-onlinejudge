@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.InvalidKeyException;
 
 import cn.edu.dhu.acm.oj.common.util.Cryptograph;
 
@@ -112,7 +113,12 @@ public class PaperDistributor {
         BufferedOutputStream outputStream = new BufferedOutputStream(
             new FileOutputStream(outFile) );
         
-        Cryptograph.aesEncrypt(inputStream, key, outputStream);
+        try {
+            Cryptograph.aesEncrypt(inputStream, key, outputStream);
+        } catch (InvalidKeyException ike) {
+            // It can't happen, the key must be valid.
+            ike.printStackTrace();
+        }
     }
 
 
@@ -140,7 +146,12 @@ public class PaperDistributor {
         BufferedOutputStream outputStream = new BufferedOutputStream(
             new FileOutputStream(outFile) );
         
-        Cryptograph.aesDecrypt(inputStream, key, outputStream);
+        try {
+            Cryptograph.aesDecrypt(inputStream, key, outputStream);
+        } catch (InvalidKeyException ike) {
+            // It can't happen, the key must be valid.
+            ike.printStackTrace();
+        }
     }
 
 }
