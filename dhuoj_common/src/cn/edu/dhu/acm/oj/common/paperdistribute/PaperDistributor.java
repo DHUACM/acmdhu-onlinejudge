@@ -52,20 +52,6 @@ public class PaperDistributor {
         }
     }
 
-    /**
-     * The testing main method.
-     */
-    public static void main( String[] args ) throws Exception {
-        String filename = args[0];
-        String dirName = args[1];
-        
-        File paperFile = new File(filename);
-        File outputDirectory = new File(dirName);
-        
-        PaperDistributor.distributePaper(paperFile, outputDirectory,
-            PaperDistributor.PAPER_PASSWORD, PaperDistributor.TEST_USERS);
-    }
-
 
 
 
@@ -115,17 +101,5 @@ public class PaperDistributor {
         //the output stream is closed by the aesEncrypt method, so needn't
         //close it here.
     }
-
-
-
-
-
-    public static final String PAPER_PASSWORD = "paper";
-    
-    public static PaperUserID[] TEST_USERS = {
-        new PaperUserID("zhu", "123456"),
-        new PaperUserID("hu",  "789012"),
-        new PaperUserID("sun", "345678")
-    };
 
 }

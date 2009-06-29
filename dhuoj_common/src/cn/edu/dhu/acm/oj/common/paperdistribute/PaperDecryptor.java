@@ -62,21 +62,4 @@ public class PaperDecryptor {
         return paperBean;
     }
     
-    
-    
-    
-    
-    public static void main( String[] args ) throws Exception {
-        for (PaperUserID userID: PaperDistributor.TEST_USERS) {
-            File paperFile = new File(userID.getUserName() + ".pae");
-            
-            PaperBean paperBean = PaperDecryptor.decryptPaper(
-                paperFile,
-                PaperDistributor.PAPER_PASSWORD,
-                userID.getUserName(), userID.getPassword()
-            );
-            
-            paperBean.savePaper( userID.getUserName() + ".xml" );
-        }
-    }
 }
