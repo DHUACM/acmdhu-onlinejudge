@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+     <constant name="struts.custom.i18n.encoding" value="UTF-8"></constant>
+     <package name="acm" extends="struts-default">
+        <action name="upload" class="cn.edu.dhu.acm.oj.reading.action.UploadAction">
+            <param name="savePath">/var/ftp/tmp/acm/2009-summer-training/reading-record/</param>
+            <result name="success" >/upload_success.jsp</result>
+            <result name="input">/upload.jsp</result>
+        </action>
+	</package>
+</struts>
