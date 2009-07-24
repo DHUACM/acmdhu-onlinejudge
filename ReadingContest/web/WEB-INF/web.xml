@@ -24,8 +24,16 @@
         <servlet-name>readingrank</servlet-name>
         <servlet-class>cn.edu.dhu.acm.oj.reading.servlet.ReadingRank</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>pptrank</servlet-name>
+        <servlet-class>cn.edu.dhu.acm.oj.reading.servlet.PPTRank</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>readingrank</servlet-name>
         <url-pattern>/readingrank</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pptrank</servlet-name>
+        <url-pattern>/pptrank</url-pattern>
     </servlet-mapping>
 </web-app>
