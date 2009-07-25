@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div align="center">
-<h2>读题记录单上传</h2>
+<h2>PPT上传</h2>
 <font color="red">
 	<s:actionerror/>
 </font></div>
-<form action="upload.action" method="post" enctype="multipart/form-data">
+<form action="review.action" method="post" enctype="multipart/form-data">
      UserID:<input type="text" name="userId"/><br>
      Password:<input type="password" name="password"/><br>
      ProblemId:<input type="text" name="problemId"/><br>
