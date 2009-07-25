@@ -6,9 +6,14 @@
      <constant name="struts.custom.i18n.encoding" value="UTF-8"></constant>
      <package name="acm" extends="struts-default">
         <action name="upload" class="cn.edu.dhu.acm.oj.reading.action.UploadAction">
-            <param name="savePath">/var/ftp/tmp/acm/2009-summer-training/reading-record/</param>
+            <param name="savePath">/var/ftp/tmp/acm/2009-summer-training/PPT/upload/</param>
             <result name="success" >/upload_success.jsp</result>
             <result name="input">/upload.jsp</result>
+        </action>
+        <action name="review" class="cn.edu.dhu.acm.oj.reading.action.ReviewAction">
+            <param name="savePath">/var/ftp/tmp/acm/2009-summer-training/PPT/upload/</param>
+            <result name="success" >/review_success.jsp</result>
+            <result name="input">/review.jsp</result>
         </action>
 	</package>
 </struts>

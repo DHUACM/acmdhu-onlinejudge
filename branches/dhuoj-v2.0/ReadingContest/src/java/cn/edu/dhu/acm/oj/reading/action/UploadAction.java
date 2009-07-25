@@ -62,10 +62,10 @@ public class UploadAction extends ActionSupport {
             return INPUT;
         }
 
-        try {
-            SolutionBean sbean = new SolutionBean(userId, contestId, 
+        SolutionBean sbean = new SolutionBean(userId, contestId,
                     cpbean.getProblemId(), 0, 0, Calendar.getInstance().getTime(),
-                    (short)2, (byte)0, (short)0);
+                    (short)1, (byte)0, (short)0);
+        try {
             int cmpStartTime = Calendar.getInstance().getTime().compareTo(cbean.getStartTime());
             int cmpEndTime = Calendar.getInstance().getTime().compareTo(cbean.getEndTime());
             if (cmpStartTime < 0) throw new Exception();
@@ -79,7 +79,7 @@ public class UploadAction extends ActionSupport {
             return INPUT;
         }
 
-        uploadFileName = userId + "_" + contestId + "_" + cpbean.getProblemId() + "_reading_record.xls";
+        uploadFileName = sbean.getSolutionId() + ".ppt";
         FileOutputStream fos = new FileOutputStream(savePath + File.separator + uploadFileName);
         FileInputStream fis = new FileInputStream(upload);
         byte[] buffer = new byte[BUFFER_SIZE];

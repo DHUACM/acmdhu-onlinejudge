@@ -13,6 +13,7 @@ import cn.edu.dhu.acm.oj.persistence.dao.*;
 
 public class PPTClient {
 
+    private static final String SAVE_PATH = "ftp://acm.dhu.edu.cn/tmp/acm/2009-summer-training/PPT/upload/";
     private Object printingLock;
     private int numProblems;
     private TreeMap<Integer, ContestProblemBean> problem_map;
@@ -157,9 +158,9 @@ public class PPTClient {
                 } else {
                     this.psdAttempts[j] += psd.getAttempts();
                     attempts += psd.getAttempts();
-                    String pptUrl = "<a href='" + psd.getLastSolutionID() + ".ppt'>ppt</a>";
-                    String yesUrl = "<a href='" + psd.getLastSolutionID() + ".doc'>yes</a>";
-                    String noUrl  = "<a href='" + psd.getLastSolutionID() + ".doc'>no</a>";
+                    String pptUrl = "<a href='" + SAVE_PATH + psd.getLastSolutionID() + ".ppt'>ppt</a>";
+                    String yesUrl = "<a href='" + SAVE_PATH + psd.getLastSolutionID() + ".doc'>yes</a>";
+                    String noUrl  = "<a href='" + SAVE_PATH + psd.getLastSolutionID() + ".doc'>no</a>";
                     String jdgUrl = "judging";
                     if (psd.isSolved()) {
                         solved ++;
