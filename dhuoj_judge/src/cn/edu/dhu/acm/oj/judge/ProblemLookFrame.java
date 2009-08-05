@@ -3,23 +3,29 @@ package cn.edu.dhu.acm.oj.judge;
 import cn.edu.dhu.acm.oj.common.paper.PaperBean;
 
 public class ProblemLookFrame extends javax.swing.JFrame {
+
     /**
      * Creates new form ProblemLookFrame
      */
-    public ProblemLookFrame(PaperBean p,int i) {
+    public ProblemLookFrame() {
         initComponents();
-        try{
+        try {
             JE_Out.setContentType("text/html");
-            ( (javax.swing.text.html.HTMLDocument) (JE_Out.getDocument())).
-            setBase(new java.io.File(System.getProperty("java.io.tmpdir")).toURL());
-            JE_Out.setText(p.getProblemAt(i).transform());
-            JE_Out.setCaretPosition(0);
-        }catch(Exception e){
-            //System.out.println(e.toString());
-            e.printStackTrace();
+            ((javax.swing.text.html.HTMLDocument) (JE_Out.getDocument())).setBase(new java.io.File(System.getProperty("java.io.tmpdir")).toURL());
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
     }
-    
+
+    public void setProblem(PaperBean p, int i) {
+        try {
+            JE_Out.setText(p.getProblemAt(i).transform());
+            JE_Out.setCaretPosition(0);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -46,12 +52,10 @@ public class ProblemLookFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        
     }//GEN-LAST:event_formWindowClosed
 
     // �������� - �������޸�//GEN-BEGIN:variables
     private javax.swing.JEditorPane JE_Out;
     private javax.swing.JScrollPane jScrollPane1;
     // ������������//GEN-END:variables
-    
 }
