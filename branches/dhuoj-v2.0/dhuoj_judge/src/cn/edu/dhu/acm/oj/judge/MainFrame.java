@@ -376,17 +376,17 @@ public class MainFrame extends javax.swing.JFrame {
 }//GEN-LAST:event_JB_GetSubmitActionPerformed
 
     private void JB_LookInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LookInformationActionPerformed
-        String str = "";
-        str += "\nContestID : " + Control.getSolutionbean().getContestId();
+        String str = "ContestID : " + Control.getSolutionbean().getContestId();
         str += "\nProblemID : " + Control.getSolutionbean().getProblemId();
         str += "\nUserID : " + Control.getSolutionbean().getUserId();
         str += "\nLanguage : " + Const.LANGUAGE[Control.getSolutionbean().getLanguage()];
-        str += "\nCode :\n" + Control.getSolutionbean().getSourceCode().getSource();
-        new CodeInfFrame(str).setVisible(true);
+        Control.setInfo(str);
+        str = Control.getSolutionbean().getSourceCode().getSource();
+        Control.setCode(str);
 }//GEN-LAST:event_JB_LookInformationActionPerformed
 
     private void JB_LookPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LookPaperActionPerformed
-        new ProblemLookFrame(Control.getPaperbean(), 0).setVisible(true);
+        Control.setProblem();
 }//GEN-LAST:event_JB_LookPaperActionPerformed
 
     private void JB_JudgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_JudgeActionPerformed

@@ -31,6 +31,8 @@ public class Control {
         mainframe = f;
         isauto = false;
         isAcceptLocaljudge = true;
+        codeframe = new CodeInfFrame();
+        problemframe = new ProblemLookFrame();
         try {
             server = new ServerSocket(Const.CLIENT_RCV_SOCKET);
         } catch (Exception e) {
@@ -40,6 +42,20 @@ public class Control {
 
     public static boolean isIsAcceptLocaljudge() {
         return isAcceptLocaljudge;
+    }
+
+    public static void setInfo(String str) {
+        codeframe.setInfo(str);
+    }
+
+    public static void setCode(String str) {
+        codeframe.setCode(str);
+        codeframe.setVisible(true);
+    }
+
+    public static void setProblem() {
+        problemframe.setProblem(paperbean, 0);
+        problemframe.setVisible(true);
     }
 
     public static void setIsAcceptLocaljudge(boolean isAcceptLocaljudge) {
@@ -65,14 +81,15 @@ public class Control {
                 synchronized (solutionqueue) {
                     solutionqueue.add((SolutionBean) obj);
                     mainframe.setSolutionQueue(solutionqueue.size());
+                    mainframe.setVisible(true);
                     System.out.println("Received a SolutionBean");
                     socket.getOutputStream().write("OK\r\n".getBytes());
                 }
-            }
-            else if(obj instanceof MessageBean){
+            } else if (obj instanceof MessageBean) {
                 synchronized (messagequeue) {
                     messagequeue.add((MessageBean) obj);
                     mainframe.setMessageQueue(messagequeue.size());
+                    mainframe.setVisible(true);
                     System.out.println("Received a MessageBean");
                     socket.getOutputStream().write("OK\r\n".getBytes());
                 }
@@ -109,9 +126,9 @@ public class Control {
         if (solutionbean != null) {
 
             Solution2Run();
-            if(isAcceptLocaljudge){
+            if (isAcceptLocaljudge) {
                 short localresult = solutionbean.getLocalJudgeResult();
-                if(localresult!=Const.AC && localresult != Const.CE){
+                if (localresult != Const.AC && localresult != Const.CE) {
                     runbean.setResult(localresult);
                     return;
                 }
@@ -137,7 +154,7 @@ public class Control {
     }
 
     //Message Step 1
-    public static boolean GetMessage(){
+    public static boolean GetMessage() {
         boolean ans = false;
         synchronized (messagequeue) {
             if (messagequeue.isEmpty()) {
@@ -152,7 +169,7 @@ public class Control {
     }
 
     //Message Step 2
-    public static void SendMessage(){
+    public static void SendMessage() {
         if (messagebean != null) {
             synchronized (sendqueue) {
                 sendqueue.add(messagebean);
@@ -173,6 +190,8 @@ public class Control {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            System.gc();
         }
 
     }
@@ -191,7 +210,7 @@ public class Control {
         return solutionbean;
     }
 
-    public static MessageBean getMessagebean(){
+    public static MessageBean getMessagebean() {
         return messagebean;
     }
 
@@ -279,4 +298,6 @@ public class Control {
     private static SolutionBean solutionbean;
     private static MessageBean messagebean;
     private static RunBean runbean;
+    private static CodeInfFrame codeframe;
+    private static ProblemLookFrame problemframe;
 }
