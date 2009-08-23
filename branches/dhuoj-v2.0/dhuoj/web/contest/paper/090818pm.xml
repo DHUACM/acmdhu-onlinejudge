@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="false">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">1</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>6</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFBuPRvxfLfSHvLhwlLmf8jFScbV1AhQlEng0WzD95+r+HUjep1Dg4N93rQ==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A Intersecting Lines</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;SELECT 
+      onchange="window.location.href='problem?id=1269&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Intersecting Lines&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 1000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 10000K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 2571&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 1268&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;We all know that a pair of distinct points on a 
+      plane defines a line and that a pair of lines on a plane will intersect in 
+      one of three ways: 1) no intersection because they are parallel, 2) 
+      intersect in a line because they are on top of one another (i.e. they are 
+      the same line), 3) intersect in a point. In this problem you will use your 
+      algebraic knowledge to create a program that determines how and where two 
+      lines intersect. &lt;BR&gt;Your program will repeatedly read in four points that 
+      define two lines in the x-y plane and determine how and where the lines 
+      intersect. All numbers required by this problem will be reasonable, say 
+      between -1000 and 1000. &lt;BR&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The first line contains an integer N between 1 
+      and 10 describing how many pairs of lines are represented. The next N 
+      lines will each contain eight integers. These integers represent the 
+      coordinates of four points on the plane in the order x1y1x2y2x3y3x4y4. 
+      Thus each of these input lines represents two lines on the plane: the line 
+      through (x1,y1) and (x2,y2) and the line through (x3,y3) and (x4,y4). The 
+      point (x1,y1) is always distinct from (x2,y2). Likewise with (x3,y3) and 
+      (x4,y4).&lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;There should be N+2 lines of output. The first 
+      line of output should read INTERSECTING LINES OUTPUT. There will then be 
+      one line of output for each pair of planar lines represented by a line of 
+      input, describing how the lines intersect: none, line, or point. If the 
+      intersection is a point then your program should output the x and y 
+      coordinates of the point, correct to two decimal places. The final line of 
+      output should read "END OF OUTPUT". &lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;5
+0 0 4 4 0 4 4 0
+5 0 7 6 1 0 2 3
+5 0 7 6 3 -6 4 -3
+2 0 2 27 1 5 18 5
+0 3 4 0 1 2 2 5
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;INTERSECTING LINES OUTPUT
+POINT 2.00 2.00
+NONE
+LINE
+POINT 2.00 5.00
+POINT 1.07 2.20
+END OF OUTPUT
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Mid-Atlantic+1996"&gt;Mid-Atlantic 
+      1996&lt;/A&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT color=#333399 size=3&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B Space Ant</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;SELECT 
+      onchange="window.location.href='problem?id=1696&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Space Ant&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 1000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 10000K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 563&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 385&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The most exciting space discovery occurred at 
+      the end of the 20th century. In 1999, scientists traced down an ant-like 
+      creature in the planet Y1999 and called it M11. It has only one eye on the 
+      left side of its head and just three feet all on the right side of its 
+      body and suffers from three walking limitations: &lt;BR&gt;
+      &lt;OL&gt;
+        &lt;LI&gt;It can not turn right due to its special body structure. &lt;BR&gt;
+        &lt;LI&gt;It leaves a red path while walking. &lt;BR&gt;
+        &lt;LI&gt;It hates to pass over a previously red colored path, and never does 
+        that.&lt;/LI&gt;&lt;/OL&gt;&lt;BR&gt;The pictures transmitted by the Discovery space ship 
+      depicts that plants in the Y1999 grow in special points on the planet. 
+      Analysis of several thousands of the pictures have resulted in discovering 
+      a magic coordinate system governing the grow points of the plants. In this 
+      coordinate system with x and y axes, &lt;B&gt;no two plants share the same x or 
+      y&lt;/B&gt;. &lt;BR&gt;An M11 needs to eat exactly one plant in each day to stay 
+      alive. When it eats one plant, it remains there for the rest of the day 
+      with no move. Next day, it looks for another plant to go there and eat it. 
+      If it can not reach any other plant it dies by the end of the day. Notice 
+      that it can reach a plant in any distance. &lt;BR&gt;The problem is to find a 
+      path for an M11 to let it live longest. &lt;BR&gt;Input is a set of (x, y) 
+      coordinates of plants. Suppose A with the coordinates (xA, yA) is the 
+      plant with the least y-coordinate. M11 starts from point (0,yA) heading 
+      towards plant A. Notice that the solution path should not cross itself and 
+      all of the turns should be counter-clockwise. Also note that the solution 
+      may visit more than two plants located on a same straight line. &lt;BR&gt;
+      &lt;CENTER&gt;&lt;IMG SRC="1696_1.jpg"&gt;&lt;/CENTER&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The first line of the input is M, the number of 
+      test cases to be solved (1 &amp;lt;= M &amp;lt;= 10). For each test case, the 
+      first line is N, the number of plants in that test case (1 &amp;lt;= N &amp;lt;= 
+      50), followed by N lines for each plant data. Each plant data consists of 
+      three integers: the first number is the unique plant index (1..N), 
+      followed by two positive integers x and y representing the coordinates of 
+      the plant. Plants are sorted by the increasing order on their indices in 
+      the input file. Suppose that the values of coordinates are at most 
+      100.&lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;Output should have one separate line for the 
+      solution of each test case. A solution is the number of plants on the 
+      solution path, followed by the indices of visiting plants in the path in 
+      the order of their visits.&lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;2
+10
+1 4 5
+2 9 8
+3 5 9
+4 1 7
+5 3 2
+6 6 3
+7 10 10
+8 8 1
+9 2 4
+10 7 6
+14
+1 6 11
+2 11 9
+3 8 7
+4 12 8
+5 9 20
+6 3 2
+7 1 6
+8 2 13
+9 15 1
+10 14 17
+11 13 19
+12 5 18
+13 7 3
+14 10 16
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;10 8 7 3 4 9 5 6 2 1 10
+14 9 10 11 5 12 8 7 6 13 4 14 1 3 2
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Tehran+1999"&gt;Tehran 
+      1999&lt;/A&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT color=#333399 size=3&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1696_1.jpg">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C Code</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">:&lt;SELECT 
+      onchange="window.location.href='problem?id=1850&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Code&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 1000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 30000K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 2800&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 1247&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;Transmitting and memorizing information is a 
+      task that requires different coding systems for the best use of the 
+      available space. A well known system is that one where a number is 
+      associated to a character sequence. It is considered that the words are 
+      made only of small characters of the English alphabet a,b,c, ..., z (26 
+      characters). From all these words we consider only those whose letters are 
+      in lexigraphical order (each character is smaller than the next 
+      character). &lt;BR&gt;&lt;BR&gt;The coding system works like this: &lt;BR&gt;? The words are 
+      arranged in the increasing order of their length. &lt;BR&gt;? The words with the 
+      same length are arranged in lexicographical order (the order from the 
+      dictionary). &lt;BR&gt;? We codify these words by their numbering, starting with 
+      a, as follows: &lt;BR&gt;a - 1 &lt;BR&gt;b - 2 &lt;BR&gt;... &lt;BR&gt;z - 26 &lt;BR&gt;ab - 27 &lt;BR&gt;... 
+      &lt;BR&gt;az - 51 &lt;BR&gt;bc - 52 &lt;BR&gt;... &lt;BR&gt;vwxyz - 83681 &lt;BR&gt;... &lt;BR&gt;&lt;BR&gt;Specify 
+      for a given word if it can be codified according to this coding system. 
+      For the affirmative case specify its code. &lt;BR&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The only line contains a word. There are some 
+      constraints: &lt;BR&gt;? The word is maximum 10 letters length &lt;BR&gt;? The English 
+      alphabet has 26 characters. &lt;BR&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The output will contain the code of the given 
+      word, or 0 if the word can not be codified. &lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;bf&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;55&lt;/PRE&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Romania+OI+2002"&gt;Romania 
+      OI 2002&lt;/A&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT color=#333399 size=3&gt;
+</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D Basically Speaking</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;SELECT 
+      onchange="window.location.href='problem?id=1546&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Basically Speaking&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 1000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 10000K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 2049&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 1040&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The Really Neato Calculator Company, Inc. has 
+      recently hired your team to help design their Super Neato Model I 
+      calculator. As a computer scientist you suggested to the company that it 
+      would be neato if this new calculator could convert among number bases. 
+      The company thought this was a stupendous idea and has asked your team to 
+      come up with the prototype program for doing base conversion. The project 
+      manager of the Super Neato Model I calculator has informed you that the 
+      calculator will have the following neato features: &lt;BR&gt;
+      &lt;UL&gt;&lt;BR&gt;
+        &lt;LI&gt;It will have a 7-digital display. &lt;BR&gt;
+        &lt;LI&gt;Its buttons will include the capital letters A through F in addition 
+        to the digits 0 through 9. &lt;BR&gt;
+        &lt;LI&gt;It will support bases 2 through 16. &lt;BR&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;BR&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The input for your prototype program will 
+      consist of one base conversion per line. There will be three numbers per 
+      line. The first number will be the number in the base you are converting 
+      from. The second number is the base you are converting from. The third 
+      number is the base you are converting to. There will be one or more blanks 
+      surrounding (on either side of) the numbers. There are several lines of 
+      input and your program should continue to read until the end of file is 
+      reached.&lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;The output will only be the converted number as 
+      it would appear on the display of the calculator. The number should be 
+      right justified in the 7-digit display. If the number is to large to 
+      appear on the display, then print ``ERROR'' (without the quotes) right 
+      justified in the display. &lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;1111000  2 10
+1111000  2 16
+2102101  3 10
+2102101  3 15
+  12312  4  2
+     1A 15  2
+1234567 10 16
+   ABCD 16 15&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;    120
+     78
+   1765
+    7CA
+  ERROR
+  11001
+ 12D687
+   D071&lt;/PRE&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Mid-Central+USA+1995"&gt;Mid-Central 
+      USA 1995&lt;/A&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT color=#333399 size=3&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E Reduced ID Numbers</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;SELECT 
+      onchange="window.location.href='problem?id=2769&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Reduced ID Numbers&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 2000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 65536K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 5597&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 2183&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;T. Chur teaches various groups of students at 
+      university U. Every U-student has a unique Student Identification Number 
+      (SIN). A SIN s is an integer in the range 0 ≤ s ≤ MaxSIN with MaxSIN = 
+      10&lt;SUP&gt;6&lt;/SUP&gt;-1. T. Chur finds this range of SINs too large for 
+      identification within her groups. For each group, she wants to find the 
+      smallest positive integer m, such that within the group all SINs reduced 
+      modulo m are unique. &lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;On the first line of the input is a single 
+      positive integer N, telling the number of test cases (groups) to follow. 
+      Each case starts with one line containing the integer G (1 ≤ G ≤ 300): the 
+      number of students in the group. The following G lines each contain one 
+      SIN. The SINs within a group are distinct, though not necessarily sorted. 
+      &lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;For each test case, output one line containing 
+      the smallest modulus m, such that all SINs reduced modulo m are distinct. 
+      &lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;2
+1
+124866
+3
+124866
+111111
+987651
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;1
+8
+&lt;/PRE&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northwestern+Europe+2005"&gt;Northwestern 
+      Europe 2005&lt;/A&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT color=#333399 size=3&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>2</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F Astronomy</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">:&lt;SELECT 
+      onchange="window.location.href='problem?id=3101&amp;amp;lang='+this.value+'&amp;amp;change=true'" 
+      size=1&gt;&lt;OPTION value=default selected&gt;Default&lt;/OPTION&gt;&lt;/SELECT&gt;&lt;/DIV&gt;
+      &lt;DIV class=ptt lang=en-US&gt;Astronomy&lt;/DIV&gt;
+      &lt;DIV class=plm&gt;
+      &lt;TABLE align=center&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Time Limit:&lt;/B&gt; 2000MS&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Memory Limit:&lt;/B&gt; 65536K&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&lt;B&gt;Total Submissions:&lt;/B&gt; 1987&lt;/TD&gt;
+          &lt;TD width=10&gt;&lt;/TD&gt;
+          &lt;TD&gt;&lt;B&gt;Accepted:&lt;/B&gt; 399&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Description&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;
+      &lt;P&gt;There are &lt;I&gt;n&lt;/I&gt; planets in the planetary system of star X. They 
+      orbit star X in circular orbits located in the same plane. Their tangent 
+      velocities are constant. Directions of orbiting of all planets are the 
+      same.&lt;/P&gt;
+      &lt;P&gt;Sometimes the event happens in this planetary system which is called 
+      &lt;I&gt;planet parade&lt;/I&gt;. It is the moment when all planets and star X are 
+      located on the same straight line.&lt;/P&gt;
+      &lt;P&gt;Your task is to find the length of the time interval between two 
+      consecutive planet parades.&lt;/P&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Input&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;SPAN lang=en-us&gt;
+      &lt;P&gt;The first line of the input file contains &lt;I&gt;n&lt;/I&gt; ― the number of 
+      planets (2 ≤ &lt;I&gt;n&lt;/I&gt; ≤ 1 000).&lt;/P&gt;
+      &lt;P&gt;Second line contains n integer numbers &lt;I&gt;t&lt;SUB&gt;i&lt;/SUB&gt;&lt;/I&gt; ― the 
+      orbiting periods of planets (1 ≤ &lt;I&gt;t&lt;SUB&gt;i&lt;/SUB&gt;&lt;/I&gt; ≤ 10 000). Not all 
+      of &lt;I&gt;t&lt;SUB&gt;i&lt;/SUB&gt;&lt;/I&gt; are the same.&lt;/P&gt;&lt;/SPAN&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Output&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;
+      &lt;P&gt;Output the answer as a common irreducible fraction, separate numerator 
+      and denominator by a space.&lt;/P&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Sample Input&lt;/P&gt;&lt;PRE class=sio&gt;3
+6 2 3&lt;/PRE&gt;
+      &lt;P class=pst&gt;Sample Output&lt;/P&gt;&lt;PRE class=sio&gt;3 1&lt;/PRE&gt;
+      &lt;P class=pst&gt;Hint&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;
+      &lt;DIV align=center&gt;&lt;IMG SRC="3101_1.gif"&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+      &lt;P class=pst&gt;Source&lt;/P&gt;
+      &lt;DIV class=ptx lang=en-US&gt;&lt;A 
+      href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northeastern+Europe+2005"&gt;Northeastern 
+      Europe 2005&lt;/A&gt;, Northern Subregion&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;FONT 
+color=#333399 size=3&gt;
+</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="3101_1.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>2</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

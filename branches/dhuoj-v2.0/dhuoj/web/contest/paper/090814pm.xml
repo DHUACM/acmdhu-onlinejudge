@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="false">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">1</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>6</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFCJGB3i9qocMP5roR5dcwtGdpHV2AhRd43L2y/eMFHNn29XRHa8qsr2O4Q==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe><![CDATA[1]]></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A Dividing</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1014&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Dividing&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 10000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 24184&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 5846&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Marsha
+and Bill own a collection of marbles. They want to split the collection
+among themselves so that both receive an equal share of the marbles.
+This would be easy if all the marbles had the same value, because then
+they could just split the collection in half. But unfortunately, some
+of the marbles are larger, or more beautiful than others. So, Marsha
+and Bill start by assigning a value, a natural number between one and
+six, to each marble. Now they want to divide the marbles so that each
+of them gets the same total value. Unfortunately, they realize that it
+might be impossible to divide the marbles in this way (even if the
+total value of all marbles is even). For example, if there are one
+marble of value 1, one of value 3 and two of value 4, then they cannot
+be split into sets of equal value. So, they ask you to write a program
+that checks whether there is a fair partition of the marbles. &lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Each
+line in the input file describes one collection of marbles to be
+divided. The lines contain six non-negative integers n1 , . . . , n6 ,
+where ni is the number of marbles of value i. So, the example from
+above would be described by the input-line "1 0 1 2 0 0". The maximum
+total number of marbles will be 20000. &lt;br&gt;The last line of the input file will be "0 0 0 0 0 0"; do not process this line. &lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each collection, output "Collection #k:", where k is the number of the
+test case, and then either "Can be divided." or "Can't be divided.". &lt;br&gt;Output a blank line after each test case. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;1 0 1 2 0 0 
+1 0 0 0 1 1 
+0 0 0 0 0 0 &lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;Collection #1:
+Can't be divided.
+
+Collection #2:
+Can be divided.&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Mid-Central+European+Regional+Contest+1999"&gt;Mid-Central European Regional Contest 1999&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1014"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1014"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1014"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B Building for UN</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=3566&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Building for UN&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 5000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td colspan="3"&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 840&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 336&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td style="font-weight: bold; color: red;"&gt;Special Judge&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;The
+United Nations has decided to build a new headquarters in Saint
+Petersburg, Russia. It will have a form of a rectangular parallelepiped
+and will consist of several rectangular floors, one on top of another.
+Each floor is a rectangular grid of the same dimensions, each cell of
+this grid is an office.&lt;/p&gt;&lt;p&gt;Two offices are considered adjacent if
+they are located on the same floor and share a common wall, or if one’s
+floor is the other’s ceiling.&lt;/p&gt;&lt;p&gt;The St. Petersburg building will host &lt;i&gt;n&lt;/i&gt; national missions. Each country gets several offices that form a connected set.&lt;/p&gt;&lt;p&gt;Moreover,
+modern political situation shows that countries might want to form
+secret coalitions. For that to be possible, each pair of countries must
+have at least one pair of adjacent offices, so that they can raise the
+wall or the ceiling they share to perform secret pair-wise negotiations
+just in case they need to.&lt;/p&gt;&lt;p&gt;You are hired to design an appropriate building for the UN.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;The input file consists of a single integer number &lt;i&gt;n&lt;/i&gt; (1 ≤ &lt;i&gt;n&lt;/i&gt; ≤ 50) ― the number of countries that are hosted in the building.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;On the first line of the output file write three integer numbers &lt;i&gt;h&lt;/i&gt;, &lt;i&gt;w&lt;/i&gt;, and &lt;i&gt;l&lt;/i&gt; ― height, width and length of the building respectively.&lt;/p&gt;&lt;p&gt;&lt;i&gt;h&lt;/i&gt; descriptions of floors should follow. Each floor description consists of &lt;i&gt;l&lt;/i&gt; lines with &lt;i&gt;w&lt;/i&gt; characters on each line. Separate descriptions of adjacent floors with an empty line.&lt;/p&gt;&lt;p&gt;Use capital and small Latin letters to denote offices of different countries. There should be at most &lt;nobr&gt;1 000 000&lt;/nobr&gt; offices in the building. Each office should be occupied by a country. There should be exactly &lt;i&gt;n&lt;/i&gt; different countries in the building. In this problem the required building design always exists.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;4&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;2 2 2
+AB
+CC
+
+zz
+zz&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northeastern+Europe+2007"&gt;Northeastern Europe 2007&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3566"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3566"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3566"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>5</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C Robot Motion</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1573&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Robot Motion&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 10000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 3801&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 1837&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;
+&lt;center&gt;&lt;IMG SRC="1573_1.jpg.gif"&gt;&lt;/center&gt;
+&lt;br&gt;A robot has been programmed to follow the instructions in its path.
+Instructions for the next direction the robot is to move are laid down
+in a grid. The possible instructions are &lt;br&gt;
+&lt;br&gt;N north (up the page)
+&lt;br&gt;S south (down the page)
+&lt;br&gt;E east (to the right on the page)
+&lt;br&gt;W west (to the left on the page)
+&lt;br&gt;
+&lt;br&gt;For example, suppose the robot starts on the north (top) side of
+Grid 1 and starts south (down). The path the robot follows is shown.
+The robot goes through 10 instructions in the grid before leaving the
+grid.
+&lt;br&gt;
+&lt;br&gt;Compare what happens in Grid 2: the robot goes through 3
+instructions only once, and then starts a loop through 8 instructions,
+and never exits.
+&lt;br&gt;
+&lt;br&gt;You are to write a program that determines how long it takes a robot to get out of the grid or how the robot loops around.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;There
+will be one or more grids for robots to navigate. The data for each is
+in the following form. On the first line are three integers separated
+by blanks: the number of rows in the grid, the number of columns in the
+grid, and the number of the column in which the robot enters from the
+north. The possible entry columns are numbered starting with one at the
+left. Then come the rows of the direction instructions. Each grid will
+have at least one and at most 10 rows and columns of instructions. The
+lines of instructions contain only the characters N, S, E, or W with no
+blanks. The end of input is indicated by a row containing 0 0 0.&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each grid in the input there is one line of output. Either the robot
+follows a certain number of instructions and exits the grid on any one
+the four sides or else the robot follows the instructions on a certain
+number of locations once, and then the instructions on some number of
+locations repeatedly. The sample input below corresponds to the two
+grids above and illustrates the two forms of output. The word "step" is
+always immediately followed by "(s)" whether or not the number before
+it is 1.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;3 6 5
+NEESWE
+WWWESS
+SNWWWW
+4 5 1
+SESWE
+EESNW
+NWEEN
+EWSEN
+0 0 0&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;10 step(s) to exit
+3 step(s) before a loop of 8 step(s)
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Mid-Central+USA+1999"&gt;Mid-Central USA 1999&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1573"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1573"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1573"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1573_1.jpg.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;B&gt;History Grading&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;
+
+Background&lt;BR&gt;&lt;BR&gt;
+
+Many problems in Computer Science involve maximizing some measure according to constraints.&lt;BR&gt;&lt;BR&gt;
+
+Consider a history exam in which students are asked to put several historical events into chronological order. Students who order all the events correctly will receive full credit, but how should partial credit be awarded to students who incorrectly rank one or more of the historical events?&lt;BR&gt;&lt;BR&gt;
+
+Some possibilities for partial credit include:&lt;BR&gt;&lt;BR&gt;
+
+   1. 1 point for each event whose rank matches its correct rank&lt;BR&gt;
+   2. 1 point for each event in the longest (not necessarily contiguous) sequence of events which are in the correct order relative to each other. &lt;BR&gt;&lt;BR&gt;
+
+For example, if four events are correctly ordered 1 2 3 4 then the order 1 3 2 4 would receive a score of 2 using the first method (events 1 and 4 are correctly ranked) and a score of 3 using the second method (event sequences 1 2 4 and 1 3 4 are both in the correct order relative to each other).&lt;BR&gt;&lt;BR&gt;
+
+In this problem you are asked to write a program to score such questions using the second method.&lt;BR&gt;&lt;BR&gt;
+
+The Problem&lt;BR&gt;&lt;BR&gt;
+
+Given the correct chronological order of n events 1,2,...,n as c1,c2,...,cn where 1&amp;lt;=ci&amp;lt;=n denotes the ranking of event i in the correct chronological order and a sequence of student responses r1,r2,...,rn where 1&amp;lt;=ri&amp;lt;=n denotes the chronological rank given by the student to event i; determine the length of the longest (not necessarily contiguous) sequence of events in the student responses that are in the corre&lt;ct chronological order relative to each other. &lt;BR&gt;&lt;BR&gt;
+
+The Input&lt;BR&gt;&lt;BR&gt;
+
+The first line of the input will consist of one integer n indicating the number of events with 2&amp;lt;=n&amp;lt;=20 . The second line will contain n integers, indicating the correct chronological order of n events. The remaining lines will each consist of n integers with each line representing a student's chronological ordering of the n events. All lines will contain n numbers in the range [1...n] , with each number appearing exactly once per line, and with each number separated from other numbers on the same line by one or more spaces.&lt;BR&gt;&lt;BR&gt;
+
+The Output&lt;BR&gt;&lt;BR&gt;
+
+For each student ranking of events your program should print the score for that ranking. There should be one line of output for each student ranking.&lt;BR&gt;&lt;BR&gt;
+&lt;PRE&gt;
+Sample Input 1
+
+4
+4 2 3 1
+1 3 2 4
+3 2 1 4
+2 3 4 1
+
+Sample Output 1
+
+1
+2
+3
+
+Sample Input 2
+
+10
+3 1 2 4 9 5 10 6 8 7
+1 2 3 4 5 6 7 8 9 10
+4 7 2 3 10 6 9 1 5 8
+3 1 2 4 9 5 10 6 8 7
+2 10 1 3 8 4 9 5 7 6
+
+Sample Output 2
+
+6
+5
+10
+9
+&lt;/PRE&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>3</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E Queens in peachful positions</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=2358&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Queens in peaceful positions&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1017&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 490&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;On
+a chessboard of size NxN (N&amp;lt;=50) N queens are placed. We'll say that
+queens are in peaceful position if none of them can attack another. You
+are to find the total amount of peaceful positions that can be obtained
+from the given peaceful position by rearranging of exactly three queens.&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line of input will contain an integer number N that represents
+the size of a chessboard (and the number of queens also). It will be
+followed by N lines describing positions of queens. Each line will
+contain two integers X and Y separated by a space. These numbers
+represent horizontal and vertical coordinates and lay in a range from 1
+to N.&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+output consists of a single integer representing the number of peaceful
+positions that can be achieved from initial position by moving of
+exactly three queens. Note: queens are not numbered so if you rearrange
+them on the chessboard using only squares they already occupied you'll
+always get the same peaceful position, not the new one.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;4
+2 1
+1 3
+3 4
+4 2
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;0
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Ural+Collegiate+Programming+Contest+1999"&gt;Ural Collegiate Programming Contest 1999&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2358"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2358"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2358"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F Space Station Shielding</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1096&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Space Station Shielding&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 565&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 210&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Roger
+Wilco is in charge of the design of a low orbiting space station for
+the planet Mars. To simplify construction, the station is made up of a
+series of Airtight Cubical Modules (ACM's), which are connected
+together once in space. One problem that concerns Roger is that of
+(potentially) lethal bacteria that may reside in the upper atmosphere
+of Mars. Since the station will occasionally fly through the upper
+atmosphere, it is imperative that extra shielding be used on all faces
+of the ACM's touch, either edge to edge or face to face, that joint is
+sealed so no bacteria can sneak through. Any face of an ACM shared by
+another ACM will not need shielding, of course, nor will a face which
+cannot be reached from the outside. Roger could just put extra
+shielding on all of the faces of every ACM, but the cost would be
+prohibitive. Therefore, he wants to know the exact number of ACM faces
+which need the extra shielding. &lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Input
+consists of multiple problem instances. Each instance consists of a
+specification of a space station. We assume that each space station can
+fit into an n x m x k grid (1 &amp;lt;= n, m, k &amp;lt;= 60), where each grid
+cube may or may not contain an ACM. We number the grid cubes 0, 1, 2, ?
+kmn-1 as shown in the diagram below. Each space station specification
+then consists of the following: the first line contains four positive
+integers n m k l, where n, m and k are as described above and l is the
+number of ACM's in the station. This is followed by a set of lines
+which specify the l grid locations of the ACM's. Each of these lines
+contain 10 integers (except possibly the last). Each space station is
+fully connected (i.e., an astronaut can move from one ACM to any other
+ACM in the station without leaving the station). Values of n = m = k =
+l = 0 terminate input.
+&lt;br&gt;&lt;center&gt;&lt;IMG SRC="1096_1.gif"&gt;&lt;/center&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For each problem instance, you should output one line of the form
+&lt;br&gt;
+&lt;br&gt;The number of faces needing shielding is s.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2 2 1 3
+0 1 3
+3 3 3 26
+0 1 2 3 4 5 6 7 8 9
+10 11 12 14 15 16 17 18 19 20
+21 22 23 24 25 26
+0 0 0 0&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;The number of faces needing shielding is 14.
+The number of faces needing shielding is 54.&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=East+Central+North+America+2001"&gt;East Central North America 2001&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1096"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1096"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1096"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1096_1.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

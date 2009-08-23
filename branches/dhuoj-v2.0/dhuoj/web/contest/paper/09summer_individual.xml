@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="true">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">5</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>10</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFHA+bRXoPh9vBxpuu9lbg9pq2ipXAhQpFw2fZAaluKH5suPZNPvTb5gU3Q==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">aa</Description>
+                <InputSpec xml:space="preserve">aa</InputSpec>
+                <OutputSpec xml:space="preserve">aa</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="zero">
+                    <Terminator xml:space="preserve">0</Terminator>
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+00
+00
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">2
+01
+10
+</TestInput>
+                    <TestOutput xml:space="preserve">2
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

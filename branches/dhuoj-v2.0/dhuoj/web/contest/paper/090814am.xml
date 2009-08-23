@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="false">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">1</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>10</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFFvoWoReXbgJi/FGU7iZ3OY0hdGkAhQxw1QOF1Fuohq0Z5Jf8bl5yTy8wQ==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A Traffic Jam</Title>
+            <Author>DHU</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1817&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Traffic Jam&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 5000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 20000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 98&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 63&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Traffic
+jam is a real nightmare of all drivers. Nobody likes to be stuck in the
+overfilled streets, when the cars move very slowly, or they even don't
+move at all. Professional drivers face traffic jams quite often. Truck
+drivers of ACM are not an exception. Can you help drivers to find the
+way out of the traffic jam? &lt;br&gt;
+&lt;br&gt;We can model a small (but complicated) traffic jam on a 6*6 grid of
+squares. Vehicles (cars and trucks) are scattered over the grid at
+integer locations, as shown below. Both types of vehicles are 1 square
+wide. Cars are 2 squares long, and trucks are 3 squares long. Vehicles
+may be oriented either horizontally (East-West) or vertically
+(North-South) relative to the grid. &lt;br&gt;
+&lt;center&gt;&lt;IMG SRC="1817_1.jpg.gif"&gt;&lt;/center&gt;
+&lt;br&gt;Vehicles cannot move through each other, cannot turn, and cannot
+move over the edge of the grid. They can move in their direction
+(horizontally-oriented vehicles cannot move vertically and vice versa),
+as long as they are not blocked by another vehicle or by the edge of
+the grid. Only one vehicle may move in a single step, but it may move
+by as many squares at a time as possible, providing there is enough
+empty space. &lt;br&gt;
+&lt;br&gt;Our goal is to move vehicles back and forth until a particular
+horizontally-oriented vehicle (your own car -- the black one on the
+picture above) leaves the rightmost (eastern-most) edge of the grid,
+where it is considered to have escaped the traffic jam. You are to
+write a program that will find a solution requiring the minimum
+possible number of moves. &lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+input file will consist of one or more input scenarios. Each scenario
+begins with a single integer n, 1 &amp;lt;= n &amp;lt;= 10, giving the number
+of vehicles in the scenario. Then there will be 6 lines of input, each
+containing 6 characters. Each character is either a dot (".")
+representing an empty square, or a lowercase letter representing a
+vehicle. Your own vehicle is always oriented horizontally and
+represented by "x" characters. The other vehicles use the letters
+sequentially, beginning with "a". &lt;br&gt;
+&lt;br&gt;The last scenario will be followed by a line containing a single zero. 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each scenario, output a single line with the statement "Scenario #K
+requires X moves.", where K is the number of the scenario (starting
+with 1) and X is the minimum number of moves required to escape the
+traffic jam with the particular car. &lt;br&gt;
+&lt;br&gt;If it is not possible to escape, output the sentence "You are trapped in scenario #K." instead. 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;8
+aa...b
+c..d.b
+cxxd.b
+c..d..
+e...ff
+e.ggg.
+8
+abbc..
+a..c..
+axxc..
+..gddd
+..g..e
+..fffe
+0
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;Scenario #1 requires 8 moves.
+Scenario #2 requires 25 moves.
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=POJ+Monthly"&gt;POJ Monthly&lt;/a&gt;,Southeast USA 1999&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1817"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1817"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1817"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1817_1.jpg.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+        <TimeLimit>5</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B The Closest Pair Problem</Title>
+            <Author>DHU</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Time Limit: 8 seconds&lt;BR&gt;
+Memory Limit: 32 MB&lt;BR&gt;&lt;BR&gt;
+
+ 
+
+Given a set of points in a two dimensional space, you will have to find the distance between the closest two points.&lt;BR&gt;&lt;BR&gt;
+
+ 
+Input&lt;BR&gt;&lt;BR&gt;
+
+ 
+
+The input file contains several sets of input. Each set of input starts with an integer N (0&lt;=N&lt;=10000), which denotes the number of points in this set. The next N line contains the coordinates of N two-dimensional points. The first of the two numbers denotes the X-coordinate and the latter denotes the Y-coordinate. The input is terminated by a set whose N=0. This set should not be processed. The value of the coordinates will be less than 40000 and non-negative.&lt;BR&gt;&lt;BR&gt;
+
+ 
+Output&lt;BR&gt;&lt;BR&gt;
+
+ 
+
+For each set of input produce a single line of output containing a floating point number (with four digits after the decimal point) which denotes the distance between the closest two points. If there is no such two points in the input whose distance is less than 10000, print the line INFINITY.&lt;BR&gt;&lt;BR&gt;
+
+ 
+&lt;PRE&gt;Sample Input
+3
+0 0
+10000 10000
+20000 20000
+5
+0 2
+6 67
+43 71
+39 107
+189 140
+0
+ 
+Sample Output
+INFINITY
+36.2215&lt;/PRE&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1817_1.jpg.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+        <TimeLimit>8</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C 放苹果</Title>
+            <Author>DHU</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">把M个同样的苹果放在N个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用K表示）5，1，1和1，5，1 是同一种分法。&lt;BR&gt;&lt;BR&gt;
+
+Input
+第一行是测试数据的数目t（0 &lt;= t &lt;= 20）。以下每行均包含二个整数M和N，以空格分开。1&lt;=M，N&lt;=10。&lt;BR&gt;&lt;BR&gt;
+
+Output&lt;BR&gt;&lt;BR&gt;
+对输入的每组数据M和N，用一行输出相应的K。&lt;BR&gt;&lt;BR&gt;
+
+&lt;PRE&gt;Sample Input
+
+1
+7 3
+
+Sample Output
+
+8
+
+Source
+lwx@POJ&lt;/PRE&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D Alphacode</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=2033&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Alphacode&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 7016&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 2116&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Alice and Bob need to send secret messages to each other and are discussing ways to encode their messages:
+&lt;br&gt;&lt;blockquote&gt;Alice: "Let's just use a very simple code: We'll assign
+'A' the code word 1, 'B' will be 2, and so on down to 'Z' being
+assigned 26."
+&lt;br&gt;Bob: "That's a stupid code, Alice. Suppose I send you the word
+'BEAN' encoded as 25114. You could decode that in many different ways!”
+&lt;br&gt;Alice: "Sure you could, but what words would you get? Other than
+'BEAN', you'd get 'BEAAD', 'YAAD', 'YAN', 'YKD' and 'BEKD'. I think you
+would be able to figure out the correct decoding. And why would you
+send me the word ‘BEAN’ anyway?”
+&lt;br&gt;Bob: "OK, maybe that's a bad example, but I bet you that if you
+got a string of length 500 there would be tons of different decodings
+and with that many you would find at least two different ones that
+would make sense."
+&lt;br&gt;Alice: "How many different decodings?"
+&lt;br&gt;Bob: "Jillions!" &lt;/blockquote&gt;
+&lt;br&gt;For some reason, Alice is still unconvinced by Bob's argument, so
+she requires a program that will determine how many decodings there can
+be for a given string using her code.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Input
+will consist of multiple input sets. Each set will consist of a single
+line of digits representing a valid encryption (for example, no line
+will begin with a 0). There will be no spaces between the digits. An
+input line of '0' will terminate the input and should not be processed&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each input set, output the number of possible decodings for the input
+string. All answers will be within the range of a long variable.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;25114
+1111111111
+3333333333
+0&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;6
+89
+1&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=East+Central+North+America+2004"&gt;East Central North America 2004&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2033"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2033"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2033"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E Network Saboteur</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=2531&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Network Saboteur&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 2000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 2815&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 1136&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;A
+university network is composed of N computers. System administrators
+gathered information on the traffic between nodes, and carefully
+divided the network into two subnetworks in order to minimize traffic
+between parts.
+&lt;br&gt;A disgruntled computer science student Vasya, after being expelled
+from the university, decided to have his revenge. He hacked into the
+university network and decided to reassign computers to maximize the
+traffic between two subnetworks.
+&lt;br&gt;Unfortunately, he found that calculating such worst subdivision is
+one of those problems he, being a student, failed to solve. So he asks
+you, a more successful CS student, to help him.
+&lt;br&gt;The traffic data are given in the form of matrix C, where Cij is
+the amount of data sent between ith and jth nodes (Cij = Cji, Cii = 0).
+The goal is to divide the network nodes into the two disjointed subsets
+A and B so as to maximize the sum ∑Cij (i∈A,j∈B).&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line of input contains a number of nodes N (2 &amp;lt;= N &amp;lt;= 20).
+The following N lines, containing N space-separated integers each,
+represent the traffic matrix C (0 &amp;lt;= Cij &amp;lt;= 10000).
+&lt;br&gt;Output file must contain a single integer -- the maximum traffic between the subnetworks.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Output must contain a single integer -- the maximum traffic between the subnetworks.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;3
+0 50 30
+50 0 40
+30 40 0
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;90&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northeastern+Europe+2002"&gt;Northeastern Europe 2002&lt;/a&gt;, Far-Eastern Subregion&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2531"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2531"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2531"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>2</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F Stamps</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1882&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Stamps&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 902&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 259&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Philatelists
+have collected stamps since long before postal workers were
+disgruntled. An excess of stamps may be bad news to a country's postal
+service, but good news to those that collect the excess stamps. The
+postal service works to minimize the number of stamps needed to provide
+seamless postage coverage. To this end you have been asked to write a
+program to assist the postal service. &lt;br&gt;Envelope size restricts the number of stamps that can be used on
+one envelope. For example, if 1 cent and 3 cent stamps are available
+and an envelope can accommodate 5 stamps, all postage from 1 to 13
+cents can be "covered": &lt;br&gt;&lt;pre&gt;            Number of   Number of
+&lt;br&gt;   Postage  1�� Stamps	3�� Stamps
+&lt;br&gt;      1         1           0
+&lt;br&gt;      2         2           0
+&lt;br&gt;      3         0           1
+&lt;br&gt;      4         1           1
+&lt;br&gt;      5         2           1
+&lt;br&gt;      6         0           2
+&lt;br&gt;      7         1           2
+&lt;br&gt;      8         2           2
+&lt;br&gt;      9         0           3
+&lt;br&gt;      10        1           3
+&lt;br&gt;      11        2           3
+&lt;br&gt;      12        0           4
+&lt;br&gt;      13        1           4&lt;/pre&gt;
+&lt;br&gt;Although five 3 cent stamps yields an envelope with 15 cents
+postage, it is not possible to cover an envelope with 14 cents of
+stamps using at most five 1 and 3 cent stamps. Since the postal service
+wants maximal coverage without gaps, the maximal coverage is 13 cents. &lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line of each data set contains the integer S, representing the
+maximum of stamps that an envelope can accommodate. The second line
+contains the integer N, representing the number of sets of stamp
+denominations in the data set. Each of the next N lines contains a set
+of stamp denominations. The first integer on each line is the number of
+denominations in the set, followed by a list of stamp denominations, in
+order from smallest to largest, with each denomination separated from
+the others by one or more spaces. There will be at most S denominations
+on each of the N lines. The maximum value of S is 10, the largest stamp
+denomination is 100, the maximum value of N is 10. &lt;br&gt;The input is terminated by a data set beginning with zero (S is zero). 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Output
+one line for each data set giving the maximal no-gap coverage followed
+by the stamp denominations that yield that coverage in the following
+format: &lt;br&gt;max coverage = &amp;lt; value&amp;gt; : &amp;lt; denominations&amp;gt; 
+&lt;br&gt;
+&lt;br&gt;If more than one set of denominations in a set yields the same
+maximal no-gap coverage, the set with the fewest number of
+denominations should be printed (this saves on stamp printing costs).
+If two sets with the same number of denominations yield the same
+maximal no-gap coverage, then the set with the lower maximum stamp
+denomination should be printed. For example, if five stamps fit on an
+envelope, then stamp sets of 1, 4, 12, 21 and 1, 5, 12, 28 both yield
+maximal no-gap coverage of 71 cents. The first set would be printed
+because both sets have the same number of denominations but the first
+set's largest denomination (21) is lower than that of the second set
+(28). If multiple sets in a sequence yield the same maximal no-gap
+coverage, have the same number of denominations, and have equal largest
+denominations, then the first of them should be printed. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;5
+2
+4 1 4 12 21
+4 1 5 12 28
+10
+2
+5 1 7 16 31 88
+5 1 15 52 67 99
+6
+2
+3 1 5 8
+4 1 5 7 8
+0
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;max coverage = 71 : 1 4 12 21
+max coverage = 409 : 1 7 16 31 88
+max coverage = 48 : 1 5 7 8
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=World+Finals+1995"&gt;World Finals 1995&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1882"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1882"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1882"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>G Strategic Defense Initiative</Title>
+            <Author>DHU</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">``Commander! Commander! Please wake up commander!''&lt;BR&gt;&lt;BR&gt;
+
+``... mmmph. What time is it?''&lt;BR&gt;&lt;BR&gt;
+
+``4:07 am, Commander. The following message just arrived on the emergency zeta priority classified scrambler, marked your eyes only.''&lt;BR&gt;&lt;BR&gt;
+
+You grudgingly take the letter, rub the sleep from your eyes, fleetingly wish that the 'Backer closed at an earlier hour, and start to read.&lt;BR&gt;&lt;BR&gt;
+
+``Dear StarWars SDI Commander,&lt;BR&gt;&lt;BR&gt;
+
+    Bad news, buddy. Crazy Boris had a bit too much vodka last night&lt;BR&gt;
+    and when he woke up this morning, instead of the snooze button&lt;BR&gt;
+    on his alarm clock, he ... well, let me put it this way: we've got&lt;BR&gt;
+    tons of nuclear missles flying this way. Unfortunately, all that&lt;BR&gt;
+    we have is a chart of the altitudes at which the missles are&lt;BR&gt;
+    flying, arranged by the order of arrivals. Go for it, buddy.&lt;BR&gt;
+    Good luck.&lt;BR&gt;&lt;BR&gt;
+
+                  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  &amp;nbsp;&amp;nbsp;&amp;nbsp;   Secretary of Defense&lt;BR&gt;&lt;BR&gt;
+
+    P.S. Hilly and Bill say hi.''&lt;BR&gt;&lt;BR&gt;
+
+To make things worse, you remeber that SDI has a fatal flaw due to the budget cuts. When SDI sends out missles to intercept the targets, every missle has to fly higher than the previous one. In other words, once you hit a target, the next target can only be among the ones that are flying at higher altitudes than the one you just hit.&lt;BR&gt;&lt;BR&gt;
+
+For example, if the missles are flying toward you at heights of 1, 6, 2, 3, and 5 (arriving in that order), you can try to intercept the first two, but then you won't be able to get the ones flying at 2, 3, 5 because they are lower than 6. Your job is to hit as many targets as possible. So you have to quickly write a program to find the best sequence of targets that the flawed SDI program is going to destroy.&lt;BR&gt;&lt;BR&gt;
+
+Russian war tactics are fairly strange; their generals are stickers for mathematical precision. Their missles will always be fired in a sequence such that there will only be one solution to the problem posed above.&lt;BR&gt;&lt;BR&gt;
+
+Input and Output&lt;BR&gt;&lt;BR&gt;
+
+The input begins with a single positive integer on a line by itself indicating the number of the cases following, each of them as described below. This line is followed by a blank line, and there is also a blank line between two consecutive inputs.&lt;BR&gt;&lt;BR&gt;
+
+each input to your program will consist of a sequence of integer altitudes, each on a separate line.&lt;BR&gt;&lt;BR&gt;
+
+For each test case, the output must follow the description below. The outputs of two consecutive cases will be separated by a blank line.&lt;BR&gt;&lt;BR&gt;
+
+Output from your program should contain the total number of targets you can hit, followed by the altitudes of those targets, one per line, in the order of their arrivals.&lt;BR&gt;&lt;BR&gt;
+
+&lt;PRE&gt;Sample Input
+
+1
+
+1
+6
+2
+3
+5
+
+Sample Output
+
+Max hits: 4
+1
+2
+3
+5&lt;/PRE&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>3</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>H Islands and Bridges</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=2288&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Islands and Bridges&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 4000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 3560&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 861&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Given
+a map of islands and bridges that connect these islands, a Hamilton
+path, as we all know, is a path along the bridges such that it visits
+each island exactly once. On our map, there is also a positive integer
+value associated with each island. We call a Hamilton path the best
+triangular Hamilton path if it maximizes the value described below. &lt;br&gt;
+&lt;br&gt;Suppose there are n islands. The value of a Hamilton path C1C2...Cn
+is calculated as the sum of three parts. Let Vi be the value for the
+island Ci. As the first part, we sum over all the Vi values for each
+island in the path. For the second part, for each edge CiC&lt;sub&gt;i+1&lt;/sub&gt; in the path, we add the product Vi*V&lt;sub&gt;i+1&lt;/sub&gt;. And for the third part, whenever three consecutive islands CiC&lt;sub&gt;i+1&lt;/sub&gt;C&lt;sub&gt;i+2&lt;/sub&gt; in the path forms a triangle in the map, i.e. there is a bridge between Ci and C&lt;sub&gt;i+2&lt;/sub&gt;, we add the product Vi*V&lt;sub&gt;i+1&lt;/sub&gt;*V&lt;sub&gt;i+2&lt;/sub&gt;. 
+&lt;br&gt;
+&lt;br&gt;Most likely but not necessarily, the best triangular Hamilton path
+you are going to find contains many triangles. It is quite possible
+that there might be more than one best triangular Hamilton paths; your
+second task is to find the number of such paths. &lt;br&gt;
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+input file starts with a number q (q&amp;lt;=20) on the first line, which
+is the number of test cases. Each test case starts with a line with two
+integers n and m, which are the number of islands and the number of
+bridges in the map, respectively. The next line contains n positive
+integers, the i-th number being the Vi value of island i. Each value is
+no more than 100. The following m lines are in the form x y, which
+indicates there is a (two way) bridge between island x and island y.
+Islands are numbered from 1 to n. You may assume there will be no more
+than 13 islands. &lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each test case, output a line with two numbers, separated by a space.
+The first number is the maximum value of a best triangular Hamilton
+path; the second number should be the number of different best
+triangular Hamilton paths. If the test case does not contain a Hamilton
+path, the output must be `0 0'. &lt;br&gt;
+&lt;br&gt;Note: A path may be written down in the reversed order. We still think it is the same path. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2
+3 3
+2 2 2
+1 2
+2 3
+3 1
+4 6
+1 2 3 4
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;22 3
+69 1
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Shanghai+2004"&gt;Shanghai 2004&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2288"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2288"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2288"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>4</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>I Painting A Board</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1691&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Painting A Board&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 10000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1534&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 701&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+CE digital company has built an Automatic Painting Machine (APM) to
+paint a flat board fully covered by adjacent non-overlapping rectangles
+of different sizes each with a predefined color.
+&lt;br&gt;&lt;center&gt;&lt;IMG SRC="1691_1.jpg"&gt;&lt;/center&gt;
+&lt;br&gt;To color the board, the APM has access to a set of brushes. Each
+brush has a distinct color C. The APM picks one brush with color C and
+paints all possible rectangles having predefined color C with the
+following restrictions:
+&lt;br&gt;To avoid leaking the paints and mixing colors, a rectangle can
+only be painted if all rectangles immediately above it have already
+been painted. For example rectangle labeled F in Figure 1 is painted
+only after rectangles C and D are painted. Note that each rectangle
+must be painted at once, i.e. partial painting of one rectangle is not
+allowed.
+&lt;br&gt;You are to write a program for APM to paint a given board so that
+the number of brush pick-ups is minimum. Notice that if one brush is
+picked up more than once, all pick-ups are counted.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line of the input file contains an integer M which is the number
+of test cases to solve (1 &amp;lt;= M &amp;lt;= 10). For each test case, the
+first line contains an integer N, the number of rectangles, followed by
+N lines describing the rectangles. Each rectangle R is specified by 5
+integers in one line: the y and x coordinates of the upper left corner
+of R, the y and x coordinates of the lower right corner of R, followed
+by the color-code of R.
+&lt;br&gt;Note that: 
+&lt;br&gt;&lt;ol&gt;&lt;li&gt;Color-code is an integer in the range of 1 .. 20.
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;Upper left corner of the board coordinates is always (0,0).
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;Coordinates are in the range of 0 .. 99.
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;N is in the range of 1..15.&lt;/li&gt;&lt;/ol&gt;
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;One line for each test case showing the minimum number of brush pick-ups. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;1
+7
+0 0 2 2 1
+0 2 1 6 2
+2 0 4 2 1
+1 2 4 4 2
+1 4 3 6 1
+4 0 6 4 1
+3 4 6 6 2
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;3&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Tehran+1999"&gt;Tehran 1999&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1691"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1691"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1691"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="1691_1.jpg">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>J Rebuilding Roads</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=1947&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Rebuilding Roads&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 2691&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 1073&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+cows have reconstructed Farmer John's farm, with its N barns (1 &amp;lt;= N
+&amp;lt;= 150, number 1..N) after the terrible earthquake last May. The
+cows didn't have time to rebuild any extra roads, so now there is
+exactly one way to get from any given barn to any other barn. Thus, the
+farm transportation system can be represented as a tree.
+&lt;br&gt;
+&lt;br&gt;Farmer John wants to know how much damage another earthquake could
+do. He wants to know the minimum number of roads whose destruction
+would isolate a subtree of exactly P (1 &amp;lt;= P &amp;lt;= N) barns from the
+rest of the barns.&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;* Line 1: Two integers, N and P
+&lt;br&gt;
+&lt;br&gt;* Lines 2..N: N-1 lines, each with two integers I and J.  Node I is node J's parent in the tree of roads.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;A
+single line containing the integer that is the minimum number of roads
+that need to be destroyed for a subtree of P nodes to be isolated.
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;11 6
+1 2
+1 3
+1 4
+1 5
+2 6
+2 7
+2 8
+4 9
+4 10
+4 11
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;2&lt;/pre&gt;&lt;p class="pst"&gt;Hint&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;[A subtree with nodes (1, 2, 3, 6, 7, 8) will become isolated if roads 1-4 and 1-5 are destroyed.]
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=USACO+2002+February"&gt;USACO 2002 February&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1947"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1947"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1947"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+        <TimeLimit>1</TimeLimit>
+        <InputFile />
+        <OutputFile />
+        <InputFormat inputType="eof">
+            <Terminator xml:space="preserve"></Terminator>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </InputFormat>
+        <OutputFormat>
+            <Header xml:space="preserve"></Header>
+            <Footer xml:space="preserve"></Footer>
+            <Seperator xml:space="preserve" layout="bottom"></Seperator>
+        </OutputFormat>
+        <TestCase difficulty="sample">
+            <TestInput xml:space="preserve">0
+</TestInput>
+            <TestOutput xml:space="preserve">0
+</TestOutput>
+        </TestCase>
+    </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

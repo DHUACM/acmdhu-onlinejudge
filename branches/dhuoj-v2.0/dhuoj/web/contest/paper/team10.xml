@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="true">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">3</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>10</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MCwCFC+u2qbWOhlswfcX9nQjk6s8unezAhQEjPnbvH9bfPZd6aw2OsdEhvIe6w==</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe><![CDATA[登陆及提交说明<BR>
+请不要擅自操作键盘和鼠标，根据现场工作的人员的指示操作。<BR>
+<BR>
+<BR>
+2)试题描述说明<BR>
+试题主要是描述了一个问题，并请你用程序来解决这个问题。一般来说，你所编写的程序应该能够接受题目中所描述的数据，按照题目的描述处理这些数据，并且严格按照输出描述(The Output)中所述的格式输出结果。程序将提交到服务器进行打分。打分详情可见‘3)打分说明’部分。<BR>
+试题主要分为六部分: <BR>
+1.标题<BR>
+包括试题的主标题，以及副标题Time Limit部分，Time Limit表示所提交的答题程序所能运行的最长时间，如果超过这个时间，程序无论输出是否正确，都将被裁判端判为Time Limit Exceed。<BR>
+比如Time Limit是10 sec(10秒)。如果提交的答题程序运行时间超过10秒，则会被判为Time Limit Exceed，无论答题程序输出是否正确，也就是说在10秒内答题程序输出的结果正确或错误都不会得到任何提示。<BR>
+<BR>
+2.Descripiton<BR>
+题目描述，作为题目的主要部分，对问题进行详细的说明。<BR>
+<BR>
+3.The Input<BR>
+输入描述部分，这部分描述了输入数据及其格式和范围。输入答题程序的数据将严格按照这部分的描述。<BR>
+<BR>
+4.The Output<BR>
+输出描述，这部分描述了答题程序所应该输出的数据及其格式。答题程序必须按照这部分的描述来输出，否则很有可能无法通过裁判端的测试。<BR>
+<BR>
+5.Sample Input<BR>
+输入样例，以实例来说明输入数据的格式。请注意这里的数据只是作为实例，并不代表实际测试答题程序的数据是这些。因此能正确处理Sample中的数据并不代表程序一定能通过。不过，Sample数据一定是实际测试数据的子集，因此不能正确处理Sample就一定无法在裁判端通过。所以没有通过Sample的程序最好不要贸然提交。
+<BR>
+6.Sample Output<BR>
+对应输入样例的输出数据，用来说明答题程序所应输出的格式。答题程序的输出应该严格按照这部分所示输出。比如：<BR>
+在Sample Output中有两个整数独占一行，并且以空格分隔，如下：<BR>
+2 3<BR>
+那么如下的输出都是错误的：<BR>
+a=2 b=3<BR>
+或<BR>
+2       3<BR>
+或<BR>
+3 2<BR>
+必须严格按照Sample Output中所示的格式输出才有可能通过裁判端打分。<BR>
+<BR>
+3)打分说明<BR>
+打分结果	评判标准<BR>
+Compile Error	编译错<BR>
+Time Limited Exceeded	程序运行超过时间限制<BR>
+Run Time Error	程序运行错误<BR>
+Wrong Answer	输出结果中关键数据错误<BR>
+Presentation Error	格式错<BR>
+Accepted	输出结果完全正确<BR>
+
+
+4)程序编写说明<BR>
+1.C/C++<BR>
+首先，必须注意程序的main函数需要定义成int型，然后必须return 0。<BR>
+其次，如果输入描述(The Output)中没有明确规定输入结束标志或说以EOF结束，那么可以使用如下格式来读入：<BR>
+<BR>
+while(cin>>a)或while(scanf("%d",&a)==1)<BR>
+<BR>
+注：这里while(scanf("%d",&a)==1)中的1是输入数据的数量，如果有两个则是：<BR>
+while(scanf("%d %d",&a,&b)==2)<BR>
+<BR>]]></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>G</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>H</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>I</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>J</Title>
+            <Author />
+            <Problem contentType="html">
+                <Description xml:space="preserve">Hello</Description>
+                <InputSpec xml:space="preserve">How are you</InputSpec>
+                <OutputSpec xml:space="preserve">Just so so</OutputSpec>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="trivial">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+
