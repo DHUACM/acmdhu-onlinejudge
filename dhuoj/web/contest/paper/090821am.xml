@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="gb2312"?>
+<PaperSetter checked="false">
+    <PaperDetail xml:space="preserve"><PaperVersion>1</PaperVersion><PaperID>1</PaperID><PaperName>1</PaperName><PaperAuthor>1</PaperAuthor><PaperTotalTime unit="hour">1</PaperTotalTime><PaperStartTime zone="+8">1</PaperStartTime><PaperProblemSum>10</PaperProblemSum><PublicKey>MIHxMIGoBgcqhkjOOAQBMIGcAkEA/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFwIVAJYu3cw2nLqOuyYO5rahJtk0bjjFAkBnhHGyepz0TukaScUUfbGpqvJE8FpDTWSGkx0tFCcbnjUDC3H9c9oXkGmzLik1Yw4cIGI1TQ2iCmxBblC+eUykA0QAAkEA8ojKBedYrFoDBvrk2cvh998qmKFuHB0gXegkDXzHhk+yUprBGbpdLHVDWq8P7hPLyNPuviEvJoxz4x5kqiidgQ==</PublicKey><Signature>MC0CFQCG6+aWQfDPmAbNU28qqtSQp8/QKwIUPIyOp3NwWixyEg7kyVeNGYPjtAs=</Signature><PaperReference><![CDATA[1]]></PaperReference><PaperDescribe></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="false">
+            <Title>A</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Language:&lt;select size="1" onchange="window.location.href='problem?id=3304&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Segments&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1803&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 395&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;Given &lt;i&gt;n&lt;/i&gt;
+segments in the two dimensional space, write a program, which
+determines if there exists a line such that after projecting these
+segments on it, all projected segments have at least one point in
+common.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;Input begins with a number &lt;i&gt;T&lt;/i&gt; showing the number of test cases and then, &lt;i&gt;T&lt;/i&gt; test cases follow. Each test case begins with a line containing a positive integer &lt;i&gt;n&lt;/i&gt; ≤ 100 showing the number of segments. After that, &lt;i&gt;n&lt;/i&gt; lines containing four real numbers &lt;i&gt;x&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt; &lt;i&gt;y&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt; &lt;i&gt;x&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt; &lt;i&gt;y&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt; follow, in which (&lt;i&gt;x&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;, &lt;i&gt;y&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;) and (&lt;i&gt;x&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;, &lt;i&gt;y&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;) are the coordinates of the two endpoints for one of the segments.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;For
+each test case, your program must output "Yes!", if a line with desired
+property exists and must output "No!" otherwise. You must assume that
+two floating point numbers &lt;i&gt;a&lt;/i&gt; and &lt;i&gt;b&lt;/i&gt; are equal if |&lt;i&gt;a&lt;/i&gt; - &lt;i&gt;b&lt;/i&gt;| &amp;lt; 10&lt;sup&gt;-8&lt;/sup&gt;.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;3
+2
+1.0 2.0 3.0 4.0
+4.0 5.0 6.0 7.0
+3
+0.0 0.0 0.0 1.0
+0.0 1.0 0.0 2.0
+1.0 1.0 2.0 1.0
+3
+0.0 0.0 0.0 1.0
+0.0 2.0 0.0 3.0
+1.0 1.0 2.0 1.0&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;Yes!
+Yes!
+No!&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Amirkabir+University+of+Technology+Local+Contest+2006"&gt;Amirkabir University of Technology Local Contest 2006&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3304"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3304"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3304"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>B</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=2026&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;As the Crow Flies&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 212&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 121&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;center&gt;&lt;IMG SRC="2.jpg"&gt;&lt;/center&gt;
+&lt;br&gt;As president of a startup airline company, you have started a
+frequent flier program that rewards customers for every mile they
+travel. As a for-profit company, you have a vested interest in
+minimizing the number of frequent flier miles that a person can earn on
+any one trip. To get an idea of how many miles a customer could earn
+flying the existing network, you've decided to write a program. &lt;br&gt;
+&lt;br&gt;Assumptions: 
+&lt;br&gt;&lt;ul&gt;&lt;li&gt;A passenger's itinerary is one-way (no return flight). 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;Every itinerary takes the shortest route from the departing city to the destination city. 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;Frequent flier miles are counted "as the crow flies"
+(i.e., the shortest route across the earth's surface that connects the
+cities along the route). &lt;br&gt;&lt;/li&gt;&lt;li&gt;The earth's surface is a perfect sphere with radius 4000 miles. &lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line contains a single integer n indicating the number of data
+sets. Each data set will be formatted according to the following
+description: &lt;br&gt;
+&lt;br&gt;A single data set has 3 components: 
+&lt;br&gt;&lt;ol&gt;&lt;li&gt;Header Line - A single line, "X Y", where X is the number
+of cities and Y is the number of flight legs in the airline's network.
+Both will be positive integers less than 100. &lt;br&gt;&lt;/li&gt;&lt;li&gt;City List - A list of cities and their locations, one city per line. The line will be of the format 
+&lt;br&gt;"C LA NS LO EW" where: 
+&lt;br&gt;&lt;ul&gt;&lt;li&gt;C is the name of the city (no spaces, alphabetical, first letter only upper case) 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;LA is the degrees of latitude where the city is located (from 0 to 90) 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;NS is the direction of latitude ('N'orth or 'S'outh of the equator) 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;LO is the degrees of longitude where the city is located (from 0 to 180) 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;EW is the direction of longitude ('E'ast or 'W'est of the prime meridian) &lt;/li&gt;&lt;/ul&gt;
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;Flight List - A list of city pairs of the format "B C"
+representing different cities that are directly connected by flight
+legs, one pair per line. Note that "B C" is equivalent to "C B". &lt;/li&gt;&lt;/ol&gt;
+&lt;br&gt;Note: 
+&lt;br&gt;&lt;ul&gt;&lt;li&gt;Some longitude measurements can be represented in multiple ways (i.e., 180E = 180W) 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;All degrees of latitude and longitude given in the input will be integers. 
+&lt;br&gt;&lt;/li&gt;&lt;li&gt;The airline's network is connected (i.e., there is at least one route between any two cities). &lt;/li&gt;&lt;/ul&gt;
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each data set, output the two cities that are farthest from each other
+(farthest in the sense that the shortest route between them is the
+longest of any city pair). You are guaranteed that there will be no
+ties. Display the city names on the same line, separated by a single
+space, sorted in dictionary order. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2
+6 5
+Northpole 90 N 87 E
+Southpole 90 S 180 W
+Equatorone 0 N 45 W
+Equatortwo 0 S 90 E
+Equatorthree 0 S 180 E
+Equatorfour 0 N 46 W
+Equatorone Equatortwo
+Equatortwo Equatorthree
+Equatorthree Equatorfour
+Northpole Equatortwo
+Southpole Equatorthree
+2 1
+Northpole 90 N 0 E
+Southpole 90 S 0 W
+Southpole Northpole
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;Equatorfour Equatorone
+Northpole Southpole&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=South+Central+USA+2004"&gt;South Central USA 2004&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2026"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2026"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2026"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="2.jpg">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>C</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=1873&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;The Fortified Forest&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1419&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 407&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Once
+upon a time, in a faraway land, there lived a king. This king owned a
+small collection of rare and valuable trees, which had been gathered by
+his ancestors on their travels. To protect his trees from thieves, the
+king ordered that a high fence be built around them. His wizard was put
+in charge of the operation. &lt;br&gt;Alas, the wizard quickly noticed that the only suitable material
+available to build the fence was the wood from the trees themselves. In
+other words, it was necessary to cut down some trees in order to build
+a fence around the remaining trees. Of course, to prevent his head from
+being chopped off, the wizard wanted to minimize the value of the trees
+that had to be cut. The wizard went to his tower and stayed there until
+he had found the best possible solution to the problem. The fence was
+then built and everyone lived happily ever after. &lt;br&gt;
+&lt;br&gt;You are to write a program that solves the problem the wizard faced. 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+input contains several test cases, each of which describes a
+hypothetical forest. Each test case begins with a line containing a
+single integer n, 2 &amp;lt;= n &amp;lt;= 15, the number of trees in the
+forest. The trees are identified by consecutive integers 1 to n. Each
+of the subsequent n lines contains 4 integers xi, yi, vi, li that
+describe a single tree. (xi, yi) is the position of the tree in the
+plane, vi is its value, and li is the length of fence that can be built
+using the wood of the tree. vi and li are between 0 and 10,000. &lt;br&gt;The input ends with an empty test case (n = 0). 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each test case, compute a subset of the trees such that, using the wood
+from that subset, the remaining trees can be enclosed in a single
+fence. Find the subset with minimum value. If more than one such
+minimum-value subset exists, choose one with the smallest number of
+trees. For simplicity, regard the trees as having zero diameter. &lt;br&gt;Display, as shown below, the test case numbers (1, 2, ...), the
+identity of each tree to be cut, and the length of the excess fencing
+(accurate to two fractional digits). &lt;br&gt;
+&lt;br&gt;Display a blank line between test cases. 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;6
+ 0  0  8  3
+ 1  4  3  2
+ 2  1  7  1
+ 4  1  2  3
+ 3  5  4  6
+ 2  3  9  8
+3
+ 3  0 10  2
+ 5  5 20 25
+ 7 -3 30 32
+0
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;Forest 1
+Cut these trees: 2 4 5 
+Extra wood: 3.16
+
+Forest 2
+Cut these trees: 2 
+Extra wood: 15.00
+&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=World+Finals+1999"&gt;World Finals 1999&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1873"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1873"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1873"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>D</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=1019&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Number Sequence&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 10000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 16072&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 4192&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;A
+single positive integer i is given. Write a program to find the digit
+located in the position i in the sequence of number groups S1S2...Sk.
+Each group Sk consists of a sequence of positive integer numbers
+ranging from 1 to k, written one after another.
+&lt;br&gt;For example, the first 80 digits of the sequence are as follows:
+&lt;br&gt;11212312341234512345612345671234567812345678912345678910123456789101112345678910&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+first line of the input file contains a single integer t (1 ≤ t ≤ 10),
+the number of test cases, followed by one line for each test case. The
+line for a test case contains the single integer i (1 ≤ i ≤ 2147483647)&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;There should be one output line per test case containing the digit located in the position i.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2
+8
+3&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;2
+2&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Tehran+2002"&gt;Tehran 2002&lt;/a&gt;, First Iran Nationwide Internet Programming Contest&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1019"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1019"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1019"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>E</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=1845&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Sumdiv&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 1000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 30000K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 4244&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 857&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Consider
+two natural numbers A and B. Let S be the sum of all natural divisors
+of A^B. Determine S modulo 9901 (the rest of the division of S by 9901).&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The only line contains the two natural numbers A and B, (0 &amp;lt;= A,B &amp;lt;= 50000000)separated by blanks.&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The only line of the output will contain S modulo 9901.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2 3&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;15&lt;/pre&gt;&lt;p class="pst"&gt;Hint&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;2^3 = 8.
+&lt;br&gt;The natural divisors of 8 are: 1,2,4,8. Their sum is 15.
+&lt;br&gt;15 modulo 9901 is 15 (that should be output). 
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Romania+OI+2002"&gt;Romania OI 2002&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=1845"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=1845"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=1845"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>F</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=3273&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Monthly Expense&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 2000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 3658&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 1401&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;Farmer
+John is an astounding accounting wizard and has realized he might run
+out of money to run the farm. He has already calculated and recorded
+the exact amount of money (1 ≤ &lt;i&gt;money&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt; ≤ 10,000) that he will need to spend each day over the next &lt;i&gt;N&lt;/i&gt; (1 ≤ &lt;i&gt;N&lt;/i&gt; ≤ 100,000) days.&lt;/p&gt;&lt;p&gt;FJ wants to create a budget for a sequential set of exactly &lt;i&gt;M&lt;/i&gt; (1 ≤ &lt;i&gt;M&lt;/i&gt; ≤ &lt;i&gt;N&lt;/i&gt;)
+fiscal periods called "fajomonths". Each of these fajomonths contains a
+set of 1 or more consecutive days. Every day is contained in exactly
+one fajomonth.&lt;/p&gt;&lt;p&gt;FJ's goal is to arrange the fajomonths so as to
+minimize the expenses of the fajomonth with the highest spending and
+thus determine his monthly spending limit.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Line 1: Two space-separated integers: &lt;i&gt;N&lt;/i&gt; and &lt;i&gt;M&lt;/i&gt;
+&lt;br&gt;Lines 2..&lt;i&gt;N&lt;/i&gt;+1: Line &lt;i&gt;i&lt;/i&gt;+1 contains the number of dollars Farmer John spends on the &lt;i&gt;i&lt;/i&gt;th day&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Line 1: The smallest possible monthly limit Farmer John can afford to live with.&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;7 5
+100
+400
+300
+100
+500
+101
+400&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;500&lt;/pre&gt;&lt;p class="pst"&gt;Hint&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;If
+Farmer John schedules the months so that the first two days are a
+month, the third and fourth are a month, and the last three are their
+own months, he spends at most $500 in any month. Any other method of
+scheduling gives a larger minimum monthly limit.&lt;/div&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=USACO+2007+March+Silver"&gt;USACO 2007 March Silver&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3273"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3273"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3273"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>2</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>g</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=3472&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Holey Square Tiling&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 10000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 131072K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 673&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 183&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;Given a square of size &lt;i&gt;n&lt;/i&gt; + 2 with a square hole of size &lt;i&gt;n&lt;/i&gt; �� 2 in the middle (see the figure below), calculate the number of different ways to tile it with dominoes of size 1 × 2.&lt;/p&gt;&lt;div align="center"&gt;&lt;IMG SRC="g.gif"&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;The input consists of multiple test cases. Each test case contains only one integer &lt;i&gt;n&lt;/i&gt; (3 ≤ &lt;i&gt;n&lt;/i&gt; ≤ 10&lt;sup&gt;4&lt;/sup&gt;). Process util EOF is met.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;For each test case, output the desired number in decimal using the comma as the thousand separator.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;3
+50&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;196
+401,520,777,816,387,690,468,975,409,805,843,797,460,004&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=POJ+Founder+Monthly+Contest+%E2%80%93+2007.12.30"&gt;POJ Founder Monthly Contest � 2007.12.30&lt;/a&gt;, frkstyc&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3472"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3472"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3472"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="g.gif">
+                    <Text />
+                    <Image xml:space="preserve">iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAMAAADQmBKKAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAVUExURf///yQkJNLS0ry8vH19fezs7P///wrz6GQAAAAHdFJOU////////wAaSwNGAAAB7klEQVR42uzc62rDMAwFYEs62vs/8mSnJHR1CsrSWYyjP21NMR+5WrGcpigV1kxqRYDaNNRT7a63/B0EEUQQQQQRRBBBBBFE0D8E6TRMV8QA+TSAebtqpjn79ze7TKTWMaQiXgoEESsFGml2IdB4BKGFQFCBohDIm6B5qSu1oNitgyCCCCKIIIIIugyaj//lJOuAJeMkG3mTdcwzpBigzduTgXxelttl4l+ZAD59DBFEEEEEEUQQQQQR9EegGCy3ZjCvAoKLQdvewWqQo41n9/seXA1SbePRfQXQIyXavuzp2FlelgblZ4P2lOgpHTvNy7Kgy3nZ2Efxy63IaT8OoWCY1gBtn9hnOJaD1PbLI28dBBFEEEEEEUQQQQTVBpWbnio3gcc5V4IIIogggggiqAAIMR5SKwSyGOqVKoEvt0igL6NAKZA9Fpqo3gyyy2dZtEcSgLu3UKQzdqlsEEBPYl6SiHTW8dLB6DZfNvjht10gXTaofUpvsmLp1wd1P1306gq8EPvNIIzpHa5RJIigFKjPi8aF1LwKaJSNWJs+LFsBGmUjcROe9rQCNMpGvBBoq4fQ+Sh8DQgd5NOFsWtAfYGlHmUj60/72DauR9nIclDvwhXThbFLQDrGpEfZCG8dBBH0A1Ts5X7VXn/4LcAA/85cL0uMa14AAAAASUVORK5CYII=</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>10</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0	
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>h</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=2151&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Check the difficulty of problems&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 2000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 789&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 307&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;Organizing
+a programming contest is not an easy job. To avoid making the problems
+too difficult, the organizer usually expect the contest result satisfy
+the following two terms:
+&lt;br&gt;1.	All of the teams solve at least one problem.
+&lt;br&gt;2.	The champion (One of those teams that solve the most problems) solves at least a certain number of problems.
+&lt;br&gt;
+&lt;br&gt;Now the organizer has studied out the contest problems, and through
+the result of preliminary contest, the organizer can estimate the
+probability that a certain team can successfully solve a certain
+problem.
+&lt;br&gt;
+&lt;br&gt;Given the number of contest problems M, the number of teams T, and
+the number of problems N that the organizer expect the champion solve
+at least. We also assume that team i solves problem j with the
+probability Pij (1 &amp;lt;= i &amp;lt;= T, 1&amp;lt;= j &amp;lt;= M). Well, can you
+calculate the probability that all of the teams solve at least one
+problem, and at the same time the champion team solves at least N
+problems?
+&lt;br&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;The
+input consists of several test cases. The first line of each test case
+contains three integers M (0 &amp;lt; M &amp;lt;= 30), T (1 &amp;lt; T &amp;lt;= 1000)
+and N (0 &amp;lt; N &amp;lt;= M). Each of the following T lines contains M
+floating-point numbers in the range of [0,1]. In these T lines, the
+j-th number in the i-th line is just Pij. A test case of M = T = N = 0
+indicates the end of input, and should not be processed.&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;For
+each test case, please output the answer in a separate line. The result
+should be rounded to three digits after the decimal point. &lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;2 2 2
+0.9 0.9
+1 0.9
+0 0 0
+&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;0.972&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=POJ+Monthly"&gt;POJ Monthly&lt;/a&gt;,鲁小石&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=2151"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=2151"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=2151"&gt;Discuss&lt;/a&gt;]
+&lt;/font&gt;&lt;/p&gt;</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+            </Problem>
+            <TestData>
+                <TimeLimit>2</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>I</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=3155&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Hard Life&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 8000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1424&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 376&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="color: rgb(14, 173, 0);"&gt;&lt;b&gt;Case Time Limit:&lt;/b&gt; 2000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td style="font-weight: bold; color: red;"&gt;Special Judge&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;John
+is a Chief Executive Officer at a privately owned medium size company.
+The owner of the company has decided to make his son Scott a manager in
+the company. John fears that the owner will ultimately give CEO
+position to Scott if he does well on his new manager position, so he
+decided to make Scott’s life as hard as possible by carefully selecting
+the team he is going to manage in the company.&lt;/p&gt;&lt;p&gt;John knows which pairs of his people work poorly in the same team. John introduced a &lt;i&gt;hardness factor&lt;/i&gt;
+of a team ― it is a number of pairs of people from this team who work
+poorly in the same team divided by the total number of people in the
+team. The larger is the hardness factor, the harder is this team to
+manage. John wants to find a group of people in the company that are
+hardest to manage and make it Scott’s team. Please, help him.&lt;/p&gt;&lt;div align="center"&gt;&lt;IMG SRC="i.gif"&gt;&lt;/div&gt;&lt;p&gt;In
+the example on the picture the hardest team consists of people 1, 2, 4,
+and 5. Among 4 of them 5 pairs work poorly in the same team, thus
+hardness factor is equal to &lt;sup&gt;5&lt;/sup&gt;��&lt;sub&gt;4&lt;/sub&gt;. If we add person number 3 to the team then hardness factor decreases to &lt;sup&gt;6&lt;/sup&gt;��&lt;sub&gt;5&lt;/sub&gt;.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;The first line of the input file contains two integer numbers &lt;i&gt;n&lt;/i&gt; and &lt;i&gt;m&lt;/i&gt; (1 ≤ &lt;i&gt;n&lt;/i&gt; ≤ 100, 0 ≤ &lt;i&gt;m&lt;/i&gt; ≤ 1000). Here &lt;i&gt;n&lt;/i&gt; is a total number of people in the company (people are numbered from 1 to &lt;i&gt;n&lt;/i&gt;), and m is the number of pairs of people who work poorly in the same team. Next &lt;i&gt;m&lt;/i&gt; lines describe those pairs with two integer numbers &lt;i&gt;a&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt; and &lt;i&gt;b&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt; (1 ≤ &lt;i&gt;a&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt;, &lt;i&gt;b&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt; ≤ &lt;i&gt;n&lt;/i&gt;, &lt;i&gt;a&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt; ≠ &lt;i&gt;b&lt;sub&gt;i&lt;/sub&gt;&lt;/i&gt;) on a line. The order of people in a pair is arbitrary and no pair is listed twice.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;Write to the output file an integer number &lt;i&gt;k&lt;/i&gt; (1 ≤ &lt;i&gt;k&lt;/i&gt; ≤ &lt;i&gt;n&lt;/i&gt;) ― the number of people in the hardest team, followed by &lt;i&gt;k&lt;/i&gt;
+lines listing people from this team in ascending order. If there are
+multiple teams with the same hardness factor then write any one.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;&lt;b&gt;sample input #1&lt;/b&gt;
+5 6
+1 5
+5 4
+4 2
+2 5
+1 2
+3 1
+
+&lt;b&gt;sample input #2&lt;/b&gt;
+4 0&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;&lt;b&gt;sample output #1&lt;/b&gt;
+4
+1
+2
+4
+5
+
+&lt;b&gt;sample output #2&lt;/b&gt;
+1
+1&lt;/pre&gt;&lt;p class="pst"&gt;Hint&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;p&gt;Note, that in the last example any team has hardness factor of zero, and any non-empty list of people is a valid answer.&lt;/p&gt;&lt;/div&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northeastern+Europe+2006"&gt;Northeastern Europe 2006&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3155"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3155"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3155"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="i.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>8</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+        <ProblemArchive version="1.0" checked="false">
+            <Title>j</Title>
+            <Author>dhu</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">&lt;select size="1" onchange="window.location.href='problem?id=3150&amp;amp;lang='+this.value+'&amp;amp;change=true'"&gt;&lt;option value="default" selected="selected"&gt;Default&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class="ptt" lang="en-US"&gt;Cellular Automaton&lt;/div&gt;
+&lt;div class="plm"&gt;&lt;table align="center"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Time Limit:&lt;/b&gt; 12000MS&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Memory Limit:&lt;/b&gt; 65536K&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Submissions:&lt;/b&gt; 1202&lt;/td&gt;&lt;td width="10"&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Accepted:&lt;/b&gt; 436&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3" style="color: rgb(14, 173, 0);" align="center"&gt;&lt;b&gt;Case Time Limit:&lt;/b&gt; 2000MS&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;p class="pst"&gt;Description&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;A &lt;i&gt;cellular automaton&lt;/i&gt;
+is a collection of cells on a grid of specified shape that evolves
+through a number of discrete time steps according to a set of rules
+that describe the new state of a cell based on the states of
+neighboring cells. The &lt;i&gt;order of the cellular automaton&lt;/i&gt; is the number of cells it contains. Cells of the automaton of order &lt;i&gt;n&lt;/i&gt; are numbered from 1 to &lt;i&gt;n&lt;/i&gt;.&lt;/p&gt;&lt;p&gt;The &lt;i&gt;order of the cell&lt;/i&gt; is the number of different values it may contain. Usually, values of a cell of order &lt;i&gt;m&lt;/i&gt; are considered to be integer numbers from 0 to &lt;i&gt;m&lt;/i&gt; �� 1.&lt;/p&gt;&lt;p&gt;One
+of the most fundamental properties of a cellular automaton is the type
+of grid on which it is computed. In this problem we examine the special
+kind of cellular automaton ― circular cellular automaton of order &lt;i&gt;n&lt;/i&gt; with cells of order &lt;i&gt;m&lt;/i&gt;. We will denote such kind of cellular automaton as &lt;i&gt;n,m-automaton&lt;/i&gt;.&lt;/p&gt;&lt;p&gt;A distance between cells &lt;i&gt;i&lt;/i&gt; and &lt;i&gt;j&lt;/i&gt; in &lt;i&gt;n&lt;/i&gt;,&lt;i&gt;m&lt;/i&gt;-automaton is defined as min(|&lt;i&gt;i&lt;/i&gt; �� &lt;i&gt;j&lt;/i&gt;|, &lt;i&gt;n&lt;/i&gt; �� |&lt;i&gt;i&lt;/i&gt; �� &lt;i&gt;j&lt;/i&gt;|). A &lt;i&gt;d-environment of a cell&lt;/i&gt; is the set of cells at a distance not greater than &lt;i&gt;d&lt;/i&gt;.&lt;/p&gt;&lt;p&gt;On each &lt;i&gt;d-step&lt;/i&gt; values of all cells are simultaneously replaced by new values. The new value of cell &lt;i&gt;i&lt;/i&gt; after &lt;i&gt;d&lt;/i&gt;-step is computed as a sum of values of cells belonging to the &lt;i&gt;d&lt;/i&gt;-enviroment of the cell &lt;i&gt;i&lt;/i&gt; modulo &lt;i&gt;m&lt;/i&gt;.&lt;/p&gt;&lt;p&gt;The following picture shows 1-step of the 5,3-automaton.&lt;/p&gt;&lt;div align="center"&gt;&lt;IMG SRC="j.gif"&gt;&lt;/div&gt;&lt;p&gt;The problem is to calculate the state of the &lt;i&gt;n&lt;/i&gt;,&lt;i&gt;m&lt;/i&gt;-automaton after &lt;i&gt;k&lt;/i&gt; &lt;i&gt;d&lt;/i&gt;-steps.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Input&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;The first line of the input file contains four integer numbers &lt;i&gt;n&lt;/i&gt;, &lt;i&gt;m&lt;/i&gt;, &lt;i&gt;d&lt;/i&gt;, and &lt;i&gt;k&lt;/i&gt; (1 ≤ &lt;i&gt;n&lt;/i&gt; ≤ 500, 1 ≤ &lt;i&gt;m&lt;/i&gt; ≤ 1 000 000, 0 ≤ &lt;i&gt;d&lt;/i&gt; &amp;lt; &lt;sup&gt;&lt;i&gt;n&lt;/i&gt;&lt;/sup&gt;��&lt;sub&gt;2&lt;/sub&gt; , 1 ≤ &lt;i&gt;k&lt;/i&gt; ≤ 10 000 000). The second line contains n integer numbers from 0 to &lt;i&gt;m&lt;/i&gt; �� 1 ― initial values of the automaton’s cells.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Output&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;span lang="en-us"&gt;&lt;p&gt;Output the values of the &lt;i&gt;n&lt;/i&gt;,&lt;i&gt;m&lt;/i&gt;-automaton’s cells after &lt;i&gt;k&lt;/i&gt; &lt;i&gt;d&lt;/i&gt;-steps.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class="pst"&gt;Sample Input&lt;/p&gt;&lt;pre class="sio"&gt;&lt;b&gt;sample input #1&lt;/b&gt;
+5 3 1 1
+1 2 2 1 2
+
+&lt;b&gt;sample input #2&lt;/b&gt;
+5 3 1 10
+1 2 2 1 2&lt;/pre&gt;&lt;p class="pst"&gt;Sample Output&lt;/p&gt;&lt;pre class="sio"&gt;&lt;b&gt;sample output #1&lt;/b&gt;
+2 2 2 2 1
+
+&lt;b&gt;sample output #2&lt;/b&gt;
+2 0 0 2 2&lt;/pre&gt;&lt;p class="pst"&gt;Source&lt;/p&gt;&lt;div class="ptx" lang="en-US"&gt;&lt;a href="http://acm.pku.edu.cn/JudgeOnline/searchproblem?field=source&amp;amp;key=Northeastern+Europe+2006"&gt;Northeastern Europe 2006&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;font size="3" color="#333399"&gt;&lt;/font&gt;&lt;p align="center"&gt;
+&lt;font size="3" color="#333399"&gt;[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/submit?problem_id=3150"&gt;Submit&lt;/a&gt;]&amp;nbsp;&amp;nbsp;
+ [&lt;a href="javascript:history.go(-1)"&gt;Go Back&lt;/a&gt;]&amp;nbsp;&amp;nbsp; [&lt;a href="http://acm.pku.edu.cn/JudgeOnline/problemstatus?problem_id=3150"&gt;Status&lt;/a&gt;]&amp;nbsp;&amp;nbsp; 
+[&lt;a href="http://acm.pku.edu.cn/JudgeOnline/bbs?problem_id=3150"&gt;Discuss&lt;/a&gt;]</Description>
+                <InputSpec xml:space="preserve" />
+                <OutputSpec xml:space="preserve" />
+                <Figure filename="j.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+                <Figure filename="a1.gif">
+                    <Text />
+                    <Image xml:space="preserve">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</Image>
+                </Figure>
+            </Problem>
+            <TestData>
+                <TimeLimit>1</TimeLimit>
+                <InputFile />
+                <OutputFile />
+                <InputFormat inputType="eof">
+                    <Terminator xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </InputFormat>
+                <OutputFormat>
+                    <Header xml:space="preserve" />
+                    <Footer xml:space="preserve" />
+                    <Seperator xml:space="preserve" layout="bottom" />
+                </OutputFormat>
+                <TestCase difficulty="sample">
+                    <TestInput xml:space="preserve">0
+</TestInput>
+                    <TestOutput xml:space="preserve">0
+</TestOutput>
+                </TestCase>
+            </TestData>
+            <Solution xml:space="preserve" language="cpp" filename="" />
+        </ProblemArchive>
+    </ProblemList>
+</PaperSetter>
+

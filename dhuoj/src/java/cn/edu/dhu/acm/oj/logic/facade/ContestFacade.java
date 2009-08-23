@@ -48,8 +48,13 @@ public class ContestFacade {
                 throw new SubmitFailException("Fail to submit to private contest without reservation.");
         }*/
 
-        TreeMap<Integer, ContestProblemBean> contestProblems = getProblemsByContest(cid);
-        sbean.setProblemId(contestProblems.get(seq).getProblemId());
+        if (seq == 0) {
+            // this is a+b problem
+            sbean.setProblemId(seq);
+        } else {
+            TreeMap<Integer, ContestProblemBean> contestProblems = getProblemsByContest(cid);
+            sbean.setProblemId(contestProblems.get(seq).getProblemId());
+        }
 
         SolutionDAO sdao = new SolutionDAO();
         sdao.addSolution(sbean);

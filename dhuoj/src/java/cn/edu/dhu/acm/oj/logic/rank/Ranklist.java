@@ -95,7 +95,7 @@ public class Ranklist {
 			}
 			
 			int probId = bean.getProblemId();
-			ProblemScoreData psd = csd.getProblemScoreData(probId);
+            ProblemScoreData psd = csd.getProblemScoreData(probId);
 			// user has not try this problem
 			if ( psd == null ){
 				ProblemScoreData newPsd = calcProblemScoreData(bean);
@@ -127,7 +127,8 @@ public class Ranklist {
 			Iterator psIterator = userProblemStatusColl.iterator();
 			while ( psIterator.hasNext() ){
 				ProblemScoreData psd = (ProblemScoreData)psIterator.next();
-				if ( psd.isSolved() ){
+                // problem(0):a+b should not be included in the ranklist.
+				if ( psd.getProblemID() != 0 && psd.isSolved() ){
 					numOfSolved++;
 					score += psd.getScore();
 				}
