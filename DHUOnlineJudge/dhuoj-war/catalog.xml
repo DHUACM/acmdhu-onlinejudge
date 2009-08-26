@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://222.204.211.101:8080/dhuoj/MessageService?WSDL" uri="src/conf/xml-resources/web-service-references/MessageService/wsdl/222.204.211.101_8080/dhuoj/MessageService.wsdl"/>
+    <system systemId="http://222.204.211.101:8080/dhuoj/MessageService?xsd=1" uri="src/conf/xml-resources/web-service-references/MessageService/wsdl/222.204.211.101_8080/dhuoj/MessageService.xsd_1.xsd"/>
+</catalog>

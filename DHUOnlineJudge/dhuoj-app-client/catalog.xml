@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/dhuoj/WSMessageService?wsdl" uri="src/conf/xml-resources/web-service-references/WSMessageService/wsdl/localhost_8080/dhuoj/WSMessageService.wsdl"/>
+    <system systemId="http://localhost:8080/dhuoj/WSMessageService?xsd=1" uri="src/conf/xml-resources/web-service-references/WSMessageService/wsdl/localhost_8080/dhuoj/WSMessageService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/dhuoj/WSUserAccountService?wsdl" uri="src/conf/xml-resources/web-service-references/WSUserAccountService/wsdl/localhost_8080/dhuoj/WSUserAccountService.wsdl"/>
+    <system systemId="http://localhost:8080/dhuoj/WSUserAccountService?xsd=1" uri="src/conf/xml-resources/web-service-references/WSUserAccountService/wsdl/localhost_8080/dhuoj/WSUserAccountService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/dhuoj/WSContestService?wsdl" uri="src/conf/xml-resources/web-service-references/WSContestService/wsdl/localhost_8080/dhuoj/WSContestService.wsdl"/>
+    <system systemId="http://localhost:8080/dhuoj/WSContestService?xsd=1" uri="src/conf/xml-resources/web-service-references/WSContestService/wsdl/localhost_8080/dhuoj/WSContestService.xsd_1.xsd"/>
+</catalog>
