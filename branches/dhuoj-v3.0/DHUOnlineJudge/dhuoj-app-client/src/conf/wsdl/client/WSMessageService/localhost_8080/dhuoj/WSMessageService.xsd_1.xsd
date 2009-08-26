@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.1-hudson-417-SNAPSHOT. --><xs:schema xmlns:tns="http://webservice.dhuoj/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice.dhuoj/">
+
+<xs:element name="queryMessageStatus" type="tns:queryMessageStatus"></xs:element>
+
+<xs:element name="queryMessageStatusResponse" type="tns:queryMessageStatusResponse"></xs:element>
+
+<xs:element name="submitMessage" type="tns:submitMessage"></xs:element>
+
+<xs:element name="submitMessageResponse" type="tns:submitMessageResponse"></xs:element>
+
+<xs:complexType name="queryMessageStatus">
+<xs:sequence>
+<xs:element name="msgID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="queryMessageStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:message" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="message">
+<xs:sequence>
+<xs:element name="messageId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="question" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="response" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitMessage">
+<xs:sequence>
+<xs:element name="msgForm" type="tns:messageForm" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="messageForm">
+<xs:sequence>
+<xs:element name="messageID" type="xs:int"></xs:element>
+<xs:element name="question" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="response" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

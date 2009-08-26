@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:carproject="http://www.netbeans.org/ns/car-project/1" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.dir}/wsimport/client"/>
+        <mkdir dir="${build.generated.dir}/wsimport/binaries"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-check-WSMessageService" depends="wsimport-init">
+        <condition property="wsimport-client-WSMessageService.notRequired">
+            <available file="${build.generated.dir}/wsimport/client/dhuoj/webservice/WSMessageService.java"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-WSMessageService" depends="wsimport-init,wsimport-client-check-WSMessageService" unless="wsimport-client-WSMessageService.notRequired">
+        <property name="wsdl-WSMessageService" location="${meta.inf}/xml-resources/web-service-references/WSMessageService/wsdl/localhost_8080/dhuoj/WSMessageService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/binaries" wsdl="${wsdl-WSMessageService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/dhuoj/WSMessageService?wsdl" xnocompile="true"/>
+    </target>
+    <target name="wsimport-client-clean-WSMessageService" depends="-init-project">
+        <delete dir="${build.generated.dir}/wsimport/client/dhuoj/webservice"/>
+    </target>
+    <target name="wsimport-client-check-WSUserAccountService" depends="wsimport-init">
+        <condition property="wsimport-client-WSUserAccountService.notRequired">
+            <available file="${build.generated.dir}/wsimport/client/dhuoj/webservice/WSUserAccountService.java"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-WSUserAccountService" depends="wsimport-init,wsimport-client-check-WSUserAccountService" unless="wsimport-client-WSUserAccountService.notRequired">
+        <property name="wsdl-WSUserAccountService" location="${meta.inf}/xml-resources/web-service-references/WSUserAccountService/wsdl/localhost_8080/dhuoj/WSUserAccountService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/binaries" wsdl="${wsdl-WSUserAccountService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/dhuoj/WSUserAccountService?wsdl" xnocompile="true"/>
+    </target>
+    <target name="wsimport-client-clean-WSUserAccountService" depends="-init-project">
+        <delete dir="${build.generated.dir}/wsimport/client/dhuoj/webservice"/>
+    </target>
+    <target name="wsimport-client-check-WSContestService" depends="wsimport-init">
+        <condition property="wsimport-client-WSContestService.notRequired">
+            <available file="${build.generated.dir}/wsimport/client/dhuoj/webservice/WSContestService.java"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-WSContestService" depends="wsimport-init,wsimport-client-check-WSContestService" unless="wsimport-client-WSContestService.notRequired">
+        <property name="wsdl-WSContestService" location="${meta.inf}/xml-resources/web-service-references/WSContestService/wsdl/localhost_8080/dhuoj/WSContestService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/binaries" wsdl="${wsdl-WSContestService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/dhuoj/WSContestService?wsdl" xnocompile="true"/>
+    </target>
+    <target name="wsimport-client-clean-WSContestService" depends="-init-project">
+        <delete dir="${build.generated.dir}/wsimport/client/dhuoj/webservice"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WSMessageService, wsimport-client-WSUserAccountService, wsimport-client-WSContestService"/>
+    <target name="wsimport-client-compile" depends="-pre-pre-compile">
+        <carproject:javac srcdir="${build.generated.dir}/wsimport/client" destdir="${classes.dir}"/>
+        <copy todir="${classes.dir}">
+            <fileset dir="${build.generated.dir}/wsimport/binaries" includes="**/*.xml"/>
+        </copy>
+    </target>
+</project>

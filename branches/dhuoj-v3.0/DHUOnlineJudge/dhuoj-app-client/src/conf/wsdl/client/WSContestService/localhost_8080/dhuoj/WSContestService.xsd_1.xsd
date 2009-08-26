@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.1-hudson-417-SNAPSHOT. --><xs:schema xmlns:tns="http://webservice.dhuoj/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice.dhuoj/">
+
+<xs:element name="ContestException" type="tns:ContestException"></xs:element>
+
+<xs:element name="getContestDetail" type="tns:getContestDetail"></xs:element>
+
+<xs:element name="getContestDetailResponse" type="tns:getContestDetailResponse"></xs:element>
+
+<xs:element name="getContestList" type="tns:getContestList"></xs:element>
+
+<xs:element name="getContestListResponse" type="tns:getContestListResponse"></xs:element>
+
+<xs:element name="querySubmitStatus" type="tns:querySubmitStatus"></xs:element>
+
+<xs:element name="querySubmitStatusResponse" type="tns:querySubmitStatusResponse"></xs:element>
+
+<xs:element name="submitCode" type="tns:submitCode"></xs:element>
+
+<xs:element name="submitCodeResponse" type="tns:submitCodeResponse"></xs:element>
+
+<xs:complexType name="submitCode">
+<xs:sequence>
+<xs:element name="submitForm" type="tns:submitCodeForm" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitCodeForm">
+<xs:sequence>
+<xs:element name="contestID" type="xs:int"></xs:element>
+<xs:element name="language" type="xs:int"></xs:element>
+<xs:element name="localJudgeResult" type="xs:int"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="problemID" type="xs:int"></xs:element>
+<xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitCodeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ContestException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="querySubmitStatus">
+<xs:sequence>
+<xs:element name="solutionID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="querySubmitStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:solution" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="solution">
+<xs:sequence>
+<xs:element name="contestId" type="xs:int"></xs:element>
+<xs:element name="language" type="xs:int"></xs:element>
+<xs:element name="localJudgeResult" type="xs:int"></xs:element>
+<xs:element name="memory" type="xs:int"></xs:element>
+<xs:element name="percentage" type="xs:int"></xs:element>
+<xs:element name="problemId" type="xs:int"></xs:element>
+<xs:element name="result" type="xs:int"></xs:element>
+<xs:element name="runtime" type="xs:int"></xs:element>
+<xs:element name="solutionId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="submitDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="valid" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestList">
+<xs:sequence>
+<xs:element name="firstResult" type="xs:int"></xs:element>
+<xs:element name="maxResults" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contest" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="contest">
+<xs:sequence>
+<xs:element name="contestId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="defunct" type="xs:int"></xs:element>
+<xs:element name="description" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="endTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="paperKey" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paperPath" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="private" type="xs:int"></xs:element>
+<xs:element name="startTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestDetail">
+<xs:sequence>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="contestID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getContestDetailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contest" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
