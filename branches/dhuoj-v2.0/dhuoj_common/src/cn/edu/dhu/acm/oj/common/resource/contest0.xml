@@ -56,65 +56,40 @@ while(cin&gt;&gt;a)或while(scanf("%d",&a)!=EOF)
 
 以输入两数求和为例，可以使用以下程序来输入和处理：
 //code start
-#include&lt;iostream.h&gt;
-int main(){
-	int a,b;
-	while(cin&gt;&gt;a&gt;&gt;b){
-		cout&lt;&lt;a+b&lt;&lt;endl;
-	}
-	return 0;
-}
-
-2.Pascal
-Pascal采用Free Pascal编译器。
-以两数求和为例，代码为：
-Program p1000(Input, Output); 
-Var 
-	a, b: Integer; 
-Begin
-	while not eof(Readln(a, b)) do
-	begin 
-		Writeln(a + b); 
-	end;
-End.
-</pre>]]></PaperDescribe></PaperDetail>
-    <ProblemList encrypted="0">
-        <ProblemArchive version="1.0" checked="true">
-            <Title>A+B Problem</Title>
-            <Author>acm</Author>
-            <Problem contentType="html">
-                <Description xml:space="preserve">Calculate a+b</Description>
-                <InputSpec xml:space="preserve">The input will consist of a set of pairs of values for a and b , (0 &amp;lt; a, b &amp;lt; 1000)</InputSpec>
-                <OutputSpec xml:space="preserve">The output will consist of one line for each line of input giving the exact value of a+b. 
-&lt;BR&gt;
-&lt;BR&gt;
-&lt;BR&gt;
-&lt;PRE&gt;
 C language
-#include &amp;lt;stdio.h&amp;gt;		
-int main(){			// be int
+#include &amp;lt;stdio.h&amp;gt;
+int main(){		// be int
 	int a, b;
 	while (scanf("%d %d", &amp;a, &amp;b)!=EOF){
 		printf("%d\n", a + b);
 	}
-	return 0;		// must return 0;
+	return 0;	// must return 0;
 }
 
 C++ language
 #include &amp;lt;iostream&amp;gt;
 using namespace std;
-int main(){			// be int
+int main(){		// be int
 	int a, b;
 	while (cin &amp;gt;&amp;gt; a &amp;gt;&amp;gt; b){
 		cout &amp;lt;&amp;lt; a + b &amp;lt;&amp;lt; endl;
 	}
-	return 0;		// must return 0;
+	return 0;	// must return 0;
 }
 
+****************************************
+Be careful!
+
+"FILE", "fstream", "dirent",
+"unistd", "getenv", "system"
+
+can't exist in your C or C++ code!
+****************************************
+
 Java language
-import java.io.*;
+import java.io.*;	//do not use "package"
 import java.util.*;
-public class Main{          //must be Main
+public class Main{	//must be Main
 	public static void main(String args[]) throws Exception{
 		Scanner cin=new Scanner(System.in);
 		while(cin.hasNextInt()){
@@ -126,10 +101,10 @@ public class Main{          //must be Main
 }
 
 Java language (Old program for jdk 1.4)
-import java.io.*;
+import java.io.*;	//do not use "package"
 import java.util.*;
 
-public class Main {             //must be Main
+public class Main {	//must be Main
 
     public static void main(String args[]) {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -145,6 +120,114 @@ public class Main {             //must be Main
         }
     }
 }
+
+****************************************
+Be careful!
+
+"package", "File", "FileInputStream",
+"FileReader", "RandomAccessFile", "Runtime"
+
+can't exist in your JAVA code!
+****************************************
+
+Pascal language
+var
+  a,b:integer;
+begin
+  while not eof do begin
+    while not eoln do begin
+      read(a,b);
+      writeln(a+b);
+    end;
+    readln;
+  end;
+end.
+</pre>]]></PaperDescribe></PaperDetail>
+    <ProblemList encrypted="0">
+        <ProblemArchive version="1.0" checked="true">
+            <Title>A+B Problem</Title>
+            <Author>acm</Author>
+            <Problem contentType="html">
+                <Description xml:space="preserve">Calculate a+b</Description>
+                <InputSpec xml:space="preserve">The input will consist of a set of pairs of values for a and b , (0 &amp;lt; a, b &amp;lt; 1000)</InputSpec>
+                <OutputSpec xml:space="preserve">The output will consist of one line for each line of input giving the exact value of a+b. 
+&lt;BR&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+&lt;PRE&gt;
+C language
+#include &amp;lt;stdio.h&amp;gt;		
+int main(){		// be int
+	int a, b;
+	while (scanf("%d %d", &amp;a, &amp;b)!=EOF){
+		printf("%d\n", a + b);
+	}
+	return 0;	// must return 0;
+}
+
+C++ language
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+int main(){		// be int
+	int a, b;
+	while (cin &amp;gt;&amp;gt; a &amp;gt;&amp;gt; b){
+		cout &amp;lt;&amp;lt; a + b &amp;lt;&amp;lt; endl;
+	}
+	return 0;	// must return 0;
+}
+
+****************************************
+Be careful!
+
+"FILE", "fstream", "dirent",
+"unistd", "getenv", "system"
+
+can't exist in your C or C++ code!
+****************************************
+
+Java language
+import java.io.*;	//do not use "package"
+import java.util.*;
+public class Main{	//must be Main
+	public static void main(String args[]) throws Exception{
+		Scanner cin=new Scanner(System.in);
+		while(cin.hasNextInt()){
+			int a=cin.nextInt();
+			int b=cin.nextInt();
+			System.out.println(a+b);
+		}
+	}
+}
+
+Java language (Old program for jdk 1.4)
+import java.io.*;	//do not use "package"
+import java.util.*;
+
+public class Main {	//must be Main
+
+    public static void main(String args[]) {
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            while (true) {
+                String line = stdin.readLine();
+                StringTokenizer st = new StringTokenizer(line);
+                int a = Integer.parseInt(st.nextToken());
+                int b = Integer.parseInt(st.nextToken());
+                System.out.println(a + b);
+            }
+        } catch (Exception e) {
+        }
+    }
+}
+
+****************************************
+Be careful!
+
+"package", "File", "FileInputStream",
+"FileReader", "RandomAccessFile", "Runtime"
+
+can't exist in your JAVA code!
+****************************************
 
 Pascal language
 var
