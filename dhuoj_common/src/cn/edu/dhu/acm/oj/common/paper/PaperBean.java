@@ -427,7 +427,6 @@ public class PaperBean {
 
             elem.detach();
             
-            //TODO This looks ugly, going to delete.
             new Document(elem);
         }
 
@@ -469,7 +468,6 @@ public class PaperBean {
 
             elem.detach();
             
-            //TODO This looks ugly, going to delete.
             new Document(elem);
         }
 
@@ -564,6 +562,12 @@ public class PaperBean {
             bean.getProblem().writeFigureList(tmpDir);
             
             this.problemRoot.removeContent(elem);
+            
+            /*
+             * This line is necessary, though the reason is unknown! The
+             * ProblemArchiveBean.transform() doesn't work without this.
+             */
+            new Document(elem);
         }
 
         //decrypt
