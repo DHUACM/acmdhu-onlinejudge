@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2009 10:16:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.UserBean" table="user">
+    <id name="userId" type="string">
+      <column length="20" name="user_id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="password" type="string">
+      <column length="50" name="password" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="100" name="email"/>
+    </property>
+    <property name="nick" type="string">
+      <column length="100" name="nick" not-null="true"/>
+    </property>
+    <property name="school" type="string">
+      <column length="100" name="school" not-null="true"/>
+    </property>
+    <property name="submit" type="java.lang.Integer">
+      <column name="submit"/>
+    </property>
+    <property name="solved" type="java.lang.Integer">
+      <column name="solved"/>
+    </property>
+    <property name="defunct" type="byte">
+      <column name="defunct" not-null="true"/>
+    </property>
+    <property name="ip" type="string">
+      <column length="20" name="ip" not-null="true"/>
+    </property>
+    <property name="accesstime" type="timestamp">
+      <column length="19" name="accesstime"/>
+    </property>
+    <property name="language" type="int">
+      <column name="language" not-null="true"/>
+    </property>
+    <property name="regTime" type="timestamp">
+      <column length="19" name="reg_time"/>
+    </property>
+    <property name="role" type="int">
+      <column name="role" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 5, 2009 11:15:55 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.ContestBean" table="contest">
+    <id name="contestId" type="java.lang.Integer">
+      <column name="contest_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="title" type="string">
+      <column name="title"/>
+    </property>
+    <property name="startTime" type="timestamp">
+      <column length="19" name="start_time"/>
+    </property>
+    <property name="endTime" type="timestamp">
+      <column length="19" name="end_time"/>
+    </property>
+    <property name="defunct" type="byte">
+      <column name="defunct" not-null="true"/>
+    </property>
+    <property name="description" type="string">
+      <column length="65535" name="description"/>
+    </property>
+    <property name="private_" type="byte">
+      <column name="private" not-null="true"/>
+    </property>
+    <property name="status" type="int">
+      <column name="status" not-null="true"/>
+    </property>
+    <property name="paperPath" type="string">
+      <column name="paper_path"/>
+    </property>
+    <property name="paperKey" type="string">
+      <column name="paper_key"/>
+    </property>
+  </class>
+</hibernate-mapping>

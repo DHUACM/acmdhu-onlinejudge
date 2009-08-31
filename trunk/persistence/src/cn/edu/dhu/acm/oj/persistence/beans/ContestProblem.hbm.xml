@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2009 10:16:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="dhuoj" name="cn.edu.dhu.acm.oj.persistence.beans.ContestProblemBean" table="contest_problem">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="contestId" type="int">
+      <column name="contest_id" not-null="true"/>
+    </property>
+    <property name="problemId" type="int">
+      <column name="problem_id" not-null="true"/>
+    </property>
+    <property name="title" type="string">
+      <column length="300" name="title" not-null="true"/>
+    </property>
+    <property name="accepted" type="int">
+      <column name="accepted" not-null="true"/>
+    </property>
+    <property name="submit" type="int">
+      <column name="submit" not-null="true"/>
+    </property>
+    <property name="sequence" type="int">
+      <column name="sequence" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
