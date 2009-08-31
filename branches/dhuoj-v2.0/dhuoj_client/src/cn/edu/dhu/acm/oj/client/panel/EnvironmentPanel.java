@@ -175,7 +175,7 @@ public class EnvironmentPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTF_CppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_CppActionPerformed
-        // TODO add your handling code here:
+        
 }//GEN-LAST:event_JTF_CppActionPerformed
 
     private void JB_JavaFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_JavaFindActionPerformed

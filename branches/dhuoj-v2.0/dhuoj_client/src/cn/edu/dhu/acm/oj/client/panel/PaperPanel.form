@@ -57,16 +57,28 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JCB_ProblemActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="JB_GetPaper">
+        <Component class="javax.swing.JButton" name="JB_Download">
           <Properties>
-            <Property name="text" type="java.lang.String" value="GetPaper"/>
+            <Property name="text" type="java.lang.String" value="Dowanload"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_GetPaperActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_DownloadActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JB_OpenPaper">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="OpenPaper"/>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_OpenPaperActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

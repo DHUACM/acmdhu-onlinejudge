@@ -38,9 +38,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
         <Component class="javax.swing.JComboBox" name="JCB_Paper">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -55,12 +52,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JPF_PasswordActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="JB_Get">
+        <Component class="javax.swing.JButton" name="JB_Open">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Get"/>
+            <Property name="text" type="java.lang.String" value="Open"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_GetActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_OpenActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
