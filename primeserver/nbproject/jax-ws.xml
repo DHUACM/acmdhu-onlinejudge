@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="WSUserFacade">
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSUserFacade</implementation-class>
+    </service>
+    <service name="WSMessageFacade">
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSMessageFacade</implementation-class>
+    </service>
+    <service name="WSContestFacade">
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSContestFacade</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>
