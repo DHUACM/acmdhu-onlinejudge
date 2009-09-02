@@ -2,13 +2,13 @@
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
     <service name="WSUserFacade">
-      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSUserFacade</implementation-class>
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.user.WSUserFacade</implementation-class>
     </service>
     <service name="WSMessageFacade">
-      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSMessageFacade</implementation-class>
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.message.WSMessageFacade</implementation-class>
     </service>
     <service name="WSContestFacade">
-      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.WSContestFacade</implementation-class>
+      <implementation-class>cn.edu.dhu.acm.oj.buslogic.facade.contest.WSContestFacade</implementation-class>
     </service>
   </services>
   <clients/>

@@ -1,4 +1,4 @@
-package cn.edu.dhu.acm.oj.buslogic.facade;
+package cn.edu.dhu.acm.oj.buslogic.facade.message;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

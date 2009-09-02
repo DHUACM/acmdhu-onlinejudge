@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
-  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.WSUserFacade" name="WSUserFacade" url-pattern="/WSUserFacade"/>
-  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.WSMessageFacade" name="WSMessageFacade" url-pattern="/WSMessageFacade"/>
-  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.WSContestFacade" name="WSContestFacade" url-pattern="/WSContestFacade"/>
+  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.user.WSUserFacade" name="WSUserFacade" url-pattern="/WSUserFacade"/>
+  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.message.WSMessageFacade" name="WSMessageFacade" url-pattern="/WSMessageFacade"/>
+  <endpoint implementation="cn.edu.dhu.acm.oj.buslogic.facade.contest.WSContestFacade" name="WSContestFacade" url-pattern="/WSContestFacade"/>
 </endpoints>
