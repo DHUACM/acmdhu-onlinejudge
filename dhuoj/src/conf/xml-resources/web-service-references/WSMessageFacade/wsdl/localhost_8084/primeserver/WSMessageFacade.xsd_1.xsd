@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://message.facade.buslogic.oj.acm.dhu.edu.cn/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://message.facade.buslogic.oj.acm.dhu.edu.cn/">
+
+<xs:element name="MessageException" type="tns:MessageException"></xs:element>
+
+<xs:element name="queryMessageStatus" type="tns:queryMessageStatus"></xs:element>
+
+<xs:element name="queryMessageStatusResponse" type="tns:queryMessageStatusResponse"></xs:element>
+
+<xs:element name="submitMessage" type="tns:submitMessage"></xs:element>
+
+<xs:element name="submitMessageResponse" type="tns:submitMessageResponse"></xs:element>
+
+<xs:complexType name="queryMessageStatus">
+<xs:sequence>
+<xs:element name="msgID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="queryMessageStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:messageBean" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="messageBean">
+<xs:sequence>
+<xs:element name="messageId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="question" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="response" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MessageException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitMessage">
+<xs:sequence>
+<xs:element name="msgForm" type="tns:messageForm" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="messageForm">
+<xs:sequence>
+<xs:element name="messageID" type="xs:int"></xs:element>
+<xs:element name="question" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="response" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

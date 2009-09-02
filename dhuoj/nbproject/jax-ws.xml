@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ContestService">
+      <implementation-class>cn.edu.dhu.acm.oj.webservice.ContestService</implementation-class>
+    </service>
+    <service name="UserAccountService">
+      <implementation-class>cn.edu.dhu.acm.oj.webservice.UserAccountService</implementation-class>
+    </service>
+    <service name="MessageService">
+      <implementation-class>cn.edu.dhu.acm.oj.webservice.MessageService</implementation-class>
+    </service>
+  </services>
+  <clients>
+    <client name="WSUserFacade">
+      <wsdl-url>http://acm.dhu.edu.cn/primeserver/WSUserFacade?wsdl</wsdl-url>
+      <local-wsdl-file>acm.dhu.edu.cn/primeserver/WSUserFacade.wsdl</local-wsdl-file>
+      <package-name>cn.edu.dhu.acm.oj.buslogic.facade.user</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8084/primeserver/WSUserFacade?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="WSMessageFacade">
+      <wsdl-url>http://acm.dhu.edu.cn/primeserver/WSMessageFacade?wsdl</wsdl-url>
+      <local-wsdl-file>acm.dhu.edu.cn/primeserver/WSMessageFacade.wsdl</local-wsdl-file>
+      <package-name>cn.edu.dhu.acm.oj.buslogic.facade.message</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8084/primeserver/WSMessageFacade?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="WSContestFacade">
+      <wsdl-url>http://acm.dhu.edu.cn/primeserver/WSContestFacade?wsdl</wsdl-url>
+      <local-wsdl-file>acm.dhu.edu.cn/primeserver/WSContestFacade.wsdl</local-wsdl-file>
+      <package-name>cn.edu.dhu.acm.oj.buslogic.facade.contest</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8084/primeserver/WSContestFacade?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+  </clients>
+  <jsr109>false</jsr109>
+</jax-ws>
