@@ -89,7 +89,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jToolBar5 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        JB_GetQuestion = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -269,16 +269,16 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar5.setFloatable(false);
         jToolBar5.setRollover(true);
 
-        jButton1.setText("GetQuestion");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JB_GetQuestion.setText("GetQuestion");
+        JB_GetQuestion.setFocusable(false);
+        JB_GetQuestion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_GetQuestion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_GetQuestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JB_GetQuestionActionPerformed(evt);
             }
         });
-        jToolBar5.add(jButton1);
+        jToolBar5.add(JB_GetQuestion);
 
         jPanel5.add(jToolBar5, java.awt.BorderLayout.NORTH);
 
@@ -346,8 +346,7 @@ public class MainFrame extends javax.swing.JFrame {
 }//GEN-LAST:event_JT_GottenActionPerformed
 
     private void JB_ApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ApplyActionPerformed
-		AppFrame = new ApplyFrame(this);
-		AppFrame.setVisible(true);
+		Control.setApply();
 		JB_Auto.setEnabled(true);
     }//GEN-LAST:event_JB_ApplyActionPerformed
 
@@ -370,21 +369,26 @@ public class MainFrame extends javax.swing.JFrame {
 				JB_LookInformation.setEnabled(true);
 				JB_Judge.setEnabled(true);
 				JB_SendResult.setEnabled(true);
+				JB_GetSubmit.setEnabled(false);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
+			JB_GetSubmit.setEnabled(true);
 		}
 }//GEN-LAST:event_JB_GetSubmitActionPerformed
 
     private void JB_LookInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_LookInformationActionPerformed
-		String str = "ContestID : " + Control.getSolutionbean().getContestId();
-		str += "\nProblemID : " + Control.getSolutionbean().getProblemId();
-		str += "\nUserID : " + Control.getSolutionbean().getUserId();
-		str += "\nLanguage : " + Const.LANGUAGE[Control.getSolutionbean().getLanguage()];
-		Control.setInfo(str);
+		String str;
 		try {
+			str = "ContestID : " + Control.getSolutionbean().getContestId();
+			str += "\nProblemID : " + Control.getSolutionbean().getProblemId();
+			str += "\nUserID : " + Control.getSolutionbean().getUserId();
+			str += "\nLanguage : " + Const.LANGUAGE[Control.getSolutionbean().getLanguage()];
+			Control.setInfo(str);
 			str = Control.getSolutionbean().getSourceCode().getSource();
 		} catch (Exception e) {
 			str = e.toString();
+			JB_GetSubmit.setEnabled(true);
 		}
 		Control.setCode(str);
 }//GEN-LAST:event_JB_LookInformationActionPerformed
@@ -400,6 +404,8 @@ public class MainFrame extends javax.swing.JFrame {
 			JTA_CodeOut.setText(Control.getRunbean().getOutput());
 			JCB_Result.setSelectedIndex(Control.getRunbean().getResult());
 		} catch (Exception e) {
+			e.printStackTrace();
+			JB_GetSubmit.setEnabled(true);
 		}
 }//GEN-LAST:event_JB_JudgeActionPerformed
 
@@ -415,8 +421,10 @@ public class MainFrame extends javax.swing.JFrame {
 			JB_LookInformation.setEnabled(false);
 			JB_Judge.setEnabled(false);
 			JB_SendResult.setEnabled(false);
+			JB_GetSubmit.setEnabled(true);
 		} catch (Exception e) {
 			e.printStackTrace();
+			JB_GetSubmit.setEnabled(true);
 		}
 }//GEN-LAST:event_JB_SendResultActionPerformed
 
@@ -428,7 +436,7 @@ public class MainFrame extends javax.swing.JFrame {
 		// TODO add your handling code here:
 }//GEN-LAST:event_JT_MessageQueueActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+	private void JB_GetQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetQuestionActionPerformed
 		try {
 			if (Control.GetMessage()) {
 				JTA_Response.setEditable(true);
@@ -437,7 +445,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		} catch (Exception e) {
 		}
-    }//GEN-LAST:event_jButton1ActionPerformed
+}//GEN-LAST:event_JB_GetQuestionActionPerformed
 
     private void JB_SendMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_SendMessageActionPerformed
 		try {
@@ -493,6 +501,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox CH_AcceptLocal;
     private javax.swing.JButton JB_Apply;
     private javax.swing.JButton JB_Auto;
+    private javax.swing.JButton JB_GetQuestion;
     private javax.swing.JButton JB_GetSubmit;
     private javax.swing.JButton JB_Judge;
     private javax.swing.JButton JB_LookInformation;
@@ -507,7 +516,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField JT_Gotten;
     private javax.swing.JTextField JT_MessageQueue;
     private javax.swing.JTextField JT_SolutionQueue;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

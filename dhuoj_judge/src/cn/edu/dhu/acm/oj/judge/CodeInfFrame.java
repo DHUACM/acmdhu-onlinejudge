@@ -41,7 +41,7 @@ public class CodeInfFrame extends javax.swing.JFrame {
 
         JTA_Code.setBackground(new java.awt.Color(0, 0, 0));
         JTA_Code.setColumns(20);
-        JTA_Code.setFont(new java.awt.Font("宋体", 1, 13)); // NOI18N
+        JTA_Code.setFont(new java.awt.Font("宋体", 1, 13));
         JTA_Code.setForeground(new java.awt.Color(255, 255, 255));
         JTA_Code.setRows(5);
         jScrollPane1.setViewportView(JTA_Code);
