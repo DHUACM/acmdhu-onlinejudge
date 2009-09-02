@@ -2,6 +2,7 @@ package cn.edu.dhu.acm.oj.client;
 
 import cn.edu.dhu.acm.oj.client.panel.*;
 import cn.edu.dhu.acm.oj.common.config.Const;
+import cn.edu.dhu.acm.oj.client.thread.RunTestEnv;
 
 public class MainFrame extends MyFrame {
 
@@ -90,7 +91,7 @@ public class MainFrame extends MyFrame {
         JMI_SaveAs = new javax.swing.JMenuItem();
         JM_Tool = new javax.swing.JMenu();
         JMI_SetEnv = new javax.swing.JMenuItem();
-        JMI_TestEnv = new javax.swing.JMenuItem();
+        JMI_TestCom = new javax.swing.JMenuItem();
         JM_Help = new javax.swing.JMenu();
         JMI_Help = new javax.swing.JMenuItem();
 
@@ -254,14 +255,14 @@ public class MainFrame extends MyFrame {
         });
         JM_Tool.add(JMI_SetEnv);
 
-        JMI_TestEnv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
-        JMI_TestEnv.setText("TestEnvironment");
-        JMI_TestEnv.addActionListener(new java.awt.event.ActionListener() {
+        JMI_TestCom.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        JMI_TestCom.setText("TestCompiler");
+        JMI_TestCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMI_TestEnvActionPerformed(evt);
+                JMI_TestComActionPerformed(evt);
             }
         });
-        JM_Tool.add(JMI_TestEnv);
+        JM_Tool.add(JMI_TestCom);
 
         MenuBar.add(JM_Tool);
 
@@ -356,26 +357,15 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 		}
     }//GEN-LAST:event_JB_PostActionPerformed
 
-	private void JMI_TestEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_TestEnvActionPerformed
-		String out = "";
-		String oriL = Control.getLanguage();
-		String oriC = Control.getCode();
-		Control.setCode(" ");
-		smallDialog("          ", "Checking", 0);
-		for (int i = 0; i < Const.LANGUAGE.length; i++) {
-			String L = Const.LANGUAGE[i];
-			Control.setLanguage(L);
-			Control.Compile(false);
-			if (Control.getCompileOut().startsWith("Please")) {
-				out += "Check " + L + " : " + "not find compiler.\n";
-			} else {
-				out += "Check " + L + " : " + "check OK.\n";
-			}
+	private void JMI_TestComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_TestComActionPerformed
+		smallDialog("Testing your Compiler", "Checking", 0);
+		try {
+			RunTestEnv runtest = new RunTestEnv();
+			Thread thread = new Thread(runtest);
+			thread.start();
+		} catch (Exception e) {
 		}
-		Control.setLanguage(oriL);
-		Control.setCode(oriC);
-		smallDialog(out, "Test", 0);
-}//GEN-LAST:event_JMI_TestEnvActionPerformed
+}//GEN-LAST:event_JMI_TestComActionPerformed
 
 	public void showEnvPanel() {
 		javax.swing.JDialog dialog = new javax.swing.JDialog();
@@ -522,7 +512,7 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem JMI_Save;
     private javax.swing.JMenuItem JMI_SaveAs;
     private javax.swing.JMenuItem JMI_SetEnv;
-    private javax.swing.JMenuItem JMI_TestEnv;
+    private javax.swing.JMenuItem JMI_TestCom;
     private javax.swing.JMenu JM_Help;
     private javax.swing.JMenu JM_Tool;
     private javax.swing.JMenu JM_Tool1;

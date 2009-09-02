@@ -92,7 +92,6 @@ public class PaperPanel extends javax.swing.JPanel {
         ToolBar.add(JB_Download);
 
         JB_OpenPaper.setText("OpenPaper");
-        JB_OpenPaper.setEnabled(false);
         JB_OpenPaper.setFocusable(false);
         JB_OpenPaper.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         JB_OpenPaper.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -143,9 +142,16 @@ public class PaperPanel extends javax.swing.JPanel {
 			java.net.URL url = new java.net.URL(Control.getPaperpath());
 			URLConnection conn = url.openConnection();
 			InputStream inStream = conn.getInputStream();
-
-			String filename = Control.getTmppath() + Const.CONTESTPREFIX +
+			
+			String filename;
+			if(Control.getPaperpath().endsWith(Const.ENCRYPTPAPERSUFFIX)){
+				filename = Control.getTmppath() + Const.CONTESTPREFIX +
+					Control.getContestid() + Const.ENCRYPTPAPERSUFFIX;
+			}
+			else{
+				filename = Control.getTmppath() + Const.CONTESTPREFIX +
 					Control.getContestid() + Const.CLIENTPAPERSUFFIX;
+			}
 			FileOutputStream fs = new FileOutputStream(filename);
 
 			byte[] buffer = new byte[1024];

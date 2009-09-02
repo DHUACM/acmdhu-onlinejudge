@@ -72,7 +72,6 @@
         <Component class="javax.swing.JButton" name="JB_OpenPaper">
           <Properties>
             <Property name="text" type="java.lang.String" value="OpenPaper"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

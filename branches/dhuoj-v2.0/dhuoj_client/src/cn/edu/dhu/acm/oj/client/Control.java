@@ -263,7 +263,7 @@ public class Control {
 			frame.setPaper();
 		} catch (Exception E) {
 			E.printStackTrace();
-			frame.smallDialog("Paper open error!\n", "Error", 0);
+			frame.smallDialog("Paper open error!\nMay your password not correct!\nOr the paper format error!", "Error", 0);
 		}
 	}
 
@@ -323,7 +323,8 @@ public class Control {
 			java.lang.Boolean loginresult = wsUserAccount.login(userForm);
 			if (loginresult) {
 				islogined = true;
-				message = "Login Success!\nAfter you submit a+b problem,You can get contest Paper!";
+				message = "Login Success!\nYou can download paper first\n" +
+						"After contest start, you can openPaper by password!";
 				userid = username;
 				userpassword = password;
 			} else {
@@ -439,10 +440,10 @@ public class Control {
 				thread.start();
 				isOK = 1;
 				message = "Submit OK!";
-				paperpanel.showOpenPaper();
-				if (nowPaperNum == 0) {
-					frame.smallDialog("You can Click GetPaper Now!", "Success", 1);
-				}
+//				paperpanel.showOpenPaper();
+//				if (nowPaperNum == 0) {
+//					frame.smallDialog("You can Click GetPaper Now!", "Success", 1);
+//				}
 			} catch (Exception ex) {
 				isOK = 0;
 				message = "Submit failed!\n" + ex.getMessage();
@@ -549,7 +550,7 @@ public class Control {
 	private static String compileOut;
 	private static String userid = "Test";
 	private static String userpassword;
-	private static String code;
+	private static String code = "";
 	private static String testOut;
 	private static String message;
 	private static String workpath;
