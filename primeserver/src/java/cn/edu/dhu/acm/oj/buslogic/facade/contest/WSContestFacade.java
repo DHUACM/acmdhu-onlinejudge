@@ -1,4 +1,4 @@
-package cn.edu.dhu.acm.oj.buslogic.facade;
+package cn.edu.dhu.acm.oj.buslogic.facade.contest;
 
 import java.util.List;
 import java.util.TreeMap;
@@ -19,43 +19,48 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "submitCode")
-    public int submitCode(@WebParam(name = "scf")
-    SubmitCodeForm scf) throws SubmitFailException {
+    public int submitCode(@WebParam(name = "scf") SubmitCodeForm scf) throws SubmitFailException {
         SolutionBean sbean = new SolutionBean(scf.getUserID(), scf.getContestID(),
                 scf.getProblemID(), 0, 0, Util.getTime(), Const.WAIT, scf.getLanguage(), scf.getLocalJudgeResult());
 
         String userID = scf.getUserID();
         String password = scf.getPassword();
-/*
+        /*
         UserDAO udao = new UserDAO();
         UserBean ubean = udao.chkLogin(userID, password);
         // userId not match with its password
         if (ubean == null) throw new SubmitFailException("User " + userID + " not match with its password. Submit Failed.");
-*/
+         */
         int cid = scf.getContestID();
         int seq = scf.getProblemID();
 
         ContestDAO cdao = new ContestDAO();
         ContestBean cbean = cdao.findContest(cid);
-
-        int cmpStartTime = Util.getTime().compareTo(cbean.getStartTime());
-        int cmpEndTime = Util.getTime().compareTo(cbean.getEndTime());
-        // contest not start.
-        if (cmpStartTime < 0) throw new SubmitFailException("Contest " + cid + " not start, submit code failed.");
-        // contest has closed
-        if (cmpEndTime > 0) throw new SubmitFailException("Contest" + cid + " has closed, submit code failed.");
+        if (cbean == null) {
+            throw new SubmitFailException("Contest " + cid + " not exist, submit code failed.");
+        }
 
         /*
         // user cannot submit code to private contest which he/she has not registered.
         if (cbean.getPrivate_() != 0) {
-            if (!getContestReservation(cid).containsKey(userID))
-                throw new SubmitFailException("Fail to submit to private contest without reservation.");
+        if (!getContestReservation(cid).containsKey(userID))
+        throw new SubmitFailException("Fail to submit to private contest without reservation.");
         }*/
 
         if (seq == 0) {
             // this is a+b problem
             sbean.setProblemId(seq);
         } else {
+            int cmpStartTime = Util.getTime().compareTo(cbean.getStartTime());
+            int cmpEndTime = Util.getTime().compareTo(cbean.getEndTime());
+            // contest not start.
+            if (cmpStartTime < 0) {
+                throw new SubmitFailException("Contest " + cid + " not start, submit code failed.");
+            }
+            // contest has closed
+            if (cmpEndTime > 0) {
+                throw new SubmitFailException("Contest" + cid + " has closed, submit code failed.");
+            }
             TreeMap<Integer, ContestProblemBean> contestProblems = getProblemsByContest(cid);
             sbean.setProblemId(contestProblems.get(seq).getProblemId());
         }
@@ -74,8 +79,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "querySubmitStatus")
-    public SolutionBean querySubmitStatus(@WebParam(name = "solutionID")
-    int solutionID) {
+    public SolutionBean querySubmitStatus(@WebParam(name = "solutionID") int solutionID) {
         SolutionDAO sdao = new SolutionDAO();
         return sdao.findSolution(solutionID);
     }
@@ -84,8 +88,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "queryContestLoginStatus")
-    public List<SolutionBean> queryContestLoginStatus(@WebParam(name = "contestID")
-    int contestID) {
+    public List<SolutionBean> queryContestLoginStatus(@WebParam(name = "contestID") int contestID) {
         SolutionDAO sdao = new SolutionDAO();
         return sdao.findContestLoginStatus(contestID);
     }
@@ -94,8 +97,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "querySubmitStatusByContest")
-    public List<SolutionBean> querySubmitStatusByContest(@WebParam(name = "contestID")
-    int contestID) {
+    public List<SolutionBean> querySubmitStatusByContest(@WebParam(name = "contestID") int contestID) {
         SolutionDAO sdao = new SolutionDAO();
         return sdao.findContestSolutionsInRange(contestID, 0, Integer.MAX_VALUE);
     }
@@ -104,8 +106,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getProblemsByContest")
-    public TreeMap<Integer, ContestProblemBean> getProblemsByContest(@WebParam(name = "contestID")
-    int contestID) {
+    public TreeMap<Integer, ContestProblemBean> getProblemsByContest(@WebParam(name = "contestID") int contestID) {
         ContestProblemDAO cpdao = new ContestProblemDAO();
         return cpdao.findProblemTreeMapByContest(contestID);
     }
@@ -114,8 +115,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getContest")
-    public ContestBean getContest(@WebParam(name = "contestID")
-    int contestID) {
+    public ContestBean getContest(@WebParam(name = "contestID") int contestID) {
         ContestDAO cdao = new ContestDAO();
         return cdao.findContest(contestID);
     }
@@ -124,9 +124,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getContests")
-    public List<ContestBean> getContests(@WebParam(name = "first")
-    int first, @WebParam(name = "max")
-    int max) {
+    public List<ContestBean> getContests(@WebParam(name = "first") int first, @WebParam(name = "max") int max) {
         ContestDAO cdao = new ContestDAO();
         return cdao.findContestInRange(first, max);
     }
@@ -135,8 +133,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getUsersByRank")
-    public TreeMap<String, UserBean> getUsersByRank(@WebParam(name = "runs")
-    List<SolutionBean> runs) {
+    public TreeMap<String, UserBean> getUsersByRank(@WebParam(name = "runs") List<SolutionBean> runs) {
         TreeMap<String, UserBean> userMap = new TreeMap();
         UserDAO udao = new UserDAO();
         for (SolutionBean sb : runs) {
@@ -151,8 +148,7 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getContestReservation")
-    public TreeMap<String, UserBean> getContestReservation(@WebParam(name = "contestID")
-    int contestID) {
+    public TreeMap<String, UserBean> getContestReservation(@WebParam(name = "contestID") int contestID) {
         TreeMap<String, UserBean> revMap = new TreeMap();
         ContestReservationDAO revdao = new ContestReservationDAO();
         List<ContestReservationBean> revList = revdao.findContestReservationList(contestID);
@@ -169,21 +165,26 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getContestDetail")
-    public ContestBean getContestDetail(@WebParam(name = "userID")
-    String userID, @WebParam(name = "contestID")
-    int contestID) throws ContestException {
+    public ContestBean getContestDetail(@WebParam(name = "userID") String userID, @WebParam(name = "contestID") int contestID) throws ContestException {
         ContestDAO cdao = new ContestDAO();
         ContestBean cbean = cdao.findContest(contestID);
-        if (cbean == null) throw new ContestException("Fail to get detail information about contest" + contestID);
+        if (cbean == null) {
+            throw new ContestException("Fail to get detail information about contest" + contestID);
+        }
         if (cbean.getPrivate_() != 0) {
             ContestReservationDAO crdao = new ContestReservationDAO();
             List<ContestReservationBean> my_contests = crdao.findUserReservedContest(userID);
             boolean match = false;
             for (ContestReservationBean crb : my_contests) {
-                if (crb.getContestId() == contestID) match = true;
+                if (crb.getContestId() == contestID) {
+                    match = true;
+                }
             }
-            if (match) return cbean;
-            else throw new ContestException("This is a private contest, register it first or contact the administrator.");
+            if (match) {
+                return cbean;
+            } else {
+                throw new ContestException("This is a private contest, register it first or contact the administrator.");
+            }
         } else {
             return cbean;
         }
@@ -193,10 +194,8 @@ public class WSContestFacade {
      * Web service operation
      */
     @WebMethod(operationName = "getContestByStatus")
-    public List<ContestBean> getContestByStatus(@WebParam(name = "status")
-    int status) {
+    public List<ContestBean> getContestByStatus(@WebParam(name = "status") int status) {
         ContestDAO cdao = new ContestDAO();
         return cdao.findContestByStatus(status);
     }
-
 }

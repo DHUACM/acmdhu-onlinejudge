@@ -11,7 +11,7 @@ import cn.edu.dhu.acm.oj.persistence.beans.ContestBean;
 import cn.edu.dhu.acm.oj.persistence.beans.SolutionBean;
 import cn.edu.dhu.acm.oj.persistence.beans.UserBean;
 import cn.edu.dhu.acm.oj.persistence.beans.ContestProblemBean;
-import cn.edu.dhu.acm.oj.buslogic.facade.WSContestFacade;
+import cn.edu.dhu.acm.oj.buslogic.facade.contest.WSContestFacade;
 import cn.edu.dhu.acm.oj.common.util.Util;
 
 public class RanklistClient {
@@ -62,7 +62,10 @@ public class RanklistClient {
             os = new PrintWriter(System.out, true);
         }
         os.println("<html>");
-        os.println("<head><title>" + contest.getTitle() + "Ranklist</title></head>");
+        os.println("<head>");
+        os.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />");
+        os.println("<title>" + contest.getTitle() + "Ranklist</title>");
+        os.println("</body>");
         os.println("<body>");
         os.print("<div align='center'>");
         os.println("<h1>" + contest.getTitle() + "</h1>");
