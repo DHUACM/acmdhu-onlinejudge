@@ -155,6 +155,19 @@ end.
 &lt;BR&gt;
 &lt;BR&gt;
 &lt;PRE&gt;
+****************************************
+Be careful!
+
+"FILE", "fstream", "dirent","unistd", "getenv", "system"
+
+can't exist in your C or C++ code!
+
+"package", "File", "FileInputStream",
+"FileReader", "RandomAccessFile", "Runtime"
+
+can't exist in your JAVA code!
+****************************************
+
 C language
 #include &amp;lt;stdio.h&amp;gt;		
 int main(){		// be int
@@ -175,15 +188,6 @@ int main(){		// be int
 	}
 	return 0;	// must return 0;
 }
-
-****************************************
-Be careful!
-
-"FILE", "fstream", "dirent",
-"unistd", "getenv", "system"
-
-can't exist in your C or C++ code!
-****************************************
 
 Java language
 import java.io.*;	//do not use "package"
@@ -219,15 +223,6 @@ public class Main {	//must be Main
         }
     }
 }
-
-****************************************
-Be careful!
-
-"package", "File", "FileInputStream",
-"FileReader", "RandomAccessFile", "Runtime"
-
-can't exist in your JAVA code!
-****************************************
 
 Pascal language
 var
