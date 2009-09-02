@@ -65,15 +65,15 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMI_SetEnvActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="JMI_TestEnv">
+            <MenuItem class="javax.swing.JMenuItem" name="JMI_TestCom">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Alt+T"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="TestEnvironment"/>
+                <Property name="text" type="java.lang.String" value="TestCompiler"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMI_TestEnvActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMI_TestComActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
