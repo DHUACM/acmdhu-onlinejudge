@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8084/primeserver/WSUserFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSUserFacade/wsdl/localhost_8084/primeserver/WSUserFacade.wsdl"/>
+    <system systemId="http://localhost:8084/primeserver/WSUserFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSUserFacade/wsdl/localhost_8084/primeserver/WSUserFacade.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/primeserver/WSMessageFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSMessageFacade/wsdl/localhost_8084/primeserver/WSMessageFacade.wsdl"/>
+    <system systemId="http://localhost:8084/primeserver/WSMessageFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSMessageFacade/wsdl/localhost_8084/primeserver/WSMessageFacade.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/primeserver/WSContestFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSContestFacade/wsdl/localhost_8084/primeserver/WSContestFacade.wsdl"/>
+    <system systemId="http://localhost:8084/primeserver/WSContestFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSContestFacade/wsdl/localhost_8084/primeserver/WSContestFacade.xsd_1.xsd"/>
+    <system systemId="http://acm.dhu.edu.cn/primeserver/WSUserFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSUserFacade/wsdl/acm.dhu.edu.cn/primeserver/WSUserFacade.wsdl"/>
+    <system systemId="http://acm.dhu.edu.cn:80/primeserver/WSUserFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSUserFacade/wsdl/acm.dhu.edu.cn_80/primeserver/WSUserFacade.xsd_1.xsd"/>
+    <system systemId="http://acm.dhu.edu.cn/primeserver/WSMessageFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSMessageFacade/wsdl/acm.dhu.edu.cn/primeserver/WSMessageFacade.wsdl"/>
+    <system systemId="http://acm.dhu.edu.cn:80/primeserver/WSMessageFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSMessageFacade/wsdl/acm.dhu.edu.cn_80/primeserver/WSMessageFacade.xsd_1.xsd"/>
+    <system systemId="http://acm.dhu.edu.cn/primeserver/WSContestFacade?wsdl" uri="src/conf/xml-resources/web-service-references/WSContestFacade/wsdl/acm.dhu.edu.cn/primeserver/WSContestFacade.wsdl"/>
+    <system systemId="http://acm.dhu.edu.cn:80/primeserver/WSContestFacade?xsd=1" uri="src/conf/xml-resources/web-service-references/WSContestFacade/wsdl/acm.dhu.edu.cn_80/primeserver/WSContestFacade.xsd_1.xsd"/>
+</catalog>
