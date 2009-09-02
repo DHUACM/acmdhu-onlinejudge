@@ -3,8 +3,7 @@ package cn.edu.dhu.acm.oj.judge;
 public class ApplyFrame extends javax.swing.JFrame {
 
     /** Creates new form ApplyFrame */
-    public ApplyFrame(MainFrame f) {
-        mainframe = f;
+    public ApplyFrame() {
         initComponents();
     }
 
@@ -63,7 +62,7 @@ public class ApplyFrame extends javax.swing.JFrame {
 
     private void JB_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OKActionPerformed
         Control.setIP(TF_ServerIP.getText());
-        mainframe.StartApply();
+        Control.getMainFrame().StartApply();
         this.setVisible(false);
     }//GEN-LAST:event_JB_OKActionPerformed
 
@@ -76,5 +75,4 @@ public class ApplyFrame extends javax.swing.JFrame {
     private javax.swing.JTextField TF_ServerIP;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    private MainFrame mainframe;
 }
