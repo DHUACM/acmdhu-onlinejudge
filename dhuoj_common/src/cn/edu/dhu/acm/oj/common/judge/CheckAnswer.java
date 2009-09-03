@@ -35,21 +35,24 @@ public class CheckAnswer {
 
 	public void AnswerCheck() {
 		verdict = Const.WA;
-		int len1 = ans.length();
-		int len2 = out.length();
-		int samenum = 0;
-		int mmax = Math.max(len1, len2);
-		for (int i = 0; i < mmax; i++) {
-			if (ans.charAt(i) == out.charAt(i)) {
-				samenum++;
-			}
-		}
-		percent = 100;
-		if (mmax != 0) {
-			percent = (int) (samenum * 100L / mmax);
-		}
-		System.out.println(percent);
-		if (samenum == mmax) {
+		percent = -1;
+
+//		int len1 = ans.length();
+//		int len2 = out.length();
+//		int samenum = 0;
+//		for (int i = 0; i < Math.min(len1, len2); i++) {
+//			if (ans.charAt(i) == out.charAt(i)) {
+//				samenum++;
+//			}
+//		}
+//		int mmax = Math.max(len1, len2);
+//
+//		if (mmax != 0) {
+//			percent = (int) (samenum * 100L / mmax);
+//		}
+//		System.out.println(percent);
+//		if (samenum == mmax) {
+		if(ans.equals(out)){
 			verdict = Const.AC;
 		} else {
 			ans = removeSP(ans);
