@@ -10,7 +10,7 @@ import cn.edu.dhu.acm.oj.client.panel.*;
 import cn.edu.dhu.acm.oj.webservice.client.*;
 import cn.edu.dhu.acm.oj.webservice.*;
 import java.io.*;
-import java.util.List;
+import java.util.*;
 
 public class Control {
 
@@ -40,6 +40,9 @@ public class Control {
 		contestid = 0;
 		lastSubmitTime = 0;
 		paperbean = new PaperBean();
+		code = "#include <iostream>\nusing namespace std;\nint main(){\n" +
+				"int a, b;\nwhile (cin >> a >> b){\ncout << a + b << endl;\n" +
+				"}\nreturn 0;\n}";
 	}
 
 	public static void setMainFrame(MainFrame f) {
@@ -100,6 +103,14 @@ public class Control {
 
 	public static int getNowProblemNum() {
 		return nowProblemNum;
+	}
+
+	public static ArrayList<String> getNetList() {
+		return netList;
+	}
+
+	public static void setNetList(ArrayList<String> l) {
+		netList = l;
 	}
 
 	public static PaperBean getPaperBean() {
@@ -217,12 +228,17 @@ public class Control {
 		return dhuojhomepath;
 	}
 
+	public static String getHostIP() {
+		return hostIP;
+	}
+
 	public static void setServer(String ip) {
 		try {
 			hostIP = ip;
-			wsContest = new WSContestClient(ip);
-			wsMessage = new WSMessageClient(ip);
-			wsUserAccount = new WSUserAccountClient(ip);
+			netList.set(0,ip);
+			wsContest = new WSContestClient();
+			wsMessage = new WSMessageClient();
+			wsUserAccount = new WSUserAccountClient();
 		} catch (Exception e) {
 			frame.smallDialog("ServerIP Error!", "Error", 0);
 		}
@@ -236,7 +252,7 @@ public class Control {
 			ContestBean cb = wsContest.getContestDetail(userid, contestid);
 			paperpath = cb.getPaperPath();
 			ans = true;
-			//frame.setURL("http://"+hostip+"/dhuoj/contestrank?cid=" + contestid);
+			//frame.setURL("http://"+hostIP+"/dhuoj/contestrank?cid=" + contestid);
 			frame.setURL("http://" + hostIP + "/dhuoj/rank/contest" + contestid + ".html");
 		} catch (Exception e) {
 			frame.smallDialog("GetContest Error!\n" + e.getMessage(), "Error", 0);
@@ -324,7 +340,11 @@ public class Control {
 			if (loginresult) {
 				islogined = true;
 				message = "Login Success!\nYou can download paper first\n" +
-						"After contest start, you can openPaper by password!";
+						"After contest start, you can openPaper by password!\n\n" +
+						"This software will auto submit A+B problem for test!\n\n" +
+						"You can test your compiler at Tool-menu's Test-Compiler or press ALT+T\n" +
+						"If the CPP \"not find compiler\" for example, just set your g++ path to your system enviroment path\n" +
+						"This means you can just run g++ at your cmd or terminal at any directory.";
 				userid = username;
 				userpassword = password;
 			} else {
@@ -405,7 +425,11 @@ public class Control {
 
 	public static void WsSubmit(int problemNo, String problemName) {
 		int isOK = 0;
-		LocalJudge(problemNo, problemName);
+		try {
+			LocalJudge(problemNo, problemName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (model.startsWith("Local")) {
 			showResult(localqid - 1);
 		} else {
@@ -550,7 +574,7 @@ public class Control {
 	private static String compileOut;
 	private static String userid = "Test";
 	private static String userpassword;
-	private static String code = "";
+	private static String code;
 	private static String testOut;
 	private static String message;
 	private static String workpath;
@@ -563,5 +587,6 @@ public class Control {
 	private static WSContestClient wsContest;
 	private static WSMessageClient wsMessage;
 	private static WSUserAccountClient wsUserAccount;
+	private static ArrayList<String> netList;
 	private static boolean compiled;
 }

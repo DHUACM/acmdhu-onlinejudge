@@ -292,12 +292,12 @@ private void JMI_SetEnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void JMI_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_HelpActionPerformed
 		try {
 			if (java.awt.Desktop.isDesktopSupported()) {
-				java.awt.Desktop.getDesktop().browse(new java.net.URI("http://acm.dhu.edu.cn/dhuoj/help.htm"));
+				java.awt.Desktop.getDesktop().browse(new java.net.URI("http://" + Control.getHostIP() + "/dhuoj/help.htm"));
 			} else {
-				smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+				smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://" + Control.getHostIP() + "/dhuoj/help.htm", "Warning", 0);
 			}
 		} catch (Exception e) {
-			smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+			smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://" + Control.getHostIP() + "/dhuoj/help.htm", "Warning", 0);
 		}
     }//GEN-LAST:event_JMI_HelpActionPerformed
 

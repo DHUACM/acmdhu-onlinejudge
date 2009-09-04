@@ -2,6 +2,9 @@ package cn.edu.dhu.acm.oj.client;
 
 import cn.edu.dhu.acm.oj.client.panel.*;
 import cn.edu.dhu.acm.oj.common.config.Const;
+import cn.edu.dhu.acm.oj.client.thread.RunSubmit;
+import java.util.*;
+import java.io.*;
 
 public class LoginFrame extends MyFrame {
 
@@ -31,6 +34,7 @@ public class LoginFrame extends MyFrame {
 
 	/** Creates new form LoginFrame */
 	public LoginFrame() {
+
 		initComponents();
 		hostServer = TF_Server.getText();
 		Control.setLoginFrame(this);
@@ -39,6 +43,23 @@ public class LoginFrame extends MyFrame {
 		this.setLocation((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2);
 		new MainFrame();
 
+		ArrayList<String> list = new ArrayList();
+		list.add(hostServer);
+		try {
+			InputStream in = getClass().getResourceAsStream(
+					"/cn/edu/dhu/acm/oj/webservice/client/net.ini");
+			Scanner scan = new Scanner(in);
+			String line = null;
+			while (scan.hasNextLine()) {
+				line = scan.nextLine();
+				if (!line.startsWith("#") && !line.equals("")) {
+					list.add(line);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		Control.setNetList(list);
 	}
 
 	/** This method is called from within the constructor to
@@ -139,6 +160,8 @@ public class LoginFrame extends MyFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JB_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_RegisterActionPerformed
+		hostServer = TF_Server.getText();
+		Control.setServer(hostServer);
 		javax.swing.JDialog d = new javax.swing.JDialog();
 		RegisterPanel rp = new RegisterPanel(d);
 		newDialog(d, rp, "Register");
@@ -158,8 +181,7 @@ public class LoginFrame extends MyFrame {
 				smallDialog("Press the ShowContest button first!", "Error", 0);
 				return;
 			}
-			String ser = TF_Server.getText();
-			Control.setServer(ser);
+			Control.setServer(hostServer);
 			Item item = (Item) JCB_Contest.getSelectedItem();
 			boolean ans;
 			ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
@@ -174,6 +196,12 @@ public class LoginFrame extends MyFrame {
 					Control.getMainFrame().smallDialog(Control.getMessage(), "Done", 1);
 					Control.getMainFrame().setTitle(JF_UserID.getText() + " " + item.toString());
 					Control.getPaperpanel().showDownload();
+					try {
+						RunSubmit runSubmit = new RunSubmit(0, " AutoSubmit  A+B  Problem ");
+						Thread thread = new Thread(runSubmit);
+						thread.start();
+					} catch (Exception e) {
+					}
 				}
 			} else {
 				smallDialog(Control.getMessage(), "Error", 0);
@@ -185,21 +213,23 @@ public class LoginFrame extends MyFrame {
 }//GEN-LAST:event_JCB_ContestActionPerformed
 
     private void JB_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_HelpActionPerformed
+		hostServer = TF_Server.getText();
+		Control.setServer(hostServer);
 		try {
 			if (java.awt.Desktop.isDesktopSupported()) {
-				java.awt.Desktop.getDesktop().browse(new java.net.URI("http://acm.dhu.edu.cn/dhuoj/help.htm"));
+				java.awt.Desktop.getDesktop().browse(new java.net.URI("http://" + hostServer + "/dhuoj/help.htm"));
 			} else {
-				smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+				smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://" + hostServer + "/dhuoj/help.htm", "Warning", 0);
 			}
 		} catch (Exception e) {
-			smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://acm.dhu.edu.cn/dhuoj/help.htm", "Warning", 0);
+			smallDialog("JRE version low!\nPlease use your browser to open:\n" + "http://" + hostServer + "/dhuoj/help.htm", "Warning", 0);
 		}
     }//GEN-LAST:event_JB_HelpActionPerformed
 
     private void JB_ShowContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ShowContestActionPerformed
 		JCB_Contest.removeAllItems();
-		String ser = TF_Server.getText();
-		Control.setServer(ser);
+		hostServer = TF_Server.getText();
+		Control.setServer(hostServer);
 		if (JF_UserID.getText().equals("") || JPF_Password.getText().equals("")) {
 			smallDialog("Set your id or password!", "Error", 0);
 			return;
@@ -212,7 +242,7 @@ public class LoginFrame extends MyFrame {
 			String[] contest = Control.getContest();
 			int[] status = Control.getStatuslist();
 			if (contest != null) {
-				for (int i = contest.length - 1; i >= 0; i--) {
+				for (int i = 0; i < contest.length; i++) {
 					if (status[i] == Const.CONTEST_PENDING || status[i] == Const.CONTEST_RUNNING) {
 						Item item = new Item(contest[i], i);
 						JCB_Contest.addItem(item);
