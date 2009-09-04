@@ -13,7 +13,8 @@ public class RunTestEnv implements Runnable {
 
 	public void run() {
 		String out = "";
-		String onechecklanguage = "";
+		String oriL = Control.getLanguage();
+		Control.setCode("");
 		for (int i = 1; i < Const.LANGUAGE.length; i++) {
 			String L = Const.LANGUAGE[i];
 			Control.setLanguage(L);
@@ -22,9 +23,9 @@ public class RunTestEnv implements Runnable {
 				out += "Check " + L + " : " + "not find compiler.\n";
 			} else {
 				out += "Check " + L + " : " + "check OK.\n";
-				onechecklanguage = L;
 			}
 		}
+		Control.setLanguage(oriL);
 		Control.getMainFrame().smallDialog(out, "Check Compiler", 0);
 
 	}

@@ -62,6 +62,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         jLabel4.setText("Repeat Password :");
 
         JB_Reset.setText("Reset");
+        JB_Reset.setEnabled(false);
         JB_Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_ResetActionPerformed(evt);

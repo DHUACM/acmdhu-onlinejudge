@@ -69,6 +69,8 @@ public class PaperSelectPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         JPF_Password = new javax.swing.JPasswordField();
         JB_Open = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -82,12 +84,7 @@ public class PaperSelectPanel extends javax.swing.JPanel {
         jLabel1.setText("Password:");
         jToolBar1.add(jLabel1);
 
-        JPF_Password.setColumns(5);
-        JPF_Password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JPF_PasswordActionPerformed(evt);
-            }
-        });
+        JPF_Password.setColumns(10);
         jToolBar1.add(JPF_Password);
 
         JB_Open.setText("Open");
@@ -99,6 +96,12 @@ public class PaperSelectPanel extends javax.swing.JPanel {
         jToolBar1.add(JB_Open);
 
         add(jToolBar1, java.awt.BorderLayout.NORTH);
+
+        jLabel2.setText("If your Linux has a visual effects, it may cause you can't press Password, just close the effects ! ");
+        add(jLabel2, java.awt.BorderLayout.SOUTH);
+
+        jLabel3.setText("Most contests don't have Password, just Open it! But if it says Open Error, Password is required ! ");
+        add(jLabel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 	private void JB_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OpenActionPerformed
@@ -110,15 +113,13 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 		}
 }//GEN-LAST:event_JB_OpenActionPerformed
 
-    private void JPF_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPF_PasswordActionPerformed
-		JB_OpenActionPerformed(evt);
-    }//GEN-LAST:event_JPF_PasswordActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Open;
     private javax.swing.JComboBox JCB_Paper;
     private javax.swing.JPasswordField JPF_Password;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables

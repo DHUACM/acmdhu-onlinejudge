@@ -342,11 +342,13 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_JB_ClearActionPerformed
 
     private void JB_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_PrintActionPerformed
-		MessageFormat headerFmt = new MessageFormat(Control.getUserID());
-		MessageFormat footerFmt = new MessageFormat(Control.getContestTitle());
-
+		MessageFormat Fmt = new MessageFormat(Control.getUserID());
+		javax.swing.JTextArea tmp =new javax.swing.JTextArea();
+		tmp.setTabSize(4);
+		tmp.setFont(new java.awt.Font("Courier New", 0, 7));
+		tmp.setText(JEP_Code.getText());
 		try {
-			boolean status = JEP_Code.print(headerFmt, footerFmt);
+			boolean status = tmp.print(Fmt, null);
 			if (status) {
 				Control.getMainFrame().smallDialog("Print OK!", "OK", 0);
 			} else {
@@ -355,6 +357,7 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 		} catch (Exception pe) {
 			Control.getMainFrame().smallDialog("Print Error!", "Error", 0);
 		}
+		tmp = null;
 }//GEN-LAST:event_JB_PrintActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Clear;
@@ -396,6 +399,4 @@ private void JB_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 	private ClipTextArea JEP_Code;
 	private File file;
 	private String line;
-	private String printStr;
-	private int PAGES;
 }
