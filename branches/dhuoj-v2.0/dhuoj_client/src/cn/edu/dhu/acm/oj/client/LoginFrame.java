@@ -43,23 +43,8 @@ public class LoginFrame extends MyFrame {
 		this.setLocation((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2);
 		new MainFrame();
 
-		ArrayList<String> list = new ArrayList();
-		list.add(hostServer);
-		try {
-			InputStream in = getClass().getResourceAsStream(
-					"/cn/edu/dhu/acm/oj/webservice/client/net.ini");
-			Scanner scan = new Scanner(in);
-			String line = null;
-			while (scan.hasNextLine()) {
-				line = scan.nextLine();
-				if (!line.startsWith("#") && !line.equals("")) {
-					list.add(line);
-				}
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		Control.setNetList(list);
+		setNet();
+
 	}
 
 	/** This method is called from within the constructor to
@@ -76,6 +61,7 @@ public class LoginFrame extends MyFrame {
         jLabel2 = new javax.swing.JLabel();
         JB_ShowContest = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         JB_Register = new javax.swing.JButton();
         JB_Help = new javax.swing.JButton();
         JP_Right = new javax.swing.JPanel();
@@ -83,13 +69,14 @@ public class LoginFrame extends MyFrame {
         JPF_Password = new javax.swing.JPasswordField();
         JCB_Contest = new javax.swing.JComboBox();
         TF_Server = new javax.swing.JTextField();
+        JCB_Net = new javax.swing.JComboBox();
         JB_Login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DHUacm");
 
-        JP_Left.setLayout(new java.awt.GridLayout(6, 1));
+        JP_Left.setLayout(new java.awt.GridLayout(7, 1));
 
         jLabel1.setText("User ID:");
         JP_Left.add(jLabel1);
@@ -107,6 +94,9 @@ public class LoginFrame extends MyFrame {
 
         jLabel5.setText("Server:");
         JP_Left.add(jLabel5);
+
+        jLabel3.setText("Net:");
+        JP_Left.add(jLabel3);
 
         JB_Register.setText("Register");
         JB_Register.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +116,7 @@ public class LoginFrame extends MyFrame {
 
         getContentPane().add(JP_Left, java.awt.BorderLayout.WEST);
 
-        JP_Right.setLayout(new java.awt.GridLayout(6, 1));
+        JP_Right.setLayout(new java.awt.GridLayout(7, 1));
 
         JF_UserID.setColumns(20);
         JP_Right.add(JF_UserID);
@@ -141,6 +131,7 @@ public class LoginFrame extends MyFrame {
 
         TF_Server.setText("acm.dhu.edu.cn");
         JP_Right.add(TF_Server);
+        JP_Right.add(JCB_Net);
 
         JB_Login.setText("Login");
         JB_Login.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +172,8 @@ public class LoginFrame extends MyFrame {
 				smallDialog("Press the ShowContest button first!", "Error", 0);
 				return;
 			}
+			Item it = (Item) JCB_Net.getSelectedItem();
+			Control.setNetList(Alist.get(it.getIndex()));
 			Control.setServer(hostServer);
 			Item item = (Item) JCB_Contest.getSelectedItem();
 			boolean ans;
@@ -228,6 +221,8 @@ public class LoginFrame extends MyFrame {
 
     private void JB_ShowContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ShowContestActionPerformed
 		JCB_Contest.removeAllItems();
+		Item it = (Item) JCB_Net.getSelectedItem();
+		Control.setNetList(Alist.get(it.getIndex()));
 		hostServer = TF_Server.getText();
 		Control.setServer(hostServer);
 		if (JF_UserID.getText().equals("") || JPF_Password.getText().equals("")) {
@@ -257,6 +252,43 @@ public class LoginFrame extends MyFrame {
 		this.pack();
     }//GEN-LAST:event_JB_ShowContestActionPerformed
 
+	private void setNet() {
+		try {
+			JCB_Net.removeAllItems();
+			InputStream in = getClass().getResourceAsStream(
+					"/cn/edu/dhu/acm/oj/webservice/client/net.ini");
+			Scanner scan = new Scanner(in);
+			int cnt = 0;
+			ArrayList<String> list = null;
+			while (scan.hasNextLine()) {
+				String line = scan.nextLine();
+				if (!line.equals("")) {
+					if (line.startsWith("#")) {
+						if (list != null) {
+							Alist.add(list);
+							cnt++;
+						}
+						JCB_Net.addItem(new Item(line, cnt));
+						list = new ArrayList();
+						list.add(hostServer);
+					} else {
+						list.add(line);
+					}
+				}
+			}
+			if (list != null) {
+				Alist.add(list);
+				cnt++;
+			}
+			Control.setNetList(Alist.get(0));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			ArrayList<String> list = new ArrayList();
+			list.add(hostServer);
+			Control.setNetList(list);
+		}
+	}
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -275,6 +307,7 @@ public class LoginFrame extends MyFrame {
     private javax.swing.JButton JB_Register;
     private javax.swing.JButton JB_ShowContest;
     private javax.swing.JComboBox JCB_Contest;
+    private javax.swing.JComboBox JCB_Net;
     private javax.swing.JTextField JF_UserID;
     private javax.swing.JPasswordField JPF_Password;
     private javax.swing.JPanel JP_Left;
@@ -282,9 +315,11 @@ public class LoginFrame extends MyFrame {
     private javax.swing.JTextField TF_Server;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 	private String hostServer;
 	private boolean hasGetContest = false;
+	ArrayList<ArrayList<String>> Alist = new ArrayList();
 }

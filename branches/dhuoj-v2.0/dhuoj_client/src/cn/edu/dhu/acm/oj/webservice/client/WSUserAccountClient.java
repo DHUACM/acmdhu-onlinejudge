@@ -25,15 +25,22 @@ public class WSUserAccountClient {
 		int k = ran;
 		boolean find = false;
 		Exception ex = null;
+		long start = 0;
 		do {
 			try {
+				start = System.currentTimeMillis();
+
 				System.out.println("login : " + url[k]);
 				UserAccountServiceService service = new UserAccountServiceService(url[k], qName);
+				long t1 = System.currentTimeMillis();
+				System.out.println("T1  " + (t1 - start));
 				UserAccountService port = service.getUserAccountServicePort();
 				ans = port.login(loginForm);
 				find = true;
 				break;
 			} catch (Exception e) {
+				long t2 = System.currentTimeMillis();
+				System.out.println("T2  " + (t2 - start));
 				k = (k + 1) % size;
 				ex = e;
 			}
