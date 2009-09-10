@@ -232,8 +232,8 @@ public class LoginFrame extends MyFrame {
 		Control.setUserid(JF_UserID.getText());
 		Control.setUserpassword(JPF_Password.getText());
 
-		boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
-		if (ans) {
+		//boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
+		//if (ans) {
 			String[] contest = Control.getContest();
 			int[] status = Control.getStatuslist();
 			if (contest != null) {
@@ -245,9 +245,9 @@ public class LoginFrame extends MyFrame {
 				}
 				hasGetContest = true;
 			}
-		} else {
-			smallDialog(Control.getMessage(), "Error", 0);
-		}
+		//} else {
+		//	smallDialog(Control.getMessage(), "Error", 0);
+		//}
 
 		this.pack();
     }//GEN-LAST:event_JB_ShowContestActionPerformed
