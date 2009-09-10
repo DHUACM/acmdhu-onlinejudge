@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://webservice.oj.acm.dhu.edu.cn/" xmlns:ns1="http://message.facade.buslogic.oj.acm.dhu.edu.cn/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice.oj.acm.dhu.edu.cn/">
+
+<xs:import namespace="http://message.facade.buslogic.oj.acm.dhu.edu.cn/" schemaLocation="http://acm.dhu.edu.cn:80/dhuoj/MessageService?xsd=2"></xs:import>
+
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+
+<xs:element name="postMessage" type="tns:postMessage"></xs:element>
+
+<xs:element name="postMessageResponse" type="tns:postMessageResponse"></xs:element>
+
+<xs:element name="queryMessageStatus" type="tns:queryMessageStatus"></xs:element>
+
+<xs:element name="queryMessageStatusResponse" type="tns:queryMessageStatusResponse"></xs:element>
+
+<xs:complexType name="queryMessageStatus">
+<xs:sequence>
+<xs:element name="msgID" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="queryMessageStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:messageBean" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="postMessage">
+<xs:sequence>
+<xs:element name="msgForm" type="ns1:messageForm" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="postMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://contest.facade.buslogic.oj.acm.dhu.edu.cn/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://contest.facade.buslogic.oj.acm.dhu.edu.cn/">
+
+<xs:complexType name="contestBean">
+<xs:sequence>
+<xs:element name="contestId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="defunct" type="xs:byte"></xs:element>
+<xs:element name="description" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="endTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="paperKey" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="paperPath" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="private_" type="xs:byte"></xs:element>
+<xs:element name="startTime" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:int"></xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="submitCodeForm">
+<xs:sequence>
+<xs:element name="contestID" type="xs:int"></xs:element>
+<xs:element name="language" type="xs:byte"></xs:element>
+<xs:element name="localJudgeResult" type="xs:short"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="problemID" type="xs:int"></xs:element>
+<xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="solutionBean">
+<xs:sequence>
+<xs:element name="compileInfo" type="tns:compileinfoBean" minOccurs="0"></xs:element>
+<xs:element name="contestId" type="xs:int"></xs:element>
+<xs:element name="language" type="xs:byte"></xs:element>
+<xs:element name="localJudgeResult" type="xs:short"></xs:element>
+<xs:element name="memory" type="xs:int"></xs:element>
+<xs:element name="percentage" type="xs:int"></xs:element>
+<xs:element name="problemId" type="xs:int"></xs:element>
+<xs:element name="result" type="xs:short"></xs:element>
+<xs:element name="runtime" type="xs:int"></xs:element>
+<xs:element name="solutionId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="sourceCode" type="tns:sourceCodeBean" minOccurs="0"></xs:element>
+<xs:element name="submitDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="valid" type="xs:byte"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileinfoBean">
+<xs:sequence>
+<xs:element name="error" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="solutionId" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sourceCodeBean">
+<xs:sequence>
+<xs:element name="solutionId" type="xs:int"></xs:element>
+<xs:element name="source" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
