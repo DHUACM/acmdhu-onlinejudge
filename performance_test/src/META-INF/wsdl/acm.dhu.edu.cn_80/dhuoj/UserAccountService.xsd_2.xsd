@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://user.facade.buslogic.oj.acm.dhu.edu.cn/">
+
+<xs:complexType name="loginForm">
+<xs:sequence>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="username" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerForm">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nickName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="school" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userID" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-UserAccountService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/UserAccountService"/>
+        <property name="wsdl-UserAccountService" location="xml-resources/web-service-references/UserAccountService/wsdl/acm.dhu.edu.cn/dhuoj/UserAccountService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UserAccountService" destdir="${build.generated.dir}/jax-wsCache/UserAccountService" wsdl="${wsdl-UserAccountService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://acm.dhu.edu.cn/dhuoj/UserAccountService?wsdl" xnocompile="true">
+            <depends file="${wsdl-UserAccountService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/UserAccountService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/UserAccountService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-UserAccountService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/UserAccountService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/cn/edu/dhu/acm/oj/webservice"/>
+    </target>
+    <target name="wsimport-client-MessageService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/MessageService"/>
+        <property name="wsdl-MessageService" location="xml-resources/web-service-references/MessageService/wsdl/acm.dhu.edu.cn/dhuoj/MessageService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MessageService" destdir="${build.generated.dir}/jax-wsCache/MessageService" wsdl="${wsdl-MessageService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://acm.dhu.edu.cn/dhuoj/MessageService?wsdl" xnocompile="true">
+            <depends file="${wsdl-MessageService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/MessageService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/MessageService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-MessageService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/MessageService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/cn/edu/dhu/acm/oj/webservice"/>
+    </target>
+    <target name="wsimport-client-ContestService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ContestService"/>
+        <property name="wsdl-ContestService" location="xml-resources/web-service-references/ContestService/wsdl/acm.dhu.edu.cn/dhuoj/ContestService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ContestService" destdir="${build.generated.dir}/jax-wsCache/ContestService" wsdl="${wsdl-ContestService}" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://acm.dhu.edu.cn/dhuoj/ContestService?wsdl" xnocompile="true">
+            <depends file="${wsdl-ContestService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ContestService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ContestService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ContestService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/ContestService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/cn/edu/dhu/acm/oj/webservice"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-UserAccountService, wsimport-client-MessageService, wsimport-client-ContestService"/>
+</project>
