@@ -173,17 +173,11 @@ public class WSContestFacade {
         }
         if (cbean.getPrivate_() != 0) {
             ContestReservationDAO crdao = new ContestReservationDAO();
-            List<ContestReservationBean> my_contests = crdao.findUserReservedContest(userID);
-            boolean match = false;
-            for (ContestReservationBean crb : my_contests) {
-                if (crb.getContestId() == contestID) {
-                    match = true;
-                }
-            }
+            boolean match = crdao.checkUserReservedContest(userID, contestID);
             if (match) {
                 return cbean;
             } else {
-                throw new ContestException("This is a private contest, register it first or contact the administrator.");
+                throw new ContestException("This is a private contest, please contact the administrator.");
             }
         } else {
             return cbean;

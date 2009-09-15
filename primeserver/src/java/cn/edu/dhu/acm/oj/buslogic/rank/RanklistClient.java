@@ -34,12 +34,12 @@ public class RanklistClient {
         // get all runs
         this.allRuns = (ArrayList)contestFacade.querySubmitStatusByContest(cid);
         // private contest get users by reservation.
-        if (contest.getPrivate_() != 0) {
-            this.user_map = contestFacade.getContestReservation(cid);
-        } else {
+//        if (contest.getPrivate_() != 0) {
+//            this.user_map = contestFacade.getContestReservation(cid);
+//        } else {
             // get users who submit codes in this contest.
             this.user_map = contestFacade.getUsersByRank(allRuns);
-        }
+//        }
         this.numProblems = problem_map.size();
         this.psdAccepted = new long[numProblems+1];
         this.psdAttempts = new long[numProblems+1];
@@ -63,7 +63,6 @@ public class RanklistClient {
         }
         os.println("<html>");
         os.println("<head>");
-        os.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />");
         os.println("<title>" + contest.getTitle() + "Ranklist</title>");
         os.println("</body>");
         os.println("<body>");
@@ -136,7 +135,7 @@ public class RanklistClient {
             os.print("<tr>");
             os.print("<td  align='center'>" + csd.getRank() + "</td>");
             UserBean ub = user_map.get(csd.getUserID());
-            os.print("<td  align='center'>" + ub.getUserId() + "(" + ub.getNick() + ")" + "</td>");
+            os.print("<td  align='center'>" + ub.getUserId().trim() + " / " + ub.getNick() + "</td>");
             os.print("<td  align='center'>" + csd.getNumberOfSolvedProblems() + "</td>");
             os.print("<td  align='center'>" + (csd.getScore() / 60000L) + "</td>");
             String stats = "";

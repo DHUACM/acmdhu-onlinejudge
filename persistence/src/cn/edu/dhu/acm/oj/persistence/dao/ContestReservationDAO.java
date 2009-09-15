@@ -42,4 +42,19 @@ public class ContestReservationDAO extends BaseHibernateDAO {
             return null;
         }
     }
+
+    public boolean checkUserReservedContest(String userId, int contestId){
+        try {
+            Session session=getSession();
+            Transaction tx = session.beginTransaction();
+            Query query=session.createQuery("from ContestReservationBean where userId='" + userId +
+                    "' and contestId=" + contestId);
+            List<ContestReservationBean> rs=query.list();
+            tx.commit();
+            return rs.size() == 0 ? false : true;
+        } catch(Exception e) {
+            log.error("find user reserved contest fails", e);
+            return false;
+        }
+    }
 }

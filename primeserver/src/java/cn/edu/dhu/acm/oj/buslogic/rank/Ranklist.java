@@ -83,7 +83,7 @@ public class Ranklist {
 		for ( int i=0; i<al.size(); i++ )
 		{
 			SolutionBean bean = al.get(i);
-			String userId = bean.getUserId();
+			String userId = bean.getUserId().trim();
 			ClientScoreData csd = (ClientScoreData)csd_map.get(userId);
             userSet.remove(userId);
 			
