@@ -70,7 +70,7 @@ public class Const {
 	/**The Time question reflash*/
 	public static final long CLIENTQUESTIONTIME = 20000;
 	/**The Time Judger sleep for Receiver and Sender*/
-	public static final long JUDGESLEEP = 1000;
+	public static final long JUDGESLEEP = 200;
 	/**Submit Time From lastsubmit*/
 	public static final long SUBMITSLEEP = 30000;
 	/**Output File Size*/

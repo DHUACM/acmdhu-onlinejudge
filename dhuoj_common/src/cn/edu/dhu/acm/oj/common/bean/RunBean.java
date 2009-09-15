@@ -126,7 +126,7 @@ public class RunBean {
     }
 
     public void setStdAns(String stdAns) {
-        this.stdAns = stdAns.replaceAll("\r", "");
+        this.stdAns = stdAns;
     }
 
     public long getTimeLimit() {
