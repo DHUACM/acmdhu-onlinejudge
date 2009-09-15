@@ -173,7 +173,9 @@ public class LoginFrame extends MyFrame {
 				return;
 			}
 			Item it = (Item) JCB_Net.getSelectedItem();
-			Control.setNetList(Alist.get(it.getIndex()));
+			if (it != null) {
+				Control.setNetList(Alist.get(it.getIndex()));
+			}
 			Control.setServer(hostServer);
 			Item item = (Item) JCB_Contest.getSelectedItem();
 			boolean ans;
@@ -222,7 +224,9 @@ public class LoginFrame extends MyFrame {
     private void JB_ShowContestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ShowContestActionPerformed
 		JCB_Contest.removeAllItems();
 		Item it = (Item) JCB_Net.getSelectedItem();
-		Control.setNetList(Alist.get(it.getIndex()));
+		if (it != null) {
+			Control.setNetList(Alist.get(it.getIndex()));
+		}
 		hostServer = TF_Server.getText();
 		Control.setServer(hostServer);
 		if (JF_UserID.getText().equals("") || JPF_Password.getText().equals("")) {
@@ -234,17 +238,17 @@ public class LoginFrame extends MyFrame {
 
 		//boolean ans = Control.login(JF_UserID.getText(), JPF_Password.getText());
 		//if (ans) {
-			String[] contest = Control.getContest();
-			int[] status = Control.getStatuslist();
-			if (contest != null) {
-				for (int i = 0; i < contest.length; i++) {
-					if (status[i] == Const.CONTEST_PENDING || status[i] == Const.CONTEST_RUNNING) {
-						Item item = new Item(contest[i], i);
-						JCB_Contest.addItem(item);
-					}
+		String[] contest = Control.getContest();
+		int[] status = Control.getStatuslist();
+		if (contest != null) {
+			for (int i = 0; i < contest.length; i++) {
+				if (status[i] == Const.CONTEST_PENDING || status[i] == Const.CONTEST_RUNNING) {
+					Item item = new Item(contest[i], i);
+					JCB_Contest.addItem(item);
 				}
-				hasGetContest = true;
 			}
+			hasGetContest = true;
+		}
 		//} else {
 		//	smallDialog(Control.getMessage(), "Error", 0);
 		//}
@@ -279,6 +283,11 @@ public class LoginFrame extends MyFrame {
 			if (list != null) {
 				Alist.add(list);
 				cnt++;
+			}
+			if (Alist.size() == 0) {
+				list = new ArrayList();
+				list.add(hostServer);
+				Alist.add(list);
 			}
 			Control.setNetList(Alist.get(0));
 		} catch (Exception ex) {
