@@ -158,6 +158,9 @@ end.
 ****************************************
 Be careful!
 
+use %lld for long long!
+include cstring cmath ... if you use the function of it!
+
 "FILE", "fstream", "dirent","unistd", "getenv", "system"
 
 can't exist in your C or C++ code!
