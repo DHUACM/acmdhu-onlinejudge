@@ -22,6 +22,10 @@
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
         </servlet>
+    <servlet>
+        <servlet-name>ContestRank</servlet-name>
+        <servlet-class>cn.edu.dhu.acm.oj.web.servlet.ContestRank</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WSUserFacade</servlet-name>
         <url-pattern>/WSUserFacade</url-pattern>
@@ -33,6 +37,10 @@
     <servlet-mapping>
         <servlet-name>WSContestFacade</servlet-name>
         <url-pattern>/WSContestFacade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContestRank</servlet-name>
+        <url-pattern>/ContestRank</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
