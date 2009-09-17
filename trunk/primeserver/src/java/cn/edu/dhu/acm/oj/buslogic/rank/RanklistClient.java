@@ -76,6 +76,7 @@ public class RanklistClient {
         os.print("<tr>");
         os.print("<th><strong><u>Rank</u></strong></th>");
         os.print("<th><strong><u>Name</u></strong></th>");
+        os.print("<th><strong><u>School</u></strong></th>");
         os.print("<th><strong><u>Solved</u></strong></th>");
         os.print("<th><strong><u>Time</u></strong></th>");
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -132,10 +133,13 @@ public class RanklistClient {
         if (csd == null) {
             System.out.println("printRow no ClientScoreData to print");
         } else {
+            UserBean ub = user_map.get(csd.getUserID());
+            String name = ub.getNick() != null ? ub.getNick().trim() : ub.getUserId();
+            String school = ub.getSchool() != null ? ub.getSchool() : "N/A";
             os.print("<tr>");
             os.print("<td  align='center'>" + csd.getRank() + "</td>");
-            UserBean ub = user_map.get(csd.getUserID());
-            os.print("<td  align='center'>" + ub.getUserId().trim() + " / " + ub.getNick() + "</td>");
+            os.print("<td  align='center'>" + name + "</td>");
+            os.print("<td  align='center'>" + school + "</td>");
             os.print("<td  align='center'>" + csd.getNumberOfSolvedProblems() + "</td>");
             os.print("<td  align='center'>" + (csd.getScore() / 60000L) + "</td>");
             String stats = "";
@@ -188,7 +192,7 @@ public class RanklistClient {
         line.append("<tr>");
         line.append("<td>Summary</td>");
         line.append("<td>Submitted/Total Yes</td>");
-        line.append("<td/><td/>");
+        line.append("<td/><td/><td/>");
         int totalAttempts = 0, totalAccepted = 0;
         for (int p = 1; p <= this.numProblems; ++p) {
             totalAttempts += psdAttempts[p];
