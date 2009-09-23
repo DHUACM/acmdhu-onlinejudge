@@ -95,7 +95,7 @@ public class LoginFrame extends MyFrame {
         jLabel5.setText("Server:");
         JP_Left.add(jLabel5);
 
-        jLabel3.setText("Net:");
+        jLabel3.setText("Connection:");
         JP_Left.add(jLabel3);
 
         JB_Register.setText("Register");

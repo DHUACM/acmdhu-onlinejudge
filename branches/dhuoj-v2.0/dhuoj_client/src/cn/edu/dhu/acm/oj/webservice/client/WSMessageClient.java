@@ -4,6 +4,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import cn.edu.dhu.acm.oj.webservice.*;
 import cn.edu.dhu.acm.oj.client.Control;
+import javax.xml.ws.soap.SOAPFaultException;
 
 public class WSMessageClient {
 
@@ -33,9 +34,13 @@ public class WSMessageClient {
 				ans = port.postMessage(msgForm);
 				find = true;
 				break;
+			} catch (SOAPFaultException e1) {
+				ex = e1;
+				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {
@@ -58,9 +63,13 @@ public class WSMessageClient {
 				ans = port.queryMessageStatus(msgID);
 				find = true;
 				break;
+			} catch (SOAPFaultException e1) {
+				ex = e1;
+				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {

@@ -4,6 +4,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import cn.edu.dhu.acm.oj.webservice.*;
 import cn.edu.dhu.acm.oj.client.Control;
+import javax.xml.ws.soap.SOAPFaultException;
 
 public class WSUserAccountClient {
 
@@ -41,8 +42,9 @@ public class WSUserAccountClient {
 			} catch (Exception e) {
 				long t2 = System.currentTimeMillis();
 				System.out.println("T2  " + (t2 - start));
-				k = (k + 1) % size;
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {
@@ -65,9 +67,15 @@ public class WSUserAccountClient {
 				ans = port.register(regForm);
 				find = true;
 				break;
+			} catch (SOAPFaultException e1) {
+				System.out.println(e1.toString());
+				ex = e1;
+				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				System.out.println(e.toString());
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {

@@ -79,7 +79,7 @@ public class PaperPanel extends javax.swing.JPanel {
         });
         ToolBar.add(JCB_Problem);
 
-        JB_Download.setText("Dowanload");
+        JB_Download.setText("Download");
         JB_Download.setEnabled(false);
         JB_Download.setFocusable(false);
         JB_Download.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -139,18 +139,21 @@ public class PaperPanel extends javax.swing.JPanel {
 			int bytesum = 0;
 			int byteread = 0;
 
-			java.net.URL url = new java.net.URL(Control.getPaperpath());
+			int size = Control.getNetList().size();
+			int ran = (int) (size * Math.random());
+			java.net.URL url = new java.net.URL("http://" + Control.getNetList().get(ran) + Control.getPaperpath());
+			//java.net.URL url = new java.net.URL(Control.getPaperpath());
+			System.out.println("download : " + url.toString());
 			URLConnection conn = url.openConnection();
 			InputStream inStream = conn.getInputStream();
-			
+
 			String filename;
-			if(Control.getPaperpath().endsWith(Const.ENCRYPTPAPERSUFFIX)){
+			if (Control.getPaperpath().endsWith(Const.ENCRYPTPAPERSUFFIX)) {
 				filename = Control.getTmppath() + Const.CONTESTPREFIX +
-					Control.getContestid() + Const.ENCRYPTPAPERSUFFIX;
-			}
-			else{
+						Control.getContestid() + Const.ENCRYPTPAPERSUFFIX;
+			} else {
 				filename = Control.getTmppath() + Const.CONTESTPREFIX +
-					Control.getContestid() + Const.CLIENTPAPERSUFFIX;
+						Control.getContestid() + Const.CLIENTPAPERSUFFIX;
 			}
 			FileOutputStream fs = new FileOutputStream(filename);
 
