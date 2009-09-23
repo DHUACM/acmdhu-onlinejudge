@@ -339,11 +339,14 @@ public class Control {
 			java.lang.Boolean loginresult = wsUserAccount.login(userForm);
 			if (loginresult) {
 				islogined = true;
-				message = "Login Success!\nYou can download paper first\n" +
-						"After contest start, you can openPaper by password!\n\n" +
-						"This software will auto submit A+B problem for test!\n\n" +
+				message = "Login Successfully!\nYou can download paper by clicking the 'Download' button now.\n" +
+						"When the contest start, you can click 'openPaper' button to open the contest paper.\n" +
+						"The paper password is available at http://acm.dhu.edu.cn/dhuoj when contest start.\n\n" +
+						"This software will automatically submit 'A+B' problem for test!\n" +
+						"If it submits OK and receives judged result, congratulations! You successfully connect to the server.\n" +
+						"If it fails, please check the network connection or contact the admin.\n\n" +
 						"You can test your compiler at Tool-menu's Test-Compiler or press ALT+T\n" +
-						"If the CPP \"not find compiler\" for example, just set your g++ path to your system enviroment path\n" +
+						"If it fails to find C++ Compiler for example, just set your g++ path to your system enviroment path\n" +
 						"This means you can just run g++ at your cmd or terminal at any directory.";
 				userid = username;
 				userpassword = password;

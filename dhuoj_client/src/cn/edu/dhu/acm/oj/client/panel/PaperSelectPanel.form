@@ -61,7 +61,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="If your Linux has a visual effects, it may cause you can&apos;t press Password, just close the effects ! "/>
+        <Property name="text" type="java.lang.String" value="If you enable visual effects on Linux, it may cause you unable to press Password, just close the effects ! "/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -71,7 +71,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Most contests don&apos;t have Password, just Open it! But if it says Open Error, Password is required ! "/>
+        <Property name="text" type="java.lang.String" value="Most contests don&apos;t have Password, just Open it! For those that require password, please contact the admin."/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

@@ -5,6 +5,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import cn.edu.dhu.acm.oj.webservice.*;
 import cn.edu.dhu.acm.oj.client.Control;
+import javax.xml.ws.soap.SOAPFaultException;
 
 public class WSContestClient {
 
@@ -34,9 +35,15 @@ public class WSContestClient {
 				ans = port.submitCode(submitCodeForm);
 				find = true;
 				break;
+			} catch (SOAPFaultException e1) {
+				System.out.println(e1.toString());
+				ex = e1;
+				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				System.out.println(e.toString());
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {
@@ -60,8 +67,9 @@ public class WSContestClient {
 				find = true;
 				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {
@@ -85,8 +93,10 @@ public class WSContestClient {
 				find = true;
 				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				System.out.println(e.toString());
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {
@@ -109,9 +119,16 @@ public class WSContestClient {
 				ans = port.getContestDetail(userID, contestID);
 				find = true;
 				break;
+			} catch (SOAPFaultException e1) {
+				//e1.printStackTrace();
+				ex = e1;
+				break;
 			} catch (Exception e) {
-				k = (k + 1) % size;
+				System.out.println(e.toString());
+				//e.printStackTrace();
+				//k = (k + 1) % size;
 				ex = e;
+				break;
 			}
 		} while (k != ran);
 		if (!find) {

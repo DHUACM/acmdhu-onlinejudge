@@ -60,7 +60,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Net:"/>
+            <Property name="text" type="java.lang.String" value="Connection:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="JB_Register">

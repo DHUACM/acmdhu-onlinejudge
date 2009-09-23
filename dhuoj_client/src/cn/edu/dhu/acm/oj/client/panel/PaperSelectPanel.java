@@ -97,10 +97,10 @@ public class PaperSelectPanel extends javax.swing.JPanel {
 
         add(jToolBar1, java.awt.BorderLayout.NORTH);
 
-        jLabel2.setText("If your Linux has a visual effects, it may cause you can't press Password, just close the effects ! ");
+        jLabel2.setText("If you enable visual effects on Linux, it may cause you unable to press Password, just close the effects ! ");
         add(jLabel2, java.awt.BorderLayout.SOUTH);
 
-        jLabel3.setText("Most contests don't have Password, just Open it! But if it says Open Error, Password is required ! ");
+        jLabel3.setText("Most contests don't have Password, just Open it! For those that require password, please contact the admin.");
         add(jLabel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
