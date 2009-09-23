@@ -439,11 +439,13 @@ public class MainFrame extends javax.swing.JFrame {
 	private void JB_GetQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_GetQuestionActionPerformed
 		try {
 			if (Control.GetMessage()) {
+				JB_GetQuestion.setEnabled(false);
 				JTA_Response.setEditable(true);
 				JB_SendMessage.setEnabled(true);
 				JTA_Question.setText(Control.getMessagebean().getQuestion());
 			}
 		} catch (Exception e) {
+			JB_GetQuestion.setEnabled(true);
 		}
 }//GEN-LAST:event_JB_GetQuestionActionPerformed
 
@@ -451,8 +453,7 @@ public class MainFrame extends javax.swing.JFrame {
 		try {
 			String str = JTA_Response.getText();
 			if (str.equals("")) {
-				System.out.println("Response empty!");
-				return;
+				str = initResponse;
 			}
 			Control.getMessagebean().setResponse(str);
 			Control.SendMessage();
@@ -463,6 +464,7 @@ public class MainFrame extends javax.swing.JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		JB_GetQuestion.setEnabled(true);
     }//GEN-LAST:event_JB_SendMessageActionPerformed
 
 	public void StartApply() {
