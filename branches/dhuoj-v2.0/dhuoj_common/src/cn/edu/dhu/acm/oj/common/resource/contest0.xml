@@ -160,6 +160,7 @@ Be careful!
 
 use %lld for long long!
 include cstring cmath ... if you use the function of it!
+JAVA time limit will multiply 3
 
 "FILE", "fstream", "dirent","unistd", "getenv", "system"
 
