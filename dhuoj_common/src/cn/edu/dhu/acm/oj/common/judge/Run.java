@@ -12,10 +12,13 @@ public class Run extends Thread {
 		commandline = eb.getRunCmd(lan, Const.COMPILENAME);
 	}
 
-	private void InputData(OutputStream os)
-			throws IOException {
-		os.write(runbean.getInput().getBytes());
-		os.close();
+	private void InputData(OutputStream os) {
+		try {
+			os.write(runbean.getInput().getBytes());
+			os.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	@Override
@@ -63,17 +66,21 @@ public class Run extends Thread {
 
 			tend = System.currentTimeMillis();
 			runbean.setTimeUsed(tend - tbegin);
-			int exitValue = pro.exitValue();
-			if (exitValue == 0) {
-				tk.stop();
-				runbean.setOutput(outris.getMessage());
-				if (outris.getMessage().length() >= Const.FILEMAXSIZE) {
-					runbean.setResult(Const.OLE);
-				}
+			if ((tend - tbegin) >= (tle * (long) 1000)) {
+				runbean.setResult(Const.TLE);
 			} else {
-				tk.stop();
-				runbean.setResult(Const.RE);
-				runbean.setOutput(outris.getMessage());
+				int exitValue = pro.exitValue();
+				if (exitValue == 0) {
+					tk.stop();
+					runbean.setOutput(outris.getMessage());
+					if (outris.getMessage().length() >= Const.FILEMAXSIZE) {
+						runbean.setResult(Const.OLE);
+					}
+				} else {
+					tk.stop();
+					runbean.setResult(Const.RE);
+					runbean.setOutput(outris.getMessage());
+				}
 			}
 			pin.close();
 			pro.destroy();
@@ -86,7 +93,7 @@ public class Run extends Thread {
 			} else {
 				runbean.setResult(Const.RE);
 			}
-			System.out.println("1"+E.toString());
+			E.printStackTrace();
 		}
 	}
 
